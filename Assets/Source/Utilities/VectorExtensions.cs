@@ -4,6 +4,10 @@ namespace Quinn
 {
 	public static class Vector2Utility
 	{
+		public static float DistanceTo(this Vector3 origin, Vector3 target)
+		{
+			return Vector3.Distance(origin, target);
+		}
 		public static float DistanceTo(this Vector2 origin, Vector2 target)
 		{
 			return Vector2.Distance(origin, target);
@@ -13,6 +17,10 @@ namespace Quinn
 			return (target - origin).magnitude;
 		}
 
+		public static Vector3 DirectionTo(this Vector3 origin, Vector3 target)
+		{
+			return (target - origin).normalized;
+		}
 		public static Vector2 DirectionTo(this Vector2 origin, Vector2 target)
 		{
 			return (target - origin).normalized;

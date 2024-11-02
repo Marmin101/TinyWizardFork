@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3054701727177551245}
   - component: {fileID: 7008458151332861294}
   - component: {fileID: 5937430830354893443}
-  - component: {fileID: -8789147028795353407}
   - component: {fileID: 5114066691716736982}
   - component: {fileID: 1624697009651813787}
+  - component: {fileID: -8789147028795353407}
   m_Layer: 0
   m_Name: Globals
   m_TagString: Untagged
@@ -113,22 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerGroupPrefab: {fileID: 8075276646572704782, guid: 9f60c85e031e2c044830f7549585bc6a, type: 3}
---- !u!114 &-8789147028795353407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998014613395872597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13782450c1885f4196c2dd7118e05ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxRoomSize: 48
-  RoomLibrary:
-  - Prefab: {fileID: 3240574636748750429, guid: 7a9f20dc3528afe49a6ab4b0add898f0, type: 3}
-    Weight: 0
 --- !u!114 &5114066691716736982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cad64f8705b1f419a18dd5697e69a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8789147028795353407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998014613395872597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13782450c1885f4196c2dd7118e05ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxRoomSize: 56
+  Floors:
+  - {fileID: 11400000, guid: 64e34af4fcccf3741a470484a63927a9, type: 2}

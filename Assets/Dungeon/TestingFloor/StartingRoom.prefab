@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6446014019648216660, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Name
-      value: Room
+      value: StartingRoom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

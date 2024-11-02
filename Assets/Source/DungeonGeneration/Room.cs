@@ -77,26 +77,40 @@ namespace Quinn.DungeonGeneration
 			if (collider.CompareTag("Player"))
 			{
 				RoomCamera.enabled = false;
-				GeberateRoomAtPlayer(collider);
+				GenerateRoomAtPlayer(collider);
 			}
 		}
 
-		private void GeberateRoomAtPlayer(Collider2D collider)
+		private void OnDisable()
 		{
+			
+		}
+
+		private void OnDestroy()
+		{
+			
+		}
+
+		private void GenerateRoomAtPlayer(Collider2D collider)
+		{
+			var generator = DungeonGenerator.Instance;
+			if (generator == null)
+				return;
+
 			Vector2 playerExitDir = transform.position.DirectionTo(collider.transform.position);
 			if (playerExitDir.IsVertical())
 			{
 				if (playerExitDir.y > 0f)
-					DungeonGenerator.Instance.GenerateRoomAt(RoomGridIndex.x, RoomGridIndex.y + 1);
+					generator.GenerateRoomAt(RoomGridIndex.x, RoomGridIndex.y + 1);
 				else
-					DungeonGenerator.Instance.GenerateRoomAt(RoomGridIndex.x, RoomGridIndex.y - 1);
+					generator.GenerateRoomAt(RoomGridIndex.x, RoomGridIndex.y - 1);
 			}
 			else
 			{
 				if (playerExitDir.x > 0f)
-					DungeonGenerator.Instance.GenerateRoomAt(RoomGridIndex.x + 1, RoomGridIndex.y);
+					generator.GenerateRoomAt(RoomGridIndex.x + 1, RoomGridIndex.y);
 				else
-					DungeonGenerator.Instance.GenerateRoomAt(RoomGridIndex.x - 1, RoomGridIndex.y);
+					generator.GenerateRoomAt(RoomGridIndex.x - 1, RoomGridIndex.y);
 			}
 		}
 	}

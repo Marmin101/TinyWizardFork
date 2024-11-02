@@ -22,7 +22,17 @@ namespace Quinn
 		public static async Awaitable<GameObject> CloneAsync(this GameObject prefab, Vector2 position, Quaternion rotation, Transform parent)
 		{
 			var clones = await Object.InstantiateAsync(prefab, parent, position, rotation);
+			if (clones == null) return null;
 			return clones.FirstOrDefault();
+		}
+
+		public static void Destroy(this GameObject prefab)
+		{
+			Object.Destroy(prefab);
+		}
+		public static void Destroy(this GameObject prefab, float delay)
+		{
+			Object.Destroy(prefab, delay);
 		}
 	}
 }

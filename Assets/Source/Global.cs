@@ -12,5 +12,11 @@ namespace Quinn
 
 			DontDestroyOnLoad(instance);
 		}
+
+		private void Awake()
+		{
+			// Required to avoid issues when exiting playmode in the editor.
+			Physics2D.callbacksOnDisable = false;
+		}
 	}
 }

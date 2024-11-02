@@ -14,6 +14,7 @@ namespace Quinn.DungeonGeneration
 		public static DungeonGenerator Instance { get; private set; }
 
 		public FloorSO ActiveFloor { get; private set; }
+
 		private readonly HashSet<GameObject> _generatedRooms = new();
 		private readonly HashSet<Vector2Int> _generatedRoomIndices = new();
 
@@ -63,7 +64,13 @@ namespace Quinn.DungeonGeneration
 		private async Awaitable<Room> GenerateRoomAsync(Room prefab, int x, int y)
 		{
 			Vector2 pos = RoomGridToWorld(x, y) - Vector2.one;
-			var instance = await prefab.gameObject.CloneAsync(pos);
+			var instance = await prefab.gameObject.CloneAsync(pos, Quaternion.identity, transform);
+			
+			if (instance == null)
+			{
+				throw new System.NullReferenceException("Failed to generate room!");
+			}
+
 			_generatedRooms.Add(instance);
 
 			var room = instance.GetComponent<Room>();
@@ -76,12 +83,6 @@ namespace Quinn.DungeonGeneration
 		private Vector2 RoomGridToWorld(int x, int y)
 		{
 			return new Vector2(x, y) * MaxRoomSize;
-		}
-
-		private Vector2Int WorldToRoomGrid(Vector2 worldPos)
-		{
-			worldPos /= MaxRoomSize;
-			return new(Mathf.RoundToInt(worldPos.x), Mathf.RoundToInt(worldPos.y));
 		}
 	}
 }

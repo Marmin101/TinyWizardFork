@@ -152,8 +152,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
+      x: 8
+      y: 8
       width: 16
       height: 16
     spriteID: 5b150c2c75c84f64bbd242bbb54b80f5
@@ -173,8 +173,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 20
-      y: 4
+      x: 32
+      y: 8
       width: 16
       height: 16
     spriteID: c70875a73c7f2754e9d2c44780936f4f
@@ -200,8 +200,8 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 0
-        width: 32
-        height: 16
+        width: 48
+        height: 24
       spriteId: 8cf0cba63c45ce747b6a506eef18d486
     linkedCells: []
     parentIndex: -1
@@ -245,4 +245,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 16}
+  canvasSize: {x: 48, y: 24}

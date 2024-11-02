@@ -15,17 +15,17 @@ namespace Quinn.AI
 
 		protected virtual void Start()
 		{
-			AIGlobal.Instance.AddAgent(this);
+			AIManager.Instance.AddAgent(this);
 		}
 
 		protected virtual void OnDestroy()
 		{
-			AIGlobal.Instance.RemoveAgent(this);
+			AIManager.Instance.RemoveAgent(this);
 		}
 
 		protected virtual void OnDeath()
 		{
-			AIGlobal.Instance.RemoveAgent(this);
+			AIManager.Instance.RemoveAgent(this);
 		}
 
 		protected void DamageTarget(GameObject target, float damage)

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Quinn
+namespace Quinn.PlayerSystem
 {
 	public class InputManager : MonoBehaviour
 	{

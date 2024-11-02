@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Quinn
+namespace Quinn.PlayerSystem
 {
 	public class PlayerMovement : Locomotion
 	{

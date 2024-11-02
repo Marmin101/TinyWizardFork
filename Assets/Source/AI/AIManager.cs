@@ -3,11 +3,9 @@ using UnityEngine;
 
 namespace Quinn.AI
 {
-	public class AIGlobal : MonoBehaviour
+	public class AIManager : MonoBehaviour
 	{
-		public static AIGlobal Instance { get; private set; }
-
-		public Player Player { get; private set; }
+		public static AIManager Instance { get; private set; }
 
 		public IEnumerable<AIAgent> AllAgents => _allAgents;
 		public IEnumerable<AIAgent> EnvironmentAgents => _environmentAgents;
@@ -31,11 +29,6 @@ namespace Quinn.AI
 		{
 			if (Instance == this)
 				Instance = null;
-		}
-
-		public void SetPlayer(Player player)
-		{
-			Player = player;
 		}
 
 		public void AddAgent(AIAgent agent)

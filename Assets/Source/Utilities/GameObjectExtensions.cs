@@ -17,6 +17,7 @@ namespace Quinn
 		public static async Awaitable<GameObject> CloneAsync(this GameObject prefab, Vector2 position = default)
 		{
 			var clones = await Object.InstantiateAsync(prefab, position, Quaternion.identity);
+			if (clones == null) return null;
 			return clones.FirstOrDefault();
 		}
 		public static async Awaitable<GameObject> CloneAsync(this GameObject prefab, Vector2 position, Quaternion rotation, Transform parent)

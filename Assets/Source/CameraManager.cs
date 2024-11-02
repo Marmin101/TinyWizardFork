@@ -80,7 +80,11 @@ namespace Quinn
 			}
 
 			_blackout.DOFade(0f, FadeFromBlackDuration)
-				.SetEase(FadeFromBlackEase);
+				.SetEase(FadeFromBlackEase)
+				.onComplete += () =>
+				{
+					_blackout.enabled = false;
+				};
 		}
 		public async Awaitable TransitionAsync()
 		{

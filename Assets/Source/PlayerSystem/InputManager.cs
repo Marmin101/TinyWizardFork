@@ -7,7 +7,7 @@ namespace Quinn.PlayerSystem
 	{
 		public static InputManager Instance { get; private set; }
 
-		public Vector2 MoveInput { get; private set; }
+		public Vector2 MoveDirection { get; private set; }
 		public event Action OnDash;
 
 		private void Awake()
@@ -18,7 +18,7 @@ namespace Quinn.PlayerSystem
 
 		private void Update()
 		{
-			MoveInput = new Vector2()
+			MoveDirection = new Vector2()
 			{
 				x = Input.GetAxisRaw("Horizontal"),
 				y = Input.GetAxisRaw("Vertical")

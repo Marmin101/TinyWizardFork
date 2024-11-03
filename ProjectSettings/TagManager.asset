@@ -11,7 +11,7 @@ TagManager:
   - Obstacle
   - Water
   - UI
-  - 
+  - NoCollision
   - 
   - 
   - 
@@ -43,6 +43,12 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Missiles
+    uniqueID: 451236059
+    locked: 0
+  - name: VFX
+    uniqueID: 4022383797
     locked: 0
   - name: UI
     uniqueID: 1533875541

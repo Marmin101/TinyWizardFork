@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5301853376018413780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/TestingFloorAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/TestingFloorAmbience
+  Guid:
+    Data1: -239895624
+    Data2: 1265082880
+    Data3: -557461825
+    Data4: -1100324599
+  Banks:
+  - {fileID: 5360170525186871686}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 60063
 --- !u!114 &-5291102744210129160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +54,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4933839385322600483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footstep
+  m_EditorClassIdentifier: 
+  Path: event:/Footstep
+  Guid:
+    Data1: -1108798346
+    Data2: 1215854763
+    Data3: 1995971772
+    Data4: -1172443091
+  Banks:
+  - {fileID: 5360170525186871686}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5725124681726137619}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4087562427105495328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +97,10 @@ MonoBehaviour:
   Path: FMOD/GameOff2024/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638660931509710600
+  lastModified: 638662489560555058
   FileSizes:
   - Name: Desktop
-    Value: 882
+    Value: 1034
   Exists: 1
 --- !u!114 &-2316976488671713160
 MonoBehaviour:
@@ -92,12 +147,14 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: -2316976488671713160}
   - {fileID: -5291102744210129160}
+  - {fileID: -5301853376018413780}
+  - {fileID: -4933839385322600483}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5360170525186871686}
   StringsBanks:
   - {fileID: -4087562427105495328}
-  cacheTime: 638660931509710600
+  cacheTime: 638662489560555058
   cacheVersion: 131620
 --- !u!114 &5360170525186871686
 MonoBehaviour:
@@ -114,8 +171,35 @@ MonoBehaviour:
   Path: FMOD/GameOff2024/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638660931509679889
+  lastModified: 638662489560535111
   FileSizes:
   - Name: Desktop
-    Value: 2380
+    Value: 437152
+  Exists: 1
+--- !u!114 &5725124681726137619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footstep/sound-mat
+  m_EditorClassIdentifier: 
+  Name: sound-mat
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 2671939767
+    data2: 3337161845
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - None
+  - Stone
+  - Carpet
   Exists: 1

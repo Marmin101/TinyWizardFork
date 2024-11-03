@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 5000847198521431157}
   - component: {fileID: 470310183471620373}
   - component: {fileID: 5558607745737314982}
-  - component: {fileID: 8312457876956595346}
   - component: {fileID: 4183602615377112300}
   m_Layer: 0
   m_Name: View
@@ -266,20 +265,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &8312457876956595346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6006629865529169445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
 --- !u!114 &4183602615377112300
 MonoBehaviour:
   m_ObjectHideFlags: 0

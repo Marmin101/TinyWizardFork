@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using FMODUnity;
+using System.Linq;
 using UnityEngine;
 
 namespace Quinn.DungeonGeneration
@@ -6,6 +7,9 @@ namespace Quinn.DungeonGeneration
 	[CreateAssetMenu(fileName = "Floor", menuName = "Floor")]
 	public class FloorSO : ScriptableObject
 	{
+		public EventReference Ambience;
+
+		[Space]
 		public Room StartingRoom;
 		public RoomEntry[] Generatable;
 

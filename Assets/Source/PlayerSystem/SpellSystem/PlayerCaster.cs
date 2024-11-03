@@ -38,7 +38,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			}
 		}
 
-		private void Update()
+		private void LateUpdate()
 		{
 			UpdateStaffTransform();
 		}
@@ -46,6 +46,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public void SetStaff(Staff staff)
 		{
 			Staff = staff;
+			staff.transform.SetParent(transform, false);
 			staff.SetCaster(this);
 		}
 

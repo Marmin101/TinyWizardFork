@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +53,7 @@ namespace Quinn.DungeonGeneration
 		public FloorSO ActiveFloor { get; private set; }
 
 		private readonly Dictionary<Vector2Int, GameObject> _generatedRooms = new();
+		private EventInstance _ambience;
 
 		private void Awake()
 		{
@@ -61,6 +64,18 @@ namespace Quinn.DungeonGeneration
 		private async void Start()
 		{
 			var floor = Floors[Random.Range(0, Floors.Length)];
+
+			if (_ambience.isValid())
+			{
+				_ambience.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
+
+			if (!floor.Ambience.IsNull)
+			{
+				_ambience = RuntimeManager.CreateInstance(floor.Ambience);
+				_ambience.start();
+			}
+
 			await StartFloorAsync(floor);
 		}
 

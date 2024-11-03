@@ -15,12 +15,5 @@ namespace Quinn
 			if (!sound.IsNull)
 				RuntimeManager.PlayOneShotAttached(sound, parent.gameObject);
 		}
-
-		public static void PlayAtCamera(EventReference sound)
-		{
-			if (!sound.IsNull)
-				RuntimeManager.PlayOneShot(sound, Camera.main.transform.position);
-		}
 	}
-
 }

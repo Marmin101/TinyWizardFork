@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5114066691716736982}
   - component: {fileID: 1624697009651813787}
   - component: {fileID: -8789147028795353407}
+  - component: {fileID: -5411578148068884108}
   m_Layer: 0
   m_Name: Globals
   m_TagString: Untagged
@@ -158,3 +159,16 @@ MonoBehaviour:
   MaxRoomSize: 56
   Floors:
   - {fileID: 11400000, guid: 64e34af4fcccf3741a470484a63927a9, type: 2}
+--- !u!114 &-5411578148068884108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998014613395872597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4064ecbf3b04b438ccc5653f964e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestingMissile: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}

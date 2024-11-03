@@ -31,7 +31,7 @@ namespace Quinn.PlayerSystem
 				y = Input.GetAxisRaw("Vertical")
 			}.normalized;
 
-			CursorWorldPos = Camera.main.WorldToScreenPoint(Input.mousePosition);
+			CursorWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 			if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift))
 			{

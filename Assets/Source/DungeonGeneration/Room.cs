@@ -63,7 +63,7 @@ namespace Quinn.DungeonGeneration
 			if (collider.CompareTag("Player"))
 			{
 				RoomCamera.enabled = true;
-				RoomCamera.Target.TrackingTarget = collider.transform;
+				RoomCamera.Target.TrackingTarget = CameraManager.Instance.CameraTarget;
 
 				if (!IsConquered)
 				{
@@ -79,16 +79,6 @@ namespace Quinn.DungeonGeneration
 				RoomCamera.enabled = false;
 				GenerateRoomAtPlayer(collider);
 			}
-		}
-
-		private void OnDisable()
-		{
-			
-		}
-
-		private void OnDestroy()
-		{
-			
 		}
 
 		private void GenerateRoomAtPlayer(Collider2D collider)

@@ -8,6 +8,8 @@ namespace Quinn
 	public class CameraHandle : MonoBehaviour
 	{
 		[field: SerializeField, Required]
+		public Transform CameraTarget { get; private set; }
+		[field: SerializeField, Required]
 		public Camera View { get; private set; }
 		[field: SerializeField, Required]
 		public CinemachineCamera VirtualCamera { get; private set; }

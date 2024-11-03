@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Quinn.PlayerSystem;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,9 +19,18 @@ namespace Quinn
 		[SerializeField]
 		private Ease FadeFromBlackEase = Ease.OutCubic;
 
+		[Space, SerializeField]
+		private float PlayerToCursorBias = 0.2f;
+		[SerializeField]
+		private float CameraTargetSmoothTime = 0.2f;
+
+		public Transform CameraTarget => _handle.CameraTarget;
+
 		private CameraHandle _handle;
 		private CinemachineCamera _followCam;
 		private Image _blackout;
+
+		private Vector2 _camTargetVel;
 
 		private void Awake()
 		{
@@ -35,6 +45,12 @@ namespace Quinn
 				float time = Time.time;
 				await TransitionAsync(() => Time.time > time + 1f);
 			}
+
+			Vector2 playerPos = PlayerManager.Instance.Player.transform.position;
+			Vector2 cursorPos = InputManager.Instance.CursorWorldPos;
+
+			Vector2 cameraTarget = Vector2.Lerp(playerPos, cursorPos, PlayerToCursorBias);
+			CameraTarget.position = Vector2.SmoothDamp(CameraTarget.position, cameraTarget, ref _camTargetVel, CameraTargetSmoothTime);
 		}
 
 		private void OnDestroy()

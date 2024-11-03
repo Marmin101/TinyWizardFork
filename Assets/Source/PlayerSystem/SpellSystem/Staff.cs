@@ -10,8 +10,11 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public void Interact(Player player)
 		{
 			var caster = player.GetComponent<PlayerCaster>();
-
 			caster.SetStaff(this);
+		}
+
+		public void SetCaster(PlayerCaster caster)
+		{
 			Caster = caster;
 		}
 	}

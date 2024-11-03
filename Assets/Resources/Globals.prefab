@@ -141,6 +141,8 @@ MonoBehaviour:
   FadeFromBlackDuration: 0.5
   FadeToBlackEase: 2
   FadeFromBlackEase: 3
+  PlayerToCursorBias: 0.15
+  CameraTargetSmoothTime: 0.05
 --- !u!114 &-8789147028795353407
 MonoBehaviour:
   m_ObjectHideFlags: 0

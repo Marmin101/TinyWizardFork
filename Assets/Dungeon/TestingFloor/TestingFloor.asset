@@ -15,4 +15,11 @@ MonoBehaviour:
   StartingRoom: {fileID: 3240574636748750429, guid: 90606a8bd47bdf8429d7596d5010ee62, type: 3}
   Generatable:
   - Prefab: {fileID: 3240574636748750429, guid: 90606a8bd47bdf8429d7596d5010ee62, type: 3}
-    Weight: 0
+    Weight: 50
+    SumWeight: 250
+  - Prefab: {fileID: 3240574636748750429, guid: 09e1482cf5bbd5c45bc9c9366f95cea8, type: 3}
+    Weight: 100
+    SumWeight: 250
+  - Prefab: {fileID: 3240574636748750429, guid: 0de55c6807dae9348a849547acc154ac, type: 3}
+    Weight: 100
+    SumWeight: 250

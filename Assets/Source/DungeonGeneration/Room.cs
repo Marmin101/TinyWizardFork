@@ -1,6 +1,7 @@
 ﻿using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -15,16 +16,31 @@ namespace Quinn.DungeonGeneration
 		[SerializeField, Required]
 		private CinemachineCamera RoomCamera;
 
+		[SerializeField, BoxGroup("Doors"), ValidateInput("@HasNorthDoor || HasEastDoor || HasSouthDoor || HasWestDoor")]
+		private Door NorthDoor, SouthDoor, EastDoor, WestDoor;
+
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; } = true; // TODO: Implement.
 
+		public bool HasNorthDoor => NorthDoor != null;
+		public bool HasEastDoor => EastDoor != null;
+		public bool HasSouthDoor => SouthDoor != null;
+		public bool HasWestDoor => WestDoor != null;
+
 		public Vector2Int RoomGridIndex { get; set; }
 
-		private Door[] _doors;
+		private readonly HashSet<Door> _doors = new();
 
 		private void Awake()
 		{
-			_doors = GetComponentsInChildren<Door>();
+			if (HasNorthDoor)
+				_doors.Add(NorthDoor);
+			if (HasSouthDoor)
+				_doors.Add(SouthDoor);
+			if (HasWestDoor)
+				_doors.Add(WestDoor);
+			if (HasEastDoor)
+				_doors.Add(EastDoor);
 
 			RoomTrigger.OnTriggerEnter += OnPlayerTriggerEnter;
 			RoomTrigger.OnTriggerExit += OnPlayerTriggerExit;

@@ -5030,6 +5030,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1401248640547100920, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1414668293693027516, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 368
@@ -23414,9 +23418,17 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[642].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 1459119126565020324, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2291039408645693255, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291039408645693255, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 2933569386510629957, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_ChunkCullingBounds.y
@@ -75498,9 +75510,13 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[34].Array.data[119].Y
       value: -10000000
       objectReference: {fileID: 0}
+    - target: {fileID: 5132242452553026128, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6446014019648216660, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Name
-      value: StartingRoom
+      value: 4-Door
       objectReference: {fileID: 0}
     - target: {fileID: 6834826036384215427, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Size.x

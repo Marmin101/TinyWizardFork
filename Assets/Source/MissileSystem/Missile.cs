@@ -11,9 +11,11 @@ namespace Quinn.MissileSystem
 		[SerializeField, BoxGroup("Core")]
 		private float DirectDamage = 1f;
 		[SerializeField, BoxGroup("Core")]
+		private Team Team = Team.Monster;
+		[SerializeField, BoxGroup("Core")]
 		private float Lifespan = 10f;
 
-		[SerializeField/*, FoldoutGroup("Splash Damage")*/]
+		[SerializeField]
 		private bool HasSplashDamage;
 		[SerializeField, FoldoutGroup("Splash Damage"), ShowIf(nameof(HasSplashDamage))]
 		private float BaseSplashDamage = 1f;
@@ -59,7 +61,7 @@ namespace Quinn.MissileSystem
 		{
 			if (collision.TryGetComponent(out Health health))
 			{
-				health.TakeDamage(DirectDamage);
+				health.TakeDamage(DirectDamage, Team);
 				OnImpact();
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
@@ -96,7 +98,8 @@ namespace Quinn.MissileSystem
 					if (collider.TryGetComponent(out Health health))
 					{
 						float dst = transform.position.DistanceTo(collider.transform.position);
-						health.TakeDamage(SplashDamageFalloff.Evaluate(dst / SplashRadius) * BaseSplashDamage);
+						float dmg = SplashDamageFalloff.Evaluate(dst / SplashRadius) * BaseSplashDamage;
+						health.TakeDamage(dmg, Team);
 					}
 				}
 			}

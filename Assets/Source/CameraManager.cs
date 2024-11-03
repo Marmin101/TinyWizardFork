@@ -38,14 +38,8 @@ namespace Quinn
 			Instance = this;
 		}
 
-		private async void Update()
+		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Space))
-			{
-				float time = Time.time;
-				await TransitionAsync(() => Time.time > time + 1f);
-			}
-
 			Vector2 playerPos = PlayerManager.Instance.Player.transform.position;
 			Vector2 cursorPos = InputManager.Instance.CursorWorldPos;
 

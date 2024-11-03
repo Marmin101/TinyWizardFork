@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000021E41FAB8D8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000021E41FA08F8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,55 +18,14 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SoundI::release                          : testing_floor_ambience (000002208B64D278)
-[LOG] SoundI::release                          :     testing_floor_ambience (0000021CC8059A98)
-[LOG] SoundI::release                          :     testing_floor_ambience (0000021FF4228908)
-[LOG] SoundI::release                          :  (0000021F07BC4388)
-[LOG] SoundI::release                          :     footstep_stone_01 (0000021EF7D95138)
-[LOG] SoundI::release                          :  (0000021F07BC4218)
-[LOG] SoundI::release                          :     footstep_stone_02 (0000021CCFFCE148)
-[LOG] SoundI::release                          :  (0000021F07BC4AB8)
-[LOG] SoundI::release                          :     footstep_stone_03 (0000021CCFFCECA8)
-[LOG] SoundI::release                          :  (0000021F9CADFBF8)
-[LOG] SoundI::release                          :     footstep_stone_04 (0000021FFBD9E3B8)
-[LOG] SoundI::release                          :  (0000021EFC4C37E8)
-[LOG] SoundI::release                          :     footstep_stone_05 (0000021EF7D952D8)
-[LOG] SoundI::release                          :  (0000021F07BC4948)
-[LOG] SoundI::release                          :     footstep_stone_06 (0000021F9CA8A068)
-[LOG] SoundI::release                          :  (0000021F9CADF078)
-[LOG] SoundI::release                          :     footstep_stone_07 (0000021FFBD9E558)
-[LOG] SoundI::release                          :  (0000021F07BC4668)
-[LOG] SoundI::release                          :     footstep_stone_08 (0000021EF7D94C58)
-[LOG] SoundI::release                          :  (0000021F9CADF4C8)
-[LOG] SoundI::release                          :     footstep_stone_09 (00000220038AB8A8)
-[LOG] SoundI::release                          :  (0000021F9CADF7A8)
-[LOG] SoundI::release                          :     footstep_stone_10 (0000021F4D942A38)
-[LOG] SoundI::release                          :  (0000021F9CADF638)
-[LOG] SoundI::release                          :     footstep_stone_11 (0000021F4D9426F8)
-[LOG] SoundI::release                          :  (0000021F07BC4D98)
-[LOG] SoundI::release                          :     footstep_stone_12 (0000021F9CA8AD68)
-[LOG] SoundI::release                          :  (0000021CC7378378)
-[LOG] SoundI::release                          :     footstep_carpet_01 (0000021F9CA8A208)
-[LOG] SoundI::release                          :  (0000021F07BC4C28)
-[LOG] SoundI::release                          :     footstep_carpet_02 (0000021CCFFCEB08)
-[LOG] SoundI::release                          :  (0000021EFC4C3508)
-[LOG] SoundI::release                          :     footstep_carpet_03 (0000021EF7D94DF8)
-[LOG] SoundI::release                          :  (0000021F07BC40A8)
-[LOG] SoundI::release                          :     footstep_carpet_04 (0000021F9CA8A888)
-[LOG] SoundI::release                          :  (0000021F07BC44F8)
-[LOG] SoundI::release                          :     footstep_carpet_05 (0000021CCFFCE968)
-[LOG] SoundI::release                          :  (0000021F07BC47D8)
-[LOG] SoundI::release                          :     footstep_carpet_06 (0000021CCFFCE628)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -74,5 +33,3 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.

@@ -32,9 +32,12 @@ namespace Quinn
 			OnHealed?.Invoke(health);
 		}
 
-		public void TakeDamage(float damage)
+		public void TakeDamage(float damage, Team sourceTeam)
 		{
 			if (IsDead)
+				return;
+
+			if (sourceTeam == Team)
 				return;
 
 			Current -= damage;

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2625fa8c98e334f85372c0fbcce055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DirectSpeed: 5
+  DirectSpeed: 3
   DirectDamage: 1
   Lifespan: 100
   HasSplashDamage: 1
@@ -196,5 +196,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   DoesOscillate: 1
-  OscillateAmplitude: 0.5
-  OscillateFrequency: 0.5
+  OscillateAmplitude: 3
+  OscillateFrequency: 3

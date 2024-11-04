@@ -75,7 +75,7 @@ ScriptedImporter:
     importHiddenLayers: 1
     layerImportMode: 0
     defaultPivotSpace: 1
-    defaultPivotAlignment: 9
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.25}
     mosaicPadding: 4
     spritePadding: 0
@@ -88,7 +88,7 @@ ScriptedImporter:
     importHiddenLayers: 1
     layerImportMode: 0
     defaultPivotSpace: 1
-    defaultPivotAlignment: 9
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.25}
     mosaicPadding: 4
     spritePadding: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638663221066163054
+  platformSettingsDirtyTick: 638663391230361891
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -122,10 +122,31 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
+  - name: BloodSlime_Shadow
+    originalName: 
+    pivot: {x: 0.5, y: 0.25}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 21
+      width: 17
+      height: 3
+    spriteID: b329baaa06f07de498c3dcaf0aceb0a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 21}
   - name: BloodSlime_Body
     originalName: 
     pivot: {x: 0.5, y: 0.25}
-    alignment: 9
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -134,7 +155,7 @@ ScriptedImporter:
       y: 4
       width: 11
       height: 9
-    spriteID: c4181e4ff3e687247a9c27ef90379ebb
+    spriteID: 5aadaf1b3e7dda64aaf8b21d52cac2cd
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -146,37 +167,16 @@ ScriptedImporter:
   - name: BloodSlime_Eyes
     originalName: 
     pivot: {x: 0.5, y: 0.25}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 21
-      width: 5
-      height: 1
-    spriteID: 7b6b9883c97b4db47bd9642103fe84e8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 21}
-  - name: BloodSlime_Highlight
-    originalName: 
-    pivot: {x: 0.5, y: 0.25}
-    alignment: 9
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 23
       y: 4
-      width: 1
+      width: 5
       height: 1
-    spriteID: a3d8b79529659474793aacaff92792f1
+    spriteID: 614443c627d752f4b8f7ab256e025c3c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -185,10 +185,49 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 23, y: 4}
+  - name: BloodSlime_Highlight
+    originalName: 
+    pivot: {x: 0.5, y: 0.25}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 32
+      width: 1
+      height: 1
+    spriteID: 5d53f57bad9e49445af69ae487dace2f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 32}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1559113971
+    guid: 1899755097
+    name: BloodSlime_Shadow
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: BloodSlime_Shadow
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 8
+        y: 6
+        width: 17
+        height: 3
+      spriteId: b329baaa06f07de498c3dcaf0aceb0a8
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 1
+    guid: 1559113970
     name: BloodSlime_Body
     layerFlags: 3
     layerType: 0
@@ -202,11 +241,11 @@ ScriptedImporter:
         y: 7
         width: 11
         height: 9
-      spriteId: c4181e4ff3e687247a9c27ef90379ebb
+      spriteId: 5aadaf1b3e7dda64aaf8b21d52cac2cd
     linkedCells: []
     parentIndex: -1
-  - layerIndex: 1
-    guid: -718326960
+  - layerIndex: 2
+    guid: -718326957
     name: BloodSlime_Eyes
     layerFlags: 3
     layerType: 0
@@ -220,11 +259,11 @@ ScriptedImporter:
         y: 9
         width: 5
         height: 1
-      spriteId: 7b6b9883c97b4db47bd9642103fe84e8
+      spriteId: 614443c627d752f4b8f7ab256e025c3c
     linkedCells: []
     parentIndex: -1
-  - layerIndex: 2
-    guid: -936500047
+  - layerIndex: 3
+    guid: -936500048
     name: BloodSlime_Highlight
     layerFlags: 3
     layerType: 0
@@ -238,7 +277,7 @@ ScriptedImporter:
         y: 13
         width: 1
         height: 1
-      spriteId: a3d8b79529659474793aacaff92792f1
+      spriteId: 5d53f57bad9e49445af69ae487dace2f
     linkedCells: []
     parentIndex: -1
   platformSettings:

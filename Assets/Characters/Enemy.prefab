@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 5272158393242023688}
   - component: {fileID: 3626763007255177289}
   - component: {fileID: 4686400505576603632}
-  m_Layer: 0
+  - component: {fileID: 3180104467074660429}
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +179,20 @@ MonoBehaviour:
   DoesKnockbackOnDamage: 1
   KnockbackSpeed: 12
   KnockbackDecayRate: 32
+  <MoveSpeed>k__BackingField: 3
+--- !u!114 &3180104467074660429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621698114730883495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48b5e66163036c4f8c1030a423bb5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
 --- !u!1 &694084674711241768
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,10 +203,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5516821734405868355}
   - component: {fileID: 6836316149932417830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -274,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2355822671081721573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1097213129333881698}
   - component: {fileID: 2841596595511251762}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2162489182612900323}
   - component: {fileID: 8584659218363069571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,10 +497,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6328704744274377494}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -514,10 +529,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8092702747056744121}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeadPivot
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -546,10 +561,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1444399717368300927}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BodyPivot
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

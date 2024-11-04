@@ -38,13 +38,20 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private int _castChainCount;
 		private float _chainTimeoutTime;
 
+		private bool _isMovePenaltyApplied;
+
 		private void Update()
 		{
 			if (_castChainCount < 3 && _castChainCount > 0 && Time.time > _chainTimeoutTime)
 			{
 				_castChainCount = 0;
 				Caster.SetCooldown(CastChainCooldown);
+			}
 
+			if (_isMovePenaltyApplied && Time.time > _largeMissileTime)
+			{
+				_isMovePenaltyApplied = false;
+				Caster.Movement.RemoveSpeedModifier(this);
 			}
 		}
 
@@ -76,6 +83,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			_largeMissileTime = Time.time + SpecialChargeTime;
 
 			Caster.Movement.ApplySpeedModifier(this, ChargingMoveSpeedFactor);
+			_isMovePenaltyApplied = true;
+			_castChainCount = 0;
 		}
 
 		public override void OnSpecialStop()
@@ -83,7 +92,6 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			var prefab = Time.time > _largeMissileTime ? SpecialPrefab : CastPrefab;
 			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDir());
 
-			Caster.Movement.RemoveSpeedModifier(this);
 			Caster.Movement.Knockback(-GetDir(), SpecialKnockbackSpeed);
 		}
 

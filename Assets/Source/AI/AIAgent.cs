@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Quinn.AI
 {
+	[RequireComponent(typeof(Animator))]
 	[RequireComponent(typeof(Health))]
 	[RequireComponent(typeof(AIMovement))]
 	public abstract class AIAgent : MonoBehaviour
@@ -10,12 +11,16 @@ namespace Quinn.AI
 		public Health Health { get; private set; }
 		public Team Team => Health.Team;
 
+		protected Animator Animator { get; private set; }
 		protected AIMovement Movement { get; private set; }
 		protected Transform Target { get; private set; }
+		protected Vector2 TargetPos => Target.position;
 		protected Health TargetHealth { get; private set; }
+		protected Vector2 Position => transform.position;
 
 		protected virtual void Awake()
 		{
+			Animator = GetComponent<Animator>();
 			Health = GetComponent<Health>();
 			Movement = GetComponent<AIMovement>();
 
@@ -92,6 +97,16 @@ namespace Quinn.AI
 		{
 			AIManager.Instance.RemoveAgent(this);
 			Destroy(gameObject);
+		}
+
+		protected void FacePosition(Vector2 position)
+		{
+			transform.localScale = new Vector3(Mathf.Sign(transform.position.DirectionTo(position).x), 1f, 1f);
+		}
+
+		protected void FaceTarget()
+		{
+			FacePosition(TargetPos);
 		}
 
 		protected void DamageTarget(GameObject target, float damage)

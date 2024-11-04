@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace Quinn.AI
 {
@@ -11,18 +12,13 @@ namespace Quinn.AI
 
 		private Vector2 _cumulativeVel;
 
-		private Vector2 _jumpOrigin;
-		private Vector2 _jumpFinalTarget;
-		private Vector2 _jumpPeakTarget;
-		private Vector2 _jumpStraightDir;
-		private float _jumpDur;
-		private float _jumpSpeed;
-		private float _jumpUpSpeed, _jumpDownSpeed;
+		private void OnDestroy()
+		{
+			transform.DOKill();
+		}
 
 		public override Vector2 GetVelocity()
 		{
-			UpdateJump();
-
 			var vel = _cumulativeVel;
 			_cumulativeVel = Vector2.zero;
 
@@ -42,41 +38,43 @@ namespace Quinn.AI
 			return true;
 		}
 
-		public void JumpTo(Vector2 target, float height, float speed)
+		public void MoveInDirection(Vector2 direction)
 		{
-			_jumpSpeed = speed;
-
-			_jumpOrigin = transform.position;
-			_jumpFinalTarget = target;
-			_jumpPeakTarget = Vector2.Lerp(transform.position, _jumpFinalTarget, 0.5f) + (Vector2.up * height);
-			_jumpDur = transform.position.DistanceTo(_jumpFinalTarget) / speed;
-			_jumpStraightDir = _jumpOrigin.DirectionTo(_jumpFinalTarget);
-
-			_jumpUpSpeed = Mathf.Abs(transform.position.y - _jumpPeakTarget.y) / (_jumpDur / 2f);
-			_jumpDownSpeed = Mathf.Abs(_jumpPeakTarget.y - _jumpFinalTarget.y) / (_jumpDur / 2f);
-
-			IsJumping = true;
+			_cumulativeVel += direction.normalized * MoveSpeed;
+		}
+		public void MoveInDirection(Vector2 direction, float speed)
+		{
+			_cumulativeVel += direction.normalized * speed;
 		}
 
-		private void UpdateJump()
+		public async Awaitable MoveInDirectionFor(Vector2 direction, float duration)
+		{
+			float endTime = Time.time + duration;
+
+			while (Time.time < endTime && !destroyCancellationToken.IsCancellationRequested)
+			{
+				MoveInDirection(direction);
+				await Awaitable.NextFrameAsync(destroyCancellationToken);
+			}
+		}
+
+		public void JumpTo(Vector2 target, float height, float speed)
 		{
 			if (IsJumping)
-			{
-				Vector2 a = (Vector2)transform.position - _jumpOrigin;
-				Vector2 b = _jumpFinalTarget - _jumpOrigin;
+				return;
 
-				Vector2 proj = Vector2.Dot(a, b) / Vector2.Dot(b, b) * b;
+			IsJumping = true;
 
-				float progress = proj.magnitude / b.magnitude;
-				float yVel = progress < 0.5f ? _jumpUpSpeed : -_jumpDownSpeed;
+			Vector2 peak = Vector2.Lerp(transform.position, target, 0.5f);
+			float dst = transform.position.DistanceTo(peak) + peak.DistanceTo(target);
 
-				_cumulativeVel += (_jumpStraightDir * _jumpSpeed) + (Vector2.up * yVel);
-
-				if (progress > 0.95f)
+			float dur = dst / speed;
+			transform.DOJump(target, height, 1, dur)
+				.SetEase(Ease.Linear)
+				.onComplete += () =>
 				{
 					IsJumping = false;
-				}
-			}
+				};
 		}
 	}
 }

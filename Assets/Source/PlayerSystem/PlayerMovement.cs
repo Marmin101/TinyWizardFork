@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Quinn.PlayerSystem
 {
+	[RequireComponent(typeof(Animator))]
 	[RequireComponent(typeof(Health))]
 	public class PlayerMovement : Locomotion
 	{
@@ -21,6 +22,7 @@ namespace Quinn.PlayerSystem
 
 		public bool IsDashing { get; private set; }
 
+		private Animator _animator;
 		private Health _health;
 
 		private float _nextDashTime;
@@ -31,8 +33,14 @@ namespace Quinn.PlayerSystem
 		{
 			base.Awake();
 
+			_animator = GetComponent<Animator>();
 			_health = GetComponent<Health>();
 			InputManager.Instance.OnDash += OnDash;
+		}
+
+		private void Update()
+		{
+			_animator.SetFloat("SpeedScale", Rigidbody.linearVelocity.magnitude / MoveSpeed);
 		}
 
 		public override Vector2 GetVelocity()

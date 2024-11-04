@@ -80,7 +80,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				IsCastHeld = true;
 				Staff.OnCastStart();
-			}, () => CanInput);
+			}, () => CanInput && Input.GetMouseButton(0));
 		}
 
 		private void OnCastStop()
@@ -104,7 +104,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				IsSpecialHeld = true;
 				Staff.OnSpecialStart();
-			}, () => CanInput);
+			}, () => CanInput && Input.GetMouseButton(1));
 		}
 
 		private void OnSpecialStop()

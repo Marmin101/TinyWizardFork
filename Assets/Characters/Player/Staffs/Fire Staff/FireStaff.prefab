@@ -151,9 +151,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Head>k__BackingField: {fileID: 2432762686052508438}
   CastInterval: 0.4
-  CastChainCooldown: 1
+  CastChainCooldown: 0.7
+  CastKnockbackSpeed: 6
+  FinalChainMissileCount: 3
+  FinalChainMissileSpread: 45
+  ChainWindowDuration: 0.4
+  ChainFinalKnockbackSpeed: 14
   SpecialCooldown: 1.5
   SpecialChargeTime: 1
+  SpecialKnockbackSpeed: 10
   ChargingMoveSpeedFactor: 0.5
   CastPrefab: {fileID: 7309199781299206731, guid: 2c091a4368a8cc14d90ae90fbf07695b, type: 3}
   SpecialPrefab: {fileID: 7309199781299206731, guid: 654e31f05ede6eb42898fa1720ea9306, type: 3}

@@ -61,7 +61,7 @@ namespace Quinn.MissileSystem
 		{
 			if (collision.TryGetComponent(out Health health))
 			{
-				if (health.TakeDamage(DirectDamage, Team))
+				if (health.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team))
 					OnImpact();
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
@@ -99,7 +99,7 @@ namespace Quinn.MissileSystem
 					{
 						float dst = transform.position.DistanceTo(collider.transform.position);
 						float dmg = SplashDamageFalloff.Evaluate(dst / SplashRadius) * BaseSplashDamage;
-						health.TakeDamage(dmg, Team);
+						health.TakeDamage(dmg, transform.position.DirectionTo(collider.transform.position), Team);
 					}
 				}
 			}

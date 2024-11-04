@@ -26,13 +26,17 @@ namespace Quinn.UI
 
 		private void UpdateHearts()
 		{
-			int max = Mathf.RoundToInt(PlayerManager.Instance.Health.Max);
 			int current = Mathf.RoundToInt(PlayerManager.Instance.Health.Current);
 
 			for (int i = 0; i < HeartsGroup.childCount; i++)
 			{
-				var img = HeartsGroup.GetChild(i).GetComponent<Image>();
-				img.sprite = i < current ? FullHeart : EmptyHeart;
+				var child = HeartsGroup.GetChild(i);
+
+				if (child != null)
+				{
+					var img = child.GetComponent<Image>();
+					img.sprite = i < current ? FullHeart : EmptyHeart;
+				}
 			}
 		}
 

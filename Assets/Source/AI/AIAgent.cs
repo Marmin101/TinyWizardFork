@@ -39,7 +39,7 @@ namespace Quinn.AI
 		{
 			if (target.Team != Health.Team)
 			{
-				target.TakeDamage(damage, Health.Team);
+				target.TakeDamage(damage, transform.position.DirectionTo(target.transform.position), Health.Team);
 			}
 		}
 	}

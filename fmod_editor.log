@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000021E41FA5458 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000002B34CC8B0B8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,10 +18,76 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSound                     : filename = FMOD/GameOff2024/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002B26D242098, queue head = 000002B34D6350B8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002B26D242098
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/GameOff2024/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1165536
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 15008
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000002B30144C690
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ThePalace', format=5, channels=2, frequency=48000, lengthbytes=717792, lengthpcm=2304013, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.327209.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002B26D242098
+[LOG] SoundI::release                          : ThePalace (000002B139D47E88)
+[LOG] SoundI::release                          :     ThePalace (000002B26C721A88)
+[LOG] SoundI::release                          :     ThePalace (000002B2FADAC758)
+[LOG] SoundI::release                          : testing_floor_ambience (000002B139D472B8)
+[LOG] SoundI::release                          :     testing_floor_ambience (000002B26C7210C8)
+[LOG] SoundI::release                          :     testing_floor_ambience (000002B2FADAC248)
+[LOG] SoundI::release                          : ThePalace (000002B26D242098)
+[LOG] SoundI::release                          :     ThePalace (000002AF44E37D98)
+[LOG] SoundI::release                          :     ThePalace (000002B139C13118)
+[LOG] SoundI::release                          :  (000002B35680A608)
+[LOG] SoundI::release                          :     footstep_stone_01 (000002B3568E5218)
+[LOG] SoundI::release                          :  (000002B356809D68)
+[LOG] SoundI::release                          :     footstep_stone_02 (000002B26C0423A8)
+[LOG] SoundI::release                          :  (000002B35680A048)
+[LOG] SoundI::release                          :     footstep_stone_03 (000002B26C042548)
+[LOG] SoundI::release                          :  (000002B2F5193078)
+[LOG] SoundI::release                          :     footstep_stone_04 (000002B2F4F2B548)
+[LOG] SoundI::release                          :  (000002B35680A498)
+[LOG] SoundI::release                          :     footstep_stone_05 (000002B3568E56F8)
+[LOG] SoundI::release                          :  (000002B356243178)
+[LOG] SoundI::release                          :     footstep_stone_06 (000002B3020B0A08)
+[LOG] SoundI::release                          :  (000002B2F51931E8)
+[LOG] SoundI::release                          :     footstep_stone_07 (000002B2F4F2B068)
+[LOG] SoundI::release                          :  (000002B356809918)
+[LOG] SoundI::release                          :     footstep_stone_08 (000002B3568E53B8)
+[LOG] SoundI::release                          :  (000002B2F5193358)
+[LOG] SoundI::release                          :     footstep_stone_09 (000002B2F4F2B6E8)
+[LOG] SoundI::release                          :  (000002B35680A328)
+[LOG] SoundI::release                          :     footstep_stone_10 (000002B13903DA88)
+[LOG] SoundI::release                          :  (000002B2F51934C8)
+[LOG] SoundI::release                          :     footstep_stone_11 (000002B2F4F2BA28)
+[LOG] SoundI::release                          :  (000002B356243738)
+[LOG] SoundI::release                          :     footstep_stone_12 (000002B3020B0868)
+[LOG] SoundI::release                          :  (000002B3562432E8)
+[LOG] SoundI::release                          :     footstep_carpet_01 (000002B3020B06C8)
+[LOG] SoundI::release                          :  (000002B356809BF8)
+[LOG] SoundI::release                          :     footstep_carpet_02 (000002B26C042A28)
+[LOG] SoundI::release                          :  (000002B35680A1B8)
+[LOG] SoundI::release                          :     footstep_carpet_03 (000002B3568E5D78)
+[LOG] SoundI::release                          :  (000002B356243008)
+[LOG] SoundI::release                          :     footstep_carpet_04 (000002B3020B13C8)
+[LOG] SoundI::release                          :  (000002B356809ED8)
+[LOG] SoundI::release                          :     footstep_carpet_05 (000002B26C042068)
+[LOG] SoundI::release                          :  (000002B356809A88)
+[LOG] SoundI::release                          :     footstep_carpet_06 (000002B26C042BC8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -29,3 +95,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

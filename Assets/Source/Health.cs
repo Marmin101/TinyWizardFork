@@ -37,7 +37,8 @@ namespace Quinn
 		public bool IsDead { get; private set; }
 		public bool IsImmune => _isHurtImmune || _damageBlockers.Count > 0;
 
-		public event Action<float> OnHealed, OnDamaged;
+		public event Action<float> OnHealed;
+		public event Action<float, Vector2> OnDamaged;
 		public event Action OnDeath;
 
 		private bool _isHurtImmune;
@@ -65,7 +66,7 @@ namespace Quinn
 			Heal(Max - Current);
 		}
 
-		public bool TakeDamage(float damage, Team sourceTeam)
+		public bool TakeDamage(float damage, Vector2 dir, Team sourceTeam)
 		{
 			if (Time.time >= _nextHurtImmunityEndTime)
 				_isHurtImmune = false;
@@ -76,7 +77,7 @@ namespace Quinn
 			Current -= damage;
 			Current = Mathf.Max(0, Current);
 
-			OnDamaged?.Invoke(damage);
+			OnDamaged?.Invoke(damage, dir.normalized);
 
 			if (Current == 0f)
 			{

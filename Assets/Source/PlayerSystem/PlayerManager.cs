@@ -74,7 +74,7 @@ namespace Quinn.PlayerSystem
 			OnPlayerHealthChange?.Invoke(amount);
 		}
 
-		private void OnDamaged(float amount)
+		private void OnDamaged(float amount, Vector2 dir)
 		{
 			OnPlayerHealthChange?.Invoke(-amount);
 		}

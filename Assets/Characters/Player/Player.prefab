@@ -349,6 +349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b2bf5546a3fe144b9aa0b6fe6ddf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoesKnockbackOnDamage: 1
+  KnockbackSpeed: 12
+  KnockbackDecayRate: 38
   MoveSpeed: 4
   DashSpeed: 18
   DashDistance: 4

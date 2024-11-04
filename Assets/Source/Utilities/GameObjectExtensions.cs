@@ -9,6 +9,10 @@ namespace Quinn
 		{
 			return Object.Instantiate(prefab, position, Quaternion.identity);
 		}
+		public static GameObject Clone(this GameObject prefab, Transform parent)
+		{
+			return Object.Instantiate(prefab, parent);
+		}
 		public static GameObject Clone(this GameObject prefab, Vector2 position, Quaternion rotation, Transform parent)
 		{
 			return Object.Instantiate(prefab, position, rotation, parent);

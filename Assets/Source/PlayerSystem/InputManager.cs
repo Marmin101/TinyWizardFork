@@ -67,8 +67,15 @@ namespace Quinn.PlayerSystem
 			Instance = null;
 		}
 
-		public void EnableInput() => enabled = true;
-		public void DisableInput() => enabled = false;
+		public void EnableInput()
+		{
+			enabled = true;
+		}
+		public void DisableInput()
+		{
+			enabled = false;
+			MoveDirection = Vector2.zero;
+		}
 
 		public void ShowCursor()
 		{

@@ -38,18 +38,16 @@ namespace Quinn
 			Instance = this;
 		}
 
-		private void Start()
-		{
-			_ = FadeIn();
-		}
-
 		private void Update()
 		{
-			Vector2 playerPos = PlayerManager.Instance.Player.transform.position;
-			Vector2 cursorPos = InputManager.Instance.CursorWorldPos;
+			if (PlayerManager.Instance.IsAlive)
+			{
+				Vector2 playerPos = PlayerManager.Instance.Player.transform.position;
+				Vector2 cursorPos = InputManager.Instance.CursorWorldPos;
 
-			Vector2 cameraTarget = Vector2.Lerp(playerPos, cursorPos, PlayerToCursorBias);
-			CameraTarget.position = Vector2.SmoothDamp(CameraTarget.position, cameraTarget, ref _camTargetVel, CameraTargetSmoothTime);
+				Vector2 cameraTarget = Vector2.Lerp(playerPos, cursorPos, PlayerToCursorBias);
+				CameraTarget.position = Vector2.SmoothDamp(CameraTarget.position, cameraTarget, ref _camTargetVel, CameraTargetSmoothTime);
+			}
 		}
 
 		private void OnDestroy()
@@ -80,14 +78,19 @@ namespace Quinn
 
 		public async Awaitable FadeIn()
 		{
-			_blackout.enabled = true;
-			_blackout.color = new Color(0f, 0f, 0f, 1f);
+			EnableBlackout();
 
 			await _blackout.DOFade(0f, FadeFromBlackDuration)
 				.SetEase(FadeFromBlackEase)
 				.AsyncWaitForCompletion();
 
 			_blackout.enabled = false;
+		}
+
+		public void EnableBlackout()
+		{
+			_blackout.enabled = true;
+			_blackout.color = new Color(0f, 0f, 0f, 1f);
 		}
 
 		public async Awaitable FadeOut()

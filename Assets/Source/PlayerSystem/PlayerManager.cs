@@ -1,5 +1,7 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Quinn.PlayerSystem
 {
@@ -11,7 +13,13 @@ namespace Quinn.PlayerSystem
 		public static PlayerManager Instance { get; private set; }
 
 		public Player Player { get; private set; }
-		public event System.Action OnPlayerSet;
+		public Health Health { get; private set; }
+		public bool IsAlive => !IsDead;
+		public bool IsDead => Health == null || Health.IsDead;
+		public Vector2 Position => Player.transform.position;
+
+		public event Action<Player> OnPlayerSet;
+		public event Action<float> OnPlayerHealthChange;
 
 		private void Awake()
 		{
@@ -21,7 +29,7 @@ namespace Quinn.PlayerSystem
 
 		private void Start()
 		{
-			PlayerGroupPrefab.Clone();
+			SpawnPlayer(new(-0.5f, -0.5f));
 		}
 
 		private void OnDestroy()
@@ -32,14 +40,67 @@ namespace Quinn.PlayerSystem
 
 		public void SetPlayer(Player player)
 		{
-			if (Player == null)
-			{
-				Player = player;
+			Player = player;
 
-				if (player != null)
-				{
-					OnPlayerSet?.Invoke();
-				}
+			if (player == null)
+			{
+				UnsubscribeAll();
+			}
+			else
+			{
+				OnPlayerSet?.Invoke(player);
+			}
+		}
+
+		public async void SpawnPlayer(Vector2 position)
+		{
+			var player = PlayerGroupPrefab.Clone(position);
+			Health = player.GetComponentInChildren<Health>();
+
+			var camManager = GetComponent<CameraManager>();
+			camManager.EnableBlackout();
+
+			Health.OnHealed += OnHealed;
+			Health.OnDamaged += OnDamaged;
+			Health.OnDeath += OnDeath;
+
+			InputManager.Instance.EnableInput();
+
+			await camManager.FadeIn();
+		}
+
+		private void OnHealed(float amount)
+		{
+			OnPlayerHealthChange?.Invoke(amount);
+		}
+
+		private void OnDamaged(float amount)
+		{
+			OnPlayerHealthChange?.Invoke(-amount);
+		}
+
+		private async void OnDeath()
+		{
+			UnsubscribeAll();
+
+			Player = null;
+			Health = null;
+
+			InputManager.Instance.DisableInput();
+
+			await CameraManager.Instance.FadeOut();
+			await SceneManager.LoadSceneAsync(0);
+
+			SpawnPlayer(new(-0.5f, -0.5f));
+		}
+
+		private void UnsubscribeAll()
+		{
+			if (Health != null)
+			{
+				Health.OnHealed -= OnHealed;
+				Health.OnDamaged -= OnDamaged;
+				Health.OnDeath -= OnDeath;
 			}
 		}
 	}

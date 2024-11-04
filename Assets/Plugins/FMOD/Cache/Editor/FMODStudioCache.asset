@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7919545316631092078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/ThePalace
+  m_EditorClassIdentifier: 
+  Path: event:/Music/ThePalace
+  Guid:
+    Data1: -1849080363
+    Data2: 1294107523
+    Data3: 321471146
+    Data4: 989156169
+  Banks:
+  - {fileID: 5360170525186871686}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 48000
 --- !u!114 &-5301853376018413780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,10 +124,10 @@ MonoBehaviour:
   Path: FMOD/GameOff2024/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638662519007109582
+  lastModified: 638662704922224251
   FileSizes:
   - Name: Desktop
-    Value: 1070
+    Value: 1116
   Exists: 1
 --- !u!114 &-3231559492463688142
 MonoBehaviour:
@@ -177,12 +204,13 @@ MonoBehaviour:
   - {fileID: -5301853376018413780}
   - {fileID: -4933839385322600483}
   - {fileID: -3231559492463688142}
+  - {fileID: -7919545316631092078}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5360170525186871686}
   StringsBanks:
   - {fileID: -4087562427105495328}
-  cacheTime: 638662519007109582
+  cacheTime: 638662704922224251
   cacheVersion: 131620
 --- !u!114 &5360170525186871686
 MonoBehaviour:
@@ -199,10 +227,10 @@ MonoBehaviour:
   Path: FMOD/GameOff2024/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638662519007079829
+  lastModified: 638662704922173258
   FileSizes:
   - Name: Desktop
-    Value: 460608
+    Value: 1180544
   Exists: 1
 --- !u!114 &5725124681726137619
 MonoBehaviour:

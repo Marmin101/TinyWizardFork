@@ -39,8 +39,6 @@ namespace Quinn.PlayerSystem
 			}
 
 			_wasMoving = isMoving;
-
-			GetComponent<Health>().FullHeal(); // TODO: Remove.
 		}
 
 		private void OnDestroy()

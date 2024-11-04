@@ -57,13 +57,13 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Caster.SetCooldown(CastChainCooldown);
 				_castChainCount = 0;
 
-				MissileManager.Instance.SpawnMissile(CastPrefab, Head.position, GetDir(), FinalChainMissileCount, MissileSpawnBehavior.SpreadRandom, FinalChainMissileSpread);
+				MissileManager.Instance.SpawnMissile(Caster.gameObject, CastPrefab, Head.position, GetDir(), FinalChainMissileCount, MissileSpawnBehavior.SpreadRandom, FinalChainMissileSpread);
 				Caster.Movement.Knockback(-GetDir(), ChainFinalKnockbackSpeed);
 			}
 			else
 			{
 				Caster.SetCooldown(CastInterval);
-				MissileManager.Instance.SpawnMissile(CastPrefab, Head.position, GetDir());
+				MissileManager.Instance.SpawnMissile(Caster.gameObject, CastPrefab, Head.position, GetDir());
 
 				_chainTimeoutTime = Time.time + ChainWindowDuration + CastInterval;
 				Caster.Movement.Knockback(-GetDir(), CastKnockbackSpeed);
@@ -81,7 +81,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		public override void OnSpecialStop()
 		{
 			var prefab = Time.time > _largeMissileTime ? SpecialPrefab : CastPrefab;
-			MissileManager.Instance.SpawnMissile(prefab, Head.position, GetDir());
+			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDir());
 
 			Caster.Movement.RemoveSpeedModifier(this);
 			Caster.Movement.Knockback(-GetDir(), SpecialKnockbackSpeed);

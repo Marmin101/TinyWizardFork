@@ -34,7 +34,7 @@ namespace Quinn
 			}
 		}
 
-		private void FixedUpdate()
+		private void LateUpdate()
 		{
 			Vector2 vel = GetVelocity();
 
@@ -75,7 +75,7 @@ namespace Quinn
 			_speedFactors.Remove(key);
 		}
 
-		private void OnDamaged(float damage, Vector2 dir)
+		private void OnDamaged(float damage, Vector2 dir, GameObject source)
 		{
 			Knockback(dir);
 		}

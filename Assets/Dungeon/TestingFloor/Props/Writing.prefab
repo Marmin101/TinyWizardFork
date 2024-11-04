@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 121543433138504348}
   - component: {fileID: 1018737001375836908}
   - component: {fileID: 1099910356929722612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Writing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ MonoBehaviour:
     m_TrimEdge: 0.05
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.05
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0.05
   m_PreviousEdgeProcessing: 1

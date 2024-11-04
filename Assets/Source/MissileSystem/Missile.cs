@@ -39,6 +39,7 @@ namespace Quinn.MissileSystem
 		private float OscillateFrequency = 0.5f;
 
 		private Rigidbody2D _rb;
+		private GameObject _owner;
 
 		private float _endLifeTime;
 		private Vector2 _velocity;
@@ -68,7 +69,7 @@ namespace Quinn.MissileSystem
 		{
 			if (collision.TryGetComponent(out Health health))
 			{
-				if (health.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team))
+				if (health.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner))
 					OnImpact();
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
@@ -77,10 +78,11 @@ namespace Quinn.MissileSystem
 			}
 		}
 
-		public void Initialize(Vector2 dir)
+		public void Initialize(Vector2 dir, GameObject owner)
 		{
 			_baseDir = dir.normalized;
 			_endLifeTime = Time.time + Lifespan;
+			_owner = owner;
 		}
 
 		private void OnImpact()
@@ -108,7 +110,7 @@ namespace Quinn.MissileSystem
 					{
 						float dst = transform.position.DistanceTo(collider.transform.position);
 						float dmg = SplashDamageFalloff.Evaluate(dst / SplashRadius) * BaseSplashDamage;
-						health.TakeDamage(dmg, transform.position.DirectionTo(collider.transform.position), Team);
+						health.TakeDamage(dmg, transform.position.DirectionTo(collider.transform.position), Team, gameObject);
 					}
 				}
 			}

@@ -34,7 +34,7 @@ namespace Quinn.MissileSystem
 
 			while (true)
 			{
-				MissileManager.Instance.SpawnMissile(Prefab, transform.position, _dir, Count, PerMissileInterval, Behavior, MaxAngle);
+				MissileManager.Instance.SpawnMissile(gameObject, Prefab, transform.position, _dir, Count, PerMissileInterval, Behavior, MaxAngle);
 				await Awaitable.WaitForSecondsAsync(FireInterval);
 			}
 		}

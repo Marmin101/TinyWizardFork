@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cad64f8705b1f419a18dd5697e69a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeToBlackDuration: 0.5
-  FadeFromBlackDuration: 0.5
+  FadeToBlackDuration: 0.6
+  FadeFromBlackDuration: 0.8
   FadeToBlackEase: 2
   FadeFromBlackEase: 3
   PlayerToCursorBias: 0.15
@@ -171,4 +171,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4064ecbf3b04b438ccc5653f964e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestingMissile: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Quinn.PlayerSystem
 {
+	[RequireComponent(typeof(Health))]
 	public class PlayerMovement : Locomotion
 	{
 		[SerializeField]
@@ -20,6 +21,8 @@ namespace Quinn.PlayerSystem
 
 		public bool IsDashing { get; private set; }
 
+		private Health _health;
+
 		private float _nextDashTime;
 		private float _dashEndTime;
 		private Vector2 _dashDir = Vector2.down;
@@ -27,6 +30,8 @@ namespace Quinn.PlayerSystem
 		protected override void Awake()
 		{
 			base.Awake();
+
+			_health = GetComponent<Health>();
 			InputManager.Instance.OnDash += OnDash;
 		}
 
@@ -42,6 +47,7 @@ namespace Quinn.PlayerSystem
 				if (Time.time > _dashEndTime)
 				{
 					IsDashing = false;
+					OnDashStop();
 				}
 			}
 			else
@@ -62,6 +68,8 @@ namespace Quinn.PlayerSystem
 			if (!IsDashing && Time.time > _nextDashTime)
 			{
 				IsDashing = true;
+				_health.BlockDamage(this);
+
 				Audio.Play(DashSound, transform.position);
 
 				float dashDur = DashDistance / DashSpeed;
@@ -69,6 +77,11 @@ namespace Quinn.PlayerSystem
 
 				_nextDashTime = Time.time + DashCooldown;
 			}
+		}
+
+		private void OnDashStop()
+		{
+			_health.UnblockDamage(this);
 		}
 	}
 }

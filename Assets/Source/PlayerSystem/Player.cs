@@ -12,8 +12,12 @@ namespace Quinn.PlayerSystem
 		private float InteractionRadius = 1f;
 		[SerializeField]
 		private EventReference FootstepSound;
+		[SerializeField]
+		private float StartFootstepCooldown = 0.2f;
 
 		private Animator _animator;
+		private bool _wasMoving;
+		private float _nextStartFootstepSoundAllowedTime;
 
 		private void Awake()
 		{
@@ -25,7 +29,18 @@ namespace Quinn.PlayerSystem
 
 		private void Update()
 		{
-			_animator.SetBool("IsMoving", InputManager.Instance.MoveDirection.sqrMagnitude > 0f);
+			bool isMoving = InputManager.Instance.MoveDirection.sqrMagnitude > 0f;
+			_animator.SetBool("IsMoving", isMoving);
+
+			if (isMoving && !_wasMoving && Time.time > _nextStartFootstepSoundAllowedTime)
+			{
+				_nextStartFootstepSoundAllowedTime = Time.time + StartFootstepCooldown;
+				OnFootstep_Anim();
+			}
+
+			_wasMoving = isMoving;
+
+			GetComponent<Health>().FullHeal(); // TODO: Remove.
 		}
 
 		private void OnDestroy()

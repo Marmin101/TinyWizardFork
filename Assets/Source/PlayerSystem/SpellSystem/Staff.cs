@@ -16,6 +16,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public void SetCaster(PlayerCaster caster)
 		{
 			Caster = caster;
+			GetComponent<Collider2D>().enabled = false;
 		}
 	}
 }

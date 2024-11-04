@@ -38,6 +38,11 @@ namespace Quinn
 			Instance = this;
 		}
 
+		private void Start()
+		{
+			_ = FadeIn();
+		}
+
 		private void Update()
 		{
 			Vector2 playerPos = PlayerManager.Instance.Player.transform.position;
@@ -73,28 +78,38 @@ namespace Quinn
 			_followCam.enabled = false;
 		}
 
-		public async Awaitable TransitionAsync(System.Func<bool> canFadeIn)
+		public async Awaitable FadeIn()
 		{
 			_blackout.enabled = true;
-			var color = _blackout.color;
-			color.a = 0f;
-			_blackout.color = color;
+			_blackout.color = new Color(0f, 0f, 0f, 1f);
+
+			await _blackout.DOFade(0f, FadeFromBlackDuration)
+				.SetEase(FadeFromBlackEase)
+				.AsyncWaitForCompletion();
+
+			_blackout.enabled = false;
+		}
+
+		public async Awaitable FadeOut()
+		{
+			_blackout.enabled = true;
+			_blackout.color = new Color(0f, 0f, 0f, 0f);
 
 			await _blackout.DOFade(1f, FadeToBlackDuration)
 				.SetEase(FadeToBlackEase)
 				.AsyncWaitForCompletion();
+		}
+
+		public async Awaitable TransitionAsync(System.Func<bool> canFadeIn)
+		{
+			await FadeOut();
 
 			while(!canFadeIn())
 			{
 				await System.Threading.Tasks.Task.Yield();
 			}
 
-			_blackout.DOFade(0f, FadeFromBlackDuration)
-				.SetEase(FadeFromBlackEase)
-				.onComplete += () =>
-				{
-					_blackout.enabled = false;
-				};
+			_ = FadeIn();
 		}
 		public async Awaitable TransitionAsync()
 		{

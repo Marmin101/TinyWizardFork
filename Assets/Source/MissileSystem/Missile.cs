@@ -61,8 +61,8 @@ namespace Quinn.MissileSystem
 		{
 			if (collision.TryGetComponent(out Health health))
 			{
-				health.TakeDamage(DirectDamage, Team);
-				OnImpact();
+				if (health.TakeDamage(DirectDamage, Team))
+					OnImpact();
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
 			{

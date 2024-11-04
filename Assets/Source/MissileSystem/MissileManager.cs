@@ -1,28 +1,15 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Quinn.MissileSystem
 {
 	public class MissileManager : MonoBehaviour
 	{
-		[SerializeField, Required]
-		private Missile TestingMissile;
-
 		public static MissileManager Instance { get; private set; }
 
 		private void Awake()
 		{
 			Debug.Assert(Instance == null);
 			Instance = this;
-		}
-
-		private async void Start()
-		{
-			while (true)
-			{
-				await Awaitable.WaitForSecondsAsync(1f);
-				SpawnMissile(TestingMissile, new(5f, 0f), new(-2f, 1f));
-			}
 		}
 
 		private void OnDestroy()
@@ -35,6 +22,75 @@ namespace Quinn.MissileSystem
 		{
 			var instance = prefab.gameObject.Clone(origin);
 			instance.GetComponent<Missile>().Initialize(dir);
+		}
+		public async Awaitable SpawnMissileAsync(Missile prefab, Vector2 origin, Vector2 dir, int count,
+			MissileSpawnBehavior behavior = MissileSpawnBehavior.Direct, float spreadAngle = 360f)
+		{
+			GameObject[] instances = await InstantiateAsync(prefab.gameObject, count, transform, origin, Quaternion.identity);
+
+			int i = 0;
+			foreach (var instance in instances)
+			{
+				Vector2 missileDir = GetDirection(behavior, dir, i, spreadAngle, count);
+
+				if (instance != null)
+					instance.GetComponent<Missile>().Initialize(missileDir);
+
+				i++;
+			}
+		}
+		public async void SpawnMissile(Missile prefab, Vector2 origin, Vector2 dir, int count,
+			MissileSpawnBehavior behavior = MissileSpawnBehavior.Direct, float spreadAngle = 360f)
+		{
+			await SpawnMissileAsync(prefab, origin, dir, count, behavior, spreadAngle);
+		}
+		public async void SpawnMissile(Missile prefab, Vector2 origin, Vector2 dir, int count, float interval,
+			MissileSpawnBehavior behavior = MissileSpawnBehavior.Direct, float spreadAngle = 360f)
+		{
+			for (int i = 0; i < count; i++)
+			{
+				Vector2 missileDir = GetDirection(behavior, dir, i, spreadAngle, count);
+
+				var instance = prefab.gameObject.Clone(origin, Quaternion.identity, transform);
+				var missile = instance.GetComponent<Missile>();
+
+				missile.Initialize(missileDir);
+				await Awaitable.WaitForSecondsAsync(interval);
+			}
+		}
+
+		private Vector2 GetDirection(MissileSpawnBehavior behavior, Vector2 baseDir, int index, float maxAngle, int count)
+		{
+			Vector2 missileDir = Vector2.zero;
+
+			switch (behavior)
+			{
+				case MissileSpawnBehavior.Direct:
+				{
+					missileDir = baseDir;
+					break;
+				}
+				case MissileSpawnBehavior.SpreadEven:
+				{
+					float angle = Random.Range(0, maxAngle);
+					angle -= maxAngle / 2f;
+
+					missileDir = Quaternion.AngleAxis(angle, Vector3.forward) * baseDir;
+					break;
+				}
+				case MissileSpawnBehavior.SpreadRandom:
+				{
+					float angleDelta = maxAngle / count;
+
+					float angle = index * angleDelta;
+					angle -= maxAngle / 2f;
+
+					missileDir = Quaternion.AngleAxis(angle, Vector3.forward) * baseDir;
+					break;
+				}
+			}
+
+			return missileDir;
 		}
 	}
 }

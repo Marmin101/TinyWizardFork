@@ -149,6 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec295a3f07223d74ea6cb6e9344802b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Head>k__BackingField: {fileID: 2432762686052508438}
+  CastInterval: 0.4
+  CastChainCooldown: 1
+  SpecialCooldown: 1.5
+  SpecialChargeTime: 1
+  ChargingMoveSpeedFactor: 0.5
+  CastPrefab: {fileID: 7309199781299206731, guid: 2c091a4368a8cc14d90ae90fbf07695b, type: 3}
+  SpecialPrefab: {fileID: 7309199781299206731, guid: 654e31f05ede6eb42898fa1720ea9306, type: 3}
 --- !u!210 &8275462707034425919
 SortingGroup:
   m_ObjectHideFlags: 0

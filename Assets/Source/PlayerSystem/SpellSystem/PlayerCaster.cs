@@ -1,9 +1,11 @@
 using Sirenix.OdinInspector;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Quinn.PlayerSystem.SpellSystem
 {
+	[RequireComponent(typeof(PlayerMovement))]
 	public class PlayerCaster : MonoBehaviour
 	{
 		[SerializeField, Required]
@@ -12,6 +14,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private float StaffOffset = 0.5f;
 		[SerializeField]
 		private Staff TestingStaff;
+		[SerializeField]
+		private float InputBufferTimeout = 0.2f;
 
 		public Staff Staff {  get; private set; }
 		public bool CanInput => Time.time >= _nextInputTime;
@@ -19,17 +23,18 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public bool IsCastHeld { get; private set; }
 		public bool IsSpecialHeld { get; private set; }
 
+		public PlayerMovement Movement { get; private set; }
+
 		private float _nextInputTime;
+		private readonly BufferManager _inputBuffer = new();
 
 		private void Awake()
 		{
+			Movement = GetComponent<PlayerMovement>();
 			var input = InputManager.Instance;
 
 			input.OnCastStart += OnCastStart;
-			input.OnCastStart += OnCastStop;
-
 			input.OnSpecialStart += OnSpecialStart;
-			input.OnSpecialStart += OnSpecialStop;
 
 			if (TestingStaff != null)
 			{
@@ -41,6 +46,17 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private void LateUpdate()
 		{
 			UpdateStaffTransform();
+			_inputBuffer.Update();
+
+			if (!Input.GetMouseButton(0))
+			{
+				OnCastStop();
+			}
+
+			if (!Input.GetMouseButton(1))
+			{
+				OnSpecialStop();
+			}
 		}
 
 		public void SetStaff(Staff staff)
@@ -57,22 +73,50 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		private void OnCastStart()
 		{
-			IsCastHeld = true;
+			if (Staff == null)
+				return;
+
+			_inputBuffer.Buffer(InputBufferTimeout, () =>
+			{
+				IsCastHeld = true;
+				Staff.OnCastStart();
+			}, () => CanInput);
 		}
 
 		private void OnCastStop()
 		{
-			IsCastHeld = false;
+			if (Staff == null)
+				return;
+
+			if (IsCastHeld)
+			{
+				IsCastHeld = false;
+				Staff.OnCastStop();
+			}
 		}
 
 		private void OnSpecialStart()
 		{
-			IsSpecialHeld = true;
+			if (Staff == null)
+				return;
+
+			_inputBuffer.Buffer(InputBufferTimeout, () =>
+			{
+				IsSpecialHeld = true;
+				Staff.OnSpecialStart();
+			}, () => CanInput);
 		}
 
 		private void OnSpecialStop()
 		{
-			IsSpecialHeld = false;
+			if (Staff == null)
+				return;
+
+			if (IsSpecialHeld)
+			{
+				IsSpecialHeld = false;
+				Staff.OnSpecialStop();
+			}
 		}
 
 		private void UpdateStaffTransform()

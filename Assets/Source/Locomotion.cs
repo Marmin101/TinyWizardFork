@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Quinn
@@ -17,6 +18,8 @@ namespace Quinn
 		private float KnockbackDecayRate = 32f;
 
 		protected Rigidbody2D Rigidbody { get; private set; }
+
+		private readonly Dictionary<object, float> _speedFactors = new();
 
 		private float _knockbackVel;
 		private Vector2 _knockbackDir;
@@ -41,6 +44,11 @@ namespace Quinn
 				_knockbackVel -= KnockbackDecayRate * Time.fixedDeltaTime;
 			}
 
+			foreach (var factor in _speedFactors.Values)
+			{
+				vel *= factor;
+			}
+
 			Rigidbody.linearVelocity = vel;
 		}
 
@@ -50,6 +58,21 @@ namespace Quinn
 		{
 			_knockbackVel = KnockbackSpeed;
 			_knockbackDir = dir.normalized;
+		}
+		public void Knockback(Vector2 dir, float speed)
+		{
+			_knockbackVel = speed;
+			_knockbackDir = dir.normalized;
+		}
+
+		public void ApplySpeedModifier(object key, float factor)
+		{
+			_speedFactors.Add(key, factor);
+		}
+
+		public void RemoveSpeedModifier(object key)
+		{
+			_speedFactors.Remove(key);
 		}
 
 		private void OnDamaged(float damage, Vector2 dir)

@@ -19,8 +19,6 @@ namespace Quinn.PlayerSystem
 		{
 			Debug.Assert(Instance == null, "There are more than one instances of InputManager!");
 			Instance = this;
-
-			//HideCursor();
 		}
 
 		private void Update()

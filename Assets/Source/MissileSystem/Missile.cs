@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn.MissileSystem
 {
@@ -12,8 +13,14 @@ namespace Quinn.MissileSystem
 		private float DirectDamage = 1f;
 		[SerializeField, BoxGroup("Core")]
 		private Team Team = Team.Monster;
-		[SerializeField, BoxGroup("Core")]
+		[SerializeField, BoxGroup("Core"), Unit(Units.Second)]
 		private float Lifespan = 10f;
+		[SerializeField, BoxGroup("Core")]
+		private GameObject SpawnOnDeath;
+		[Space, SerializeField, BoxGroup("Core"), ShowIf("@DelayDestructionOnDeath.Length > 0"), Unit(Units.Second)]
+		private float DestructionDelay = 3f;
+		[SerializeField, BoxGroup("Core")]
+		private VisualEffect[] DelayDestructionOnDeath;
 
 		[SerializeField]
 		private bool HasSplashDamage;
@@ -78,12 +85,14 @@ namespace Quinn.MissileSystem
 
 		private void OnImpact()
 		{
+			OnDeath();
 			TriggerSplash();
 			Destroy(gameObject);
 		}
 
 		private void OnLifespanEnd()
 		{
+			OnDeath();
 			TriggerSplash();
 			Destroy(gameObject);
 		}
@@ -117,6 +126,20 @@ namespace Quinn.MissileSystem
 
 			Vector2 oscDir = new Vector2(-_baseDir.y, _baseDir.x);
 			return Mathf.Sin(Time.time * OscillateFrequency) * OscillateAmplitude * oscDir;
+		}
+
+		private void OnDeath()
+		{
+			if (SpawnOnDeath != null)
+			{
+				SpawnOnDeath.Clone(transform.position);
+			}
+
+			foreach (var obj in DelayDestructionOnDeath)
+			{
+				obj.transform.SetParent(null, true);
+				obj.gameObject.Destroy(DestructionDelay);
+			}
 		}
 	}
 }

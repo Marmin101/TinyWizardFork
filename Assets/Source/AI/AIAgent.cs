@@ -1,4 +1,5 @@
 ﻿using Quinn.PlayerSystem;
+using System.Threading;
 using UnityEngine;
 
 namespace Quinn.AI
@@ -11,12 +12,25 @@ namespace Quinn.AI
 		public Health Health { get; private set; }
 		public Team Team => Health.Team;
 
+		public CancellationTokenSource DeathTokenSource { get; private set; } = new();
+
 		protected Animator Animator { get; private set; }
 		protected AIMovement Movement { get; private set; }
-		protected Transform Target { get; private set; }
-		protected Vector2 TargetPos => Target.position;
-		protected Health TargetHealth { get; private set; }
 		protected Vector2 Position => transform.position;
+
+		protected Transform Target { get; private set; }
+		protected Health TargetHealth { get; private set; }
+
+		protected Vector2 TargetPos
+		{
+			get
+			{
+				if (Target == null)
+					return transform.position;
+
+				return Target.position;
+			}
+		}
 		protected float DstToTarget => transform.position.DistanceTo(TargetPos);
 		protected Vector2 DirToTarget => transform.position.DirectionTo(TargetPos);
 
@@ -44,6 +58,8 @@ namespace Quinn.AI
 
 		protected virtual void OnDestroy()
 		{
+			DeathTokenSource.Cancel();
+
 			if (AIManager.Instance != null)
 				AIManager.Instance.RemoveAgent(this);
 		}
@@ -97,6 +113,8 @@ namespace Quinn.AI
 
 		protected virtual void OnDeath()
 		{
+			DeathTokenSource.Cancel();
+
 			AIManager.Instance.RemoveAgent(this);
 			Destroy(gameObject);
 		}

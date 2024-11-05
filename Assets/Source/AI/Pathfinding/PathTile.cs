@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Quinn.Pathfinding
+namespace Quinn.AI.Pathfinding
 {
 	public record PathTile
 	{

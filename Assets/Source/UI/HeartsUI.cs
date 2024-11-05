@@ -1,5 +1,6 @@
 ﻿using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,6 @@ namespace Quinn.UI
 	public class HeartsUI : MonoBehaviour
 	{
 		[SerializeField, Required]
-		private Transform HeartsGroup;
-		[SerializeField, Required]
 		private GameObject HeartPrefab;
 		[SerializeField, Required]
 		private Sprite FullHeart, HalfHeart, EmptyHeart;
@@ -17,6 +16,16 @@ namespace Quinn.UI
 		private void Start()
 		{
 			PlayerManager.Instance.OnPlayerHealthChange += OnHealthChange;
+			PlayerManager.Instance.OnPlayerMaxHealthChange += OnMaxHealthChange;
+		}
+
+		private void OnDestroy()
+		{
+			if (PlayerManager.Instance != null)
+			{
+				PlayerManager.Instance.OnPlayerHealthChange -= OnHealthChange;
+				PlayerManager.Instance.OnPlayerMaxHealthChange -= OnMaxHealthChange;
+			}
 		}
 
 		private void OnHealthChange(float delta)
@@ -24,13 +33,19 @@ namespace Quinn.UI
 			UpdateHearts();
 		}
 
+		private void OnMaxHealthChange()
+		{
+			ReconstructHearts();
+			UpdateHearts();
+		}
+
 		private void UpdateHearts()
 		{
 			int current = Mathf.RoundToInt(PlayerManager.Instance.Health.Current);
 
-			for (int i = 0; i < HeartsGroup.childCount; i++)
+			for (int i = 0; i < transform.childCount; i++)
 			{
-				var child = HeartsGroup.GetChild(i);
+				var child = transform.GetChild(i);
 
 				if (child != null)
 				{
@@ -42,16 +57,16 @@ namespace Quinn.UI
 
 		private void ReconstructHearts()
 		{
-			for (int i = 0; i < HeartsGroup.childCount; i++)
+			for (int i = 0; i < transform.childCount; i++)
 			{
-				HeartsGroup.GetChild(i).gameObject.Destroy();
+				transform.GetChild(i).gameObject.Destroy();
 			}
 
 			int max = Mathf.RoundToInt(PlayerManager.Instance.Health.Max);
 
 			for (int i = 0; i < max; i++)
 			{
-				HeartPrefab.Clone(HeartsGroup);
+				HeartPrefab.Clone(transform);
 			}
 		}
 	}

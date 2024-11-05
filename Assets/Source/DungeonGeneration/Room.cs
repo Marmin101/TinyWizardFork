@@ -1,5 +1,5 @@
 ﻿using FMODUnity;
-using Quinn.Pathfinding;
+using Quinn.AI.Pathfinding;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;

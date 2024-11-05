@@ -3,7 +3,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Quinn.Pathfinding
+namespace Quinn.AI.Pathfinding
 {
 	public class Pathfinder : MonoBehaviour
 	{
@@ -32,9 +32,6 @@ namespace Quinn.Pathfinding
 			Instance = null;
 		}
 
-		// TODO: Finalize pathfinder with returning of record that contains success info as well as the path.
-		// Make utility method that extracts vector2 path from vector2int retunred pathing data in record; maybe record holds that utility.
-		// Add pathing limits exposed as Pathfinder.cs editor properties that move things over to the next frame after certain number of iterations to avoid hitches.
 		public async Awaitable<Vector2Int[]> FindPath(Vector2Int origin, Vector2Int destination, CancellationToken token = default)
 		{
 			if (Navmesh == null)

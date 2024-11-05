@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Quinn.Pathfinding
+namespace Quinn.AI.Pathfinding
 {
 	public class PathfindingAgent : MonoBehaviour
 	{

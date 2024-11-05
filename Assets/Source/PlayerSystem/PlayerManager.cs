@@ -20,6 +20,7 @@ namespace Quinn.PlayerSystem
 
 		public event Action<Player> OnPlayerSet;
 		public event Action<float> OnPlayerHealthChange;
+		public event Action OnPlayerMaxHealthChange;
 
 		private void Awake()
 		{
@@ -63,9 +64,9 @@ namespace Quinn.PlayerSystem
 			Health.OnHealed += OnHealed;
 			Health.OnDamaged += OnDamaged;
 			Health.OnDeath += OnDeath;
+			Health.OnMaxChange += OnMaxHealthChange;
 
 			InputManager.Instance.EnableInput();
-
 			await camManager.FadeIn();
 		}
 
@@ -77,6 +78,11 @@ namespace Quinn.PlayerSystem
 		private void OnDamaged(float amount, Vector2 dir, GameObject source)
 		{
 			OnPlayerHealthChange?.Invoke(-amount);
+		}
+
+		private void OnMaxHealthChange()
+		{
+			OnPlayerMaxHealthChange?.Invoke();
 		}
 
 		private async void OnDeath()
@@ -101,6 +107,7 @@ namespace Quinn.PlayerSystem
 				Health.OnHealed -= OnHealed;
 				Health.OnDamaged -= OnDamaged;
 				Health.OnDeath -= OnDeath;
+				Health.OnMaxChange -= OnMaxHealthChange;
 			}
 		}
 	}

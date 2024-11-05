@@ -13,7 +13,7 @@ namespace Quinn.AI
 		{
 			base.Start();
 
-			while (true)
+			while (gameObject != null && !DeathTokenSource.IsCancellationRequested)
 			{
 				FaceTarget();
 
@@ -21,11 +21,8 @@ namespace Quinn.AI
 				dest += Position.DirectionTo(TargetPos) * JumpDistance;
 				await Jump(dest);
 
-				if (destroyCancellationToken.IsCancellationRequested)
-					return;
-
 				FaceTarget();
-				await Awaitable.WaitForSecondsAsync(JumpInterval, destroyCancellationToken);
+				await Wait.Seconds(JumpInterval);
 				FaceTarget();
 			}
 		}
@@ -35,7 +32,7 @@ namespace Quinn.AI
 		private async Awaitable Jump(Vector2 destination)
 		{
 			Animator.SetTrigger("PrimeJump");
-			await Awaitable.WaitForSecondsAsync(0.5f, destroyCancellationToken);
+			await Wait.Seconds(0.5f, DeathTokenSource.Token);
 			Animator.SetTrigger("Jump");
 
 			float speed = JumpDistance;
@@ -44,10 +41,10 @@ namespace Quinn.AI
 			float dur = dst / speed;
 			float endTime = Time.time + dur;
 
-			while (Time.time < endTime && !destroyCancellationToken.IsCancellationRequested)
+			while (Time.time < endTime && gameObject != null && !DeathTokenSource.IsCancellationRequested)
 			{
 				Movement.MoveInDirection(transform.position.DirectionTo(destination), speed);
-				await Awaitable.NextFrameAsync(destroyCancellationToken);
+				await Wait.NextFrame(DeathTokenSource.Token);
 			}
 		}
 	}

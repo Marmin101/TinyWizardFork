@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7993139550144138633}
   - component: {fileID: 3737774933434080592}
+  - component: {fileID: 8275462707034425919}
   - component: {fileID: 6437334692687873005}
   - component: {fileID: 2408369836229230331}
-  - component: {fileID: 8275462707034425919}
   m_Layer: 0
   m_Name: FireStaff
   m_TagString: Untagged
@@ -91,6 +91,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &8275462707034425919
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308763497516412586}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 1
 --- !u!61 &6437334692687873005
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,31 +162,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Head>k__BackingField: {fileID: 2432762686052508438}
-  CastInterval: 0.4
+  BasicCastSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  BasicFinisherCastSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  SpecialCastSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  BasicMissile: {fileID: 7309199781299206731, guid: 2c091a4368a8cc14d90ae90fbf07695b, type: 3}
+  CastCooldown: 0.2
   CastChainCooldown: 0.7
   CastKnockbackSpeed: 6
+  CastBehavior: 0
+  CastSpread: 0
+  CastCount: 1
+  CastInterval: 0.4
+  HasFinalCastingChain: 1
   FinalChainMissileCount: 3
-  FinalChainMissileSpread: 45
+  FinalChainBehavior: 2
+  FinalChainMissileSpread: 30
   ChainWindowDuration: 0.4
   ChainFinalKnockbackSpeed: 14
+  ChainFinalMissileOverride: {fileID: 0}
+  HasSpecial: 1
+  SpecialMissile: {fileID: 7309199781299206731, guid: 654e31f05ede6eb42898fa1720ea9306, type: 3}
   SpecialCooldown: 1.5
   SpecialChargeTime: 1
   SpecialKnockbackSpeed: 10
   ChargingMoveSpeedFactor: 0.5
-  CastPrefab: {fileID: 7309199781299206731, guid: 2c091a4368a8cc14d90ae90fbf07695b, type: 3}
-  SpecialPrefab: {fileID: 7309199781299206731, guid: 654e31f05ede6eb42898fa1720ea9306, type: 3}
---- !u!210 &8275462707034425919
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3308763497516412586}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 1
+  SpecialCount: 1
+  SpecialInterval: 0
+  SpecialBehavior: 0
+  SpecialSpread: 0
 --- !u!1 &4455257797903559666
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,18 +1,29 @@
-﻿using Quinn.Pathfinding;
+﻿using Quinn.AI.Pathfinding;
 using UnityEngine;
 
 namespace Quinn.AI
 {
+	[RequireComponent(typeof(AIAgent))]
 	public class AIMovement : Locomotion
 	{
 		[field: SerializeField]
 		public float MoveSpeed { get; set; } = 3f;
 		[SerializeField]
 		private int ContinuousPathfindFrameDivision = 4;
+		[SerializeField]
+		[Tooltip("Pathfinding will not be used below this threshold, in favor of simply moving directly to the target.")]
+		private float PathfindThreshold = 2f;
 
 		public bool IsJumping { get; private set; }
 
+		private AIAgent _agent;
 		private Vector2 _cumulativeVel;
+
+		protected override void Awake()
+		{
+			base.Awake();
+			_agent = GetComponent<AIAgent>();
+		}
 
 		public override Vector2 GetVelocity()
 		{
@@ -43,12 +54,19 @@ namespace Quinn.AI
 
 			while (index < path.Length - 1)
 			{
-				if (destroyCancellationToken.IsCancellationRequested)
+				if (gameObject == null)
 					return;
 
-				if (index < path.Length && MoveTo(path[index], stoppingDistance))
+				if (transform.position.DistanceTo(target) > PathfindThreshold)
 				{
-					index++;
+					if (index < path.Length && MoveTo(path[index], stoppingDistance))
+					{
+						index++;
+					}
+				}
+				else
+				{
+					MoveTo(target);
 				}
 
 				await Awaitable.NextFrameAsync();
@@ -56,20 +74,30 @@ namespace Quinn.AI
 		}
 		public async Awaitable PathTo(Transform target, float stoppingDistance = 0.2f)
 		{
+			if (target == null)
+				return;
+
 			int index = 0;
-			Vector2[] path = await Pathfinder.Instance.FindPath(transform.position, target.position, destroyCancellationToken);
+			Vector2[] path = await Pathfinder.Instance.FindPath(transform.position, target.position);
 
 			while (index < path.Length - 1 && path.Length > 0)
 			{
-				if (destroyCancellationToken.IsCancellationRequested)
+				if (target == null || _agent.DeathTokenSource.IsCancellationRequested)
 					return;
 
-				if (Time.frameCount % ContinuousPathfindFrameDivision == 0)
-					path = await Pathfinder.Instance.FindPath(transform.position, target.position, destroyCancellationToken);
-
-				if (index < path.Length && MoveTo(path[index], stoppingDistance))
+				if (transform.position.DistanceTo(target.position) > PathfindThreshold)
 				{
-					index++;
+					if (Time.frameCount % ContinuousPathfindFrameDivision == 0)
+						path = await Pathfinder.Instance.FindPath(transform.position, target.position);
+
+					if (index < path.Length && MoveTo(path[index], stoppingDistance))
+					{
+						index++;
+					}
+				}
+				else
+				{
+					MoveTo(target.position, stoppingDistance);
 				}
 
 				await Awaitable.NextFrameAsync();

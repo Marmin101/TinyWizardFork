@@ -40,6 +40,7 @@ namespace Quinn
 		public event Action<float> OnHealed;
 		public event Action<float, Vector2, GameObject> OnDamaged;
 		public event Action OnDeath;
+		public event Action OnMaxChange;
 
 		private bool _isHurtImmune;
 		private readonly HashSet<object> _damageBlockers = new();
@@ -104,6 +105,12 @@ namespace Quinn
 			_damageBlockers.Remove(key);
 		}
 
+		public void SetMax(float max)
+		{
+			Max = max;
+			OnMaxChange?.Invoke();
+		}
+
 		private async void AnimateHurtVFX()
 		{
 			foreach (var renderer in Renderers)
@@ -124,17 +131,31 @@ namespace Quinn
 		{
 			float Get()
 			{
-				return Renderers[0].material.GetFloat("_Flash");
+				if (Renderers.Length == 0) 
+					return 0f;
+
+				var renderer = Renderers[0];
+
+				if (renderer == null)
+					return 0f;
+
+				return renderer.material.GetFloat("_Flash");
 			}
 			void Set(float value)
 			{
+				if (this == null)
+					return;
+
 				foreach (var renderer in Renderers)
 				{
+					if (renderer == null)
+						return;
+
 					renderer.material.SetFloat("_Flash", value);
 				}
 			}
 
-			if (Renderers.Length > 0)
+			if (Renderers.Length > 0 && this != null)
 			{
 				await DOTween.To(Get, Set, 1f, FlashInDuration)
 					.SetEase(FlashInEase)

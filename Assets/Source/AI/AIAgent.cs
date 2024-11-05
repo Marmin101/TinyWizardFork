@@ -17,6 +17,8 @@ namespace Quinn.AI
 		protected Vector2 TargetPos => Target.position;
 		protected Health TargetHealth { get; private set; }
 		protected Vector2 Position => transform.position;
+		protected float DstToTarget => transform.position.DistanceTo(TargetPos);
+		protected Vector2 DirToTarget => transform.position.DirectionTo(TargetPos);
 
 		protected virtual void Awake()
 		{

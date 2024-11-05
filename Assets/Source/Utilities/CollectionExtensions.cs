@@ -48,6 +48,23 @@ namespace Quinn
 
 			return t;
 		}
+		public static T GetClosestTo<T>(this IEnumerable<T> collection, System.Func<T, float> dstCallback)
+		{
+			T t = default;
+			float nearest = float.PositiveInfinity;
 
+			foreach (var item in collection)
+			{
+				float dst = dstCallback(item);
+
+				if (dst < nearest)
+				{
+					nearest = dst;
+					t = item;
+				}
+			}
+
+			return t;
+		}
 	}
 }

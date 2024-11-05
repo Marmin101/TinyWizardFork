@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: -8789147028795353407}
   - component: {fileID: -5411578148068884108}
   - component: {fileID: 6371808962599031183}
+  - component: {fileID: -7416272868621096503}
+  - component: {fileID: 4120692151654868409}
   m_Layer: 0
   m_Name: Globals
   m_TagString: Untagged
@@ -185,3 +187,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrosshairPrefab: {fileID: 5405153100188895309, guid: aa7d6402901fa4143999cef0fa48f0f2, type: 3}
+--- !u!114 &-7416272868621096503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998014613395872597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471d2253d6895c94cb68e2615f849114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProcessChunkSize: 200
+  LogLevel: 0
+--- !u!114 &4120692151654868409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998014613395872597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12214b2593036d4eb871597c14c88f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileSize: 1
+  Origin: {x: 0, y: 0}

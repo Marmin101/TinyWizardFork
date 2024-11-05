@@ -40,7 +40,9 @@ namespace Quinn.PlayerSystem
 
 		private void Update()
 		{
-			_animator.SetFloat("SpeedScale", Rigidbody.linearVelocity.magnitude / MoveSpeed);
+			float scale = Rigidbody.linearVelocity.magnitude / MoveSpeed;
+			if (IsDashing) scale = 1f;
+			_animator.SetFloat("SpeedScale", scale);
 		}
 
 		public override Vector2 GetVelocity()

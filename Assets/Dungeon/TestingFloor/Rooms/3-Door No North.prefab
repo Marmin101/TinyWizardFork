@@ -7884,7 +7884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 791725629778443717, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1186626141042062035, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Layer
@@ -78392,7 +78392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435859498715127267, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5752541803024859684, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: NorthDoor
@@ -78412,7 +78412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6446014019648216660, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6834826036384215427, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Size.x
@@ -78498,7 +78498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
-  m_Priority: 0
+  m_Priority: 2
   m_ComponentVersion: 5
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1

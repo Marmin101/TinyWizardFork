@@ -1,9 +1,11 @@
 ﻿using FMODUnity;
+using Quinn.Pathfinding;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Quinn.DungeonGeneration
 {
@@ -15,6 +17,8 @@ namespace Quinn.DungeonGeneration
 		private Trigger RoomTrigger;
 		[SerializeField, Required]
 		private CinemachineCamera RoomCamera;
+		[SerializeField, Required]
+		private Tilemap Navmesh;
 
 		[SerializeField, BoxGroup("Doors"), ValidateInput("@HasNorthDoor || HasEastDoor || HasSouthDoor || HasWestDoor")]
 		private Door NorthDoor, SouthDoor, EastDoor, WestDoor;
@@ -80,6 +84,8 @@ namespace Quinn.DungeonGeneration
 			{
 				RoomCamera.enabled = true;
 				RoomCamera.Target.TrackingTarget = CameraManager.Instance.CameraTarget;
+
+				Pathfinder.Instance.SetNavmesh(Navmesh);
 
 				if (!IsConquered)
 				{

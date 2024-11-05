@@ -21,6 +21,9 @@ namespace Quinn.AI
 				dest += Position.DirectionTo(TargetPos) * JumpDistance;
 				await Jump(dest);
 
+				if (destroyCancellationToken.IsCancellationRequested)
+					return;
+
 				FaceTarget();
 				await Awaitable.WaitForSecondsAsync(JumpInterval, destroyCancellationToken);
 				FaceTarget();

@@ -1,6 +1,5 @@
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,12 +7,19 @@ namespace Quinn.Pathfinding
 {
 	public class Pathfinder : MonoBehaviour
 	{
-		[SerializeField, Required]
-		private Tilemap ObstacleTilemap;
+		enum DebugLogLevel
+		{
+			None = 0, Minimal = 1, Verbose = 2
+		}
+
 		[SerializeField]
-		private bool DebugVerbose;
+		private int ProcessChunkSize = 200;
+		[SerializeField]
+		private DebugLogLevel LogLevel;
 
 		public static Pathfinder Instance { get; private set; }
+
+		public Tilemap Navmesh { get; private set; }
 
 		private void Awake()
 		{
@@ -26,21 +32,36 @@ namespace Quinn.Pathfinding
 			Instance = null;
 		}
 
-		// TODO: Finalizer pathfinder with returning of record that contains success info as well as the path.
+		// TODO: Finalize pathfinder with returning of record that contains success info as well as the path.
 		// Make utility method that extracts vector2 path from vector2int retunred pathing data in record; maybe record holds that utility.
 		// Add pathing limits exposed as Pathfinder.cs editor properties that move things over to the next frame after certain number of iterations to avoid hitches.
-		public async Awaitable<Vector2Int[]> FindPath(Vector2Int origin, Vector2Int destination)
+		public async Awaitable<Vector2Int[]> FindPath(Vector2Int origin, Vector2Int destination, CancellationToken token = default)
 		{
+			if (Navmesh == null)
+				return System.Array.Empty<Vector2Int>();
+
 			var open = new Dictionary<Vector2Int, (float g, float h, Vector2Int parent)>();
 			var closed = new Dictionary<Vector2Int, (float g, float h, Vector2Int parent)>();
 
 			Vector2Int current = origin;
 			open.Add(current, (0f, origin.DistanceTo(destination), origin));
 
+			int processCount = 0;
+
 			// While there are open tiles to explore and we haven't yet found the destination.
 			while (open.Count > 0)
 			{
-				await Awaitable.WaitForSecondsAsync(0.02f);
+				processCount++;
+				if (processCount > ProcessChunkSize)
+				{
+					processCount = 0;
+					await Awaitable.NextFrameAsync(token);
+				}
+
+				if (token.IsCancellationRequested)
+					return System.Array.Empty<Vector2Int>();
+
+				//await Awaitable.WaitForSecondsAsync(0.02f);
 
 				Vector2Int bestTile = current;
 				float bestFCost = float.PositiveInfinity;
@@ -63,7 +84,8 @@ namespace Quinn.Pathfinding
 				float currentG = open[current].g;
 				open.Remove(current);
 
-				Draw.Rect(WorldGrid.Instance.GridToWorld(current), Vector2.one, new Color(1f, 0.25f, 0f), float.PositiveInfinity);
+				if (LogLevel is DebugLogLevel.Verbose)
+					Draw.Rect(WorldGrid.Instance.GridToWorld(current), Vector2.one, new Color(1f, 0.25f, 0f), float.PositiveInfinity);
 
 				// Explore neighbors.
 				for (int x = -1; x < 2; x++)
@@ -77,8 +99,8 @@ namespace Quinn.Pathfinding
 							continue;
 
 						// No diagonal pathing.
-						if (x != 0 && y != 0)
-							continue;
+						//if (x != 0 && y != 0)
+							//continue;
 
 						float g = currentG + current.DistanceTo(tile);
 						float h = tile.DistanceTo(destination);
@@ -99,16 +121,29 @@ namespace Quinn.Pathfinding
 
 						open.Add(tile, (g, h, current));
 
-						Draw.Rect(WorldGrid.Instance.GridToWorld(tile), Vector2.one, Color.cyan, float.PositiveInfinity);
-						Draw.Line(WorldGrid.Instance.GridToWorld(current), WorldGrid.Instance.GridToWorld(tile), Color.red, float.PositiveInfinity);
+						if (LogLevel is DebugLogLevel.Verbose)
+						{
+							Draw.Rect(WorldGrid.Instance.GridToWorld(tile), Vector2.one, Color.cyan, float.PositiveInfinity);
+							Draw.Line(WorldGrid.Instance.GridToWorld(current), WorldGrid.Instance.GridToWorld(tile), Color.red, float.PositiveInfinity);
+						}
 					}
 				}
 
 				// If at destination, return path.
-				if (current == destination)
+				if (current == destination || open.Count == 0)
 				{
 					var path = new List<Vector2Int>();
 					Vector2Int tile = destination;
+
+					if (open.Count == 0)
+					{
+						if (LogLevel >= DebugLogLevel.Minimal)
+						{
+							Debug.Log("Returning incomplete path.");
+						}
+
+						tile = closed.GetClosestTo(x => x.Value.h).Key;
+					}
 
 					// Backtrace path.
 					while (tile != origin)
@@ -119,20 +154,24 @@ namespace Quinn.Pathfinding
 
 					path = Simplify(path);
 
-					// Draw lines.
-					Draw.Rect(destination, Vector2.one, Color.yellow, float.PositiveInfinity);
-					for (int i = 0; i < path.Count - 1; i++)
+					// Draw path lines.
+					if (LogLevel >= DebugLogLevel.Minimal)
 					{
-						var a = WorldGrid.Instance.GridToWorld(path[i]);
-						var b = WorldGrid.Instance.GridToWorld(path[i + 1]);
+						Draw.Rect(destination, Vector2.one, Color.yellow, float.PositiveInfinity);
+						for (int i = 0; i < path.Count - 1; i++)
+						{
+							var a = WorldGrid.Instance.GridToWorld(path[i]);
+							var b = WorldGrid.Instance.GridToWorld(path[i + 1]);
 
-						Draw.Rect(a, Vector2.one, Color.black, float.PositiveInfinity);
-						Draw.Line(Vector2.Lerp(a, b, 0.1f), Vector2.Lerp(a, b, 0.9f), Color.white, float.PositiveInfinity);
+							Draw.Rect(a, Vector2.one, Color.black, float.PositiveInfinity);
+							Draw.Line(Vector2.Lerp(a, b, 0.1f), Vector2.Lerp(a, b, 0.9f), Color.white, float.PositiveInfinity);
 
-						await Awaitable.WaitForSecondsAsync(0.003f);
+							//await Awaitable.WaitForSecondsAsync(0.003f);
+						}
+
+						Draw.Rect(destination, Vector2.one, Color.yellow, float.PositiveInfinity);
 					}
 
-					Draw.Rect(destination, Vector2.one, Color.yellow, float.PositiveInfinity);
 					return path.ToArray();
 				}
 			}
@@ -140,19 +179,39 @@ namespace Quinn.Pathfinding
 			Debug.LogWarning("Failed to find path!");
 			return System.Array.Empty<Vector2Int>();
 		}
-
-		public bool IsEmpty(Vector2Int gridPos)
+		public async Awaitable<Vector2[]> FindPath(Vector2 origin, Vector2 destination, CancellationToken token = default)
 		{
-			return !ObstacleTilemap.HasTile((Vector3Int)gridPos);
+			Vector2Int a = WorldGrid.Instance.WorldToGrid(origin);
+			Vector2Int b = WorldGrid.Instance.WorldToGrid(destination);
+
+			Vector2Int[] indices = await FindPath(a, b, token);
+			var path = new List<Vector2>();
+
+			foreach (var index in indices)
+			{
+				path.Add(WorldGrid.Instance.GridToWorld(index));
+			}
+
+			return path.ToArray();
+		}
+
+		public bool IsTraversable(Vector2Int gridPos)
+		{
+			return Navmesh.HasTile((Vector3Int)gridPos);
 		}
 		public bool IsObstacle(Vector2Int gridPos)
 		{
-			return ObstacleTilemap.HasTile((Vector3Int)gridPos);
+			return !Navmesh.HasTile((Vector3Int)gridPos);
 		}
 
 		public float GetDistance(Vector2Int a, Vector2Int b)
 		{
 			return ((Vector2)a).DistanceTo((Vector2)b);
+		}
+
+		public void SetNavmesh(Tilemap navmesh)
+		{
+			Navmesh = navmesh;
 		}
 
 		private List<Vector2Int> Simplify(List<Vector2Int> points)

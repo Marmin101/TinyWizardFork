@@ -89,6 +89,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 			CastingSpark.SetGradient("Color", staff.SparkGradient);
 			CastingSpark.transform.SetParent(staff.Head, false);
+			CastingSpark.transform.localPosition = Vector3.zero;
 		}
 
 		public void SetCooldown(float duration)

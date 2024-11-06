@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5937430830354893443}
   - component: {fileID: 5114066691716736982}
   - component: {fileID: 1624697009651813787}
+  - component: {fileID: -4870998015981991001}
   - component: {fileID: -8789147028795353407}
   - component: {fileID: -5411578148068884108}
   - component: {fileID: 6371808962599031183}
@@ -148,6 +149,18 @@ MonoBehaviour:
   FadeFromBlackEase: 3
   PlayerToCursorBias: 0.15
   CameraTargetSmoothTime: 0.05
+--- !u!114 &-4870998015981991001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998014613395872597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b417045f6ccb45147b03907eb7d69c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-8789147028795353407
 MonoBehaviour:
   m_ObjectHideFlags: 0

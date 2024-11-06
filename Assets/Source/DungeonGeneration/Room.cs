@@ -1,4 +1,5 @@
 ﻿using FMODUnity;
+using Quinn.AI;
 using Quinn.AI.Pathfinding;
 using Sirenix.OdinInspector;
 using System;
@@ -20,11 +21,14 @@ namespace Quinn.DungeonGeneration
 		[SerializeField, Required]
 		private Tilemap Navmesh;
 
+		[SerializeField, Space]
+		private bool StartConquered;
+
 		[SerializeField, BoxGroup("Doors"), ValidateInput("@HasNorthDoor || HasEastDoor || HasSouthDoor || HasWestDoor")]
 		private Door NorthDoor, SouthDoor, EastDoor, WestDoor;
 
 		public bool IsLocked { get; private set; }
-		public bool IsConquered { get; private set; } = true; // TODO: Implement.
+		public bool IsConquered { get; private set; }
 
 		public bool HasNorthDoor => NorthDoor != null;
 		public bool HasEastDoor => EastDoor != null;
@@ -37,6 +41,8 @@ namespace Quinn.DungeonGeneration
 
 		private void Awake()
 		{
+			IsConquered = StartConquered;
+
 			if (HasNorthDoor)
 				_doors.Add(NorthDoor);
 			if (HasSouthDoor)
@@ -86,6 +92,7 @@ namespace Quinn.DungeonGeneration
 				RoomCamera.Target.TrackingTarget = CameraManager.Instance.CameraTarget;
 
 				Pathfinder.Instance.SetNavmesh(Navmesh);
+				RoomManager.Instance.SetActiveRoom(this);
 
 				if (!IsConquered)
 				{

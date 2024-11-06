@@ -27,6 +27,11 @@ namespace Quinn
 				}
 			}
 
+			if (!collection.Any())
+			{
+				return default;
+			}
+
 			return collection.ElementAt(Random.Range(0, collection.Count()));
 		}
 

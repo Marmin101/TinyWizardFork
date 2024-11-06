@@ -86,6 +86,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		private void FixedUpdate()
 		{
+			if (Caster == null)
+				return;
+
 			if (_castChainCount < BasicFinisherCount && _castChainCount > 0 && Time.time > _chainTimeoutTime)
 			{
 				_castChainCount = 0;

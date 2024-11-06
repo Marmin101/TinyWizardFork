@@ -108,7 +108,10 @@ namespace Quinn.AI
 
 		protected virtual void OnDamaged(float amount, Vector2 dir, GameObject source)
 		{
-			SetTarget(source.transform);
+			if (source.TryGetComponent(out Health health) && health.Team != Health.Team)
+			{
+				SetTarget(source.transform);
+			}
 		}
 
 		protected virtual void OnDeath()

@@ -8,9 +8,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1422395812468096970, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7775340299764353223, guid: d089a1559a49fd04db0805be64b4487f, type: 3}
+    - target: {fileID: 1422395812468096970, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ff5050068d7eaf64e94cb7a39140164a, type: 2}
+    - target: {fileID: 2432762686052508438, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.403
+      objectReference: {fileID: 0}
     - target: {fileID: 3308763497516412586, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_Name
       value: WaterStaff
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737774933434080592, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -169534898755778127, guid: d089a1559a49fd04db0805be64b4487f, type: 3}
+    - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.816389
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.08563587
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.625
       objectReference: {fileID: 0}
     - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,13 +115,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Head>k__BackingField: {fileID: 4697962658493810353}
+  <SparkGradient>k__BackingField:
+    serializedVersion: 2
+    key0: {r: 0, g: 3.8811703, b: 4, a: 0}
+    key1: {r: 0, g: 0.80469465, b: 1, a: 1}
+    key2: {r: 1, g: 1, b: 1, a: 1}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 44949
+    ctime2: 47417
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 6554
+    atime2: 55743
+    atime3: 65535
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 2
+    m_ColorSpace: -1
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 4
   BasicCastSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2009822478
+      Data2: 1306905374
+      Data3: -235767161
+      Data4: 333079133
+    Path: event:/WaterStaffCast
   BasicFinisherCastSound:
     Guid:
       Data1: 0
@@ -97,29 +159,43 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  SpecialCastSound:
+  SpecialCastLittleSound:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  BasicMissile: {fileID: 0}
+  SpecialCastBigSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  FullChargeSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  BasicMissile: {fileID: 6657825938120382363, guid: 2c3703b9365643e44b19b6d354996aea, type: 3}
   BasicCooldown: 0.3
   BasicKnockbackSpeed: 10
   BasicBehavior: 0
   BasicSpread: 0
-  BasicCount: 1
-  BasicInterval: 0
+  BasicCount: 3
+  BasicInterval: 0.1
   ChainWindowDuration: 0.4
-  HasBasicFinisher: 1
+  HasBasicFinisher: 0
   BasicFinisherCooldown: 0.6
   BasicFinisherCount: 3
   BasicFinisherBehavior: 2
   BasicFinisherSpread: 45
   BasicFinisherKnockbackSpeed: 14
   BasicFinisherMissileOverride: {fileID: 0}
-  HasSpecial: 1
+  HasSpecial: 0
   SpecialMissile: {fileID: 0}
   SpecialCooldown: 1
   SpecialChargeTime: 1

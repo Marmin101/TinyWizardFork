@@ -138,6 +138,12 @@ VisualEffect:
       - m_Value: 0.375
         m_Name: Radius
         m_Overridden: 1
+      - m_Value: 0.35
+        m_Name: MinLifespan
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: MaxLifespan
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -281,6 +287,10 @@ PrefabInstance:
       propertyPath: DirectDamage
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnOnDeath
+      value: 
+      objectReference: {fileID: 3759161245162595829, guid: 2187c4af15f23124f9025c4ea3d7c34a, type: 3}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashRadius
       value: 2

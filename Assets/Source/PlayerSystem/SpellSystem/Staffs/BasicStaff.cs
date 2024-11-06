@@ -1,6 +1,7 @@
 ﻿using FMODUnity;
 using Quinn.MissileSystem;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Quinn.PlayerSystem.SpellSystem.Staffs
@@ -49,8 +50,10 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		[Space, SerializeField, FoldoutGroup("Special")]
 		private bool HasSpecial = true;
-		[SerializeField, Required, FoldoutGroup("Special")]
+		[SerializeField, Required, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
 		private Missile SpecialMissile;
+		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial)), Unit(Units.Second)]
+		private float ChargingSparkInterval = 0.45f;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special"), Unit(Units.Second)]
 		private float SpecialCooldown = 1f;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special"), Unit(Units.Second)]
@@ -96,11 +99,17 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				Audio.Play(FullChargeSound);
 			}
+
+			if (IsSpecialHeld && CanCast && HasSpecial)
+			{
+				Cooldown.Call(this, ChargingSparkInterval, Caster.Spark);
+			}
 		}
 
 		public override void OnBasicDown()
 		{
 			_castChainCount++;
+			Caster.Spark();
 
 			// Finisher cast.
 			if (_castChainCount >= BasicFinisherCount && HasBasicFinisher)
@@ -147,6 +156,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		{
 			if (!HasSpecial)
 				return;
+
+			Caster.Spark();
 
 			var prefab = Time.time > _largeMissileTime ? SpecialMissile : BasicMissile;
 			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDirToCrosshair(),

@@ -7,7 +7,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 	public abstract class Staff : MonoBehaviour, IInteractable
 	{
 		[field: SerializeField, Required]
-		protected Transform Head { get; private set; }
+		public Transform Head { get; private set; }
+		[field: SerializeField]
+		public Gradient SparkGradient { get; private set; }
 
 		protected PlayerCaster Caster { get; private set; }
 
@@ -52,8 +54,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			Caster = caster;
 
-			// Avoid being interacted with while being held.
-			GetComponent<Collider2D>().enabled = false;
+			if (caster == null)
+				GetComponent<Collider2D>().enabled = true;
+			else
+				GetComponent<Collider2D>().enabled = false;
 		}
 
 		public virtual void OnBasicDown() { }

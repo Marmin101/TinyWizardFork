@@ -19,12 +19,16 @@ namespace Quinn.MissileSystem
 		private Team Team = Team.Monster;
 		[SerializeField, BoxGroup("Core"), Unit(Units.Second)]
 		private float Lifespan = 10f;
-		[SerializeField, BoxGroup("Core")]
+
+		[SerializeField, BoxGroup("Core"), Space]
 		private GameObject SpawnOnDeath;
+		[SerializeField, BoxGroup("Core"), ShowIf(nameof(SpawnOnDeath))]
+		private float DestroySpawnedDelay = 3f;
+
+		[SerializeField, BoxGroup("Core"), Space]
+		private VisualEffect[] DelayDestructionOnDeath;
 		[Space, SerializeField, BoxGroup("Core"), ShowIf("@DelayDestructionOnDeath.Length > 0"), Unit(Units.Second)]
 		private float DestructionDelay = 3f;
-		[SerializeField, BoxGroup("Core")]
-		private VisualEffect[] DelayDestructionOnDeath;
 
 		[SerializeField]
 		private bool HasSplashDamage;
@@ -142,7 +146,8 @@ namespace Quinn.MissileSystem
 		{
 			if (SpawnOnDeath != null)
 			{
-				SpawnOnDeath.Clone(transform.position);
+				var instance = SpawnOnDeath.Clone(transform.position);
+				Destroy(instance, DestroySpawnedDelay);
 			}
 
 			foreach (var obj in DelayDestructionOnDeath)

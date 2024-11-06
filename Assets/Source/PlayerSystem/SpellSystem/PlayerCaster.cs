@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn.PlayerSystem.SpellSystem
 {
@@ -16,6 +17,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private Staff TestingStaff;
 		[SerializeField]
 		private float InputBufferTimeout = 0.2f;
+		[SerializeField, Required]
+		private VisualEffect CastingSpark;
 
 		public Staff Staff {  get; private set; }
 		public bool CanCast => Time.time >= _nextInputTime;
@@ -71,17 +74,31 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public void SetStaff(Staff staff)
 		{
+			// TODO: Drop old staff?
+			// Durability?
+
+			if (Staff != null)
+			{
+				Staff.SetCaster(null);
+				Staff.transform.SetParent(null);
+			}
+
 			Staff = staff;
 			staff.transform.SetParent(transform, false);
 			staff.SetCaster(this);
 
-			// TODO: Drop old staff?
-			// Durability?
+			CastingSpark.SetGradient("Color", staff.SparkGradient);
+			CastingSpark.transform.SetParent(staff.Head, false);
 		}
 
 		public void SetCooldown(float duration)
 		{
 			_nextInputTime = Time.time + duration;
+		}
+
+		public void Spark()
+		{
+			CastingSpark.Play();
 		}
 
 		private void OnBasicStart()

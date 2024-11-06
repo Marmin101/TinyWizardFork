@@ -18,9 +18,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private float InputBufferTimeout = 0.2f;
 
 		public Staff Staff {  get; private set; }
-		public bool CanInput => Time.time >= _nextInputTime;
+		public bool CanCast => Time.time >= _nextInputTime;
 
-		public bool IsCastHeld { get; private set; }
+		public bool IsBasicHeld { get; private set; }
 		public bool IsSpecialHeld { get; private set; }
 
 		public PlayerMovement Movement { get; private set; }
@@ -33,7 +33,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			Movement = GetComponent<PlayerMovement>();
 			var input = InputManager.Instance;
 
-			input.OnCastStart += OnCastStart;
+			input.OnCastStart += OnBasicStart;
 			input.OnSpecialStart += OnSpecialStart;
 
 			if (TestingStaff != null)
@@ -48,9 +48,19 @@ namespace Quinn.PlayerSystem.SpellSystem
 			UpdateStaffTransform();
 			_inputBuffer.Update();
 
+			if (Input.GetMouseButton(0) && !IsBasicHeld && CanCast)
+			{
+				OnBasicStart();
+			}
+
+			if (Input.GetMouseButton(1) && !IsSpecialHeld && CanCast)
+			{
+				OnSpecialStart();
+			}
+
 			if (!Input.GetMouseButton(0))
 			{
-				OnCastStop();
+				OnBasicStop();
 			}
 
 			if (!Input.GetMouseButton(1))
@@ -64,6 +74,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 			Staff = staff;
 			staff.transform.SetParent(transform, false);
 			staff.SetCaster(this);
+
+			// TODO: Drop old staff?
+			// Durability?
 		}
 
 		public void SetCooldown(float duration)
@@ -71,27 +84,27 @@ namespace Quinn.PlayerSystem.SpellSystem
 			_nextInputTime = Time.time + duration;
 		}
 
-		private void OnCastStart()
+		private void OnBasicStart()
 		{
 			if (Staff == null)
 				return;
 
 			_inputBuffer.Buffer(InputBufferTimeout, () =>
 			{
-				IsCastHeld = true;
-				Staff.OnCastStart();
-			}, () => CanInput && Input.GetMouseButton(0));
+				IsBasicHeld = true;
+				Staff.OnBasicDown();
+			}, () => CanCast && Input.GetMouseButton(0));
 		}
 
-		private void OnCastStop()
+		private void OnBasicStop()
 		{
 			if (Staff == null)
 				return;
 
-			if (IsCastHeld)
+			if (IsBasicHeld)
 			{
-				IsCastHeld = false;
-				Staff.OnCastStop();
+				IsBasicHeld = false;
+				Staff.OnBasicUp();
 			}
 		}
 
@@ -103,8 +116,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 			_inputBuffer.Buffer(InputBufferTimeout, () =>
 			{
 				IsSpecialHeld = true;
-				Staff.OnSpecialStart();
-			}, () => CanInput && Input.GetMouseButton(1));
+				Staff.OnSpecialDown();
+			}, () => CanCast && Input.GetMouseButton(1));
 		}
 
 		private void OnSpecialStop()
@@ -115,7 +128,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			if (IsSpecialHeld)
 			{
 				IsSpecialHeld = false;
-				Staff.OnSpecialStop();
+				Staff.OnSpecialUp();
 			}
 		}
 

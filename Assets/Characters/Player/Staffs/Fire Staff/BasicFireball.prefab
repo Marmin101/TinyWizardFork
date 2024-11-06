@@ -51,10 +51,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.4
+      - m_Value: 0.2
         m_Name: MinLifespan
         m_Overridden: 1
-      - m_Value: 0.6
+      - m_Value: 0.4
         m_Name: MaxLifespan
         m_Overridden: 1
       - m_Value: 0.1875
@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2155629128015402347, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: m_Name
-      value: SmallFireball
+      value: BasicFireball
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: Team
@@ -299,6 +299,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Path
+      value: event:/FireballHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: HasSplashDamage
       value: 0
       objectReference: {fileID: 0}
@@ -309,6 +313,22 @@ PrefabInstance:
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: OscillateFrequency
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data1
+      value: -743889561
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data2
+      value: 1336399524
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data3
+      value: 1875922097
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data4
+      value: -214412736
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DelayDestructionOnDeath.Array.size

@@ -8,6 +8,7 @@ namespace Quinn.DungeonGeneration
 	public class FloorSO : ScriptableObject
 	{
 		public EventReference Ambience;
+		public EventReference Music;
 
 		[Space]
 		public Room StartingRoom;

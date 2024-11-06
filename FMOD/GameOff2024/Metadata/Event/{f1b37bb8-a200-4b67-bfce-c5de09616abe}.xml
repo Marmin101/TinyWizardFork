@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{f1b37bb8-a200-4b67-bfce-c5de09616abe}">
 		<property name="name">
-			<value>TestingFloorAmbience</value>
+			<value>ThePalance_Ambience</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{b79ba1c2-1e8e-457c-8f9f-468280306593}</destination>
+			<destination>{3fcfc529-62de-40f2-991b-58d185dd3264}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{1bd578df-4d6b-4893-b676-560f163196b3}</destination>

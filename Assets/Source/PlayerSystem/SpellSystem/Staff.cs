@@ -11,6 +11,37 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		protected PlayerCaster Caster { get; private set; }
 
+		protected bool CanCast
+		{
+			get
+			{
+				if (Caster == null)
+					return false;
+
+				return Caster.CanCast;
+			}
+		}
+		protected bool IsBasicHeld
+		{
+			get
+			{
+				if (Caster == null)
+					return false;
+
+				return Caster.IsBasicHeld;
+			}
+		}
+		protected bool IsSpecialHeld
+		{
+			get
+			{
+				if (Caster == null)
+					return false;
+
+				return Caster.IsSpecialHeld;
+			}
+		}
+
 		public void Interact(Player player)
 		{
 			var caster = player.GetComponent<PlayerCaster>();
@@ -25,10 +56,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 			GetComponent<Collider2D>().enabled = false;
 		}
 
-		public virtual void OnCastStart() { }
-		public virtual void OnCastStop() { }
+		public virtual void OnBasicDown() { }
+		public virtual void OnBasicUp() { }
 
-		public virtual void OnSpecialStart() { }
-		public virtual void OnSpecialStop() { }
+		public virtual void OnSpecialDown() { }
+		public virtual void OnSpecialUp() { }
 	}
 }

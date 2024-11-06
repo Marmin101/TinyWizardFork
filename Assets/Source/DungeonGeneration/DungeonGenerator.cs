@@ -53,7 +53,7 @@ namespace Quinn.DungeonGeneration
 		public FloorSO ActiveFloor { get; private set; }
 
 		private readonly Dictionary<Vector2Int, GameObject> _generatedRooms = new();
-		private EventInstance _ambience;
+		private EventInstance _ambience, _music;
 
 		private void Awake()
 		{
@@ -64,18 +64,6 @@ namespace Quinn.DungeonGeneration
 		private async void Start()
 		{
 			var floor = Floors[Random.Range(0, Floors.Length)];
-
-			if (_ambience.isValid())
-			{
-				_ambience.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-			}
-
-			if (!floor.Ambience.IsNull)
-			{
-				_ambience = RuntimeManager.CreateInstance(floor.Ambience);
-				_ambience.start();
-			}
-
 			await StartFloorAsync(floor);
 		}
 
@@ -137,6 +125,30 @@ namespace Quinn.DungeonGeneration
 			}
 
 			ActiveFloor = floor;
+
+			// Ambience.
+			if (_ambience.isValid())
+			{
+				_ambience.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
+
+			if (!floor.Ambience.IsNull)
+			{
+				_ambience = RuntimeManager.CreateInstance(floor.Ambience);
+				_ambience.start();
+			}
+
+			// Music.
+			if (_music.isValid())
+			{
+				_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
+
+			if (!floor.Music.IsNull)
+			{
+				_music = RuntimeManager.CreateInstance(floor.Music);
+				_music.start();
+			}
 
 			var prefab = floor.Generatable.GetWeightedRandom(x => x.Weight).Prefab;
 			await GenerateRoomAsync(floor.StartingRoom, 0, 0);

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Quinn
 {
 	public class Health : MonoBehaviour
 	{
+		[SerializeField]
+		private EventReference HurtSound, DeathSound, HealSound;
 		[field: SerializeField]
 		public float Max { get; private set; } = 100f;
 		[field: SerializeField]
@@ -60,6 +63,8 @@ namespace Quinn
 			Current = Mathf.Min(Current, Max);
 
 			OnHealed?.Invoke(health);
+
+			Audio.Play(HealSound, transform.position);
 		}
 
 		public void FullHeal()
@@ -75,6 +80,8 @@ namespace Quinn
 			if (IsDead || sourceTeam == Team || IsImmune)
 				return false;
 
+			Audio.Play(HurtSound, transform.position);
+
 			Current -= damage;
 			Current = Mathf.Max(0, Current);
 
@@ -82,6 +89,8 @@ namespace Quinn
 
 			if (Current == 0f)
 			{
+				Audio.Play(DeathSound, transform.position);
+
 				IsDead = true;
 				OnDeath?.Invoke();
 			}

@@ -375,6 +375,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97dad39f9bf8cc4d8b98d70c213cf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HurtSound:
+    Guid:
+      Data1: -741548396
+      Data2: 1158438055
+      Data3: -1508518734
+      Data4: -1656025200
+    Path: event:/PlayerHurt
+  DeathSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  HealSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <Max>k__BackingField: 5
   <Team>k__BackingField: 4
   Renderers:
@@ -404,7 +425,7 @@ MonoBehaviour:
   StaffPivot: {fileID: 1884010044133439082}
   StaffOffset: 0.52
   TestingStaff: {fileID: 2408369836229230331, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
-  InputBufferTimeout: 0.2
+  InputBufferTimeout: 0.35
 --- !u!114 &7626890514978811671
 MonoBehaviour:
   m_ObjectHideFlags: 0

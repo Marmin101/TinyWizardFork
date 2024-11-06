@@ -164,44 +164,58 @@ MonoBehaviour:
   <Head>k__BackingField: {fileID: 2432762686052508438}
   BasicCastSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1977740527
+      Data2: 1119442525
+      Data3: -1189839231
+      Data4: -376738683
+    Path: event:/FireStaffBasic
   BasicFinisherCastSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  SpecialCastSound:
+      Data1: -1196230266
+      Data2: 1333570169
+      Data3: -1068401729
+      Data4: 1253843065
+    Path: event:/FireStaffBasicFinisher
+  SpecialCastLittleSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1977740527
+      Data2: 1119442525
+      Data3: -1189839231
+      Data4: -376738683
+    Path: event:/FireStaffBasic
+  SpecialCastBigSound:
+    Guid:
+      Data1: -1196230266
+      Data2: 1333570169
+      Data3: -1068401729
+      Data4: 1253843065
+    Path: event:/FireStaffBasicFinisher
+  FullChargeSound:
+    Guid:
+      Data1: -765277332
+      Data2: 1122015374
+      Data3: 1694897027
+      Data4: -383171959
+    Path: event:/FullCharge
   BasicMissile: {fileID: 7309199781299206731, guid: 2c091a4368a8cc14d90ae90fbf07695b, type: 3}
-  CastCooldown: 0.2
-  CastChainCooldown: 0.7
-  CastKnockbackSpeed: 6
-  CastBehavior: 0
-  CastSpread: 0
-  CastCount: 1
-  CastInterval: 0.4
-  HasFinalCastingChain: 1
-  FinalChainMissileCount: 3
-  FinalChainBehavior: 2
-  FinalChainMissileSpread: 30
+  BasicCooldown: 0.4
+  BasicKnockbackSpeed: 10
+  BasicBehavior: 0
+  BasicSpread: 0
+  BasicCount: 1
+  BasicInterval: 0
   ChainWindowDuration: 0.4
-  ChainFinalKnockbackSpeed: 14
-  ChainFinalMissileOverride: {fileID: 0}
+  HasBasicFinisher: 1
+  BasicFinisherCooldown: 0.75
+  BasicFinisherCount: 3
+  BasicFinisherBehavior: 2
+  BasicFinisherSpread: 45
+  BasicFinisherKnockbackSpeed: 14
+  BasicFinisherMissileOverride: {fileID: 0}
   HasSpecial: 1
   SpecialMissile: {fileID: 7309199781299206731, guid: 654e31f05ede6eb42898fa1720ea9306, type: 3}
-  SpecialCooldown: 1.5
-  SpecialChargeTime: 1
+  SpecialCooldown: 0.5
+  SpecialChargeTime: 0.5
   SpecialKnockbackSpeed: 10
   ChargingMoveSpeedFactor: 0.5
   SpecialCount: 1

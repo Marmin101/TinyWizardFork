@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6985202747208295847
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3308763497516412586, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Name
+      value: WaterStaff
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3308763497516412586, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2936809453692542970}
+  m_SourcePrefab: {fileID: 100100000, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+--- !u!4 &4697962658493810353 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2432762686052508438, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+  m_PrefabInstance: {fileID: 6985202747208295847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5556168969788869389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3308763497516412586, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+  m_PrefabInstance: {fileID: 6985202747208295847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2936809453692542970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556168969788869389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec295a3f07223d74ea6cb6e9344802b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Head>k__BackingField: {fileID: 4697962658493810353}
+  BasicCastSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  BasicFinisherCastSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  SpecialCastSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  BasicMissile: {fileID: 0}
+  BasicCooldown: 0.3
+  BasicKnockbackSpeed: 10
+  BasicBehavior: 0
+  BasicSpread: 0
+  BasicCount: 1
+  BasicInterval: 0
+  ChainWindowDuration: 0.4
+  HasBasicFinisher: 1
+  BasicFinisherCooldown: 0.6
+  BasicFinisherCount: 3
+  BasicFinisherBehavior: 2
+  BasicFinisherSpread: 45
+  BasicFinisherKnockbackSpeed: 14
+  BasicFinisherMissileOverride: {fileID: 0}
+  HasSpecial: 1
+  SpecialMissile: {fileID: 0}
+  SpecialCooldown: 1
+  SpecialChargeTime: 1
+  SpecialKnockbackSpeed: 10
+  ChargingMoveSpeedFactor: 0.5
+  SpecialCount: 1
+  SpecialInterval: 0
+  SpecialBehavior: 0
+  SpecialSpread: 0

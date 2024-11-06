@@ -149,6 +149,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97dad39f9bf8cc4d8b98d70c213cf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HurtSound:
+    Guid:
+      Data1: 1562083232
+      Data2: 1317996331
+      Data3: -1517090430
+      Data4: 1229636999
+    Path: event:/EnemyHurt
+  DeathSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  HealSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <Max>k__BackingField: 100
   <Team>k__BackingField: 1
   Renderers:
@@ -181,6 +202,7 @@ MonoBehaviour:
   KnockbackDecayRate: 32
   <MoveSpeed>k__BackingField: 3
   ContinuousPathfindFrameDivision: 4
+  PathfindThreshold: 2
 --- !u!114 &3180104467074660429
 MonoBehaviour:
   m_ObjectHideFlags: 0

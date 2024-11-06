@@ -1,3 +1,4 @@
+using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -7,6 +8,9 @@ namespace Quinn.MissileSystem
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class Missile : MonoBehaviour
 	{
+		[SerializeField, BoxGroup("FX")]
+		private EventReference HitSound, FizzleOutSound;
+
 		[SerializeField, BoxGroup("Core")]
 		private float DirectSpeed = 8f;
 		[SerializeField, BoxGroup("Core")]
@@ -87,6 +91,8 @@ namespace Quinn.MissileSystem
 
 		private void OnImpact()
 		{
+			Audio.Play(HitSound, transform.position);
+
 			OnDeath();
 			TriggerSplash();
 			Destroy(gameObject);
@@ -94,6 +100,8 @@ namespace Quinn.MissileSystem
 
 		private void OnLifespanEnd()
 		{
+			Audio.Play(FizzleOutSound, transform.position);
+
 			OnDeath();
 			TriggerSplash();
 			Destroy(gameObject);

@@ -9,119 +9,128 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 	{
 		[SerializeField, FoldoutGroup("SFX")]
 		private EventReference BasicCastSound;
-		[SerializeField, ShowIf(nameof(HasFinalCastingChain)), FoldoutGroup("SFX")]
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("SFX")]
 		private EventReference BasicFinisherCastSound;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("SFX")]
-		private EventReference SpecialCastSound;
+		private EventReference SpecialCastLittleSound, SpecialCastBigSound, FullChargeSound;
 
 		[SerializeField, Required, FoldoutGroup("Basic")]
 		private Missile BasicMissile;
-		[Space, SerializeField, FoldoutGroup("Basic")]
-		private float CastCooldown = 0.2f;
+		[SerializeField, FoldoutGroup("Basic"), Unit(Units.Second)]
+		private float BasicCooldown = 0.3f;
+		[SerializeField, FoldoutGroup("Basic"), Unit(Units.MetersPerSecond)]
+		private float BasicKnockbackSpeed = 10f;
 		[SerializeField, FoldoutGroup("Basic")]
-		private float CastChainCooldown = 0.6f;
+		private MissileSpawnBehavior BasicBehavior = MissileSpawnBehavior.Direct;
+		[SerializeField, HideIf("@BasicBehavior == MissileSpawnBehavior.Direct"), FoldoutGroup("Basic"), Unit(Units.Degree)]
+		private float BasicSpread = 0f;
 		[SerializeField, FoldoutGroup("Basic")]
-		private float CastKnockbackSpeed = 10f;
-		[SerializeField, FoldoutGroup("Basic")]
-		private MissileSpawnBehavior CastBehavior = MissileSpawnBehavior.Direct;
-		[SerializeField, HideIf("@CastBehavior == MissileSpawnBehavior.Direct"), FoldoutGroup("Basic")]
-		private float CastSpread = 0f;
-		[SerializeField, FoldoutGroup("Basic")]
-		private int CastCount = 1;
-		[SerializeField, ShowIf("@CastCount > 1"), FoldoutGroup("Basic")]
-		private float CastInterval = 0f;
+		private int BasicCount = 1;
+		[SerializeField, ShowIf("@BasicCount > 1"), FoldoutGroup("Basic"), Unit(Units.Second)]
+		private float BasicInterval = 0f;
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic"), Unit(Units.Second)]
+		private float ChainWindowDuration = 0.4f;
 
 		[Space, SerializeField, FoldoutGroup("Basic Finisher")]
-		private bool HasFinalCastingChain = true;
-		[SerializeField, ShowIf(nameof(HasFinalCastingChain)), FoldoutGroup("Basic Finisher")]
-		private int FinalChainMissileCount = 3;
-		[SerializeField, ShowIf(nameof(HasFinalCastingChain)), FoldoutGroup("Basic Finisher")]
-		private MissileSpawnBehavior FinalChainBehavior = MissileSpawnBehavior.SpreadRandom;
-		[SerializeField, HideIf("@FinalChainBehavior == MissileSpawnBehavior.Direct"), ShowIf(nameof(HasFinalCastingChain)), FoldoutGroup("Basic Finisher")]
-		private float FinalChainMissileSpread = 45f;
-		[SerializeField, ShowIf(nameof(HasFinalCastingChain)), FoldoutGroup("Basic Finisher")]
-		private float ChainWindowDuration = 0.4f;
-		[SerializeField, ShowIf(nameof(HasFinalCastingChain)), FoldoutGroup("Basic Finisher")]
-		private float ChainFinalKnockbackSpeed = 14f;
-		[SerializeField, ShowIf(nameof(HasFinalCastingChain)), FoldoutGroup("Basic Finisher")]
+		private bool HasBasicFinisher = true;
+		[SerializeField, FoldoutGroup("Basic Finisher"), Unit(Units.Second)]
+		private float BasicFinisherCooldown = 0.6f;
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
+		private int BasicFinisherCount = 3;
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
+		private MissileSpawnBehavior BasicFinisherBehavior = MissileSpawnBehavior.SpreadRandom;
+		[SerializeField, HideIf("@BasicFinisherBehavior == MissileSpawnBehavior.Direct || HasBasicFinisher"), FoldoutGroup("Basic Finisher"), Unit(Units.Degree)]
+		private float BasicFinisherSpread = 45f;
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher"), Unit(Units.MetersPerSecond)]
+		private float BasicFinisherKnockbackSpeed = 14f;
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
 		[Tooltip("This can be null to use the basic normal missile.")]
-		private Missile ChainFinalMissileOverride;
+		private Missile BasicFinisherMissileOverride;
 
 		[Space, SerializeField, FoldoutGroup("Special")]
 		private bool HasSpecial = true;
 		[SerializeField, Required, FoldoutGroup("Special")]
 		private Missile SpecialMissile;
-		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
+		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special"), Unit(Units.Second)]
 		private float SpecialCooldown = 1f;
-		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
+		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special"), Unit(Units.Second)]
 		private float SpecialChargeTime = 1f;
-		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
+		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special"), Unit(Units.MetersPerSecond)]
 		private float SpecialKnockbackSpeed = 10f;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
 		private float ChargingMoveSpeedFactor = 0.5f;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
 		private int SpecialCount = 1;
-		[SerializeField, ShowIf("@SpecialCount > 1"), ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
+		[SerializeField, ShowIf("@SpecialCount > 1 && HasSpecial"), FoldoutGroup("Special"), Unit(Units.Second)]
 		private float SpecialInterval = 0f;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
 		private MissileSpawnBehavior SpecialBehavior = MissileSpawnBehavior.Direct;
-		[SerializeField, HideIf("@SpecialBehavior == MissileSpawnBehavior.Direct"), ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
+		[SerializeField, HideIf("@SpecialBehavior == MissileSpawnBehavior.Direct || !HasSpecial"), FoldoutGroup("Special"), Unit(Units.Degree)]
 		private float SpecialSpread = 0f;
 
 		private float _largeMissileTime;
 		private int _castChainCount;
 		private float _chainTimeoutTime;
-
 		private bool _isMovePenaltyApplied;
 
-		private void FixedUpdate()
+		private void Update()
 		{
-			if (_castChainCount < FinalChainMissileCount && _castChainCount > 0 && Time.time > _chainTimeoutTime)
+			if (IsBasicHeld && CanCast)
 			{
-				_castChainCount = 0;
-				Caster.SetCooldown(CastChainCooldown);
-			}
-
-			if (_isMovePenaltyApplied && Time.time > _largeMissileTime)
-			{
-				_isMovePenaltyApplied = false;
-				Caster.Movement.RemoveSpeedModifier(this);
+				OnBasicDown();
 			}
 		}
 
-		public override void OnCastStart()
+		private void FixedUpdate()
+		{
+			if (_castChainCount < BasicFinisherCount && _castChainCount > 0 && Time.time > _chainTimeoutTime)
+			{
+				_castChainCount = 0;
+				Caster.SetCooldown(BasicCooldown);
+			}
+
+			if (_isMovePenaltyApplied && Time.time > _largeMissileTime && HasSpecial)
+			{
+				_isMovePenaltyApplied = false;
+				Caster.Movement.RemoveSpeedModifier(this);
+
+				Audio.Play(FullChargeSound);
+			}
+		}
+
+		public override void OnBasicDown()
 		{
 			_castChainCount++;
 
 			// Finisher cast.
-			if (_castChainCount >= FinalChainMissileCount && HasFinalCastingChain)
+			if (_castChainCount >= BasicFinisherCount && HasBasicFinisher)
 			{
-				Caster.SetCooldown(CastChainCooldown);
+				Caster.SetCooldown(BasicFinisherCooldown);
 				_castChainCount = 0;
 
-				var missile = ChainFinalMissileOverride != null ? ChainFinalMissileOverride : BasicMissile;
+				var missile = BasicFinisherMissileOverride != null ? BasicFinisherMissileOverride : BasicMissile;
 
-				MissileManager.Instance.SpawnMissile(Caster.gameObject, missile, Head.position, GetDir(),
-					FinalChainMissileCount, FinalChainBehavior, FinalChainMissileSpread);
-				Caster.Movement.Knockback(-GetDir(), ChainFinalKnockbackSpeed);
+				MissileManager.Instance.SpawnMissile(Caster.gameObject, missile, Head.position, GetDirToCrosshair(),
+					BasicFinisherCount, BasicFinisherBehavior, BasicFinisherSpread);
+				Caster.Movement.Knockback(-GetDirToCrosshair(), BasicFinisherKnockbackSpeed);
 
 				Audio.Play(BasicFinisherCastSound, Head.position);
 			}
 			// Normal cast.
 			else
 			{
-				Caster.SetCooldown(CastCooldown);
-				MissileManager.Instance.SpawnMissile(Caster.gameObject, BasicMissile, Head.position, GetDir(),
-					CastCount, CastInterval, CastBehavior, CastSpread);
+				Caster.SetCooldown(BasicCooldown);
+				MissileManager.Instance.SpawnMissile(Caster.gameObject, BasicMissile, Head.position, GetDirToCrosshair(),
+					BasicCount, BasicInterval, BasicBehavior, BasicSpread);
 
-				_chainTimeoutTime = Time.time + ChainWindowDuration + CastCooldown;
-				Caster.Movement.Knockback(-GetDir(), CastKnockbackSpeed);
+				_chainTimeoutTime = Time.time + ChainWindowDuration + BasicCooldown;
+				Caster.Movement.Knockback(-GetDirToCrosshair(), BasicKnockbackSpeed);
 
 				Audio.Play(BasicCastSound, Head.position);
 			}
 		}
 
-		public override void OnSpecialStart()
+		public override void OnSpecialDown()
 		{
 			if (!HasSpecial)
 				return;
@@ -134,22 +143,22 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			_castChainCount = 0;
 		}
 
-		public override void OnSpecialStop()
+		public override void OnSpecialUp()
 		{
 			if (!HasSpecial)
 				return;
 
 			var prefab = Time.time > _largeMissileTime ? SpecialMissile : BasicMissile;
-			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDir(),
+			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDirToCrosshair(),
 				SpecialCount, SpecialInterval, SpecialBehavior, SpecialSpread);
 
-			Caster.Movement.Knockback(-GetDir(), SpecialKnockbackSpeed);
-			Audio.Play(SpecialCastSound, Head.position);
+			Caster.Movement.Knockback(-GetDirToCrosshair(), SpecialKnockbackSpeed);
+			Audio.Play(Time.time > _largeMissileTime ? SpecialCastBigSound : SpecialCastLittleSound, Head.position);
 
 			Caster.Movement.RemoveSpeedModifier(this);
 		}
 
-		private Vector2 GetDir()
+		private Vector2 GetDirToCrosshair()
 		{
 			return CrosshairManager.Instance.DirectionToCrosshair(Head.position);
 		}

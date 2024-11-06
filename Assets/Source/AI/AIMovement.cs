@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Quinn.AI
 {
-	[RequireComponent(typeof(AIAgent))]
 	public class AIMovement : Locomotion
 	{
 		[field: SerializeField]
@@ -79,6 +78,7 @@ namespace Quinn.AI
 
 			int index = 0;
 			Vector2[] path = await Pathfinder.Instance.FindPath(transform.position, target.position);
+			Vector2 _lastTargetPos = transform.position;
 
 			while (index < path.Length - 1 && path.Length > 0)
 			{
@@ -88,11 +88,20 @@ namespace Quinn.AI
 				if (transform.position.DistanceTo(target.position) > PathfindThreshold)
 				{
 					if (Time.frameCount % ContinuousPathfindFrameDivision == 0)
+					{
+						_lastTargetPos = path[index];
 						path = await Pathfinder.Instance.FindPath(transform.position, target.position);
+						index = 0;
+					}
 
-					if (index < path.Length && MoveTo(path[index], stoppingDistance))
+					if (index < path.Length && MoveTo(_lastTargetPos, stoppingDistance))
 					{
 						index++;
+
+						if (index < path.Length)
+						{
+							_lastTargetPos = path[index];
+						}
 					}
 				}
 				else

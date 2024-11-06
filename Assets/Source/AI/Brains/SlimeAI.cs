@@ -22,7 +22,7 @@ namespace Quinn.AI
 				await Jump(dest);
 
 				FaceTarget();
-				await Wait.Seconds(JumpInterval);
+				await Wait.Seconds(JumpInterval, DeathTokenSource.Token);
 				FaceTarget();
 			}
 		}

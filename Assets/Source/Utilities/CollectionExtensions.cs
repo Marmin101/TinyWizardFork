@@ -21,7 +21,7 @@ namespace Quinn
 
 			foreach (var item in collection)
 			{
-				if (getWeightCallback(item) / sum > rand)
+				if (getWeightCallback(item) / sum < rand)
 				{
 					return item;
 				}

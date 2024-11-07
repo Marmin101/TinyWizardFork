@@ -1,4 +1,6 @@
-﻿using Quinn.PlayerSystem;
+﻿using Quinn.DungeonGeneration;
+using Quinn.PlayerSystem;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
 
@@ -20,6 +22,8 @@ namespace Quinn.AI
 
 		protected Transform Target { get; private set; }
 		protected Health TargetHealth { get; private set; }
+		protected Room Room { get; private set; }
+		protected bool IsRoomStarted { get; private set; }
 
 		protected Vector2 TargetPos
 		{
@@ -34,6 +38,10 @@ namespace Quinn.AI
 		protected float DstToTarget => transform.position.DistanceTo(TargetPos);
 		protected Vector2 DirToTarget => transform.position.DirectionTo(TargetPos);
 
+		protected AIState ActiveState { get; private set; }
+
+		private bool _isActiveFirst;
+
 		protected virtual void Awake()
 		{
 			Animator = GetComponent<Animator>();
@@ -46,14 +54,29 @@ namespace Quinn.AI
 			AIManager.Instance.AddAgent(this);
 		}
 
-		protected virtual void Start()
-		{
-			SetTarget(GetTarget());
-		}
-
 		protected virtual void Update()
 		{
 			OnThink();
+
+			if (ActiveState != null)
+			{
+				bool finished = false;
+
+				if (_isActiveFirst)
+				{
+					finished = ActiveState.Invoke(true);
+					_isActiveFirst = false;
+				}
+				else
+				{
+					finished = ActiveState.Invoke(false);
+				}
+
+				if (finished)
+				{
+					ClearState();
+				}
+			}
 		}
 
 		protected virtual void OnDestroy()
@@ -68,6 +91,58 @@ namespace Quinn.AI
 		{
 			Target = transform;
 			TargetHealth = transform.GetComponent<Health>();
+		}
+
+		public void RoomStart(Room room)
+		{
+			Room = room;
+			SetTarget(GetTarget());
+
+			IsRoomStarted = true;
+			OnRoomStart();
+		}
+
+		protected virtual void OnRoomStart() { }
+
+		protected void TransitionTo(AIState state)
+		{
+			if (ActiveState != state && state is not null)
+			{
+				ActiveState = state;
+				_isActiveFirst = true;
+			}
+		}
+
+		protected void ClearState()
+		{
+			ActiveState = null;
+		}
+
+		protected Vector2 GetRandomPositionInRoom()
+		{
+			if (Room == null)
+				return Position;
+
+			var bounds = Room.PathfindBounds.bounds;
+
+			Vector2 center = bounds.center;
+			center += new Vector2()
+			{
+				x = Random.Range(-bounds.extents.x, bounds.extents.x),
+				y = Random.Range(-bounds.extents.y, bounds.extents.y)
+			};
+
+			return center;
+		}
+
+		protected Vector2 GetRandomPositionInRadiusInRoom()
+		{
+			if (Room == null)
+				return Position;
+
+			var bounds = Room.PathfindBounds.bounds;
+
+			return (Vector2)bounds.center + (Random.insideUnitCircle * bounds.extents.y);
 		}
 
 		protected abstract void OnThink();
@@ -129,7 +204,10 @@ namespace Quinn.AI
 
 		protected void FaceTarget()
 		{
-			FacePosition(TargetPos);
+			if (Target != null)
+			{
+				FacePosition(TargetPos);
+			}
 		}
 
 		protected void DamageTarget(GameObject target, float damage)
@@ -145,6 +223,20 @@ namespace Quinn.AI
 			{
 				target.TakeDamage(damage, transform.position.DirectionTo(target.transform.position), Health.Team, gameObject);
 			}
+		}
+
+		protected Vector2 GetPositionInFrontOfTarget(Vector2 target, float minDst, float maxDst, float minAngle, float maxAngle)
+		{
+			Vector2 selfPos = Position;
+			Vector2 targetPos = target;
+
+			float angle = Random.Range(minAngle, maxAngle);
+
+			Vector2 targetToSelf = selfPos.DirectionTo(targetPos);
+			Vector2 rotatedDir = Quaternion.AngleAxis(angle, Vector3.forward) * targetToSelf;
+
+			float dst = Random.Range(minDst, maxDst);
+			return targetPos + (rotatedDir * dst);
 		}
 	}
 }

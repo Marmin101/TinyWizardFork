@@ -9,7 +9,7 @@ namespace Quinn.MissileSystem
 	public class Missile : MonoBehaviour
 	{
 		[SerializeField, BoxGroup("FX")]
-		private EventReference HitSound, FizzleOutSound;
+		private EventReference SpawnSound, HitSound, FizzleOutSound;
 
 		[SerializeField, BoxGroup("Core")]
 		private float DirectSpeed = 8f;
@@ -91,6 +91,8 @@ namespace Quinn.MissileSystem
 			_baseDir = dir.normalized;
 			_endLifeTime = Time.time + Lifespan;
 			_owner = owner;
+
+			Audio.Play(SpawnSound);
 		}
 
 		private void OnImpact()

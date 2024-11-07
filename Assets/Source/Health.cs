@@ -124,6 +124,8 @@ namespace Quinn
 		{
 			foreach (var renderer in Renderers)
 			{
+				Debug.Assert(renderer != null, $"Health damaged FX found a null sprite renderered! Make sure '{gameObject.name}' has no missing references on its Health component.");
+
 				renderer.enabled = true;
 				renderer.material.SetFloat("_Flash", 0f);
 			}

@@ -65,5 +65,10 @@ namespace Quinn
 		{
 			return !IsCardinal(v);
 		}
+
+		public static float GetRandom(this Vector2 v)
+		{
+			return Random.Range(v.x, v.y);
+		}
 	}
 }

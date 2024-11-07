@@ -5,14 +5,16 @@ namespace Quinn.AI
 	public class SlimeAI : AIAgent
 	{
 		[SerializeField]
-		private float JumpInterval = 0.3f;
+		private float JumpPrimeDuration = 0.5f;
+		[SerializeField]
+		private Vector2 JumpInterval = new(0.1f, 0.4f);
 		[SerializeField]
 		private float JumpDistance = 2f;
 
-		protected async override void Start()
-		{
-			base.Start();
+		protected override void OnThink() { }
 
+		protected override async void OnRoomStart()
+		{
 			while (gameObject != null && !DeathTokenSource.IsCancellationRequested)
 			{
 				FaceTarget();
@@ -22,17 +24,15 @@ namespace Quinn.AI
 				await Jump(dest);
 
 				FaceTarget();
-				await Wait.Seconds(JumpInterval, DeathTokenSource.Token);
+				await Wait.Seconds(JumpInterval.GetRandom(), DeathTokenSource.Token);
 				FaceTarget();
 			}
 		}
 
-		protected override void OnThink() { }
-
 		private async Awaitable Jump(Vector2 destination)
 		{
 			Animator.SetTrigger("PrimeJump");
-			await Wait.Seconds(0.5f, DeathTokenSource.Token);
+			await Wait.Seconds(JumpPrimeDuration, DeathTokenSource.Token);
 			Animator.SetTrigger("Jump");
 
 			float speed = JumpDistance;

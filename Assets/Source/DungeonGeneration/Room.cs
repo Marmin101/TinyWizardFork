@@ -20,6 +20,10 @@ namespace Quinn.DungeonGeneration
 		private CinemachineCamera RoomCamera;
 		[SerializeField, Required]
 		private Tilemap Navmesh;
+		[field: SerializeField, Required]
+		public BoxCollider2D PathfindBounds { get; private set; }
+		[SerializeField]
+		private List<AIAgent> Agents;
 
 		[SerializeField, Space]
 		private bool StartConquered;
@@ -96,7 +100,7 @@ namespace Quinn.DungeonGeneration
 
 				if (!IsConquered)
 				{
-					Lock();
+					StartRoomEncounter();
 				}
 			}
 		}
@@ -130,6 +134,26 @@ namespace Quinn.DungeonGeneration
 					generator.GenerateRoomAt(RoomGridIndex.x + 1, RoomGridIndex.y);
 				else
 					generator.GenerateRoomAt(RoomGridIndex.x - 1, RoomGridIndex.y);
+			}
+		}
+
+		private void StartRoomEncounter()
+		{
+			Lock();
+
+			foreach (var agent in Agents)
+			{
+				agent.RoomStart(this);
+				agent.Health.OnDeath += () =>
+				{
+					Agents.Remove(agent);
+
+					if (Agents.Count == 0)
+					{
+						IsConquered = true;
+						Open();
+					}
+				};
 			}
 		}
 	}

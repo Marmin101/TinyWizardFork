@@ -18,13 +18,13 @@ namespace Quinn.AI
 			while (gameObject != null && !DeathTokenSource.IsCancellationRequested)
 			{
 				FaceTarget();
+				await Wait.Seconds(JumpInterval.GetRandom(), DeathTokenSource.Token);
+				FaceTarget();
 
 				Vector2 dest = transform.position;
 				dest += Position.DirectionTo(TargetPos) * JumpDistance;
 				await Jump(dest);
 
-				FaceTarget();
-				await Wait.Seconds(JumpInterval.GetRandom(), DeathTokenSource.Token);
 				FaceTarget();
 			}
 		}

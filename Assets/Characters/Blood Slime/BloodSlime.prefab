@@ -333,23 +333,23 @@ PrefabInstance:
       objectReference: {fileID: 317801139403267643}
     - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Size.x
-      value: 0.6652078
+      value: 0.7095388
       objectReference: {fileID: 0}
     - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Size.y
-      value: 0.5063408
+      value: 0.8748538
       objectReference: {fileID: 0}
     - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Offset.x
-      value: -3.5154102e-11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Offset.y
-      value: 0.24970517
+      value: 0.43395886
       objectReference: {fileID: 0}
     - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Direction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7039031484908775684, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Controller
@@ -431,7 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a517a4968ad0f4795bb9dee28ff43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpInterval: 0.3
+  JumpPrimeDuration: 0.5
+  JumpInterval: {x: 0.1, y: 0.4}
   JumpDistance: 2
 --- !u!4 &2740707142073682643 stripped
 Transform:

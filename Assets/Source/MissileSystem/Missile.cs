@@ -45,6 +45,8 @@ namespace Quinn.MissileSystem
 		private float OscillateAmplitude = 0.5f;
 		[SerializeField, FoldoutGroup("Oscillate"), ShowIf(nameof(DoesOscillate))]
 		private float OscillateFrequency = 0.5f;
+		[SerializeField, FoldoutGroup("Oscillate"), ShowIf(nameof(DoesOscillate))]
+		private bool RandomizeOscillation;
 
 		private Rigidbody2D _rb;
 		private GameObject _owner;
@@ -53,9 +55,12 @@ namespace Quinn.MissileSystem
 		private Vector2 _velocity;
 		private Vector2 _baseDir;
 
+		private float _oscillateOffset;
+
 		private void Awake()
 		{
 			_rb = GetComponent<Rigidbody2D>();
+			_oscillateOffset = RandomizeOscillation ? Random.value : 0f;
 		}
 
 		private void FixedUpdate()
@@ -140,8 +145,10 @@ namespace Quinn.MissileSystem
 			if (!DoesOscillate)
 				return Vector2.zero;
 
+			float time = Time.time + _oscillateOffset;
+
 			Vector2 oscDir = new Vector2(-_baseDir.y, _baseDir.x);
-			return Mathf.Sin(Time.time * OscillateFrequency) * OscillateAmplitude * oscDir;
+			return Mathf.Sin(time * OscillateFrequency) * OscillateAmplitude * oscDir;
 		}
 
 		private void OnDeath()

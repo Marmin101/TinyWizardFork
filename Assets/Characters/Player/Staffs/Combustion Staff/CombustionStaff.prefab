@@ -161,31 +161,31 @@ MonoBehaviour:
     m_RotationOrder: 4
   MinChargeThreshold: 1
   DamageRadius: 0.5
-  SparkCooldown: 0.4
+  BaseSparkCooldown: 0.6
   CastCooldown: 0.1
   CombustionVFX: {fileID: 3046125498168810899, guid: 385d91660187d9e4287a7e5326c4627e, type: 3}
   VFXLifespan: 3
   SmallExplosionSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1749370342
+      Data2: 1198380268
+      Data3: -453512056
+      Data4: 424446055
+    Path: event:/CombustionStaffExplode_Small
   MediumExplosionSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1358915115
+      Data2: 1265151071
+      Data3: 58498965
+      Data4: -1020683540
+    Path: event:/CombustionStaffExplode_Med
   LargeExplosionSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -295128833
+      Data2: 1228554532
+      Data3: -1343269714
+      Data4: 514079750
+    Path: event:/CombustionStaffExplode_Big
 --- !u!4 &8949893096219440680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2432762686052508438, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}

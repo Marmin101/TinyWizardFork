@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -22,12 +23,11 @@ namespace Quinn.DungeonGeneration
 		private Tilemap Navmesh;
 		[field: SerializeField, Required]
 		public BoxCollider2D PathfindBounds { get; private set; }
-		[SerializeField]
-		private List<AIAgent> Agents;
+		[SerializeField, Required]
+		private Transform AgentsParent;
 
 		[SerializeField, Space]
 		private bool StartConquered;
-
 		[SerializeField, BoxGroup("Doors"), ValidateInput("@HasNorthDoor || HasEastDoor || HasSouthDoor || HasWestDoor")]
 		private Door NorthDoor, SouthDoor, EastDoor, WestDoor;
 
@@ -42,6 +42,8 @@ namespace Quinn.DungeonGeneration
 		public Vector2Int RoomGridIndex { get; set; }
 
 		private readonly HashSet<Door> _doors = new();
+		private readonly HashSet<AIAgent> _liveAgents = new();
+		private readonly HashSet<StaticAgent> _staticAgents = new();
 
 		private void Awake()
 		{
@@ -85,6 +87,21 @@ namespace Quinn.DungeonGeneration
 			foreach (var door in _doors)
 			{
 				door.Close();
+			}
+		}
+
+		public void RegisterAgent(IAgent agent)
+		{
+			agent.StartRoom(this);
+
+			if (agent is AIAgent liveAgent)
+			{
+				_liveAgents.Add(liveAgent);
+				liveAgent.Health.OnDeath += () => OnAgentDeath(liveAgent);
+			}
+			else if (agent is StaticAgent staticAgent)
+			{
+				_staticAgents.Add(staticAgent);
 			}
 		}
 
@@ -141,19 +158,30 @@ namespace Quinn.DungeonGeneration
 		{
 			Lock();
 
-			foreach (var agent in Agents)
+			for (int i = 0; i < AgentsParent.childCount; i++)
 			{
-				agent.RoomStart(this);
-				agent.Health.OnDeath += () =>
-				{
-					Agents.Remove(agent);
+				Transform child = AgentsParent.GetChild(i);
 
-					if (Agents.Count == 0)
-					{
-						IsConquered = true;
-						Open();
-					}
-				};
+				if (child.TryGetComponent(out IAgent agent))
+				{
+					RegisterAgent(agent);
+				}
+			}
+		}
+
+		private void OnAgentDeath(AIAgent agent)
+		{
+			_liveAgents.Remove(agent);
+
+			if (_liveAgents.Count == 0)
+			{
+				IsConquered = true;
+				Open();
+
+				foreach (var staticAgent in _staticAgents)
+				{
+					staticAgent.CeaseFire();
+				}
 			}
 		}
 	}

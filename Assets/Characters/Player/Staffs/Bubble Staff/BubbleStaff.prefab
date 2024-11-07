@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3308763497516412586, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_Name
-      value: WaterStaff
+      value: BubbleStaff
       objectReference: {fileID: 0}
     - target: {fileID: 3737774933434080592, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_Sprite
@@ -151,7 +151,7 @@ MonoBehaviour:
       Data2: 1306905374
       Data3: -235767161
       Data4: 333079133
-    Path: event:/WaterStaffCast
+    Path: event:/BubbleStaffCast
   BasicFinisherCastSound:
     Guid:
       Data1: 0
@@ -181,12 +181,12 @@ MonoBehaviour:
       Data4: 0
     Path: 
   BasicMissile: {fileID: 6657825938120382363, guid: 2c3703b9365643e44b19b6d354996aea, type: 3}
-  BasicCooldown: 0.3
-  BasicKnockbackSpeed: 10
-  BasicBehavior: 0
-  BasicSpread: 0
+  BasicCooldown: 0.6
+  BasicKnockbackSpeed: 4
+  BasicBehavior: 2
+  BasicSpread: 15
   BasicCount: 3
-  BasicInterval: 0.1
+  BasicInterval: 0.05
   ChainWindowDuration: 0.4
   HasBasicFinisher: 0
   BasicFinisherCooldown: 0.6
@@ -197,6 +197,7 @@ MonoBehaviour:
   BasicFinisherMissileOverride: {fileID: 0}
   HasSpecial: 0
   SpecialMissile: {fileID: 0}
+  ChargingSparkInterval: 0.45
   SpecialCooldown: 1
   SpecialChargeTime: 1
   SpecialKnockbackSpeed: 10

@@ -76,9 +76,7 @@ namespace Quinn.DungeonGeneration
 		public async void GenerateRoomAt(int x, int y)
 		{
 			if (_generatedRooms.ContainsKey(new Vector2Int(x, y)))
-			{
 				return;
-			}
 
 			Debug.Assert(ActiveFloor != null, "Failed to generate room. There is no active floor!");
 

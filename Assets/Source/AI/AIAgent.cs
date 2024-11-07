@@ -9,7 +9,7 @@ namespace Quinn.AI
 	[RequireComponent(typeof(Animator))]
 	[RequireComponent(typeof(Health))]
 	[RequireComponent(typeof(AIMovement))]
-	public abstract class AIAgent : MonoBehaviour
+	public abstract class AIAgent : MonoBehaviour, IAgent
 	{
 		public Health Health { get; private set; }
 		public Team Team => Health.Team;
@@ -93,7 +93,7 @@ namespace Quinn.AI
 			TargetHealth = transform.GetComponent<Health>();
 		}
 
-		public void RoomStart(Room room)
+		public void StartRoom(Room room)
 		{
 			Room = room;
 			SetTarget(GetTarget());

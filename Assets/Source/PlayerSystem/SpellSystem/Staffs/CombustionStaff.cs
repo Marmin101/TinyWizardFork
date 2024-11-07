@@ -19,7 +19,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		[SerializeField]
 		private float DamageRadius = 1f;
 		[SerializeField]
-		private float SparkCooldown = 0.3f;
+		private float BaseSparkCooldown = 0.3f;
 		[SerializeField]
 		private float CastCooldown = 0.1f;
 		[SerializeField]
@@ -39,7 +39,11 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				_charge += Time.fixedDeltaTime * ChargeRate;
 				_charge = Mathf.Min(_charge, MaxCharge);
 
-				Cooldown.Call(this, SparkCooldown, Caster.Spark);
+				float cooldown = BaseSparkCooldown;
+				float percent = _charge / MaxCharge;
+				if (percent > 0.3f) cooldown *= 0.4f;
+				else if (percent > 0.8f) cooldown *= 0.1f;
+				Cooldown.Call(this, BaseSparkCooldown, Caster.Spark);
 			}
 		}
 

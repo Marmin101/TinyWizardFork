@@ -131,9 +131,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 15
+      y: 4
       width: 1
-      height: 7
+      height: 10
     spriteID: 7f82446458dffa844b10a036e5f34ea0
     spriteBone: []
     spriteOutline: []
@@ -142,7 +142,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 15}
+    uvTransform: {x: 4, y: 4}
   - name: Head
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -152,7 +152,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 22
       width: 3
       height: 3
     spriteID: 93c5c95a81b55d941bbf322fb989a5d2
@@ -163,7 +163,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 22}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -178,9 +178,9 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 24
-        y: 19
+        y: 16
         width: 1
-        height: 7
+        height: 10
       spriteId: 7f82446458dffa844b10a036e5f34ea0
     linkedCells: []
     parentIndex: -1

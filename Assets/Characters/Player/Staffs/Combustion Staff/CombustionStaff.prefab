@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: afcac1021aecf664991316718a99aa0f, type: 2}
+    - target: {fileID: 2432762686052508438, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.398
+      objectReference: {fileID: 0}
     - target: {fileID: 3308763497516412586, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_Name
       value: CombustionStaff
@@ -30,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.4375
+      value: 0.625
       objectReference: {fileID: 0}
     - target: {fileID: 7993139550144138633, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_LocalPosition.x

@@ -62,6 +62,7 @@ namespace Quinn.AI
 			}
 
 			FaceTarget();
+			Animator.SetBool("IsMoving", ActiveState == OnTraverse);
 		}
 
 		protected override void OnDamaged(float amount, Vector2 dir, GameObject source)

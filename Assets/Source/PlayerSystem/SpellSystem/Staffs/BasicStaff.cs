@@ -95,7 +95,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Caster.SetCooldown(BasicCooldown);
 			}
 
-			if (_isMovePenaltyApplied && Time.time > _largeMissileTime && HasSpecial)
+			if (_isMovePenaltyApplied && Time.time > _largeMissileTime && HasSpecial && IsSpecialHeld)
 			{
 				_isMovePenaltyApplied = false;
 				Caster.Movement.RemoveSpeedModifier(this);

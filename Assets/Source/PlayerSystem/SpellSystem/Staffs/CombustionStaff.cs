@@ -28,6 +28,10 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float VFXLifespan = 3f;
 		[SerializeField]
 		private EventReference SmallExplosionSound, MediumExplosionSound, LargeExplosionSound;
+		[SerializeField]
+		private float MaxEnergyUse = 5f;
+		[SerializeField]
+		private AnimationCurve EnergyUseChargeFactor;
 
 		private bool _isCharging;
 		private float _charge;
@@ -49,7 +53,10 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnBasicDown()
 		{
-			_isCharging = true;
+			if (CanCast)
+			{
+				_isCharging = true;
+			}
 		}
 
 		public override void OnBasicUp()
@@ -84,6 +91,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 						health.TakeDamage(dmg, pos.DirectionTo(health.transform.position), Team.Player, Caster.gameObject);
 					}
 				}
+
+				ConsumeEnergy(MaxEnergyUse * EnergyUseChargeFactor.Evaluate(chargePercent));
 			}
 
 			_isCharging = false;

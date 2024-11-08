@@ -132,6 +132,7 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
+  <MaxEnergy>k__BackingField: 250
   ChargeRate: 1
   MaxCharge: 4
   BaseChargeToDamage: 51
@@ -186,6 +187,31 @@ MonoBehaviour:
       Data3: -1343269714
       Data4: 514079750
     Path: event:/CombustionStaffExplode_Big
+  MaxEnergyUse: 5
+  EnergyUseChargeFactor:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 1.1687719
+      outSlope: 1.1687719
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.060185824
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.011436961
+      outSlope: 0.011436961
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.061465383
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &8949893096219440680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2432762686052508438, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}

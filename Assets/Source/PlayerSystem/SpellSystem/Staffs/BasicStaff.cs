@@ -101,6 +101,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Caster.Movement.RemoveSpeedModifier(this);
 
 				Audio.Play(FullChargeSound);
+				Caster.Movement.CanDash = true;
 			}
 
 			if (IsSpecialHeld && CanCast && HasSpecial)
@@ -147,6 +148,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			if (!HasSpecial)
 				return;
 
+			Caster.Movement.CanDash = false;
+
 			Caster.SetCooldown(SpecialCooldown);
 			_largeMissileTime = Time.time + SpecialChargeTime;
 
@@ -161,6 +164,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				return;
 
 			Caster.Spark();
+
 
 			var prefab = Time.time > _largeMissileTime ? SpecialMissile : BasicMissile;
 			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDirToCrosshair(),

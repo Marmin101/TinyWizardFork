@@ -1,5 +1,6 @@
 ﻿using FMODUnity;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Quinn.PlayerSystem
@@ -21,6 +22,7 @@ namespace Quinn.PlayerSystem
 		private EventReference DashSound;
 
 		public bool IsDashing { get; private set; }
+		public bool CanDash { get; set; } = true;
 
 		private Animator _animator;
 		private Health _health;
@@ -75,7 +77,7 @@ namespace Quinn.PlayerSystem
 
 		private void OnDash()
 		{
-			if (!IsDashing && Time.time > _nextDashTime)
+			if (CanDash && !IsDashing && Time.time > _nextDashTime)
 			{
 				IsDashing = true;
 				_health.BlockDamage(this);

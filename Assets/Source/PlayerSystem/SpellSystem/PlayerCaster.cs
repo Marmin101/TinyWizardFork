@@ -14,7 +14,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		[SerializeField]
 		private float StaffOffset = 0.5f;
 		[SerializeField]
-		private Staff TestingStaff;
+		private Staff StartingStaff;
 		[SerializeField]
 		private float InputBufferTimeout = 0.2f;
 		[SerializeField, Required]
@@ -27,6 +27,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public bool IsSpecialHeld { get; private set; }
 
 		public PlayerMovement Movement { get; private set; }
+		public event Action<Staff> OnStaffSet;
 
 		private float _nextInputTime;
 		private readonly BufferManager _inputBuffer = new();
@@ -39,9 +40,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 			input.OnCastStart += OnBasicStart;
 			input.OnSpecialStart += OnSpecialStart;
 
-			if (TestingStaff != null)
+			if (StartingStaff != null)
 			{
-				GameObject staff = TestingStaff.gameObject.Clone();
+				GameObject staff = StartingStaff.gameObject.Clone();
 				SetStaff(staff.GetComponent<Staff>());
 			}
 		}
@@ -74,9 +75,6 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public void SetStaff(Staff staff)
 		{
-			// TODO: Drop old staff?
-			// Durability?
-
 			if (Staff != null)
 			{
 				Staff.SetCaster(null);
@@ -90,6 +88,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 			CastingSpark.SetGradient("Color", staff.SparkGradient);
 			CastingSpark.transform.SetParent(staff.Head, false);
 			CastingSpark.transform.localPosition = Vector3.zero;
+
+			OnStaffSet?.Invoke(staff);
 		}
 
 		public void SetCooldown(float duration)

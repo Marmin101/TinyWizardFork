@@ -425,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StaffPivot: {fileID: 1884010044133439082}
   StaffOffset: 0.52
-  TestingStaff: {fileID: 2408369836229230331, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
+  StartingStaff: {fileID: 2408369836229230331, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
   InputBufferTimeout: 0.35
   CastingSpark: {fileID: 8386681424887333751}
 --- !u!114 &7626890514978811671

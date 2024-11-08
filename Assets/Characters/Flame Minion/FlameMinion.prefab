@@ -179,10 +179,10 @@ MonoBehaviour:
   Behavior: 0
   SpreadAngle: 30
   IdleDuration: {x: 1, y: 3}
-  IdleFireChance: 0.45
+  IdleFireChance: 0.7
   IdleFireInterval: 1
   MaxTraverseDistance: 6
-  TraverseFireChance: 0.9
+  TraverseFireChance: 0.5
   TraverseFireInterval: 1
 --- !u!4 &8209992082937319532 stripped
 Transform:

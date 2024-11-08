@@ -10,6 +10,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public Transform Head { get; private set; }
 		[field: SerializeField]
 		public Gradient SparkGradient { get; private set; }
+		[field: SerializeField]
+		public float MaxEnergy { get; private set; } = 500f;
+
+		public float Energy { get; private set; }
 
 		protected PlayerCaster Caster { get; private set; }
 
@@ -17,7 +21,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			get
 			{
-				if (Caster == null)
+				if (Caster == null || Energy <= 0f)
 					return false;
 
 				return Caster.CanCast;
@@ -44,6 +48,11 @@ namespace Quinn.PlayerSystem.SpellSystem
 			}
 		}
 
+		protected virtual void Awake()
+		{
+			Energy = MaxEnergy;
+		}
+
 		public void Interact(Player player)
 		{
 			var caster = player.GetComponent<PlayerCaster>();
@@ -65,5 +74,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public virtual void OnSpecialDown() { }
 		public virtual void OnSpecialUp() { }
+
+		protected void ConsumeEnergy(float amount)
+		{
+			Energy = Mathf.Max(0f, Energy - amount);
+		}
 	}
 }

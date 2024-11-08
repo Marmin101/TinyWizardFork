@@ -43,9 +43,6 @@ namespace Quinn.AI
 
 		protected override void OnThink()
 		{
-			// Idle; possibly shoot
-			// Run to random position in room (give up after max dst); possibly shoot while running
-
 			if (!IsRoomStarted)
 				return;
 

@@ -31,6 +31,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float BasicInterval = 0f;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic"), Unit(Units.Second)]
 		private float ChainWindowDuration = 0.4f;
+		[SerializeField, FoldoutGroup("Basic")]
+		private float BasicEnergyUse = 2f;
 
 		[Space, SerializeField, FoldoutGroup("Basic Finisher")]
 		private bool HasBasicFinisher = true;
@@ -47,6 +49,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
 		[Tooltip("This can be null to use the basic normal missile.")]
 		private Missile BasicFinisherMissileOverride;
+		[SerializeField, FoldoutGroup("Basic Finisher")]
+		private float BasicFinisherEnergyUse = 4f;
 
 		[Space, SerializeField, FoldoutGroup("Special")]
 		private bool HasSpecial = true;
@@ -70,6 +74,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private MissileSpawnBehavior SpecialBehavior = MissileSpawnBehavior.Direct;
 		[SerializeField, HideIf("@SpecialBehavior == MissileSpawnBehavior.Direct || !HasSpecial"), FoldoutGroup("Special"), Unit(Units.Degree)]
 		private float SpecialSpread = 0f;
+		[SerializeField, FoldoutGroup("Secpail")]
+		private float SpecialEnergyUse = 8f;
 
 		private float _largeMissileTime;
 		private int _castChainCount;
@@ -112,6 +118,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnBasicDown()
 		{
+			if (!CanCast)
+				return;
+
 			_castChainCount++;
 			Caster.Spark();
 
@@ -128,6 +137,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Caster.Movement.Knockback(-GetDirToCrosshair(), BasicFinisherKnockbackSpeed);
 
 				Audio.Play(BasicFinisherCastSound, Head.position);
+				ConsumeEnergy(BasicFinisherEnergyUse);
 			}
 			// Normal cast.
 			else
@@ -140,12 +150,13 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Caster.Movement.Knockback(-GetDirToCrosshair(), BasicKnockbackSpeed);
 
 				Audio.Play(BasicCastSound, Head.position);
+				ConsumeEnergy(BasicEnergyUse);
 			}
 		}
 
 		public override void OnSpecialDown()
 		{
-			if (!HasSpecial)
+			if (!HasSpecial || !CanCast)
 				return;
 
 			Caster.Movement.CanDash = false;
@@ -165,8 +176,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 			Caster.Spark();
 
+			bool enoughCharge = Time.time > _largeMissileTime;
 
-			var prefab = Time.time > _largeMissileTime ? SpecialMissile : BasicMissile;
+			var prefab = enoughCharge ? SpecialMissile : BasicMissile;
 			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDirToCrosshair(),
 				SpecialCount, SpecialInterval, SpecialBehavior, SpecialSpread);
 
@@ -174,6 +186,15 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			Audio.Play(Time.time > _largeMissileTime ? SpecialCastBigSound : SpecialCastLittleSound, Head.position);
 
 			Caster.Movement.RemoveSpeedModifier(this);
+
+			if (enoughCharge)
+			{
+				ConsumeEnergy(SpecialEnergyUse);
+			}
+			else
+			{
+				ConsumeEnergy(BasicFinisherEnergyUse);
+			}
 		}
 
 		private Vector2 GetDirToCrosshair()

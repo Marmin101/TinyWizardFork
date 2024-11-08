@@ -192,6 +192,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 3
+  <MaxEnergy>k__BackingField: 300
   BasicCastSound:
     Guid:
       Data1: 1977740527
@@ -235,6 +236,7 @@ MonoBehaviour:
   BasicCount: 1
   BasicInterval: 0
   ChainWindowDuration: 0.4
+  BasicEnergyUse: 2
   HasBasicFinisher: 1
   BasicFinisherCooldown: 0.75
   BasicFinisherCount: 3
@@ -242,8 +244,10 @@ MonoBehaviour:
   BasicFinisherSpread: 45
   BasicFinisherKnockbackSpeed: 14
   BasicFinisherMissileOverride: {fileID: 0}
+  BasicFinisherEnergyUse: 4
   HasSpecial: 1
   SpecialMissile: {fileID: 7309199781299206731, guid: 654e31f05ede6eb42898fa1720ea9306, type: 3}
+  ChargingSparkInterval: 0.45
   SpecialCooldown: 0.5
   SpecialChargeTime: 0.5
   SpecialKnockbackSpeed: 10
@@ -252,6 +256,7 @@ MonoBehaviour:
   SpecialInterval: 0
   SpecialBehavior: 0
   SpecialSpread: 0
+  SpecialEnergyUse: 8
 --- !u!1 &4455257797903559666
 GameObject:
   m_ObjectHideFlags: 0

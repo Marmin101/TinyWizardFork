@@ -52,6 +52,11 @@ namespace Quinn.PlayerSystem
 			Vector2 vel = Vector2.zero;
 			Vector2 moveDir = InputManager.Instance.MoveDirection;
 
+			if (moveDir.x != 0f)
+			{
+				transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1f, 1f);
+			}
+
 			if (IsDashing)
 			{
 				vel += _dashDir * DashSpeed;

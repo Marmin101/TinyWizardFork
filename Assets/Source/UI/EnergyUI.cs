@@ -22,7 +22,7 @@ namespace Quinn.UI
 		{
 			if (_caster != null)
 			{
-				var staff = _caster.Staff;
+				var staff = _caster.ActiveStaff;
 
 				if (staff != null)
 				{

@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -20,7 +21,12 @@ namespace Quinn.PlayerSystem.SpellSystem
 		[SerializeField, Required]
 		private VisualEffect CastingSpark;
 
-		public Staff Staff {  get; private set; }
+		[SerializeField, Required, Space]
+		private Transform StoredStaffsParent;
+		[SerializeField]
+		private float StaffMaxAngle = 30f;
+
+		public Staff ActiveStaff {  get; private set; }
 		public bool CanCast => Time.time >= _nextInputTime;
 
 		public bool IsBasicHeld { get; private set; }
@@ -31,6 +37,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		private float _nextInputTime;
 		private readonly BufferManager _inputBuffer = new();
+
+		private readonly List<Staff> _storedStaffs = new();
 
 		private void Awake()
 		{
@@ -75,21 +83,20 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public void SetStaff(Staff staff)
 		{
-			if (Staff != null)
+			if (staff != ActiveStaff)
 			{
-				Staff.SetCaster(null);
-				Staff.transform.SetParent(null);
+				DequipActiveStaff();
+
+				ActiveStaff = staff;
+				staff.transform.SetParent(transform, false);
+				staff.SetCaster(this);
+
+				CastingSpark.SetGradient("Color", staff.SparkGradient);
+				CastingSpark.transform.SetParent(staff.Head, false);
+				CastingSpark.transform.localPosition = Vector3.zero;
+
+				OnStaffSet?.Invoke(staff);
 			}
-
-			Staff = staff;
-			staff.transform.SetParent(transform, false);
-			staff.SetCaster(this);
-
-			CastingSpark.SetGradient("Color", staff.SparkGradient);
-			CastingSpark.transform.SetParent(staff.Head, false);
-			CastingSpark.transform.localPosition = Vector3.zero;
-
-			OnStaffSet?.Invoke(staff);
 		}
 
 		public void SetCooldown(float duration)
@@ -102,71 +109,121 @@ namespace Quinn.PlayerSystem.SpellSystem
 			CastingSpark.Play();
 		}
 
+		public void StoreStaff(Staff staff)
+		{
+			if (!_storedStaffs.Contains(staff))
+			{
+				_storedStaffs.Add(staff);
+
+				if (ActiveStaff == staff)
+				{
+					DequipActiveStaff();
+				}
+
+				staff.transform.SetParent(StoredStaffsParent, false);
+				LayoutStoredStaffs();
+
+				staff.DisableInteraction();
+			}
+		}
+
+		public void LayoutStoredStaffs()
+		{
+			float delta = StaffMaxAngle / _storedStaffs.Count;
+
+			for (int i = 0; i < _storedStaffs.Count; i++)
+			{
+				float angle = delta * i;
+				angle -= StaffMaxAngle / 2f;
+
+				var storedStaff = _storedStaffs[i];
+				storedStaff.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.AngleAxis(angle, Vector3.forward));
+			}
+		}
+
+		public void DequipActiveStaff()
+		{
+			if (ActiveStaff != null)
+			{
+				var staff = ActiveStaff;
+
+				staff.SetCaster(null);
+				staff.transform.SetParent(null);
+
+				ActiveStaff = null;
+
+				IsBasicHeld = false;
+				IsSpecialHeld = false;
+
+				StoreStaff(staff);
+			}
+		}
+
 		private void OnBasicStart()
 		{
-			if (Staff == null)
+			if (ActiveStaff == null)
 				return;
 
 			_inputBuffer.Buffer(InputBufferTimeout, () =>
 			{
 				IsBasicHeld = true;
-				Staff.OnBasicDown();
+				ActiveStaff.OnBasicDown();
 			}, () => CanCast && Input.GetMouseButton(0));
 		}
 
 		private void OnBasicStop()
 		{
-			if (Staff == null)
+			if (ActiveStaff == null)
 				return;
 
 			if (IsBasicHeld)
 			{
 				IsBasicHeld = false;
-				Staff.OnBasicUp();
+				ActiveStaff.OnBasicUp();
 			}
 		}
 
 		private void OnSpecialStart()
 		{
-			if (Staff == null)
+			if (ActiveStaff == null)
 				return;
 
 			_inputBuffer.Buffer(InputBufferTimeout, () =>
 			{
 				IsSpecialHeld = true;
-				Staff.OnSpecialDown();
+				ActiveStaff.OnSpecialDown();
 			}, () => CanCast && Input.GetMouseButton(1));
 		}
 
 		private void OnSpecialStop()
 		{
-			if (Staff == null)
+			if (ActiveStaff == null)
 				return;
 
 			if (IsSpecialHeld)
 			{
 				IsSpecialHeld = false;
-				Staff.OnSpecialUp();
+				ActiveStaff.OnSpecialUp();
 			}
 		}
 
 		private void UpdateStaffTransform()
 		{
-			if (Staff == null)
+			if (ActiveStaff == null)
 				return;
 
 			Vector2 cursorPos = InputManager.Instance.CursorWorldPos;
 
 			Vector3 dir = StaffPivot.position.DirectionTo(cursorPos);
-			Staff.transform.position = StaffPivot.position + (dir * StaffOffset);
+			ActiveStaff.transform.position = StaffPivot.position + (dir * StaffOffset);
 
 			float angle = Mathf.Atan2(dir.y, dir.x).ToDegrees();
-			Staff.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			ActiveStaff.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 			if (dir.x < 0f)
-				Staff.transform.localScale = new Vector3(1f, -1f, 1f);
+				ActiveStaff.transform.localScale = new Vector3(1f, -1f, 1f);
 			else
-				Staff.transform.localScale = Vector3.one;
+				ActiveStaff.transform.localScale = Vector3.one;
 		}
 	}
 }

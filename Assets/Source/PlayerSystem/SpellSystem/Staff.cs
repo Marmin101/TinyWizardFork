@@ -69,6 +69,11 @@ namespace Quinn.PlayerSystem.SpellSystem
 				GetComponent<Collider2D>().enabled = false;
 		}
 
+		public void DisableInteraction()
+		{
+			GetComponent<Collider2D>().enabled = false;
+		}
+
 		public virtual void OnBasicDown() { }
 		public virtual void OnBasicUp() { }
 

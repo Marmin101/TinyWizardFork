@@ -26,6 +26,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 		[SerializeField]
 		private float StaffMaxAngle = 30f;
 
+		[Space, SerializeField, Required]
+		private Staff FallbackStaff;
+
 		public Staff ActiveStaff {  get; private set; }
 		public bool CanCast => Time.time >= _nextInputTime;
 
@@ -33,7 +36,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public bool IsSpecialHeld { get; private set; }
 
 		public PlayerMovement Movement { get; private set; }
-		public event Action<Staff> OnStaffSet;
+		public event Action<Staff> OnStaffEquipped;
 
 		private float _nextInputTime;
 		private readonly BufferManager _inputBuffer = new();
@@ -51,7 +54,25 @@ namespace Quinn.PlayerSystem.SpellSystem
 			if (StartingStaff != null)
 			{
 				GameObject staff = StartingStaff.gameObject.Clone();
-				SetStaff(staff.GetComponent<Staff>());
+				EquipStaff(staff.GetComponent<Staff>());
+			}
+
+			StoreStaff(FallbackStaff);
+		}
+
+		private void Update()
+		{
+#if UNITY_EDITOR
+			if (Input.GetKeyDown(KeyCode.Alpha0) && ActiveStaff != null && ActiveStaff.Energy > 0f)
+			{
+				ActiveStaff.ConsumeAllEnergy();
+			}
+#endif
+
+			if (ActiveStaff != null && ActiveStaff.Energy <= 0f)
+			{
+				StoreStaff(ActiveStaff);
+				EquipStaff(FallbackStaff);
 			}
 		}
 
@@ -81,11 +102,13 @@ namespace Quinn.PlayerSystem.SpellSystem
 			}
 		}
 
-		public void SetStaff(Staff staff)
+		public void EquipStaff(Staff staff)
 		{
 			if (staff != ActiveStaff)
 			{
 				DequipActiveStaff();
+
+				_storedStaffs.Remove(staff);
 
 				ActiveStaff = staff;
 				staff.transform.SetParent(transform, false);
@@ -95,7 +118,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 				CastingSpark.transform.SetParent(staff.Head, false);
 				CastingSpark.transform.localPosition = Vector3.zero;
 
-				OnStaffSet?.Invoke(staff);
+				OnStaffEquipped?.Invoke(staff);
 			}
 		}
 
@@ -138,6 +161,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 				var storedStaff = _storedStaffs[i];
 				storedStaff.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.AngleAxis(angle, Vector3.forward));
+				storedStaff.transform.localScale = Vector3.one;
 			}
 		}
 

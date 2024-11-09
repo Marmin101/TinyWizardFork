@@ -56,7 +56,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public void Interact(Player player)
 		{
 			var caster = player.GetComponent<PlayerCaster>();
-			caster.SetStaff(this);
+			caster.EquipStaff(this);
 		}
 
 		public void SetCaster(PlayerCaster caster)
@@ -80,9 +80,14 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public virtual void OnSpecialDown() { }
 		public virtual void OnSpecialUp() { }
 
-		protected void ConsumeEnergy(float amount)
+		public void ConsumeEnergy(float amount)
 		{
 			Energy = Mathf.Max(0f, Energy - amount);
+		}
+
+		public void ConsumeAllEnergy()
+		{
+			Energy = 0f;
 		}
 	}
 }

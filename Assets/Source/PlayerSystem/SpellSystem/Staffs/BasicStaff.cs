@@ -74,7 +74,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private MissileSpawnBehavior SpecialBehavior = MissileSpawnBehavior.Direct;
 		[SerializeField, HideIf("@SpecialBehavior == MissileSpawnBehavior.Direct || !HasSpecial"), FoldoutGroup("Special"), Unit(Units.Degree)]
 		private float SpecialSpread = 0f;
-		[SerializeField, FoldoutGroup("Secpail")]
+		[SerializeField, FoldoutGroup("Special")]
 		private float SpecialEnergyUse = 8f;
 
 		private float _largeMissileTime;

@@ -19,6 +19,10 @@ namespace Quinn.MissileSystem
 		private Team Team = Team.Monster;
 		[SerializeField, BoxGroup("Core"), Unit(Units.Second)]
 		private float Lifespan = 10f;
+		[SerializeField]
+		private bool UsesCustomKnockbackSpeed;
+		[SerializeField, ShowIf(nameof(UsesCustomKnockbackSpeed))]
+		private float CustomKnockbackSpeed;
 
 		[SerializeField, BoxGroup("Core"), Space]
 		private GameObject SpawnOnDeath;
@@ -82,7 +86,13 @@ namespace Quinn.MissileSystem
 		{
 			if (collision.TryGetComponent(out Health health))
 			{
-				if (health.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner))
+				float? knockbackSpeed = null;
+				if (UsesCustomKnockbackSpeed)
+				{
+					knockbackSpeed = CustomKnockbackSpeed;
+				}
+
+				if (health.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, knockbackSpeed))
 					OnImpact();
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))

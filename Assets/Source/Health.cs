@@ -3,10 +3,7 @@ using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace Quinn
 {
@@ -42,6 +39,7 @@ namespace Quinn
 
 		public event Action<float> OnHealed;
 		public event Action<float, Vector2, GameObject> OnDamaged;
+		public event Action<DamageInfo> OnDamagedExpanded;
 		public event Action OnDeath;
 		public event Action OnMaxChange;
 
@@ -72,20 +70,39 @@ namespace Quinn
 			Heal(Max - Current);
 		}
 
-		public bool TakeDamage(float damage, Vector2 dir, Team sourceTeam, GameObject source)
+		public bool TakeDamage(float damage, Vector2 dir, Team sourceTeam, GameObject source, float? customKnockback = null)
+		{
+			var info = new DamageInfo()
+			{
+				Damage = damage,
+				Direction = dir,
+				SourceTeam = sourceTeam,
+				Source = source,
+				UsesCustomKnockbackSpeed = customKnockback.HasValue
+			};
+
+			if (customKnockback.HasValue)
+			{
+				info.CustomKnockbackSpeed = customKnockback.Value;
+			}
+
+			return TakeDamage(info);
+		}
+		public bool TakeDamage(DamageInfo info)
 		{
 			if (Time.time >= _nextHurtImmunityEndTime)
 				_isHurtImmune = false;
 
-			if (IsDead || sourceTeam == Team || IsImmune)
+			if (IsDead || info.SourceTeam == Team || IsImmune)
 				return false;
 
 			Audio.Play(HurtSound, transform.position);
 
-			Current -= damage;
+			Current -= info.Damage;
 			Current = Mathf.Max(0, Current);
 
-			OnDamaged?.Invoke(damage, dir.normalized, source);
+			OnDamaged?.Invoke(info.Damage, info.Direction.normalized, info.Source);
+			OnDamagedExpanded?.Invoke(info);
 
 			if (Current == 0f)
 			{

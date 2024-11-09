@@ -1,5 +1,4 @@
 using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +29,7 @@ namespace Quinn
 
 			if (DoesKnockbackOnDamage)
 			{
-				GetComponent<Health>().OnDamaged += OnDamaged;
+				GetComponent<Health>().OnDamagedExpanded += OnDamaged;
 			}
 		}
 
@@ -81,9 +80,16 @@ namespace Quinn
 			_speedFactors.Remove(key);
 		}
 
-		private void OnDamaged(float damage, Vector2 dir, GameObject source)
+		private void OnDamaged(DamageInfo info)
 		{
-			Knockback(dir);
+			if (info.UsesCustomKnockbackSpeed)
+			{
+				Knockback(info.Direction, info.CustomKnockbackSpeed);
+			}
+			else
+			{
+				Knockback(info.Direction);
+			}
 		}
 	}
 }

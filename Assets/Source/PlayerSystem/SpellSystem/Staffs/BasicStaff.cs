@@ -36,20 +36,22 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		[Space, SerializeField, FoldoutGroup("Basic Finisher")]
 		private bool HasBasicFinisher = true;
-		[SerializeField, FoldoutGroup("Basic Finisher"), Unit(Units.Second)]
+		[SerializeField, FoldoutGroup("Basic Finisher"), Unit(Units.Second), ShowIf(nameof(HasBasicFinisher))]
 		private float BasicFinisherCooldown = 0.6f;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
 		private int BasicFinisherCount = 3;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
+		private int BasicFinisherChain = 3;
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
 		private MissileSpawnBehavior BasicFinisherBehavior = MissileSpawnBehavior.SpreadRandom;
-		[SerializeField, HideIf("@BasicFinisherBehavior == MissileSpawnBehavior.Direct || HasBasicFinisher"), FoldoutGroup("Basic Finisher"), Unit(Units.Degree)]
+		[SerializeField, HideIf("@BasicFinisherBehavior == MissileSpawnBehavior.Direct || !HasBasicFinisher"), FoldoutGroup("Basic Finisher"), Unit(Units.Degree)]
 		private float BasicFinisherSpread = 45f;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher"), Unit(Units.MetersPerSecond)]
 		private float BasicFinisherKnockbackSpeed = 14f;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
 		[Tooltip("This can be null to use the basic normal missile.")]
 		private Missile BasicFinisherMissileOverride;
-		[SerializeField, FoldoutGroup("Basic Finisher")]
+		[SerializeField, FoldoutGroup("Basic Finisher"), ShowIf(nameof(HasBasicFinisher))]
 		private float BasicFinisherEnergyUse = 4f;
 
 		[Space, SerializeField, FoldoutGroup("Special")]
@@ -125,7 +127,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			Caster.Spark();
 
 			// Finisher cast.
-			if (_castChainCount >= BasicFinisherCount && HasBasicFinisher)
+			if (_castChainCount >= BasicFinisherChain && HasBasicFinisher)
 			{
 				Caster.SetCooldown(BasicFinisherCooldown);
 				_castChainCount = 0;

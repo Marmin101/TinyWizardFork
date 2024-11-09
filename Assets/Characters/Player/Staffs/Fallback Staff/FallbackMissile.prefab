@@ -60,9 +60,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1591558883108775646, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Radius
+      value: 0.09023259
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591558883108775646, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591558883108775646, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2155629128015402347, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: m_Name
       value: FallbackMissile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344414908074176928, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: Team
@@ -74,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DirectSpeed
-      value: 6
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DirectDamage

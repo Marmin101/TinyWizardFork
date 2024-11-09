@@ -100,6 +100,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				OnSpecialStop();
 			}
+
+			var dirToCross = transform.position.DirectionTo(CrosshairManager.Instance.Position);
+			transform.localScale = new Vector3(Mathf.Sign(dirToCross.x), 1f, 1f);
 		}
 
 		public void EquipStaff(Staff staff)

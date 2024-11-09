@@ -342,6 +342,14 @@ MonoBehaviour:
   FootstepVFX: {fileID: 6801735444140549284}
   StoneColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0}
   CarpetColor: {r: 0.5622641, g: 0.041374087, b: 0.041374087, a: 0}
+  HurtSnapshot:
+    Guid:
+      Data1: -398802168
+      Data2: 1297831185
+      Data3: 328791171
+      Data4: -1680121347
+    Path: snapshot:/HurtSnapshot
+  HurtDuration: 2
 --- !u!114 &7972158715158538529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoesKnockbackOnDamage: 1
-  KnockbackSpeed: 12
+  KnockbackSpeed: 16
   KnockbackDecayRate: 38
   MoveSpeed: 4
   DashSpeed: 18

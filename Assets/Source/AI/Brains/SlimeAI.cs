@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FMODUnity;
+using UnityEngine;
 
 namespace Quinn.AI
 {
@@ -10,6 +11,11 @@ namespace Quinn.AI
 		private Vector2 JumpInterval = new(0.1f, 0.4f);
 		[SerializeField]
 		private float JumpDistance = 2f;
+
+		[Space, SerializeField]
+		private EventReference JumpSound;
+		[SerializeField]
+		private EventReference LandSound;
 
 		protected override void OnThink() { }
 
@@ -35,6 +41,8 @@ namespace Quinn.AI
 			await Wait.Seconds(JumpPrimeDuration, DeathTokenSource.Token);
 			Animator.SetTrigger("Jump");
 
+			Audio.Play(JumpSound, transform.position);
+
 			float speed = JumpDistance;
 			float dst = transform.position.DistanceTo(destination);
 
@@ -46,6 +54,8 @@ namespace Quinn.AI
 				Movement.MoveInDirection(transform.position.DirectionTo(destination), speed);
 				await Wait.NextFrame(DeathTokenSource.Token);
 			}
+
+			Audio.Play(LandSound, transform.position);
 		}
 	}
 }

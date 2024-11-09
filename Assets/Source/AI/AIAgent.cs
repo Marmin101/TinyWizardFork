@@ -36,7 +36,20 @@ namespace Quinn.AI
 			}
 		}
 		protected float DstToTarget => transform.position.DistanceTo(TargetPos);
-		protected Vector2 DirToTarget => transform.position.DirectionTo(TargetPos);
+		protected Collider2D TargetCollider;
+		protected Bounds TargetBounds
+		{
+			get
+			{
+				if (TargetCollider == null)
+				{
+					return new Bounds();
+				}
+
+				return TargetCollider.bounds;
+			}
+		}
+		protected Vector2 DirToTarget => transform.position.DirectionTo(TargetBounds.center);
 
 		protected AIState ActiveState { get; private set; }
 
@@ -91,6 +104,7 @@ namespace Quinn.AI
 		{
 			Target = transform;
 			TargetHealth = transform.GetComponent<Health>();
+			TargetCollider = transform.GetComponent<Collider2D>();
 		}
 
 		public void StartRoom(Room room)

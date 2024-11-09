@@ -289,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556168969788869389, guid: debf9f51430d0014f9d99a71ea0951a5, type: 3}
       propertyPath: m_Name
-      value: WaterStaff (1)
+      value: WaterStaff
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -487,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8078778520645663636, guid: 3a7f5f5d31023f94c8b869fd48a5580f, type: 3}
       propertyPath: m_Name
-      value: CombustionStaff (1)
+      value: CombustionStaff
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

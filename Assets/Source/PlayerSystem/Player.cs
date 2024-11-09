@@ -1,8 +1,9 @@
-﻿using FMODUnity;
+﻿using FMOD.Studio;
+using FMODUnity;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.VFX;
 
 namespace Quinn.PlayerSystem
@@ -22,9 +23,16 @@ namespace Quinn.PlayerSystem
 		[SerializeField, FoldoutGroup("Footstep Colors")]
 		private Color StoneColor, CarpetColor;
 
+		[SerializeField, Space]
+		private EventReference HurtSnapshot;
+		[SerializeField]
+		private float HurtDuration = 2f;
+
 		private Animator _animator;
 		private bool _wasMoving;
 		private float _nextStartFootstepSoundAllowedTime;
+
+		private EventInstance _hurtSnapshot;
 
 		private void Awake()
 		{
@@ -32,6 +40,9 @@ namespace Quinn.PlayerSystem
 
 			PlayerManager.Instance.SetPlayer(this);
 			InputManager.Instance.OnInteract += OnInteract;
+
+			_hurtSnapshot = RuntimeManager.CreateInstance(HurtSnapshot);
+			GetComponent<Health>().OnDamagedExpanded += OnHurt;
 		}
 
 		private void Update()
@@ -55,6 +66,9 @@ namespace Quinn.PlayerSystem
 			{
 				PlayerManager.Instance.SetPlayer(null);
 			}
+
+			_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+			_hurtSnapshot.release();
 		}
 
 		public void OnFootstep_Anim()
@@ -136,6 +150,13 @@ namespace Quinn.PlayerSystem
 			}
 
 			bestInteractable?.Interact(this);
+		}
+
+		private async void OnHurt(DamageInfo info)
+		{
+			_hurtSnapshot.start();
+			await Wait.Seconds(HurtDuration);
+			_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 		}
 	}
 }

@@ -269,6 +269,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalaceChest
       objectReference: {fileID: 0}
+    - target: {fileID: 3263005636203468339, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
+      propertyPath: OverrideAttenuation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263005636203468339, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5742179665093678014, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -412,23 +420,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4918403461456721780, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_FalloffIntensity
-      value: 0.24
+      value: 0.337
       objectReference: {fileID: 0}
     - target: {fileID: 4918403461456721780, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_PointLightInnerAngle
-      value: 3.5100007
+      value: 2.53
       objectReference: {fileID: 0}
     - target: {fileID: 4918403461456721780, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_PointLightOuterAngle
-      value: 8.89
+      value: 4.88
       objectReference: {fileID: 0}
     - target: {fileID: 4918403461456721780, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_PointLightInnerRadius
-      value: 20.12
+      value: 41.6
       objectReference: {fileID: 0}
     - target: {fileID: 4918403461456721780, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 21.195747
+      value: 45.22439
       objectReference: {fileID: 0}
     - target: {fileID: 4918403461456721780, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_ShadowVolumeIntensityEnabled
@@ -436,15 +444,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5101571315049827375, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.29
+      value: 23.49
       objectReference: {fileID: 0}
     - target: {fileID: 5101571315049827375, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.08
+      value: 37.64
       objectReference: {fileID: 0}
     - target: {fileID: 5101571315049827375, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.27535626
+      value: 0.27635258
       objectReference: {fileID: 0}
     - target: {fileID: 5101571315049827375, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_LocalRotation.x
@@ -456,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5101571315049827375, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9613423
+      value: 0.96105635
       objectReference: {fileID: 0}
     - target: {fileID: 5101571315049827375, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

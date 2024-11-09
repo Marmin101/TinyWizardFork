@@ -28,12 +28,12 @@ MonoBehaviour:
     Path: event:/Music/ThePalace
   StartingRoom: {fileID: 8448226805414225309, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
   Generatable:
-  - Prefab: {fileID: 7734380130235892607, guid: 46ec1cdee28999847bb3dbab470aa131, type: 3}
-    Weight: 20
-    SumWeight: 170
   - Prefab: {fileID: 7734380130235892607, guid: b01daf92ccb97e8489ad37cd4a45ce0b, type: 3}
     Weight: 100
     SumWeight: 170
   - Prefab: {fileID: 7734380130235892607, guid: 4c45c411a17e2eb4eb0162be91846979, type: 3}
     Weight: 50
+    SumWeight: 170
+  - Prefab: {fileID: 7734380130235892607, guid: 46ec1cdee28999847bb3dbab470aa131, type: 3}
+    Weight: 20
     SumWeight: 170

@@ -16,20 +16,19 @@ namespace Quinn
 
 		public static T GetWeightedRandom<T>(this IEnumerable<T> collection, System.Func<T, float> getWeightCallback)
 		{
-			float sum = collection.Sum(x => getWeightCallback(x));
-			float rand = Random.value;
-
-			foreach (var item in collection)
-			{
-				if (getWeightCallback(item) / sum < rand)
-				{
-					return item;
-				}
-			}
-
 			if (!collection.Any())
 			{
 				return default;
+			}
+
+			float sum = collection.Sum(x => getWeightCallback(x));
+
+			foreach (var item in collection)
+			{
+				if (Random.value < getWeightCallback(item) / sum)
+				{
+					return item;
+				}
 			}
 
 			return collection.ElementAt(Random.Range(0, collection.Count()));

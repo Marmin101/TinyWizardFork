@@ -54,33 +54,6 @@ MonoBehaviour:
   - Stone
   - Carpet
   Exists: 1
---- !u!114 &-8859814154701300978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GenericRoomLock
-  m_EditorClassIdentifier: 
-  Path: event:/GenericRoomLock
-  Guid:
-    Data1: -730760730
-    Data2: 1292443050
-    Data3: 227033237
-    Data4: -712526183
-  Banks:
-  - {fileID: -3630161908280164207}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-8579783611685051925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +99,33 @@ MonoBehaviour:
     Data2: 1205746455
     Data3: 950750098
     Data4: -2026348178
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6841994844125774649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SlimeJump
+  m_EditorClassIdentifier: 
+  Path: event:/SlimeJump
+  Guid:
+    Data1: 143358275
+    Data2: 1113841515
+    Data3: 206278294
+    Data4: -304467235
   Banks:
   - {fileID: -3630161908280164207}
   IsStream: 0
@@ -258,10 +258,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638667676279964065
+  lastModified: 638667732742320326
   FileSizes:
   - Name: Desktop
-    Value: 5882848
+    Value: 6101536
   Exists: 1
 --- !u!114 &-3594564924571568520
 MonoBehaviour:
@@ -290,6 +290,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 113454
+--- !u!114 &-3241067163501298404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/HurtSnapshot
+  m_EditorClassIdentifier: 
+  Path: snapshot:/HurtSnapshot
+  Guid:
+    Data1: -398802168
+    Data2: 1297831185
+    Data3: 328791171
+    Data4: -1680121347
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-2823128745350892185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +453,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 60063
+--- !u!114 &-212819761263878134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SlimeLand
+  m_EditorClassIdentifier: 
+  Path: event:/SlimeLand
+  Guid:
+    Data1: -138261625
+    Data2: 1257386495
+    Data3: -1278627185
+    Data4: -658022620
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,10 +499,8 @@ MonoBehaviour:
   - {fileID: -3594564924571568520}
   - {fileID: -2689746853472031506}
   - {fileID: -2823128745350892185}
-  - {fileID: 127199471168672423}
   - {fileID: 7332193884709433453}
   - {fileID: -8579783611685051925}
-  - {fileID: -8859814154701300978}
   - {fileID: -2516711579646629772}
   - {fileID: 6157183531029555241}
   - {fileID: 5628810794574514756}
@@ -464,15 +516,19 @@ MonoBehaviour:
   - {fileID: 6152888651256660919}
   - {fileID: 7354217785929274583}
   - {fileID: -6456740864382716213}
+  - {fileID: 428538089557278944}
+  - {fileID: -6841994844125774649}
+  - {fileID: -212819761263878134}
+  - {fileID: -3241067163501298404}
   EditorParameters:
   - {fileID: 1270169612852373447}
   MasterBanks:
   - {fileID: -3630161908280164207}
   StringsBanks:
   - {fileID: 3892577550561530642}
-  cacheTime: 638667676280015459
+  cacheTime: 638667732742375985
   cacheVersion: 131620
---- !u!114 &127199471168672423
+--- !u!114 &428538089557278944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -482,14 +538,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GenericRoomOpen
+  m_Name: event:/RoomLock
   m_EditorClassIdentifier: 
-  Path: event:/GenericRoomOpen
+  Path: event:/RoomLock
   Guid:
-    Data1: 764749779
-    Data2: 1302493649
-    Data3: -2128286579
-    Data4: -625755177
+    Data1: -1923976504
+    Data2: 1181653359
+    Data3: 2126966434
+    Data4: 1112807150
   Banks:
   - {fileID: -3630161908280164207}
   IsStream: 0
@@ -562,10 +618,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638667676280015459
+  lastModified: 638667732742375985
   FileSizes:
   - Name: Desktop
-    Value: 1920
+    Value: 2006
   Exists: 1
 --- !u!114 &5318309772521854013
 MonoBehaviour:

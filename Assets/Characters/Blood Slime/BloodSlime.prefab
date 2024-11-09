@@ -434,6 +434,20 @@ MonoBehaviour:
   JumpPrimeDuration: 0.5
   JumpInterval: {x: 0.1, y: 0.4}
   JumpDistance: 2
+  JumpSound:
+    Guid:
+      Data1: 143358275
+      Data2: 1113841515
+      Data3: 206278294
+      Data4: -304467235
+    Path: event:/SlimeJump
+  LandSound:
+    Guid:
+      Data1: -138261625
+      Data2: 1257386495
+      Data3: -1278627185
+      Data4: -658022620
+    Path: event:/SlimeLand
 --- !u!4 &2740707142073682643 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1097213129333881698, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}

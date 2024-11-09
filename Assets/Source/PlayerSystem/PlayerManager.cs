@@ -30,7 +30,7 @@ namespace Quinn.PlayerSystem
 
 		private void Start()
 		{
-			SpawnPlayer(new(-0.5f, -0.5f));
+			SpawnPlayer(new(-1f, -1f));
 		}
 
 		private void OnDestroy()

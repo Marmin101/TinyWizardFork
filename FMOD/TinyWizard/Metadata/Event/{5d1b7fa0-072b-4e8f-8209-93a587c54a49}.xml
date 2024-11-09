@@ -129,7 +129,11 @@
 	</object>
 	<object class="MixerBusFader" id="{3d726ad7-f573-4df6-b221-da193bf35eb2}" />
 	<object class="MixerBusFader" id="{e3998eb0-359d-4155-bd66-47ae174d2058}" />
-	<object class="SpatialiserEffect" id="{bfac2415-fa7d-4539-b7e0-7c1b10ae7f5b}" />
+	<object class="SpatialiserEffect" id="{bfac2415-fa7d-4539-b7e0-7c1b10ae7f5b}">
+		<property name="panBlend">
+			<value>0.86500001</value>
+		</property>
+	</object>
 	<object class="RandomizerModulator" id="{63c4e4ca-ec85-4040-8f97-1178259193ec}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

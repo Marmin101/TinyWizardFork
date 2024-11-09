@@ -28287,18 +28287,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenSound:
     Guid:
-      Data1: 764749779
-      Data2: 1302493649
-      Data3: -2128286579
-      Data4: -625755177
-    Path: event:/GenericRoomOpen
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   LockSound:
     Guid:
-      Data1: -730760730
-      Data2: 1292443050
-      Data3: 227033237
-      Data4: -712526183
-    Path: event:/GenericRoomLock
+      Data1: -1923976504
+      Data2: 1181653359
+      Data3: 2126966434
+      Data4: 1112807150
+    Path: event:/RoomLock
   RoomTrigger: {fileID: 983069669129734881}
   RoomCamera: {fileID: 3233533692150510720}
   Navmesh: {fileID: 6286797074916892425}
@@ -28309,6 +28309,8 @@ MonoBehaviour:
   SouthDoor: {fileID: 5017978725769315186}
   EastDoor: {fileID: 4822959630363621678}
   WestDoor: {fileID: 1290332386032603610}
+  Chest: {fileID: 0}
+  DisableMusic: 0
 --- !u!1 &6627044298079856012
 GameObject:
   m_ObjectHideFlags: 0

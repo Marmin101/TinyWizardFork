@@ -1,6 +1,7 @@
 ﻿using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn.PlayerSystem.SpellSystem.Staffs
 {
@@ -32,6 +33,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float MaxEnergyUse = 5f;
 		[SerializeField]
 		private AnimationCurve EnergyUseChargeFactor;
+		[SerializeField]
+		private float FriendlyKnockbackSpeed = 18f;
 
 		private bool _isCharging;
 		private float _charge;
@@ -69,6 +72,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				float chargePercent = (_charge - MinChargeThreshold) / (MaxCharge - MinChargeThreshold);
 
 				var vfx = CombustionVFX.Clone(pos);
+				var fireEffect = vfx.GetComponent<VisualEffect>();
+				fireEffect.SetInt("Count", (int)Mathf.Lerp(32, 128, chargePercent));
+				fireEffect.Play();
 				vfx.Destroy(VFXLifespan);
 
 				EventReference sound;
@@ -83,12 +89,19 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				foreach (var collider in Physics2D.OverlapCircleAll(pos, DamageRadius))
 				{
-					if (collider.TryGetComponent(out Health health) && health.Team != Team.Player)
+					if (collider.TryGetComponent(out Health health))
 					{
-						float dmg = ChargeToDamageFactor.Evaluate(chargePercent);
-						dmg *= BaseChargeToDamage;
+						if (health.Team != Team.Player)
+						{
+							float dmg = ChargeToDamageFactor.Evaluate(chargePercent);
+							dmg *= BaseChargeToDamage;
 
-						health.TakeDamage(dmg, pos.DirectionTo(health.transform.position), Team.Player, Caster.gameObject);
+							health.TakeDamage(dmg, pos.DirectionTo(health.transform.position), Team.Player, Caster.gameObject);
+						}
+						else if (health.TryGetComponent(out Locomotion locomotion))
+						{
+							locomotion.Knockback(pos.DirectionTo(health.transform.position), FriendlyKnockbackSpeed);
+						}
 					}
 				}
 

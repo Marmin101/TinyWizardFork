@@ -1,7 +1,9 @@
 ﻿using FMODUnity;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 namespace Quinn.PlayerSystem
 {
@@ -14,6 +16,11 @@ namespace Quinn.PlayerSystem
 		private EventReference FootstepSound;
 		[SerializeField]
 		private float StartFootstepCooldown = 0.2f;
+
+		[SerializeField, Required, Space]
+		private VisualEffect FootstepVFX;
+		[SerializeField, FoldoutGroup("Footstep Colors")]
+		private Color StoneColor, CarpetColor;
 
 		private Animator _animator;
 		private bool _wasMoving;
@@ -35,7 +42,8 @@ namespace Quinn.PlayerSystem
 			if (isMoving && !_wasMoving && Time.time > _nextStartFootstepSoundAllowedTime)
 			{
 				_nextStartFootstepSoundAllowedTime = Time.time + StartFootstepCooldown;
-				OnFootstep_Anim();
+
+				PlayFootstepSound(GetSoundMaterialType());
 			}
 
 			_wasMoving = isMoving;
@@ -50,6 +58,23 @@ namespace Quinn.PlayerSystem
 		}
 
 		public void OnFootstep_Anim()
+		{
+			var mat = GetSoundMaterialType();
+			PlayFootstepSound(mat);
+
+			var floorColor = mat switch
+			{
+				SoundMaterialType.None => Color.black,
+				SoundMaterialType.Stone => StoneColor,
+				SoundMaterialType.Carpet => CarpetColor,
+				_ => throw new System.NotImplementedException(),
+			};
+
+			FootstepVFX.SetVector4("Color", floorColor);
+			FootstepVFX.Play();
+		}
+
+		private SoundMaterialType GetSoundMaterialType()
 		{
 			SoundMaterialType mat = SoundMaterialType.None;
 			int highestPriority = -9999;
@@ -68,6 +93,11 @@ namespace Quinn.PlayerSystem
 				}
 			}
 
+			return mat;
+		}
+
+		private void PlayFootstepSound(SoundMaterialType mat)
+		{
 			var instance = RuntimeManager.CreateInstance(FootstepSound);
 			instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
 			instance.setParameterByNameWithLabel("sound-mat", mat.ToString());

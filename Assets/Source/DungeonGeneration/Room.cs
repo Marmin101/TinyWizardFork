@@ -28,6 +28,10 @@ namespace Quinn.DungeonGeneration
 		private bool StartConquered;
 		[SerializeField, BoxGroup("Doors"), ValidateInput("@HasNorthDoor || HasEastDoor || HasSouthDoor || HasWestDoor")]
 		private Door NorthDoor, SouthDoor, EastDoor, WestDoor;
+		[SerializeField]
+		private Chest Chest;
+		[SerializeField]
+		private bool DisableMusic;
 
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
@@ -36,6 +40,8 @@ namespace Quinn.DungeonGeneration
 		public bool HasEastDoor => EastDoor != null;
 		public bool HasSouthDoor => SouthDoor != null;
 		public bool HasWestDoor => WestDoor != null;
+
+		public event System.Action OnRoomConquered;
 
 		public Vector2Int RoomGridIndex { get; set; }
 
@@ -117,6 +123,11 @@ namespace Quinn.DungeonGeneration
 				{
 					StartRoomEncounter();
 				}
+
+				if (DisableMusic)
+				{
+					RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f);
+				}
 			}
 		}
 
@@ -126,6 +137,11 @@ namespace Quinn.DungeonGeneration
 			{
 				RoomCamera.enabled = false;
 				GenerateRoomAtPlayer(collider);
+
+				if (DisableMusic)
+				{
+					RuntimeManager.StudioSystem.setParameterByName("enable-music", 1f);
+				}
 			}
 		}
 
@@ -179,6 +195,13 @@ namespace Quinn.DungeonGeneration
 				foreach (var staticAgent in _staticAgents)
 				{
 					staticAgent.CeaseFire();
+				}
+
+				OnRoomConquered?.Invoke();
+
+				if (Chest != null)
+				{
+					Chest.Open();
 				}
 			}
 		}

@@ -121,6 +121,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5601716085084209762, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
+      propertyPath: m_Size.y
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601716085084209762, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7178689802254285293, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_Name
       value: 4-Way

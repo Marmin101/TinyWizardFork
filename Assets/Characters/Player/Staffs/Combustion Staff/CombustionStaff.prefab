@@ -133,8 +133,8 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
   <MaxEnergy>k__BackingField: 250
-  ChargeRate: 1
-  MaxCharge: 4
+  ChargeRate: 2
+  MaxCharge: 12
   BaseChargeToDamage: 51
   ChargeToDamageFactor:
     serializedVersion: 2
@@ -161,7 +161,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MinChargeThreshold: 1
-  DamageRadius: 0.5
+  DamageRadius: 1
   BaseSparkCooldown: 0.6
   CastCooldown: 0.1
   CombustionVFX: {fileID: 3046125498168810899, guid: 385d91660187d9e4287a7e5326c4627e, type: 3}

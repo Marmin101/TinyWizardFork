@@ -5,7 +5,7 @@
 			<value>FireStaffBasic</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b79ba1c2-1e8e-457c-8f9f-468280306593}</destination>
@@ -103,6 +103,7 @@
 	<object class="MixerBusEffectChain" id="{7c7c0658-8b52-4c6d-8281-3a9043a792c3}">
 		<relationship name="effects">
 			<destination>{63c39394-735a-4e66-b27d-d418d4a3f101}</destination>
+			<destination>{d5dc7b48-7a8d-4fab-8171-cf1b63215241}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{648726bc-9868-4083-b551-d588497bda0b}" />
@@ -127,6 +128,7 @@
 	</object>
 	<object class="MixerBusFader" id="{915057a5-dc44-424b-afdd-fe5b6f0b0ca5}" />
 	<object class="MixerBusFader" id="{63c39394-735a-4e66-b27d-d418d4a3f101}" />
+	<object class="SpatialiserEffect" id="{d5dc7b48-7a8d-4fab-8171-cf1b63215241}" />
 	<object class="SingleSound" id="{f8afbbfe-fb34-482d-a921-15722ed31423}">
 		<relationship name="audioFile">
 			<destination>{d26b6c7a-a057-4a9a-b660-df2f74e83139}</destination>

@@ -109,7 +109,6 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Caster.Movement.RemoveSpeedModifier(this);
 
 				Audio.Play(FullChargeSound);
-				Caster.Movement.CanDash = true;
 			}
 
 			if (IsSpecialHeld && CanCast && HasSpecial)
@@ -188,6 +187,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			Audio.Play(Time.time > _largeMissileTime ? SpecialCastBigSound : SpecialCastLittleSound, Head.position);
 
 			Caster.Movement.RemoveSpeedModifier(this);
+			Caster.Movement.CanDash = true;
 
 			if (enoughCharge)
 			{

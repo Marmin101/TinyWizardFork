@@ -121,6 +121,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1126173838190205914}
+  - {fileID: 2652565945947173563}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6150546323952625872
@@ -228,7 +229,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartOpen: 0
+  IsInteractable: 1
   OpenSprite: {fileID: 8475422832387196837, guid: 0cea50788d090d048b5795fca179afde, type: 3}
+  ContentHandle: {fileID: 8528346144263478766}
+  AnimationOffset: 1
+  AnimationDuration: 3
+  AnimationEasing: 9
+  Ambience: {fileID: 3263005636203468339}
   OpenSound:
     Guid:
       Data1: -639136868
@@ -236,6 +243,7 @@ MonoBehaviour:
       Data3: -1801340
       Data4: -583115887
     Path: event:/ChestOpen
+  DisableAmbienceOnOpen: 1
 --- !u!114 &3263005636203468339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +272,50 @@ MonoBehaviour:
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 0
+  OverrideAttenuation: 1
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &8528346144263478766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2652565945947173563}
+  - component: {fileID: 6252192168066513371}
+  m_Layer: 3
+  m_Name: ContentHandle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2652565945947173563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528346144263478766}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5742179665093678014}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!210 &6252192168066513371
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528346144263478766}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0

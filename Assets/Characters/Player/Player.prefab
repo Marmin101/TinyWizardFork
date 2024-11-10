@@ -294,6 +294,7 @@ MonoBehaviour:
       Data4: -1680121347
     Path: snapshot:/HurtSnapshot
   HurtDuration: 2
+  PlayerLight: {fileID: 4716975394541720926}
 --- !u!114 &7972158715158538529
 MonoBehaviour:
   m_ObjectHideFlags: 0

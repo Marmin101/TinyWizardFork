@@ -29,14 +29,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -169534898755778127, guid: d089a1559a49fd04db0805be64b4487f, type: 3}
     - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.816389
-      objectReference: {fileID: 0}
-    - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.08563587
-      objectReference: {fileID: 0}
-    - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.0625
       objectReference: {fileID: 0}
@@ -193,6 +185,7 @@ MonoBehaviour:
   HasBasicFinisher: 0
   BasicFinisherCooldown: 0.6
   BasicFinisherCount: 3
+  BasicFinisherChain: 3
   BasicFinisherBehavior: 2
   BasicFinisherSpread: 45
   BasicFinisherKnockbackSpeed: 14

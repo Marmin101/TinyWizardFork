@@ -9,6 +9,8 @@ namespace Quinn.PlayerSystem
 	{
 		[SerializeField, Required, AssetsOnly]
 		private GameObject PlayerGroupPrefab;
+		[SerializeField]
+		private Vector2 InitialSpawnOffset = new(-1f, -1f);
 
 		public static PlayerManager Instance { get; private set; }
 
@@ -30,7 +32,7 @@ namespace Quinn.PlayerSystem
 
 		private void Start()
 		{
-			SpawnPlayer(new(-1f, -1f));
+			SpawnPlayer(InitialSpawnOffset);
 		}
 
 		private void OnDestroy()

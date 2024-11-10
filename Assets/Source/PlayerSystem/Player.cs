@@ -1,9 +1,11 @@
-﻿using FMOD.Studio;
+﻿using DG.Tweening;
+using FMOD.Studio;
 using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
 
 namespace Quinn.PlayerSystem
@@ -27,6 +29,8 @@ namespace Quinn.PlayerSystem
 		private EventReference HurtSnapshot;
 		[SerializeField]
 		private float HurtDuration = 2f;
+		[SerializeField, Required]
+		private Light2D PlayerLight;
 
 		private Animator _animator;
 		private bool _wasMoving;
@@ -154,6 +158,15 @@ namespace Quinn.PlayerSystem
 
 		private async void OnHurt(DamageInfo info)
 		{
+			var seq = DOTween.Sequence();
+			float brightness = PlayerLight.intensity;
+
+			seq.Append(PlayerLight.DOFade(brightness * 0.5f, 0.5f));
+			seq.AppendInterval(HurtDuration);
+			seq.Append(PlayerLight.DOFade(brightness / 0.5f, 1.5f));
+
+			seq.Play();
+
 			_hurtSnapshot.start();
 			await Wait.Seconds(HurtDuration);
 			_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

@@ -5,7 +5,7 @@
 			<value>ChestOpen</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b79ba1c2-1e8e-457c-8f9f-468280306593}</destination>
@@ -73,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{66b9eb5f-9275-44f5-b148-538d616944b0}">
 		<property name="volume">
-			<value>-2.5</value>
+			<value>-17.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{71f480fe-cf0b-4194-a6ce-d54442ac89b2}</destination>
@@ -110,7 +110,6 @@
 	<object class="MixerBusEffectChain" id="{8f3fcc2d-e753-4252-8b23-ddcdcd8dbb50}">
 		<relationship name="effects">
 			<destination>{1c1ffc80-e22b-4533-b32c-b5b20b920cad}</destination>
-			<destination>{16a49bca-3460-454e-8064-7271ae0ec740}</destination>
 			<destination>{ae2db233-ad43-4d18-a8a4-e813d055d319}</destination>
 			<destination>{17679e1b-3d22-4da2-822b-8ca37d42a092}</destination>
 		</relationship>
@@ -123,7 +122,6 @@
 	</object>
 	<object class="MixerBusFader" id="{006939f7-6f35-470f-96a0-59ae2e781a38}" />
 	<object class="MixerBusFader" id="{1c1ffc80-e22b-4533-b32c-b5b20b920cad}" />
-	<object class="SpatialiserEffect" id="{16a49bca-3460-454e-8064-7271ae0ec740}" />
 	<object class="PitchShifterEffect" id="{ae2db233-ad43-4d18-a8a4-e813d055d319}">
 		<property name="pitch">
 			<value>1</value>

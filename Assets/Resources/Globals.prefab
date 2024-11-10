@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerGroupPrefab: {fileID: 8075276646572704782, guid: 9f60c85e031e2c044830f7549585bc6a, type: 3}
+  InitialSpawnOffset: {x: -1, y: -1}
 --- !u!114 &5114066691716736982
 MonoBehaviour:
   m_ObjectHideFlags: 0

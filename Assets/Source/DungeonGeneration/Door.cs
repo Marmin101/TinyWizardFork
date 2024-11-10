@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn.DungeonGeneration
 {
 	public abstract class Door : MonoBehaviour
 	{
+		[SerializeField]
+		private VisualEffect OpenVFX, CloseVFX;
+
 		public bool IsOpened { get; private set; } = true;
 
 		public void Open()
@@ -12,6 +16,11 @@ namespace Quinn.DungeonGeneration
 			{
 				IsOpened = true;
 				OnOpen();
+
+				if (OpenVFX != null)
+				{
+					OpenVFX.Play();
+				}
 			}
 		}
 
@@ -21,6 +30,11 @@ namespace Quinn.DungeonGeneration
 			{
 				IsOpened = false;
 				OnClose();
+
+				if (CloseVFX != null)
+				{
+					CloseVFX.Play();
+				}
 			}
 		}
 

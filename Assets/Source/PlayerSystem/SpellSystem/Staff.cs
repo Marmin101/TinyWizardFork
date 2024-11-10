@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Quinn.PlayerSystem.SpellSystem
 {
@@ -16,6 +17,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public float Energy { get; private set; }
 
 		protected PlayerCaster Caster { get; private set; }
+
+		private SortingGroup _group;
 
 		protected bool CanCast
 		{
@@ -51,6 +54,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 		protected virtual void Awake()
 		{
 			Energy = MaxEnergy;
+
+			_group = GetComponentInChildren<SortingGroup>();
+			_group.enabled = false;
 		}
 
 		public void Interact(Player player)
@@ -64,9 +70,15 @@ namespace Quinn.PlayerSystem.SpellSystem
 			Caster = caster;
 
 			if (caster == null)
+			{
 				GetComponent<Collider2D>().enabled = true;
+				_group.enabled = false;
+			}
 			else
+			{
 				GetComponent<Collider2D>().enabled = false;
+				_group.enabled = true;
+			}
 		}
 
 		public void DisableInteraction()

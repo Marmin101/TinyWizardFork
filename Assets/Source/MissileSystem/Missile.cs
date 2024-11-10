@@ -95,7 +95,7 @@ namespace Quinn.MissileSystem
 				if (health.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, knockbackSpeed))
 					OnImpact();
 			}
-			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.CompareTag("MissileBlocker"))
 			{
 				OnImpact();
 			}

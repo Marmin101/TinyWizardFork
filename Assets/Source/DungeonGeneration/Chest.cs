@@ -34,6 +34,7 @@ namespace Quinn.DungeonGeneration
 		private bool DisableAmbienceOnOpen = true;
 
 		public bool IsOpen { get; private set; }
+		public int Priority => -100;
 
 		private void Awake()
 		{

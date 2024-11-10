@@ -39,6 +39,9 @@ namespace Quinn.DungeonGeneration
 		[SerializeField]
 		private float PostConquerDelay = 1f;
 
+		[Space, SerializeField, Required]
+		private Collider2D MissileBlocker;
+
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
 
@@ -58,6 +61,11 @@ namespace Quinn.DungeonGeneration
 		private void Awake()
 		{
 			IsConquered = StartConquered;
+
+			if (StartConquered)
+			{
+				Destroy(MissileBlocker.gameObject);
+			}
 
 			if (HasNorthDoor)
 				_doors.Add(NorthDoor);
@@ -177,6 +185,9 @@ namespace Quinn.DungeonGeneration
 		private void StartRoomEncounter()
 		{
 			Lock();
+
+			if (MissileBlocker != null)
+				Destroy(MissileBlocker.gameObject);
 
 			for (int i = 0; i < AgentsParent.childCount; i++)
 			{

@@ -121,6 +121,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1231797776710960950, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
+      propertyPath: m_Size.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231797776710960950, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
+      propertyPath: m_Size.y
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1600134719350461241, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: Lens.OrthographicSize
       value: 6

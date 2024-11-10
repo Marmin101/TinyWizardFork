@@ -265,10 +265,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalaceChest
       objectReference: {fileID: 0}
-    - target: {fileID: 3263005636203468339, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
-      propertyPath: OverrideMaxDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5742179665093678014, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -312,10 +308,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8528346144263478766, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4946463245990177035}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
 --- !u!114 &4051330664155875917 stripped
 MonoBehaviour:
@@ -333,27 +326,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5742179665093678014, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
   m_PrefabInstance: {fileID: 1768899651794993756}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7986748553586810802 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8528346144263478766, guid: ee344fdd5cca47c4690f10bcbf8abfcc, type: 3}
-  m_PrefabInstance: {fileID: 1768899651794993756}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4946463245990177035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7986748553586810802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03d013de7a18384197a77bf121b0e6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Staffs:
-  - {fileID: 3308763497516412586, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
-  - {fileID: 5556168969788869389, guid: debf9f51430d0014f9d99a71ea0951a5, type: 3}
-  - {fileID: 8078778520645663636, guid: 3a7f5f5d31023f94c8b869fd48a5580f, type: 3}
 --- !u!1001 &2191045453291267810
 PrefabInstance:
   m_ObjectHideFlags: 0

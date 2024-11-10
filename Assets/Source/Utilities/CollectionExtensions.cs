@@ -31,7 +31,7 @@ namespace Quinn
 				}
 			}
 
-			return collection.ElementAt(Random.Range(0, collection.Count()));
+			return collection.GetRandom();
 		}
 
 		public static T GetClosestTo<T>(this IEnumerable<T> collection, Vector2 point) where T : Component

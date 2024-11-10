@@ -95,9 +95,10 @@ namespace Quinn.DungeonGeneration
 			// Filter for rooms that support required doors.
 			var validRooms = ActiveFloor.Generatable.Where(roomToGenerate => criteria.IsMatch(roomToGenerate.Prefab));
 			// Get random (by weight) room from filtered collection.
-			Room prefab = validRooms.GetWeightedRandom(x => x.Weight).Prefab;
+			var selected = validRooms.GetWeightedRandom(x => x.Weight);
 
-			Debug.Assert(prefab != null, $"Failed to generate room. No valid option found! Criteria: {criteria}.");
+			Debug.Assert(selected != null, $"Failed to generate room. No valid option found! Criteria: {criteria}.");
+			Room prefab = selected.Prefab;
 
 			// Generate actual room.
 			await GenerateRoomAsync(prefab, x, y);

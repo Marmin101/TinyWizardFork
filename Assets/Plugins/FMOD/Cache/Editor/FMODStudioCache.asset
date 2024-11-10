@@ -258,10 +258,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638667732742320326
+  lastModified: 638667803597665985
   FileSizes:
   - Name: Desktop
-    Value: 6101536
+    Value: 6145312
   Exists: 1
 --- !u!114 &-3594564924571568520
 MonoBehaviour:
@@ -520,14 +520,42 @@ MonoBehaviour:
   - {fileID: -6841994844125774649}
   - {fileID: -212819761263878134}
   - {fileID: -3241067163501298404}
+  - {fileID: 34944921250261949}
   EditorParameters:
   - {fileID: 1270169612852373447}
   MasterBanks:
   - {fileID: -3630161908280164207}
   StringsBanks:
   - {fileID: 3892577550561530642}
-  cacheTime: 638667732742375985
+  cacheTime: 638667803597705989
   cacheVersion: 131620
+--- !u!114 &34944921250261949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RoomUnlock
+  m_EditorClassIdentifier: 
+  Path: event:/RoomUnlock
+  Guid:
+    Data1: 811330075
+    Data2: 1077528114
+    Data3: 83646633
+    Data4: 670741283
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1540
 --- !u!114 &428538089557278944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,10 +646,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638667732742375985
+  lastModified: 638667803597705989
   FileSizes:
   - Name: Desktop
-    Value: 2006
+    Value: 2056
   Exists: 1
 --- !u!114 &5318309772521854013
 MonoBehaviour:

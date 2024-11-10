@@ -17,6 +17,8 @@ namespace Quinn.UI
 		{
 			PlayerManager.Instance.OnPlayerHealthChange += OnHealthChange;
 			PlayerManager.Instance.OnPlayerMaxHealthChange += OnMaxHealthChange;
+
+			ReconstructHearts();
 		}
 
 		private void OnDestroy()
@@ -39,6 +41,21 @@ namespace Quinn.UI
 			UpdateHearts();
 		}
 
+		private void ReconstructHearts()
+		{
+			for (int i = 0; i < transform.childCount; i++)
+			{
+				transform.GetChild(i).gameObject.Destroy();
+			}
+
+			int max = Mathf.RoundToInt(PlayerManager.Instance.Health.Max);
+
+			for (int i = 0; i < max; i++)
+			{
+				HeartPrefab.Clone(transform);
+			}
+		}
+
 		private void UpdateHearts()
 		{
 			int current = Mathf.RoundToInt(PlayerManager.Instance.Health.Current);
@@ -52,21 +69,6 @@ namespace Quinn.UI
 					var img = child.GetComponent<Image>();
 					img.sprite = i < current ? FullHeart : EmptyHeart;
 				}
-			}
-		}
-
-		private void ReconstructHearts()
-		{
-			for (int i = 0; i < transform.childCount; i++)
-			{
-				transform.GetChild(i).gameObject.Destroy();
-			}
-
-			int max = Mathf.RoundToInt(PlayerManager.Instance.Health.Max);
-
-			for (int i = 0; i < max; i++)
-			{
-				HeartPrefab.Clone(transform);
 			}
 		}
 	}

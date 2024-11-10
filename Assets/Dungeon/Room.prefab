@@ -28285,13 +28285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf63b5afdebb0444398f9281a429f83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   LockSound:
     Guid:
       Data1: -1923976504
@@ -28299,18 +28292,27 @@ MonoBehaviour:
       Data3: 2126966434
       Data4: 1112807150
     Path: event:/RoomLock
+  UnlockSound:
+    Guid:
+      Data1: 811330075
+      Data2: 1077528114
+      Data3: 83646633
+      Data4: 670741283
+    Path: event:/RoomUnlock
   RoomTrigger: {fileID: 983069669129734881}
   RoomCamera: {fileID: 3233533692150510720}
   Navmesh: {fileID: 6286797074916892425}
   <PathfindBounds>k__BackingField: {fileID: 7393091686480668283}
   AgentsParent: {fileID: 1768691519734140043}
   StartConquered: 0
+  NoDoors: 0
   NorthDoor: {fileID: 5267563474686493901}
   SouthDoor: {fileID: 5017978725769315186}
   EastDoor: {fileID: 4822959630363621678}
   WestDoor: {fileID: 1290332386032603610}
   Chest: {fileID: 0}
   DisableMusic: 0
+  PostConquerDelay: 1
 --- !u!1 &6627044298079856012
 GameObject:
   m_ObjectHideFlags: 0

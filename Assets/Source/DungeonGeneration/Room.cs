@@ -12,8 +12,9 @@ namespace Quinn.DungeonGeneration
 	public class Room : MonoBehaviour
 	{
 		[SerializeField]
-		private EventReference OpenSound, LockSound;
-		[SerializeField, Required]
+		private EventReference LockSound, UnlockSound;
+
+		[SerializeField, Required, Space]
 		private Trigger RoomTrigger;
 		[SerializeField, Required]
 		private CinemachineCamera RoomCamera;
@@ -26,20 +27,25 @@ namespace Quinn.DungeonGeneration
 
 		[SerializeField, Space]
 		private bool StartConquered;
-		[SerializeField, BoxGroup("Doors"), ValidateInput("@HasNorthDoor || HasEastDoor || HasSouthDoor || HasWestDoor")]
+
+		[SerializeField, BoxGroup("Doors")]
+		private bool NoDoors;
+		[SerializeField, BoxGroup("Doors"), ValidateInput("@ NoDoors || HasNorthDoor || HasEastDoor || HasSouthDoor || HasWestDoor")]
 		private Door NorthDoor, SouthDoor, EastDoor, WestDoor;
 		[SerializeField]
 		private Chest Chest;
 		[SerializeField]
 		private bool DisableMusic;
+		[SerializeField]
+		private float PostConquerDelay = 1f;
 
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
 
-		public bool HasNorthDoor => NorthDoor != null;
-		public bool HasEastDoor => EastDoor != null;
-		public bool HasSouthDoor => SouthDoor != null;
-		public bool HasWestDoor => WestDoor != null;
+		public bool HasNorthDoor => NorthDoor != null || NoDoors;
+		public bool HasEastDoor => EastDoor != null || NoDoors;
+		public bool HasSouthDoor => SouthDoor != null || NoDoors;
+		public bool HasWestDoor => WestDoor != null || NoDoors;
 
 		public event System.Action OnRoomConquered;
 
@@ -66,13 +72,13 @@ namespace Quinn.DungeonGeneration
 			RoomTrigger.OnTriggerExit += OnPlayerTriggerExit;
 		}
 
-		public void Open()
+		public void Unlock()
 		{
 			if (!IsLocked)
 				return;
 
 			IsLocked = false;
-			Audio.Play(OpenSound, transform.position);
+			Audio.Play(UnlockSound, transform.position);
 
 			foreach (var door in _doors)
 			{
@@ -183,14 +189,13 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
-		private void OnAgentDeath(AIAgent agent)
+		private async void OnAgentDeath(AIAgent agent)
 		{
 			_liveAgents.Remove(agent);
 
 			if (_liveAgents.Count == 0)
 			{
 				IsConquered = true;
-				Open();
 
 				foreach (var staticAgent in _staticAgents)
 				{
@@ -199,10 +204,14 @@ namespace Quinn.DungeonGeneration
 
 				OnRoomConquered?.Invoke();
 
+				await Wait.Seconds(PostConquerDelay);
+
 				if (Chest != null)
 				{
 					Chest.Open();
 				}
+
+				Unlock();
 			}
 		}
 	}

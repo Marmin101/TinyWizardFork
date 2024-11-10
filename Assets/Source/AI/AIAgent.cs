@@ -132,7 +132,7 @@ namespace Quinn.AI
 			ActiveState = null;
 		}
 
-		protected Vector2 GetRandomPositionInRoom()
+		protected Vector2 GetRandomPositionRectInRoom()
 		{
 			if (Room == null)
 				return Position;

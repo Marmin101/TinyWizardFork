@@ -382,12 +382,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StaffPivot: {fileID: 1884010044133439082}
   StaffOffset: 0.52
-  StartingStaff: {fileID: 2408369836229230331, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
   InputBufferTimeout: 0.35
   CastingSpark: {fileID: 8386681424887333751}
   StoredStaffsParent: {fileID: 2134589046034292582}
   StaffMaxAngle: 45
+  StartingStaff: {fileID: 2408369836229230331, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
   FallbackStaff: {fileID: 6154076365990238944}
+  <MaxMana>k__BackingField: 100
+  ManaRegenDelay: 1
+  ManaRegenRate: 70
 --- !u!114 &7626890514978811671
 MonoBehaviour:
   m_ObjectHideFlags: 0

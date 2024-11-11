@@ -33,6 +33,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float ChainWindowDuration = 0.4f;
 		[SerializeField, FoldoutGroup("Basic")]
 		private float BasicEnergyUse = 2f;
+		[SerializeField, FoldoutGroup("Basic")]
+		private float BasicManaConsume = 4f;
 
 		[Space, SerializeField, FoldoutGroup("Basic Finisher")]
 		private bool HasBasicFinisher = true;
@@ -53,6 +55,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private Missile BasicFinisherMissileOverride;
 		[SerializeField, FoldoutGroup("Basic Finisher"), ShowIf(nameof(HasBasicFinisher))]
 		private float BasicFinisherEnergyUse = 4f;
+		[SerializeField, FoldoutGroup("Basic Finisher"), ShowIf(nameof(HasBasicFinisher))]
+		private float BasicFinisherManaConsume = 12f;
 
 		[Space, SerializeField, FoldoutGroup("Special")]
 		private bool HasSpecial = true;
@@ -76,8 +80,10 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private MissileSpawnBehavior SpecialBehavior = MissileSpawnBehavior.Direct;
 		[SerializeField, HideIf("@SpecialBehavior == MissileSpawnBehavior.Direct || !HasSpecial"), FoldoutGroup("Special"), Unit(Units.Degree)]
 		private float SpecialSpread = 0f;
-		[SerializeField, FoldoutGroup("Special")]
+		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
 		private float SpecialEnergyUse = 8f;
+		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
+		private float SpecialManaConsume = 34f;
 
 		private float _largeMissileTime;
 		private int _castChainCount;
@@ -139,6 +145,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				Audio.Play(BasicFinisherCastSound, Head.position);
 				ConsumeEnergy(BasicFinisherEnergyUse);
+
+				ConsumeMana(BasicFinisherManaConsume);
 			}
 			// Normal cast.
 			else
@@ -152,6 +160,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				Audio.Play(BasicCastSound, Head.position);
 				ConsumeEnergy(BasicEnergyUse);
+
+				ConsumeMana(BasicManaConsume);
 			}
 		}
 
@@ -168,6 +178,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			Caster.Movement.ApplySpeedModifier(this, ChargingMoveSpeedFactor);
 			_isMovePenaltyApplied = true;
 			_castChainCount = 0;
+
+			CanRegenMana = false;
 		}
 
 		public override void OnSpecialUp()
@@ -192,11 +204,15 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			if (enoughCharge)
 			{
 				ConsumeEnergy(SpecialEnergyUse);
+				ConsumeMana(SpecialManaConsume);
 			}
 			else
 			{
 				ConsumeEnergy(BasicFinisherEnergyUse);
+				ConsumeMana(BasicFinisherManaConsume);
 			}
+
+			CanRegenMana = true;
 		}
 
 		private Vector2 GetDirToCrosshair()

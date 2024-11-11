@@ -15,8 +15,6 @@ namespace Quinn.PlayerSystem.SpellSystem
 		[SerializeField]
 		private float StaffOffset = 0.5f;
 		[SerializeField]
-		private Staff StartingStaff;
-		[SerializeField]
 		private float InputBufferTimeout = 0.2f;
 		[SerializeField, Required]
 		private VisualEffect CastingSpark;
@@ -27,10 +25,21 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private float StaffMaxAngle = 30f;
 
 		[Space, SerializeField, Required]
+		private Staff StartingStaff;
+		[SerializeField]
 		private Staff FallbackStaff;
+
+		[field: Space, SerializeField]
+		public float MaxMana { get; private set; } = 100f;
+		[SerializeField]
+		private float ManaRegenDelay = 1f;
+		[SerializeField, InfoBox("@(MaxMana / ManaRegenRate).ToString() + 's'")]
+		private float ManaRegenRate = 50f;
 
 		public Staff ActiveStaff {  get; private set; }
 		public bool CanCast => Time.time >= _nextInputTime;
+
+		public float Mana { get; private set; }
 
 		public bool IsBasicHeld { get; private set; }
 		public bool IsSpecialHeld { get; private set; }
@@ -40,8 +49,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		private float _nextInputTime;
 		private readonly BufferManager _inputBuffer = new();
-
 		private readonly List<Staff> _storedStaffs = new();
+
+		private float _manaRegenStartTime;
 
 		private void Awake()
 		{
@@ -58,6 +68,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			}
 
 			StoreStaff(FallbackStaff);
+			Mana = MaxMana;
 		}
 
 		private void Update()
@@ -73,6 +84,11 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				StoreStaff(ActiveStaff);
 				EquipStaff(FallbackStaff);
+			}
+
+			if (Time.time > _manaRegenStartTime && Mana < MaxMana && (ActiveStaff == null || ActiveStaff.CanRegenMana))
+			{
+				Mana = Mathf.Min(Mana + (Time.deltaTime * ManaRegenRate), MaxMana);
 			}
 		}
 
@@ -121,6 +137,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 				CastingSpark.transform.SetParent(staff.Head, false);
 				CastingSpark.transform.localPosition = Vector3.zero;
 
+				FullyReplenishMana();
 				OnStaffEquipped?.Invoke(staff);
 			}
 		}
@@ -184,6 +201,29 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 				StoreStaff(staff);
 			}
+		}
+
+		public void ConsumeMana(float amount)
+		{
+			if (Mana == 0f)
+				return;
+
+			Mana = Mathf.Max(0f, Mana - amount);
+
+			if (amount > 0f)
+			{
+				_manaRegenStartTime = Time.time + ManaRegenDelay;
+			}
+		}
+
+		public void ReplenishMana(float amount)
+		{
+			Mana = Mathf.Min(Mana + amount, MaxMana);
+		}
+
+		public void FullyReplenishMana()
+		{
+			ReplenishMana(MaxMana);
 		}
 
 		private void OnBasicStart()

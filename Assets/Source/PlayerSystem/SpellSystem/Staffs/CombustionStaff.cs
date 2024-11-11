@@ -35,6 +35,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private AnimationCurve EnergyUseChargeFactor;
 		[SerializeField]
 		private float FriendlyKnockbackSpeed = 18f;
+		[SerializeField]
+		private float MaxManaConsume = 20f;
 
 		private bool _isCharging;
 		private float _charge;
@@ -52,6 +54,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				else if (percent > 0.8f) cooldown *= 0.1f;
 				Cooldown.Call(this, BaseSparkCooldown, Caster.Spark);
 			}
+
+			CanRegenMana = _isCharging;
 		}
 
 		public override void OnBasicDown()
@@ -106,6 +110,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				}
 
 				ConsumeEnergy(MaxEnergyUse * EnergyUseChargeFactor.Evaluate(chargePercent));
+				ConsumeMana(MaxManaConsume * chargePercent);
 			}
 
 			_isCharging = false;

@@ -207,6 +207,7 @@ MonoBehaviour:
   BasicInterval: 0
   ChainWindowDuration: 0.2
   BasicEnergyUse: 0
+  BasicManaConsume: 1
   HasBasicFinisher: 1
   BasicFinisherCooldown: 0.6
   BasicFinisherCount: 5
@@ -216,6 +217,7 @@ MonoBehaviour:
   BasicFinisherKnockbackSpeed: 8
   BasicFinisherMissileOverride: {fileID: 8124721946908383700, guid: d08d72d1562c0d34e9a3eb98f5dec6ca, type: 3}
   BasicFinisherEnergyUse: 4
+  BasicFinisherManaConsume: 6
   HasSpecial: 0
   SpecialMissile: {fileID: 0}
   ChargingSparkInterval: 0.45
@@ -228,3 +230,4 @@ MonoBehaviour:
   SpecialBehavior: 0
   SpecialSpread: 0
   SpecialEnergyUse: 8
+  SpecialManaConsume: 34

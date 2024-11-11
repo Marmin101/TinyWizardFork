@@ -15,16 +15,15 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public float MaxEnergy { get; private set; } = 500f;
 
 		public float Energy { get; private set; }
+		public bool CanRegenMana { get; protected set; } = true;
 
 		protected PlayerCaster Caster { get; private set; }
-
-		private SortingGroup _group;
 
 		protected bool CanCast
 		{
 			get
 			{
-				if (Caster == null || Energy <= 0f)
+				if (Caster == null || Energy <= 0f || Caster.Mana <= 0f)
 					return false;
 
 				return Caster.CanCast;
@@ -50,6 +49,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 				return Caster.IsSpecialHeld;
 			}
 		}
+
+		private SortingGroup _group;
 
 		protected virtual void Awake()
 		{
@@ -100,6 +101,11 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public void ConsumeAllEnergy()
 		{
 			Energy = 0f;
+		}
+
+		public void ConsumeMana(float amount)
+		{
+			Caster.ConsumeMana(amount);
 		}
 	}
 }

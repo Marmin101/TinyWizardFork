@@ -5,7 +5,7 @@
 			<value>ChestOpen</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b79ba1c2-1e8e-457c-8f9f-468280306593}</destination>
@@ -73,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{66b9eb5f-9275-44f5-b148-538d616944b0}">
 		<property name="volume">
-			<value>-17.5</value>
+			<value>-21.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{71f480fe-cf0b-4194-a6ce-d54442ac89b2}</destination>
@@ -112,6 +112,7 @@
 			<destination>{1c1ffc80-e22b-4533-b32c-b5b20b920cad}</destination>
 			<destination>{ae2db233-ad43-4d18-a8a4-e813d055d319}</destination>
 			<destination>{17679e1b-3d22-4da2-822b-8ca37d42a092}</destination>
+			<destination>{1d13e76c-7ef2-4354-a75f-787656323ecf}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b3105013-ed83-4300-a7ef-2e992043e4ed}" />
@@ -135,6 +136,7 @@
 			<value>600</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{1d13e76c-7ef2-4354-a75f-787656323ecf}" />
 	<object class="RandomizerModulator" id="{4a39b27c-eedd-4671-ad9a-0667a940a4ca}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

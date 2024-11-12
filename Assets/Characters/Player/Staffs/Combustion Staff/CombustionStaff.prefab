@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.398
       objectReference: {fileID: 0}
+    - target: {fileID: 2604928241439567913, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604928241439567913, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604928241439567913, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3308763497516412586, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_Name
       value: CombustionStaff
@@ -132,11 +144,11 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
-  <MaxEnergy>k__BackingField: 250
+  <MaxEnergy>k__BackingField: 200
   <GUID>k__BackingField: 422fe1fb-9bbe-4d9e-90f2-f9d2fcba2a15
   ChargeRate: 2
-  MaxCharge: 12
-  BaseChargeToDamage: 51
+  MaxCharge: 8
+  BaseChargeToDamage: 70
   ChargeToDamageFactor:
     serializedVersion: 2
     m_Curve:
@@ -152,11 +164,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.69373083
-      outSlope: 0.69373083
+      inSlope: 0.21671656
+      outSlope: 0.21671656
       tangentMode: 0
       weightedMode: 3
-      inWeight: 0.3801902
+      inWeight: 0.29995072
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -188,19 +200,19 @@ MonoBehaviour:
       Data3: -1343269714
       Data4: 514079750
     Path: event:/CombustionStaffExplode_Big
-  MaxEnergyUse: 5
+  MaxEnergyUse: 15
   EnergyUseChargeFactor:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.5
-      inSlope: 1.1687719
-      outSlope: 1.1687719
+      inSlope: -0.0036624388
+      outSlope: -0.0036624388
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.060185824
+      outWeight: 0.14728492
     - serializedVersion: 3
       time: 1
       value: 1
@@ -214,7 +226,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   FriendlyKnockbackSpeed: 18
-  MaxManaConsume: 20
+  MaxManaConsume: 60
+  MinFireVFXCount: 32
+  MaxFireVFXCount: 512
+  MinSmokeVFXCount: 16
+  MaxSmokeVFXCount: 256
 --- !u!4 &8949893096219440680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2432762686052508438, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}

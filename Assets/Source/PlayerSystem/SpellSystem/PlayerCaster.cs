@@ -75,6 +75,18 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				ActiveStaff.ConsumeAllEnergy();
 			}
+
+			if (Input.GetKeyDown(KeyCode.Alpha9))
+			{
+				if (ActiveStaff)
+				{
+					Destroy(ActiveStaff.gameObject);
+					ActiveStaff = null;
+				}
+
+				GameObject staff = StartingStaffs.GetRandom().gameObject.Clone();
+				EquipStaff(staff.GetComponent<Staff>());
+			}
 #endif
 
 			if (ActiveStaff != null && ActiveStaff.Energy <= 0f)

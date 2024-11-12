@@ -44,6 +44,8 @@ namespace Quinn.DungeonGeneration
 		public bool IsOpen { get; private set; }
 		public int Priority => -100;
 
+		public Team Team => Team.Environment;
+
 		private bool _isOpening;
 
 		private void Awake()

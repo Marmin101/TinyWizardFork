@@ -4,6 +4,8 @@ namespace Quinn
 {
 	public interface IDamageable
 	{
+		public Team Team { get; }
+
 		public bool TakeDamage(float damage, Vector2 dir, Team sourceTeam, GameObject source, float? customKnockback = null)
 		{
 			var info = new DamageInfo()

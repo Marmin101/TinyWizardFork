@@ -37,6 +37,10 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float FriendlyKnockbackSpeed = 18f;
 		[SerializeField]
 		private float MaxManaConsume = 20f;
+		[SerializeField]
+		private int MinFireVFXCount = 32, MaxFireVFXCount = 128;
+		[SerializeField]
+		private int MinSmokeVFXCount = 16, MaxSmokeVFXCount = 64;
 
 		private bool _isCharging;
 		private float _charge;
@@ -76,10 +80,20 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				float chargePercent = (_charge - MinChargeThreshold) / (MaxCharge - MinChargeThreshold);
 
 				var vfx = CombustionVFX.Clone(pos);
-				var fireEffect = vfx.GetComponent<VisualEffect>();
-				fireEffect.SetInt("Count", (int)Mathf.Lerp(32, 128, chargePercent));
-				fireEffect.Play();
 				vfx.Destroy(VFXLifespan);
+
+				var fx = vfx.GetComponentsInChildren<VisualEffect>();
+
+				fx[0].SetInt("Count", (int)Mathf.Lerp(MinFireVFXCount, MaxFireVFXCount, chargePercent));
+				fx[0].SetFloat("SpeedFactor", Mathf.Lerp(0.5f, 2f, chargePercent));
+
+				fx[1].SetInt("Count", (int)Mathf.Lerp(MinSmokeVFXCount, MaxSmokeVFXCount, chargePercent));
+				fx[1].SetFloat("SpeedFactor", Mathf.Lerp(0.5f, 2f, chargePercent));
+
+				foreach (var f in fx)
+				{
+					f.Play();
+				}
 
 				EventReference sound;
 				if (chargePercent > 0.8f)
@@ -93,18 +107,18 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				foreach (var collider in Physics2D.OverlapCircleAll(pos, DamageRadius))
 				{
-					if (collider.TryGetComponent(out Health health))
+					if (collider.TryGetComponent(out IDamageable damageable))
 					{
-						if (health.Team != Team.Player)
+						if (damageable.Team != Team.Player)
 						{
 							float dmg = ChargeToDamageFactor.Evaluate(chargePercent);
 							dmg *= BaseChargeToDamage;
 
-							health.TakeDamage(dmg, pos.DirectionTo(health.transform.position), Team.Player, Caster.gameObject);
+							damageable.TakeDamage(dmg, pos.DirectionTo(collider.transform.position), Team.Player, Caster.gameObject);
 						}
-						else if (health.TryGetComponent(out Locomotion locomotion))
+						else if (collider.TryGetComponent(out Locomotion locomotion))
 						{
-							locomotion.Knockback(pos.DirectionTo(health.transform.position), FriendlyKnockbackSpeed);
+							locomotion.Knockback(pos.DirectionTo(collider.transform.position), FriendlyKnockbackSpeed);
 						}
 					}
 				}

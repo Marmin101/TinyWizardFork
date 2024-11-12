@@ -40,6 +40,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: -876546973899608171, guid: de03e8d348a139046aed384cf5444b2a, type: 3}
+    - target: {fileID: 3035076089870465620, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035076089870465620, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: Renderers.Array.size
       value: 2
@@ -76,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: a6cfd74ff26aac446a423bb93b173293, type: 2}
+    - target: {fileID: 7510978845761911142, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.061
+      objectReference: {fileID: 0}
     - target: {fileID: 8092702747056744121, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.032

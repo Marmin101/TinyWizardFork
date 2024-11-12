@@ -478,6 +478,7 @@ MonoBehaviour:
   Renderers:
   - {fileID: 8701936669297773007}
   - {fileID: 7490090320629991294}
+  - {fileID: 2780119781483720601}
   FlashInDuration: 0.05
   FlashHoldDuration: 0.05
   FlashOutDuration: 0.05
@@ -487,6 +488,7 @@ MonoBehaviour:
   HurtImmunityDuration: 1.6
   BlinkCount: 4
   BlinkInterval: 0.18
+  HPBar: {fileID: 0}
 --- !u!114 &8742490171193552683
 MonoBehaviour:
   m_ObjectHideFlags: 0

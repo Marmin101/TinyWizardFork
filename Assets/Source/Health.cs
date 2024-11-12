@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Quinn
 {
@@ -33,6 +34,9 @@ namespace Quinn
 		[SerializeField, FoldoutGroup("Hurt Immunity"), ShowIf(nameof(IsImmuneOnHurt))]
 		private float BlinkInterval = 0.1f;
 
+		[Space, SerializeField]
+		private Slider HPBar;
+
 		public float Current { get; private set; }
 		public bool IsDead { get; private set; }
 		public bool IsImmune => _isHurtImmune || _damageBlockers.Count > 0;
@@ -50,6 +54,23 @@ namespace Quinn
 		private void Awake()
 		{
 			Current = Max;
+		}
+
+		private void Start()
+		{
+			if (HPBar != null)
+			{
+				HPBar.transform.parent.SetParent(null, true);
+			}
+		}
+
+		private void FixedUpdate()
+		{
+			if (HPBar != null)
+			{
+				HPBar.gameObject.SetActive(Current < Max);
+				HPBar.value = Current / Max;
+			}
 		}
 
 		public void Heal(float health)
@@ -110,6 +131,11 @@ namespace Quinn
 
 				IsDead = true;
 				OnDeath?.Invoke();
+
+				if (HPBar != null)
+				{
+					HPBar.transform.parent.gameObject.Destroy();
+				}
 			}
 
 			if (IsImmuneOnHurt && !IsDead)

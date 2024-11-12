@@ -319,6 +319,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3035076089870465620, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035076089870465620, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: Renderers.Array.size
       value: 3
@@ -331,6 +339,10 @@ PrefabInstance:
       propertyPath: 'Renderers.Array.data[2]'
       value: 
       objectReference: {fileID: 317801139403267643}
+    - target: {fileID: 4033897313302321017, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: <Target>k__BackingField
+      value: 
+      objectReference: {fileID: 2740707142073682643}
     - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Size.x
       value: 0.7095388
@@ -355,6 +367,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b11b30814af41bc4996b0a8f4211b4bc, type: 2}
+    - target: {fileID: 7510978845761911142, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.766
+      objectReference: {fileID: 0}
     - target: {fileID: 8865879636924115683, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

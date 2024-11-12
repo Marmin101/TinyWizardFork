@@ -125,7 +125,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnBasicDown()
 		{
-			if (!CanCast || IsSpecialHeld)
+			if (!CanCast || IsSpecialHeld || !CanAfford(BasicManaConsume))
 				return;
 
 			_castChainCount++;
@@ -167,7 +167,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialDown()
 		{
-			if (!HasSpecial || !CanCast)
+			if (!HasSpecial || !CanCast || !CanAfford(SpecialManaConsume))
 				return;
 
 			Caster.Movement.CanDash = false;

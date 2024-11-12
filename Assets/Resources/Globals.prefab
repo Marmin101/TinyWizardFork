@@ -155,7 +155,7 @@ MonoBehaviour:
   FadeFromBlackDuration: 0.8
   FadeToBlackEase: 2
   FadeFromBlackEase: 3
-  FadeToBlackOnDeathDuration: 7
+  FadeToBlackOnDeathDuration: 5
   PlayerToCursorBias: 0.15
   CameraTargetSmoothTime: 0.05
 --- !u!114 &-4870998015981991001

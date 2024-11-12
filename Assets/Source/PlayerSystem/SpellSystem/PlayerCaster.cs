@@ -94,6 +94,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private void LateUpdate()
 		{
 			UpdateStaffTransform();
+
+			if (PlayerManager.Instance.IsDead)
+				return;
+
 			_inputBuffer.Update();
 
 			if (Input.GetMouseButton(0) && !IsBasicHeld && CanCast)
@@ -116,6 +120,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 				OnSpecialStop();
 			}
 
+			// Make player face crosshair.
 			var dirToCross = transform.position.DirectionTo(CrosshairManager.Instance.Position);
 			transform.localScale = new Vector3(Mathf.Sign(dirToCross.x), 1f, 1f);
 		}
@@ -245,7 +250,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				IsBasicHeld = true;
 				ActiveStaff.OnBasicDown();
-			}, () => CanCast && Input.GetMouseButton(0));
+			}, () => CanCast && InputManager.Instance.IsCastHeld);
 		}
 
 		private void OnBasicStop()
@@ -269,7 +274,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				IsSpecialHeld = true;
 				ActiveStaff.OnSpecialDown();
-			}, () => CanCast && Input.GetMouseButton(1));
+			}, () => CanCast && InputManager.Instance.IsSpecialHeld);
 		}
 
 		private void OnSpecialStop()
@@ -288,6 +293,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			if (ActiveStaff == null)
 				return;
+
+			ActiveStaff.gameObject.SetActive(PlayerManager.Instance.IsAlive);
 
 			Vector2 cursorPos = InputManager.Instance.CursorWorldPos;
 

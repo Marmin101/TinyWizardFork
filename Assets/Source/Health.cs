@@ -127,6 +127,11 @@ namespace Quinn
 			Current -= info.Damage;
 			Current = Mathf.Max(0, Current);
 
+			if (Current == 0)
+			{
+				info.IsLethal = true;
+			}
+
 			OnDamaged?.Invoke(info.Damage, info.Direction.normalized, info.Source);
 			OnDamagedExpanded?.Invoke(info);
 

@@ -57,7 +57,6 @@ namespace Quinn.PlayerSystem
 			if (isMoving && !_wasMoving && Time.time > _nextStartFootstepSoundAllowedTime)
 			{
 				_nextStartFootstepSoundAllowedTime = Time.time + StartFootstepCooldown;
-
 				PlayFootstepSound(GetSoundMaterialType());
 			}
 
@@ -158,18 +157,21 @@ namespace Quinn.PlayerSystem
 
 		private async void OnHurt(DamageInfo info)
 		{
-			var seq = DOTween.Sequence();
-			float brightness = PlayerLight.intensity;
+			if (!info.IsLethal)
+			{
+				var seq = DOTween.Sequence();
+				float brightness = PlayerLight.intensity;
 
-			seq.Append(PlayerLight.DOFade(brightness * 0.5f, 0.5f));
-			seq.AppendInterval(HurtDuration);
-			seq.Append(PlayerLight.DOFade(brightness / 0.5f, 1.5f));
+				seq.Append(PlayerLight.DOFade(brightness * 0.5f, 0.5f));
+				seq.AppendInterval(HurtDuration);
+				seq.Append(PlayerLight.DOFade(brightness / 0.5f, 1.5f));
 
-			seq.Play();
+				seq.Play();
 
-			_hurtSnapshot.start();
-			await Wait.Seconds(HurtDuration);
-			_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				_hurtSnapshot.start();
+				await Wait.Seconds(HurtDuration);
+				_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
 		}
 	}
 }

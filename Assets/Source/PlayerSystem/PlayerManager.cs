@@ -103,8 +103,8 @@ namespace Quinn.PlayerSystem
 			OnPlayerDeath?.Invoke();
 
 			InputManager.Instance.DisableInput();
-
 			Audio.Play(DeathMusicCue);
+
 			await CameraManager.Instance.DeathFadeOut();
 			OnPlayerDeathPreSceneLoad?.Invoke();
 			await SceneManager.LoadSceneAsync(0);

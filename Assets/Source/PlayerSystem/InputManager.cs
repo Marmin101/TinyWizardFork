@@ -10,6 +10,9 @@ namespace Quinn.PlayerSystem
 		public Vector2 MoveDirection { get; private set; }
 		public Vector2 CursorWorldPos { get; private set; }
 
+		public bool IsCastHeld { get; private set; }
+		public bool IsSpecialHeld { get; private set; }
+
 		public event Action OnInteract;
 		public event Action OnDash;
 		public event Action OnCastStart, OnCastStop;
@@ -35,6 +38,9 @@ namespace Quinn.PlayerSystem
 			{
 				OnDash?.Invoke();
 			}
+
+			IsCastHeld = Input.GetMouseButton(0);
+			IsSpecialHeld = Input.GetMouseButton(1);
 
 			if (Input.GetMouseButtonDown(0))
 			{

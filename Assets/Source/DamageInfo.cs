@@ -10,5 +10,6 @@ namespace Quinn
 		public GameObject Source;
 		public bool UsesCustomKnockbackSpeed;
 		public float CustomKnockbackSpeed;
+		public bool IsLethal;
 	}
 }

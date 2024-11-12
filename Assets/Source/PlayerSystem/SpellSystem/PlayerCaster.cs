@@ -1,7 +1,6 @@
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -119,6 +118,17 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 			var dirToCross = transform.position.DirectionTo(CrosshairManager.Instance.Position);
 			transform.localScale = new Vector3(Mathf.Sign(dirToCross.x), 1f, 1f);
+		}
+
+		private void OnDestroy()
+		{
+			var input = InputManager.Instance;
+
+			if (input != null)
+			{
+				input.OnCastStart -= OnBasicStart;
+				input.OnSpecialStart -= OnSpecialStart;
+			}
 		}
 
 		public void EquipStaff(Staff staff)

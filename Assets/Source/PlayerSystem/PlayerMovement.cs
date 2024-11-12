@@ -37,6 +37,7 @@ namespace Quinn.PlayerSystem
 
 			_animator = GetComponent<Animator>();
 			_health = GetComponent<Health>();
+
 			InputManager.Instance.OnDash += OnDash;
 		}
 
@@ -45,6 +46,12 @@ namespace Quinn.PlayerSystem
 			float scale = Rigidbody.linearVelocity.magnitude / MoveSpeed;
 			if (IsDashing) scale = 1f;
 			_animator.SetFloat("SpeedScale", scale);
+		}
+
+		private void OnDestroy()
+		{
+			if (InputManager.Instance != null)
+				InputManager.Instance.OnDash -= OnDash;
 		}
 
 		public override Vector2 GetVelocity()

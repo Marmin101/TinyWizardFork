@@ -120,6 +120,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerGroupPrefab: {fileID: 8075276646572704782, guid: 9f60c85e031e2c044830f7549585bc6a, type: 3}
   InitialSpawnOffset: {x: -1, y: -1}
+  DeathMusicCue:
+    Guid:
+      Data1: -2049079012
+      Data2: 1195306535
+      Data3: 1201190829
+      Data4: 1002506548
+    Path: event:/GameOverCue
 --- !u!114 &5114066691716736982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +155,7 @@ MonoBehaviour:
   FadeFromBlackDuration: 0.8
   FadeToBlackEase: 2
   FadeFromBlackEase: 3
+  FadeToBlackOnDeathDuration: 7
   PlayerToCursorBias: 0.15
   CameraTargetSmoothTime: 0.05
 --- !u!114 &-4870998015981991001

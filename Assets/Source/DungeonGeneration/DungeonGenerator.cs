@@ -1,9 +1,11 @@
 using FMOD.Studio;
 using FMODUnity;
+using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Quinn.DungeonGeneration
 {
@@ -61,16 +63,24 @@ namespace Quinn.DungeonGeneration
 			Instance = this;
 		}
 
-		private async void Start()
+		private void Start()
 		{
-			var floor = Floors[Random.Range(0, Floors.Length)];
-			await StartFloorAsync(floor);
+			PlayerManager.Instance.OnPlayerDeath += OnPlayerDeath;
+			PlayerManager.Instance.OnPlayerDeathPreSceneLoad += OnPlayerDeathPreSceneLoad;
+
+			StartRandomFloor();
 		}
 
 		private void OnDestroy()
 		{
 			if (Instance == this)
 				Instance = null;
+		}
+
+		public async void StartRandomFloor()
+		{
+			var floor = Floors[Random.Range(0, Floors.Length)];
+			await StartFloorAsync(floor);
 		}
 
 		public async void GenerateRoomAt(int x, int y)
@@ -118,11 +128,7 @@ namespace Quinn.DungeonGeneration
 
 		private async Awaitable StartFloorAsync(FloorSO floor)
 		{
-			foreach (var room in _generatedRooms)
-			{
-				Destroy(room.Value);
-			}
-
+			DestroyAllRooms();
 			ActiveFloor = floor;
 
 			// Ambience.
@@ -174,6 +180,27 @@ namespace Quinn.DungeonGeneration
 		private Vector2 RoomGridToWorld(int x, int y)
 		{
 			return new Vector2(x, y) * MaxRoomSize;
+		}
+
+		private void DestroyAllRooms()
+		{
+			foreach (var room in _generatedRooms)
+			{
+				Destroy(room.Value);
+			}
+
+			_generatedRooms.Clear();
+		}
+
+		private void OnPlayerDeath()
+		{
+			_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			_music.release();
+		}
+
+		private void OnPlayerDeathPreSceneLoad()
+		{
+			DestroyAllRooms();
 		}
 	}
 }

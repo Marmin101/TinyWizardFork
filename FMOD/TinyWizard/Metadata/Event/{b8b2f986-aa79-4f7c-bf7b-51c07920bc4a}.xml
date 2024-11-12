@@ -5,7 +5,7 @@
 			<value>FireStaffBasicFinisher</value>
 		</property>
 		<property name="outputFormat">
-			<value>5</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b79ba1c2-1e8e-457c-8f9f-468280306593}</destination>
@@ -98,6 +98,7 @@
 			<destination>{1610094f-1b52-4bf5-b41e-73a56ccec71c}</destination>
 			<destination>{c15d5226-7ca9-4b38-b805-71cd752cadcd}</destination>
 			<destination>{b1869c47-7eba-42fe-a5c6-34b32dc51577}</destination>
+			<destination>{94ad1b99-a582-4c8b-92ae-9fdf47d2bda3}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f29d8894-43e3-4be7-b17e-9dc2e0698786}" />
@@ -114,4 +115,5 @@
 		</property>
 	</object>
 	<object class="SFXReverbEffect" id="{b1869c47-7eba-42fe-a5c6-34b32dc51577}" />
+	<object class="SpatialiserEffect" id="{94ad1b99-a582-4c8b-92ae-9fdf47d2bda3}" />
 </objects>

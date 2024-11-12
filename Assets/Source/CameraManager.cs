@@ -18,6 +18,8 @@ namespace Quinn
 		private Ease FadeToBlackEase = Ease.InCubic;
 		[SerializeField]
 		private Ease FadeFromBlackEase = Ease.OutCubic;
+		[SerializeField]
+		private float FadeToBlackOnDeathDuration = 2f;
 
 		[Space, SerializeField]
 		private float PlayerToCursorBias = 0.2f;
@@ -99,6 +101,16 @@ namespace Quinn
 			_blackout.color = new Color(0f, 0f, 0f, 0f);
 
 			await _blackout.DOFade(1f, FadeToBlackDuration)
+				.SetEase(FadeToBlackEase)
+				.AsyncWaitForCompletion();
+		}
+
+		public async Awaitable DeathFadeOut()
+		{
+			_blackout.enabled = true;
+			_blackout.color = new Color(0f, 0f, 0f, 0f);
+
+			await _blackout.DOFade(1f, FadeToBlackOnDeathDuration)
 				.SetEase(FadeToBlackEase)
 				.AsyncWaitForCompletion();
 		}

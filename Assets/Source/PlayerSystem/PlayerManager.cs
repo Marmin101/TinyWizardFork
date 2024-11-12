@@ -1,4 +1,6 @@
-﻿using Sirenix.OdinInspector;
+﻿using FMODUnity;
+using Quinn.DungeonGeneration;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +13,8 @@ namespace Quinn.PlayerSystem
 		private GameObject PlayerGroupPrefab;
 		[SerializeField]
 		private Vector2 InitialSpawnOffset = new(-1f, -1f);
+		[SerializeField]
+		private EventReference DeathMusicCue;
 
 		public static PlayerManager Instance { get; private set; }
 
@@ -23,6 +27,8 @@ namespace Quinn.PlayerSystem
 		public event Action<Player> OnPlayerSet;
 		public event Action<float> OnPlayerHealthChange;
 		public event Action OnPlayerMaxHealthChange;
+
+		public event Action OnPlayerDeath, OnPlayerDeathPreSceneLoad;
 
 		private void Awake()
 		{
@@ -94,12 +100,17 @@ namespace Quinn.PlayerSystem
 			Player = null;
 			Health = null;
 
+			OnPlayerDeath?.Invoke();
+
 			InputManager.Instance.DisableInput();
 
-			await CameraManager.Instance.FadeOut();
+			Audio.Play(DeathMusicCue);
+			await CameraManager.Instance.DeathFadeOut();
+			OnPlayerDeathPreSceneLoad?.Invoke();
 			await SceneManager.LoadSceneAsync(0);
 
 			SpawnPlayer(new(-0.5f, -0.5f));
+			DungeonGenerator.Instance.StartRandomFloor();
 		}
 
 		private void UnsubscribeAll()

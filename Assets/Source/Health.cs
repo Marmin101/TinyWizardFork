@@ -73,6 +73,11 @@ namespace Quinn
 			}
 		}
 
+		private void OnDestroy()
+		{
+			DestroyHPBar();
+		}
+
 		public void Heal(float health)
 		{
 			if (IsDead)
@@ -132,10 +137,7 @@ namespace Quinn
 				IsDead = true;
 				OnDeath?.Invoke();
 
-				if (HPBar != null)
-				{
-					HPBar.transform.parent.gameObject.Destroy();
-				}
+				DestroyHPBar();
 			}
 
 			if (IsImmuneOnHurt && !IsDead)
@@ -240,6 +242,14 @@ namespace Quinn
 				{
 					renderer.enabled = true;
 				}
+			}
+		}
+
+		private void DestroyHPBar()
+		{
+			if (HPBar != null)
+			{
+				HPBar.transform.parent.gameObject.Destroy();
 			}
 		}
 	}

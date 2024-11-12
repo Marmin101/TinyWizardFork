@@ -1,7 +1,10 @@
 ﻿using FMODUnity;
+using Quinn.PlayerSystem.SpellSystem;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn.PlayerSystem
 {
@@ -21,6 +24,9 @@ namespace Quinn.PlayerSystem
 		[SerializeField, BoxGroup("Dash")]
 		private EventReference DashSound;
 
+		[Space, SerializeField, Required]
+		private VisualEffect DashTrail;
+
 		public bool IsDashing { get; private set; }
 		public bool CanDash { get; set; } = true;
 
@@ -39,6 +45,7 @@ namespace Quinn.PlayerSystem
 			_health = GetComponent<Health>();
 
 			InputManager.Instance.OnDash += OnDash;
+			GetComponent<PlayerCaster>().OnStaffEquipped += OnStaffEquiped;
 		}
 
 		private void Update()
@@ -46,6 +53,8 @@ namespace Quinn.PlayerSystem
 			float scale = Rigidbody.linearVelocity.magnitude / MoveSpeed;
 			if (IsDashing) scale = 1f;
 			_animator.SetFloat("SpeedScale", scale);
+
+			DashTrail.SetBool("Enabled", IsDashing);
 		}
 
 		private void OnDestroy()
@@ -101,6 +110,11 @@ namespace Quinn.PlayerSystem
 		private void OnDashStop()
 		{
 			_health.UnblockDamage(this);
+		}
+
+		private void OnStaffEquiped(Staff staff)
+		{
+			DashTrail.SetGradient("Color", staff.SparkGradient);
 		}
 	}
 }

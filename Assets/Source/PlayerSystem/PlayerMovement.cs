@@ -29,13 +29,13 @@ namespace Quinn.PlayerSystem
 
 		public bool IsDashing { get; private set; }
 		public bool CanDash { get; set; } = true;
+		public Vector2 DashDirection { get; private set; } = Vector2.down;
 
 		private Animator _animator;
 		private Health _health;
 
 		private float _nextDashTime;
 		private float _dashEndTime;
-		private Vector2 _dashDir = Vector2.down;
 
 		protected override void Awake()
 		{
@@ -54,6 +54,7 @@ namespace Quinn.PlayerSystem
 			if (IsDashing) scale = 1f;
 			_animator.SetFloat("SpeedScale", scale);
 
+			_animator.SetBool("IsDashing", IsDashing);
 			DashTrail.SetBool("Enabled", IsDashing);
 		}
 
@@ -70,7 +71,7 @@ namespace Quinn.PlayerSystem
 
 			if (IsDashing)
 			{
-				vel += _dashDir * DashSpeed;
+				vel += DashDirection * DashSpeed;
 
 				if (Time.time > _dashEndTime)
 				{
@@ -84,7 +85,7 @@ namespace Quinn.PlayerSystem
 
 				if (moveDir.sqrMagnitude > 0f)
 				{
-					_dashDir = moveDir;
+					DashDirection = moveDir;
 				}
 			}
 

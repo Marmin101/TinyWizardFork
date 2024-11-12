@@ -131,8 +131,15 @@ namespace Quinn.PlayerSystem.SpellSystem
 			}
 
 			// Make player face crosshair.
-			var dirToCross = transform.position.DirectionTo(CrosshairManager.Instance.Position);
-			transform.localScale = new Vector3(Mathf.Sign(dirToCross.x), 1f, 1f);
+			Vector2 faceDir = transform.position.DirectionTo(CrosshairManager.Instance.Position);
+
+			// Instead make player face dash direction.
+			if (Movement.IsDashing)
+			{
+				faceDir = Movement.DashDirection.normalized;
+			}
+
+			transform.localScale = new Vector3(Mathf.Sign(faceDir.x), 1f, 1f);
 		}
 
 		private void OnDestroy()

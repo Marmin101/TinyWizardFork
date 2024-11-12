@@ -90,6 +90,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float _chainTimeoutTime;
 		private bool _isMovePenaltyApplied;
 
+		private bool _isCharging;
+
 		private void Update()
 		{
 			if (IsBasicHeld && CanCast)
@@ -170,6 +172,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			if (!HasSpecial || !CanCast || !CanAfford(SpecialManaConsume))
 				return;
 
+			_isCharging = true;
+
 			Caster.Movement.CanDash = false;
 
 			Caster.SetCooldown(SpecialCooldown);
@@ -184,9 +188,10 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialUp()
 		{
-			if (!HasSpecial)
+			if (!HasSpecial || !CanCast || !CanAfford(SpecialManaConsume) || !_isCharging)
 				return;
 
+			_isCharging = false;
 			Caster.Spark();
 
 			bool enoughCharge = Time.time > _largeMissileTime;

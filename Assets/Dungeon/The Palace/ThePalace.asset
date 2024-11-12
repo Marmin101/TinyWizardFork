@@ -30,10 +30,10 @@ MonoBehaviour:
   Generatable:
   - Prefab: {fileID: 7734380130235892607, guid: b01daf92ccb97e8489ad37cd4a45ce0b, type: 3}
     Weight: 100
-    SumWeight: 300
+    SumWeight: 100199
   - Prefab: {fileID: 7734380130235892607, guid: 4c45c411a17e2eb4eb0162be91846979, type: 3}
     Weight: 100
-    SumWeight: 300
+    SumWeight: 100199
   - Prefab: {fileID: 7734380130235892607, guid: 46ec1cdee28999847bb3dbab470aa131, type: 3}
-    Weight: 100
-    SumWeight: 300
+    Weight: 99999
+    SumWeight: 100199

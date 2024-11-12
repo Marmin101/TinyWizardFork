@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Quinn
 {
-	public class Health : MonoBehaviour
+	public class Health : MonoBehaviour, IDamageable
 	{
 		[SerializeField]
 		private EventReference HurtSound, DeathSound, HealSound;

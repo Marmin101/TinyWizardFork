@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{68c55715-4136-4e82-80f0-c6c35eaf8826}">
 		<property name="name">
-			<value>TheFloodZone</value>
+			<value>TheFloodzone</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -156,7 +156,7 @@
 			<value>35</value>
 		</property>
 		<property name="length">
-			<value>69.700000000000003</value>
+			<value>69</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{27f0c088-d3dc-4de4-ba5d-f1cd01d2f95f}</destination>

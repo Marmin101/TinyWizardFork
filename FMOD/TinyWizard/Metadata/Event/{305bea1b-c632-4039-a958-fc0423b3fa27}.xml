@@ -168,11 +168,17 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{742d6c93-e1ea-4e0f-8a3f-cc45703da33f}">
+		<property name="start">
+			<value>0.20000000000000001</value>
+		</property>
 		<property name="length">
-			<value>1.54</value>
+			<value>0.88999999999999957</value>
 		</property>
 		<property name="startOffset">
 			<value>25.5</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.61731181612991737</value>
 		</property>
 		<property name="pitch">
 			<value>-3.60000014</value>

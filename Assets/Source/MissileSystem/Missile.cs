@@ -84,7 +84,7 @@ namespace Quinn.MissileSystem
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.TryGetComponent(out Health health))
+			if (collision.TryGetComponent(out IDamageable dmg))
 			{
 				float? knockbackSpeed = null;
 				if (UsesCustomKnockbackSpeed)
@@ -92,7 +92,7 @@ namespace Quinn.MissileSystem
 					knockbackSpeed = CustomKnockbackSpeed;
 				}
 
-				if (health.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, knockbackSpeed))
+				if (dmg.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, knockbackSpeed))
 					OnImpact();
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.CompareTag("MissileBlocker"))

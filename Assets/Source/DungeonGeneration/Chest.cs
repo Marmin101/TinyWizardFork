@@ -9,7 +9,7 @@ using UnityEngine.VFX;
 namespace Quinn.DungeonGeneration
 {
 	[RequireComponent(typeof(SpriteRenderer))]
-	public class Chest : MonoBehaviour, IInteractable
+	public class Chest : MonoBehaviour, IInteractable, IDamageable
 	{
 		[SerializeField]
 		private bool StartOpen;
@@ -35,7 +35,9 @@ namespace Quinn.DungeonGeneration
 		private SpriteRenderer ItemGlow;
 
 		[Space, SerializeField]
-		private EventReference OpenSound, OpenMusicCueSound;
+		private EventReference OpenSound;
+		[SerializeField]
+		private EventReference OpenMusicCueSound;
 		[SerializeField]
 		private bool DisableAmbienceOnOpen = true;
 
@@ -82,6 +84,24 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
+		public bool TakeDamage(DamageInfo info)
+		{
+			if (info.SourceTeam == Team.Player && !IsOpen && IsInteractable)
+			{
+				Open();
+			}
+
+			return true;
+		}
+
+		public void Interact(Player player)
+		{
+			if (!IsOpen && IsInteractable)
+			{
+				Open();
+			}
+		}
+
 		private void Open_Internal()
 		{
 			IsOpen = true;
@@ -90,14 +110,6 @@ namespace Quinn.DungeonGeneration
 			if (DisableAmbienceOnOpen)
 			{
 				Ambience.Stop();
-			}
-		}
-
-		public void Interact(Player player)
-		{
-			if (!IsOpen && IsInteractable)
-			{
-				Open();
 			}
 		}
 

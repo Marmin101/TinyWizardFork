@@ -23,10 +23,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 		[SerializeField]
 		private float StaffMaxAngle = 30f;
 
-		[Space, SerializeField, Required]
-		private Staff StartingStaff;
-		[SerializeField]
+		[Space, SerializeField]
 		private Staff FallbackStaff;
+		[SerializeField, FoldoutGroup("Starting Staffs")]
+		private Staff[] StartingStaffs;
 
 		[field: Space, SerializeField]
 		public float MaxMana { get; private set; } = 100f;
@@ -60,11 +60,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 			input.OnCastStart += OnBasicStart;
 			input.OnSpecialStart += OnSpecialStart;
 
-			if (StartingStaff != null)
-			{
-				GameObject staff = StartingStaff.gameObject.Clone();
-				EquipStaff(staff.GetComponent<Staff>());
-			}
+			Debug.Assert(StartingStaffs.Length > 0);
+			GameObject staff = StartingStaffs.GetRandom().gameObject.Clone();
+			EquipStaff(staff.GetComponent<Staff>());
 
 			StoreStaff(FallbackStaff);
 			Mana = MaxMana;

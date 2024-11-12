@@ -13,6 +13,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public Gradient SparkGradient { get; private set; }
 		[field: SerializeField]
 		public float MaxEnergy { get; private set; } = 500f;
+		[field: SerializeField, BoxGroup("ID")]
+		public string GUID { get; private set; }
 
 		public float Energy { get; private set; }
 		public bool CanRegenMana { get; protected set; } = true;
@@ -54,10 +56,18 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		protected virtual void Awake()
 		{
+			Debug.Assert(!string.IsNullOrWhiteSpace(GUID), $"Staff '{gameObject.name}' is missing a GUID!");
+
 			Energy = MaxEnergy;
 
 			_group = GetComponentInChildren<SortingGroup>();
 			_group.enabled = false;
+		}
+
+		[Button("Generate"), BoxGroup("ID")]
+		public void GenerateGUID()
+		{
+			GUID = System.Guid.NewGuid().ToString();
 		}
 
 		public void Interact(Player player)

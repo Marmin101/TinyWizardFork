@@ -125,7 +125,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnBasicDown()
 		{
-			if (!CanCast)
+			if (!CanCast || IsSpecialHeld)
 				return;
 
 			_castChainCount++;

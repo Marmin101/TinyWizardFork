@@ -123,7 +123,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.9128933}
+  m_Offset: {x: 0, y: -0.17419732}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -133,7 +133,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.4244576, y: 3.0866709}
+  m_Size: {x: 4.67754, y: 4.564063}
   m_EdgeRadius: 0
 --- !u!114 &664987343248158565
 MonoBehaviour:
@@ -151,15 +151,15 @@ MonoBehaviour:
   FullHealSprite: {fileID: -1557914150807830504, guid: 954cdfbbf10476840aacf1db0cd7e341, type: 3}
   PickupSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1422925436
+      Data2: 1186185011
+      Data3: 1481348528
+      Data4: 2145124464
+    Path: event:/HeartPickUpSuccess
   AlreadyFullHPSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1502767914
+      Data2: 1332044432
+      Data3: 1874986401
+      Data4: -2013891430
+    Path: event:/HeartPickUpFailure

@@ -73,12 +73,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8448226805414225309, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
+      propertyPath: MissileBlocker
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448226805414225309, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: StartConquered
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1839856709849012395, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
+    - {fileID: 9160390296519595056, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72654a6be6cd91f45930840f4568df08, type: 3}

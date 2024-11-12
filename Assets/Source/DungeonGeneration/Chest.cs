@@ -3,6 +3,8 @@ using FMODUnity;
 using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.VFX;
 
 namespace Quinn.DungeonGeneration
 {
@@ -27,14 +29,20 @@ namespace Quinn.DungeonGeneration
 
 		[SerializeField, Space, Required]
 		private StudioEventEmitter Ambience;
+		[SerializeField]
+		private VisualEffect OpenVFX;
+		[SerializeField, Required]
+		private SpriteRenderer ItemGlow;
 
 		[Space, SerializeField]
-		private EventReference OpenSound;
+		private EventReference OpenSound, OpenMusicCueSound;
 		[SerializeField]
 		private bool DisableAmbienceOnOpen = true;
 
 		public bool IsOpen { get; private set; }
 		public int Priority => -100;
+
+		private bool _isOpening;
 
 		private void Awake()
 		{
@@ -50,13 +58,27 @@ namespace Quinn.DungeonGeneration
 			ContentHandle.transform.GetChild(0).gameObject.SetActive(false);
 		}
 
+		private void FixedUpdate()
+		{
+			if (_isOpening && ItemGlow != null)
+			{
+				if (IsItemGone())
+				{
+					ItemGlow.DOFade(0f, 0.2f);
+				}
+			}
+		}
+
 		public void Open()
 		{
 			if (!IsOpen)
 			{
 				Open_Internal();
 				Audio.Play(OpenSound, transform.position);
+				Audio.Play(OpenMusicCueSound);
 				AnimateContent();
+
+				OpenVFX.Play();
 			}
 		}
 
@@ -83,6 +105,16 @@ namespace Quinn.DungeonGeneration
 		{
 			Debug.Assert(ContentHandle.transform.childCount > 0, "Chest's content handle is missing a child!");
 
+			_isOpening = true;
+
+			ItemGlow.color = new Color(1f, 1f, 1f, 0f);
+			//ItemGlow.enabled = true;
+			ItemGlow.DOFade(1f, 0.1f);
+
+			// TODO: Implement fully or remove the item glow idea.
+
+			ItemGlow.GetComponent<FollowPosition>().Target = ContentHandle.transform.GetChild(0);
+
 			Transform child = ContentHandle.transform.GetChild(0);
 			child.gameObject.SetActive(true);
 
@@ -92,16 +124,20 @@ namespace Quinn.DungeonGeneration
 
 			tween.onUpdate += () =>
 			{
-				if (ContentHandle.transform.childCount == 0)
+				if (IsItemGone())
 				{
 					child.DOKill();
 				}
 			};
+
+			tween.onComplete += () => _isOpening = false;
 
 			if (skip)
 			{
 				tween.Complete();
 			}
 		}
+
+		private bool IsItemGone() => ContentHandle.transform.childCount == 0;
 	}
 }

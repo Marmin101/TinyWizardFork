@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001514B360808 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001D4D2F9DF68 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,3 +18,155 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 6450752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 73504
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000C48C6FF168
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF887673CE0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF887673CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF887673DC0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF887673E80
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001D471D0FF88
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_warfare_weapon_axe_large_object_swing_swoosh_003', format=5, channels=2, frequency=48000, lengthbytes=4672, lengthpcm=20475, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.988000.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 6450752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 73504
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000C48C6FF168
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF887673CE0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF887673CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF887673DC0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF887673E80
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001D471D0FF88
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_warfare_weapon_axe_large_object_swing_swoosh_004', format=5, channels=2, frequency=48000, lengthbytes=5856, lengthpcm=28800, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.988000.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 6450752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 73504
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000C48C6FF168
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF887673CE0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF887673CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF887673DC0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF887673E80
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001D471D0FF88
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_warfare_weapon_axe_large_object_swing_swoosh_002', format=5, channels=2, frequency=48000, lengthbytes=5248, lengthpcm=24712, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.988000.
+[LOG] SoundI::release                          :  (000001D3D5021EB8)
+[LOG] SoundI::release                          :     zapsplat_warfare_weapon_axe_large_object_swing_swoosh_002 (000001D4BA324D58)
+[LOG] SoundI::release                          :  (000001D3D5021A68)
+[LOG] SoundI::release                          :     zapsplat_warfare_weapon_axe_large_object_swing_swoosh_003 (000001D4BA3253D8)
+[LOG] SoundI::release                          :  (000001D3D5021338)
+[LOG] SoundI::release                          :     zapsplat_warfare_weapon_axe_large_object_swing_swoosh_004 (000001D4BA325578)
+[LOG] SoundI::release                          :  (000001D357BB9F68)
+[LOG] SoundI::release                          :     FallbackStaff_Basic_01 (000001D4166ACBE8)
+[LOG] SoundI::release                          :  (000001D357BBA528)
+[LOG] SoundI::release                          :     FallbackStaff_Basic_02 (000001D4C71C8BD8)
+[LOG] SoundI::release                          :  (000001D357BBA3B8)
+[LOG] SoundI::release                          :     FallbackStaff_Basic_03 (000001D4C71C86F8)
+[LOG] SoundI::release                          :  (000001D357BBA0D8)
+[LOG] SoundI::release                          :     FallbackStaff_Basic_04 (000001D4166AC088)
+[LOG] SoundI::release                          :  (000001D357BBA808)
+[LOG] SoundI::release                          :     FallbackStaff_Basic_05 (000001D4C71C8A38)
+[LOG] SoundI::release                          :  (000001D357BBA978)
+[LOG] SoundI::release                          :     FallbackStaff_BasicFinisher (000001D4C71C8078)
+[LOG] SoundI::release                          : the_palace_ambience (000001D3578952D8)
+[LOG] SoundI::release                          :     the_palace_ambience (000001D35AE07DE8)
+[LOG] SoundI::release                          :     the_palace_ambience (000001D47545A7A8)
+[LOG] SoundI::release                          : ThePalace (000001D47545B018)
+[LOG] SoundI::release                          :     ThePalace (000001D35AE04EC8)
+[LOG] SoundI::release                          :     ThePalace (000001D47545A448)
+[LOG] SoundI::release                          : ThePalace (000001D47545AB08)
+[LOG] SoundI::release                          :     ThePalace (000001D35AE082C8)
+[LOG] SoundI::release                          :     ThePalace (000001D47545B528)
+[LOG] SoundI::release                          :  (000001D357BB9DF8)
+[LOG] SoundI::release                          :     zapsplat_warfare_weapon_axe_large_object_swing_swoosh_001 (000001D4C71C8558)
+[LOG] SoundI::release                          :  (000001D4960677B8)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_01 (000001D495FDB268)
+[LOG] SoundI::release                          :  (000001D496066508)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_02 (000001D495FD9868)
+[LOG] SoundI::release                          :  (000001D496067088)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_03 (000001D52578F718)
+[LOG] SoundI::release                          :  (000001D496063708)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_04 (000001D525791E18)
+[LOG] SoundI::release                          :  (000001D496067D78)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_01 (000001D525790418)
+[LOG] SoundI::release                          :  (000001D4960632B8)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_02 (000001D5257927D8)
+[LOG] SoundI::release                          :  (000001D496067C08)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_03 (000001D495FD9D48)
+[LOG] SoundI::release                          :  (000001D496066F18)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_04 (000001D525792978)
+[LOG] SoundI::release                          :  (000001D4960671F8)
+[LOG] SoundI::release                          :     footstep_stone_01 (000001D52578F8B8)
+[LOG] SoundI::release                          :  (000001D496062CF8)
+[LOG] SoundI::release                          :     footstep_stone_02 (000001D525792638)
+[LOG] SoundI::release                          :  (000001D4960639E8)
+[LOG] SoundI::release                          :     footstep_stone_03 (000001D525791938)
+[LOG] SoundI::release                          :  (000001D4960660B8)
+[LOG] SoundI::release                          :     footstep_stone_04 (000001D495FDAF28)
+[LOG] SoundI::release                          :  (000001D496066C38)
+[LOG] SoundI::release                          :     footstep_stone_05 (000001D52578F3D8)
+[LOG] SoundI::release                          :  (000001D496062E68)
+[LOG] SoundI::release                          :     footstep_stone_06 (000001D52578FF38)
+[LOG] SoundI::release                          :  (000001D496066228)
+[LOG] SoundI::release                          :     footstep_stone_07 (000001D495FDA8A8)
+[LOG] SoundI::release                          :  (000001D496067368)
+[LOG] SoundI::release                          :     footstep_stone_08 (000001D52578F098)
+[LOG] SoundI::release                          :  (000001D496065F48)
+[LOG] SoundI::release                          :     footstep_stone_09 (000001D495FDAA48)
+[LOG] SoundI::release                          :  (000001D496065DD8)
+[LOG] SoundI::release                          :     footstep_stone_10 (000001D52578FD98)
+[LOG] SoundI::release                          :  (000001D496066958)
+[LOG] SoundI::release                          :     footstep_stone_11 (000001D525791FB8)
+[LOG] SoundI::release                          :  (000001D496062B88)
+[LOG] SoundI::release                          :     footstep_stone_12 (000001D525791798)
+[LOG] SoundI::release                          :  (000001D496063CC8)
+[LOG] SoundI::release                          :     footstep_carpet_01 (000001D55A6B4788)
+[LOG] SoundI::release                          :  (000001D496063FA8)
+[LOG] SoundI::release                          :     footstep_carpet_02 (000001D525792B18)
+[LOG] SoundI::release                          :  (000001D496066AC8)
+[LOG] SoundI::release                          :     footstep_carpet_03 (000001D52578F238)
+[LOG] SoundI::release                          :  (000001D496060EC8)
+[LOG] SoundI::release                          :     footstep_carpet_04 (000001D5257912B8)
+[LOG] SoundI::release                          :  (000001D496061BB8)
+[LOG] SoundI::release                          :     footstep_carpet_05 (000001D525791118)
+[LOG] SoundI::release                          :  (000001D4960674D8)
+[LOG] SoundI::release                          :     footstep_carpet_06 (000001D525790C38)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

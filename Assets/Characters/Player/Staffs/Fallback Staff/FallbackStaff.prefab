@@ -45,6 +45,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1413241714379977738, guid: 4c2ce2a01900d8845944c27209e66879, type: 3}
     - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437334692687873005, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 0.0625
       objectReference: {fileID: 0}
@@ -165,18 +169,18 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   BasicCastSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1154755531
+      Data2: 1287632135
+      Data3: 1152847780
+      Data4: -556784426
+    Path: event:/FallbackStaffBasic
   BasicFinisherCastSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1674508338
+      Data2: 1320373504
+      Data3: 4637863
+      Data4: -1814820690
+    Path: event:/FallbackStaffBasicFinisher
   SpecialCastLittleSound:
     Guid:
       Data1: 0

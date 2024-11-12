@@ -359,6 +359,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6804534782442246885}
     m_Modifications:
+    - target: {fileID: 3473891051240425133, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473891051240425133, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5176653248572290296, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -442,6 +450,18 @@ PrefabInstance:
     - target: {fileID: 6551115605965835781, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400674634790819389, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400674634790819389, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400674634790819389, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8563553701259864966, guid: 852029def6250764e9a72253d65f2e5b, type: 3}
       propertyPath: m_Camera

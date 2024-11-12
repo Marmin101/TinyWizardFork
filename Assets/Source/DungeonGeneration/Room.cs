@@ -39,7 +39,7 @@ namespace Quinn.DungeonGeneration
 		[SerializeField]
 		private float PostConquerDelay = 1f;
 
-		[Space, SerializeField, Required]
+		[Space, SerializeField]
 		private Collider2D MissileBlocker;
 
 		public bool IsLocked { get; private set; }
@@ -62,7 +62,7 @@ namespace Quinn.DungeonGeneration
 		{
 			IsConquered = StartConquered;
 
-			if (StartConquered)
+			if (StartConquered && MissileBlocker != null)
 			{
 				Destroy(MissileBlocker.gameObject);
 			}

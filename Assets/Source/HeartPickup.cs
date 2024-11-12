@@ -59,6 +59,9 @@ namespace Quinn
 			else
 			{
 				Audio.Play(AlreadyFullHPSound);
+
+				transform.DOKill(true);
+				transform.DOPunchScale(Vector3.one * 1.05f, 0.5f, elasticity: 0.5f);
 			}
 		}
 	}

@@ -1,4 +1,5 @@
-﻿using Quinn.PlayerSystem;
+﻿using DG.Tweening;
+using Quinn.PlayerSystem;
 using Quinn.PlayerSystem.SpellSystem;
 using Sirenix.OdinInspector;
 using System.Linq;
@@ -27,7 +28,13 @@ namespace Quinn.DungeonGeneration
 				filtered = Staffs;
 			}
 
-			Staffs.GetRandom().Clone(transform);
+			var instance = Staffs.GetRandom().Clone(transform);
+			instance.GetComponent<Staff>().OnPickedUp += () =>
+			{
+				transform.DOKill();
+				transform.DetachChildren();
+				Destroy(gameObject);
+			};
 		}
 	}
 }

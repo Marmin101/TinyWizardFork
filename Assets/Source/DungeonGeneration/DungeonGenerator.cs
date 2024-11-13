@@ -57,6 +57,8 @@ namespace Quinn.DungeonGeneration
 		private readonly Dictionary<Vector2Int, GameObject> _generatedRooms = new();
 		private EventInstance _ambience, _music;
 
+		private GameObject _lastGeneratedRoomPrefab;
+
 		private void Awake()
 		{
 			Debug.Assert(Instance == null);
@@ -104,11 +106,13 @@ namespace Quinn.DungeonGeneration
 
 			// Filter for rooms that support required doors.
 			var validRooms = ActiveFloor.Generatable.Where(roomToGenerate => criteria.IsMatch(roomToGenerate.Prefab));
+			validRooms = validRooms.Where(room => room.Prefab.gameObject != _lastGeneratedRoomPrefab);
 			// Get random (by weight) room from filtered collection.
 			var selected = validRooms.GetWeightedRandom(x => x.Weight);
 
 			Debug.Assert(selected != null, $"Failed to generate room. No valid option found! Criteria: {criteria}.");
 			Room prefab = selected.Prefab;
+			_lastGeneratedRoomPrefab = prefab.gameObject;
 
 			// Generate actual room.
 			await GenerateRoomAsync(prefab, x, y);

@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -18,6 +19,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public float Energy { get; private set; }
 		public bool CanRegenMana { get; protected set; } = true;
+
+		public event Action OnPickedUp;
 
 		protected PlayerCaster Caster { get; private set; }
 
@@ -74,6 +77,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			var caster = player.GetComponent<PlayerCaster>();
 			caster.EquipStaff(this);
+
+			OnPickedUp?.Invoke();
 		}
 
 		public void SetCaster(PlayerCaster caster)

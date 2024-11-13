@@ -24,7 +24,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		protected PlayerCaster Caster { get; private set; }
 
-		protected bool CanCast
+		protected bool CanCastExcludingCost
 		{
 			get
 			{

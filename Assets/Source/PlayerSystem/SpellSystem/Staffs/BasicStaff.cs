@@ -94,7 +94,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		private void Update()
 		{
-			if (IsBasicHeld && CanCast)
+			if (IsBasicHeld && CanCastExcludingCost)
 			{
 				OnBasicDown();
 			}
@@ -119,15 +119,25 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Audio.Play(FullChargeSound);
 			}
 
-			if (IsSpecialHeld && CanCast && HasSpecial)
+			if (IsSpecialHeld && CanCastExcludingCost && HasSpecial && CanAfford(SpecialManaConsume))
 			{
 				Cooldown.Call(this, ChargingSparkInterval, Caster.Spark);
+			}
+
+			if (_isCharging)
+			{
+				float delta = _largeMissileTime - Time.time;
+				Caster.SetCharge(Mathf.Min(1f - (delta / SpecialChargeTime), 1f));
+			}
+			else
+			{
+				Caster.SetCharge(0f);
 			}
 		}
 
 		public override void OnBasicDown()
 		{
-			if (!CanCast || IsSpecialHeld || !CanAfford(BasicManaConsume))
+			if (!CanCastExcludingCost || IsSpecialHeld || !CanAfford(BasicManaConsume))
 				return;
 
 			_castChainCount++;
@@ -169,7 +179,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialDown()
 		{
-			if (!HasSpecial || !CanCast || !CanAfford(SpecialManaConsume))
+			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume))
 				return;
 
 			_isCharging = true;
@@ -188,7 +198,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialUp()
 		{
-			if (!HasSpecial || !CanCast || !CanAfford(SpecialManaConsume) || !_isCharging)
+			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume) || !_isCharging)
 				return;
 
 			_isCharging = false;

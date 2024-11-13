@@ -10,22 +10,37 @@ namespace Quinn.PlayerSystem
 		[SerializeField, Required]
 		private GameObject CrosshairPrefab;
 
-		private Transform _crosshair;
+		private CrosshairHandle _crosshair;
 
 		public Vector2 Position => Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+		private RectTransform _frameTransform, _chargeTransform;
+		private float _initFrameSize, _initChargeSize;
+
+		private float _frameSize;
+		private float _chargeScale;
 
 		private void Awake()
 		{
 			Debug.Assert(Instance == null);
 			Instance = this;
 
-			_crosshair = CrosshairPrefab.Clone(transform).transform;
+			_crosshair = CrosshairPrefab.Clone(transform).GetComponent<CrosshairHandle>();
 			GetComponent<InputManager>().HideCursor();
+
+			_frameTransform = _crosshair.Frame.GetComponent<RectTransform>();
+			_chargeTransform = _crosshair.Charge.GetComponent<RectTransform>();
+
+			_initFrameSize = _frameTransform.sizeDelta.y;
+			_initChargeSize = _chargeTransform.sizeDelta.y;
+
+			_frameSize = _initFrameSize;
+			_chargeScale = 1f;
 		}
 
 		private void LateUpdate()
 		{
-			_crosshair.position = Position;
+			_crosshair.transform.position = Position;
 		}
 
 		private void OnDestroy()
@@ -37,6 +52,20 @@ namespace Quinn.PlayerSystem
 		public Vector2 DirectionToCrosshair(Vector2 from)
 		{
 			return from.DirectionTo(Position);
+		}
+
+		public void SetScale(float scale)
+		{
+			_frameSize = _initFrameSize * scale;
+			_frameTransform.sizeDelta = Vector2.one * _frameSize;
+
+			_chargeTransform.sizeDelta = _chargeScale * _frameSize * Vector2.one;
+		}
+
+		public void SetCharge(float percent)
+		{
+			_chargeScale = percent;
+			_chargeTransform.sizeDelta = _chargeScale * _frameSize * Vector2.one;
 		}
 	}
 }

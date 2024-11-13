@@ -43,6 +43,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public bool IsBasicHeld { get; private set; }
 		public bool IsSpecialHeld { get; private set; }
 
+		public float Charge { get; private set; }
+
 		public PlayerMovement Movement { get; private set; }
 		public event Action<Staff> OnStaffEquipped;
 
@@ -104,6 +106,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private void LateUpdate()
 		{
 			UpdateStaffTransform();
+			CrosshairManager.Instance.SetCharge(Charge);
 
 			if (PlayerManager.Instance.IsDead)
 				return;
@@ -170,6 +173,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 				CastingSpark.transform.localPosition = Vector3.zero;
 
 				FullyReplenishMana();
+				SetCharge(0f);
+
 				OnStaffEquipped?.Invoke(staff);
 			}
 		}
@@ -256,6 +261,11 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public void FullyReplenishMana()
 		{
 			ReplenishMana(MaxMana);
+		}
+
+		public void SetCharge(float percent)
+		{
+			Charge = percent;
 		}
 
 		private void OnBasicStart()

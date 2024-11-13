@@ -14,7 +14,7 @@ namespace Quinn.DungeonGeneration
 		[SerializeField, AssetsOnly]
 		private GameObject[] Staffs;
 
-		private void Awake()
+		public void Start()
 		{
 			GameObject[] filtered;
 			Staff activeStaff = PlayerManager.Instance.Player.GetComponent<PlayerCaster>().ActiveStaff;

@@ -18,13 +18,13 @@ namespace Quinn.PlayerSystem
 		public event Action OnCastStart, OnCastStop;
 		public event Action OnSpecialStart, OnSpecialStop;
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null, "There are more than one instances of InputManager!");
 			Instance = this;
 		}
 
-		private void Update()
+		public void Update()
 		{
 			MoveDirection = new Vector2()
 			{
@@ -66,7 +66,7 @@ namespace Quinn.PlayerSystem
 			}
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			Instance = null;
 		}

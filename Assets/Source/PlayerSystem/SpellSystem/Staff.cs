@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace Quinn.PlayerSystem.SpellSystem
 {
@@ -85,15 +86,22 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			Caster = caster;
 
+			// Storing or destroying.
 			if (caster == null)
 			{
 				GetComponent<Collider2D>().enabled = true;
 				_group.enabled = false;
+
+				Head.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+				Head.GetComponent<Light2D>().enabled = false;
 			}
+			// Equipping.
 			else
 			{
 				GetComponent<Collider2D>().enabled = false;
 				_group.enabled = true;
+
+				Head.GetComponent<SpriteRenderer>().color = Color.white;
 			}
 		}
 

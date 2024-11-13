@@ -47,6 +47,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		private void FixedUpdate()
 		{
+			if (Caster == null)
+				return;
+
 			if (_isCharging && Caster != null)
 			{
 				_charge += Time.fixedDeltaTime * ChargeRate;
@@ -60,7 +63,6 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			}
 
 			Caster.SetCharge(_charge / MaxCharge);
-
 			CanRegenMana = _isCharging;
 		}
 

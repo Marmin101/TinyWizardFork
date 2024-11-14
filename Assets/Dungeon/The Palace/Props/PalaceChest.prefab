@@ -398,6 +398,7 @@ MonoBehaviour:
   StartOpen: 0
   IsInteractable: 1
   OpenSprite: {fileID: 8475422832387196837, guid: 0cea50788d090d048b5795fca179afde, type: 3}
+  <IsLocked>k__BackingField: 0
   ContentHandle: {fileID: 8528346144263478766}
   AnimationOffset: 1
   AnimationDuration: 3
@@ -797,8 +798,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChildWeights:
-  - 75
   - 100
+  - 50
 --- !u!1001 &3460155880522213359
 PrefabInstance:
   m_ObjectHideFlags: 0

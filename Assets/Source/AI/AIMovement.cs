@@ -32,15 +32,19 @@ namespace Quinn.AI
 			return vel;
 		}
 
-		public bool MoveTo(Vector2 destination, float stoppingDistance = 0.2f)
+		public bool MoveTo(Vector2 destination, float speed, float stoppingDistance = 0.2f)
 		{
 			if (transform.position.DistanceTo(destination) > stoppingDistance)
 			{
-				_cumulativeVel += MoveSpeed * (Vector2)transform.position.DirectionTo(destination);
+				_cumulativeVel += speed * (Vector2)transform.position.DirectionTo(destination);
 				return false;
 			}
 
 			return true;
+		}
+		public bool MoveTo(Vector2 destination, float stoppingDistance = 0.2f)
+		{
+			return MoveTo(destination, MoveSpeed, stoppingDistance);
 		}
 
 		public async Awaitable PathTo(Vector2 target, float stoppingDistance = 0.2f)

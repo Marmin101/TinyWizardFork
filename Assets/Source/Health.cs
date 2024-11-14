@@ -38,6 +38,9 @@ namespace Quinn
 		private Slider HPBar;
 
 		public float Current { get; private set; }
+		public float Percent => Current / Max;
+
+		public bool IsAlive => !IsDead;
 		public bool IsDead { get; private set; }
 		public bool IsImmune => _isHurtImmune || _damageBlockers.Count > 0;
 

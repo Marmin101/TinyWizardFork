@@ -1,8 +1,10 @@
 using Quinn.DungeonGeneration;
+using Unity.Behavior;
 using UnityEngine;
 
 namespace Quinn.AI.BehaviorTree
 {
+	[RequireComponent(typeof(BehaviorGraphAgent))]
 	[RequireComponent(typeof(AIMovement))]
 	public class BTAgent : MonoBehaviour, IAgent
 	{

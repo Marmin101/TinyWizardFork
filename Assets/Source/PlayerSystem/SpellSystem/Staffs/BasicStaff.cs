@@ -105,6 +105,12 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			if (Caster == null)
 				return;
 
+			if (_isCharging && !IsSpecialHeld)
+			{
+				_isCharging = false;
+				Caster.Movement.RemoveSpeedModifier(this);
+			}
+
 			if (_castChainCount < BasicFinisherCount && _castChainCount > 0 && Time.time > _chainTimeoutTime)
 			{
 				_castChainCount = 0;
@@ -198,9 +204,6 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialUp()
 		{
-			_isCharging = false;
-			Caster.Movement.RemoveSpeedModifier(this);
-
 			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume) || !_isCharging)
 				return;
 

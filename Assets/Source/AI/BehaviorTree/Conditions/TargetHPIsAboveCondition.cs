@@ -12,9 +12,16 @@ namespace Quinn.AI.BehaviorTree
 		public BlackboardVariable<Health> Target;
 		[SerializeReference]
 		public BlackboardVariable<float> Health = new(0.5f);
+		[SerializeReference]
+		public BlackboardVariable<bool> Invert = new(false);
 
 		public override bool IsTrue()
 		{
+			if (Invert.Value)
+			{
+				return Target.Value != null && Target.Value.Percent <= Health.Value;
+			}
+
 			return Target.Value != null && Target.Value.Percent > Health.Value;
 		}
 	}

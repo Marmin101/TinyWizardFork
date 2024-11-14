@@ -92,7 +92,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		private bool _isCharging;
 
-		private void Update()
+		public void Update()
 		{
 			if (IsBasicHeld && CanCastExcludingCost)
 			{
@@ -100,7 +100,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			}
 		}
 
-		private void FixedUpdate()
+		public void FixedUpdate()
 		{
 			if (Caster == null)
 				return;
@@ -198,6 +198,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialUp()
 		{
+			_isCharging = false;
+			Caster.Movement.RemoveSpeedModifier(this);
+
 			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume) || !_isCharging)
 				return;
 

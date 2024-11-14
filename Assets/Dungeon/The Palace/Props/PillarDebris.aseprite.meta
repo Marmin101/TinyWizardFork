@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0cea50788d090d048b5795fca179afde
+guid: ff9c3904910a6c24fa4e7081135ff392
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,11 +72,11 @@ ScriptedImporter:
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
     fileImportMode: 1
-    importHiddenLayers: 1
-    layerImportMode: 0
+    importHiddenLayers: 0
+    layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 9
-    customPivotPosition: {x: 0.5, y: 0.25}
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 0
@@ -85,11 +85,11 @@ ScriptedImporter:
     addShadowCasters: 0
   asepriteImporterSettings:
     fileImportMode: 1
-    importHiddenLayers: 1
-    layerImportMode: 0
+    importHiddenLayers: 0
+    layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 9
-    customPivotPosition: {x: 0.5, y: 0.25}
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638667650165899941
+  platformSettingsDirtyTick: 638671884488150775
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -122,30 +122,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Shadow
+  - name: PillarDebris
     originalName: 
-    pivot: {x: 0.51724136, y: 0.2857143}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 62
-      y: 4
-      width: 29
-      height: 7
-    spriteID: 8266e352422fec744bb7d61df6982961
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 62, y: 4}
-  - name: Chest_Open
-    originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -153,9 +132,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 20
-      height: 19
-    spriteID: b26a73e4851ac824791ed29a022124f6
+      width: 6
+      height: 6
+    spriteID: 3e4ad7a7d23b93846967642489e538dc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -164,81 +143,24 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Chest_Closed
-    originalName: 
-    pivot: {x: 0.5, y: 0.05882353}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 32
-      y: 4
-      width: 22
-      height: 17
-    spriteID: 0edcd783278d412439db7e15da5fe49e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 32, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 905570070
-    name: Shadow
-    layerFlags: 3
+    guid: -374894079
+    name: PillarDebris
+    layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Shadow
+    - name: PillarDebris
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 1
-        y: 6
-        width: 29
-        height: 7
-      spriteId: 8266e352422fec744bb7d61df6982961
-    linkedCells: []
-    parentIndex: -1
-  - layerIndex: 1
-    guid: -1542290695
-    name: Chest_Open
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Chest_Open
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 6
-        y: 8
-        width: 20
-        height: 19
-      spriteId: b26a73e4851ac824791ed29a022124f6
-    linkedCells: []
-    parentIndex: -1
-  - layerIndex: 2
-    guid: -1680035326
-    name: Chest_Closed
-    layerFlags: 2
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Chest_Closed
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 5
-        y: 7
-        width: 22
-        height: 17
-      spriteId: 0edcd783278d412439db7e15da5fe49e
+        y: 1
+        width: 6
+        height: 6
+      spriteId: 3e4ad7a7d23b93846967642489e538dc
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -281,4 +203,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 8, y: 8}

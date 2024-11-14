@@ -8,9 +8,7 @@ namespace Quinn.AI.BehaviorTree
 	{
 		public Health Health { get; private set; }
 		public AIMovement Movement { get; private set; }
-
-		private bool _hasRoomStarted;
-		private Room _room;
+		public Room Room { get; private set; }
 
 		public void Awake()
 		{
@@ -20,8 +18,7 @@ namespace Quinn.AI.BehaviorTree
 
 		public void StartRoom(Room room)
 		{
-			_room = room;
-			_hasRoomStarted = true;
+			Room = room;
 		}
 	}
 }

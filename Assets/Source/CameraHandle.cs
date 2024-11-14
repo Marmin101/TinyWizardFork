@@ -16,7 +16,7 @@ namespace Quinn
 		[field: SerializeField, Required]
 		public Image Blackout { get; private set; }
 
-		private void Awake()
+		public void Awake()
 		{
 			CameraManager.Instance.SetCameraHandle(this);
 		}

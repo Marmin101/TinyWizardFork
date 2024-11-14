@@ -44,6 +44,7 @@ namespace Quinn.DungeonGeneration
 
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
+		public bool HasStarted { get; private set; }
 
 		public bool HasNorthDoor => NorthDoor != null || NoDoors;
 		public bool HasEastDoor => EastDoor != null || NoDoors;
@@ -184,6 +185,7 @@ namespace Quinn.DungeonGeneration
 
 		private void StartRoomEncounter()
 		{
+			HasStarted = true;
 			Lock();
 
 			if (MissileBlocker != null)

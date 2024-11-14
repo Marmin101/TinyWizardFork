@@ -255,6 +255,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandlestickMinion
       objectReference: {fileID: 0}
+    - target: {fileID: 6976881287204068544, guid: a179b93b012f7404fa3c7128f2a51909, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6976881287204068544, guid: a179b93b012f7404fa3c7128f2a51909, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -61,13 +61,13 @@ namespace Quinn.MissileSystem
 
 		private float _oscillateOffset;
 
-		private void Awake()
+		public void Awake()
 		{
 			_rb = GetComponent<Rigidbody2D>();
 			_oscillateOffset = RandomizeOscillation ? Random.value : 0f;
 		}
 
-		private void FixedUpdate()
+		public void FixedUpdate()
 		{
 			_velocity = Vector2.zero;
 
@@ -82,7 +82,7 @@ namespace Quinn.MissileSystem
 			}
 		}
 
-		private void OnTriggerEnter2D(Collider2D collision)
+		public void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.TryGetComponent(out IDamageable dmg))
 			{

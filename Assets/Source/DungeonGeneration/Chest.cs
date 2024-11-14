@@ -17,6 +17,8 @@ namespace Quinn.DungeonGeneration
 		private bool IsInteractable = true;
 		[SerializeField, Required]
 		private Sprite OpenSprite;
+		[field: SerializeField]
+		public bool IsLocked { get; private set; }
 
 		[SerializeField, Required]
 		private GameObject ContentHandle;
@@ -53,7 +55,7 @@ namespace Quinn.DungeonGeneration
 
 		private bool _isOpening;
 
-		private void Awake()
+		public void Awake()
 		{
 			if (StartOpen)
 			{
@@ -62,12 +64,12 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
-		private void Start()
+		public void Start()
 		{
 			ContentHandle.transform.GetChild(0).gameObject.SetActive(false);
 		}
 
-		private void FixedUpdate()
+		public void FixedUpdate()
 		{
 			if (_isOpening && ItemGlow != null)
 			{
@@ -84,7 +86,7 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
-		private void LateUpdate()
+		public void LateUpdate()
 		{
             if (ProximityHelpHandle.enabled && !IsItemGone())
             {
@@ -108,8 +110,16 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
+		public void Unlock()
+		{
+			IsLocked = false;
+		}
+
 		public bool TakeDamage(DamageInfo info)
 		{
+			if (IsLocked)
+				return true;
+
 			if (info.SourceTeam == Team.Player && !IsOpen && IsInteractable)
 			{
 				Open();
@@ -120,6 +130,9 @@ namespace Quinn.DungeonGeneration
 
 		public void Interact(Player player)
 		{
+			if (IsLocked)
+				return;
+
 			if (!IsOpen && IsInteractable)
 			{
 				Open();
@@ -176,6 +189,9 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
-		private bool IsItemGone() => ContentHandle.transform.childCount == 0;
+		private bool IsItemGone()
+		{
+			return ContentHandle.transform.childCount == 0;
+		}
 	}
 }

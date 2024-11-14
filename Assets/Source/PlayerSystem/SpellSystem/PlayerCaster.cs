@@ -102,7 +102,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			if (ActiveStaff != null && ActiveStaff.Energy <= 0f)
 			{
 				StoreStaff(ActiveStaff);
-				EquipStaff(FallbackStaff);
+				EquipStaff(FallbackStaff, true);
 			}
 
 			if (Time.time > _manaRegenStartTime && Mana < MaxMana && (ActiveStaff == null || ActiveStaff.CanRegenMana))

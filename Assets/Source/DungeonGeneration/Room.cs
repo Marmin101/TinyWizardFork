@@ -58,7 +58,7 @@ namespace Quinn.DungeonGeneration
 		private readonly HashSet<AIAgent> _liveAgents = new();
 		private readonly HashSet<StaticAgent> _staticAgents = new();
 
-		private void Awake()
+		public void Awake()
 		{
 			IsConquered = StartConquered;
 
@@ -219,7 +219,7 @@ namespace Quinn.DungeonGeneration
 
 				if (Chest != null)
 				{
-					Chest.Open();
+					Chest.Unlock();
 				}
 
 				Unlock();

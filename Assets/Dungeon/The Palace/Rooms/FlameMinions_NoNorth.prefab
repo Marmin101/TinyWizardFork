@@ -2742,7 +2742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7178689802254285293, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: m_Name
-      value: 3-Way No North Flame Minion
+      value: FlameMinions_NoNorth
       objectReference: {fileID: 0}
     - target: {fileID: 8448226805414225309, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: NorthDoor

@@ -12,9 +12,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		[SerializeField, Unit(Units.Second)]
 		private float MaxCharge = 4f;
 		[SerializeField]
-		private float BaseChargeToDamage = 51f;
+		private float MaxDamage = 51f;
 		[SerializeField]
-		private AnimationCurve ChargeToDamageFactor;
+		private AnimationCurve DamageChargeFactor;
 		[SerializeField]
 		private float MinChargeThreshold = 1f;
 		[SerializeField]
@@ -45,7 +45,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private bool _isCharging;
 		private float _charge;
 
-		private void FixedUpdate()
+		public void FixedUpdate()
 		{
 			if (Caster == null)
 				return;
@@ -63,7 +63,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			}
 
 			Caster.SetCharge(_charge / MaxCharge);
-			CanRegenMana = _isCharging;
+			CanRegenMana = !_isCharging;
 		}
 
 		public override void OnBasicDown()
@@ -76,7 +76,11 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnBasicUp()
 		{
+			if (!_isCharging)
+				return;
+
 			Caster.SetCooldown(CastCooldown);
+			_isCharging = false;
 
 			if (_charge >= MinChargeThreshold)
 			{
@@ -115,8 +119,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 					{
 						if (damageable.Team != Team.Player)
 						{
-							float dmg = ChargeToDamageFactor.Evaluate(chargePercent);
-							dmg *= BaseChargeToDamage;
+							float dmg = DamageChargeFactor.Evaluate(chargePercent);
+							dmg *= MaxDamage;
 
 							damageable.TakeDamage(dmg, pos.DirectionTo(collider.transform.position), Team.Player, Caster.gameObject);
 						}
@@ -131,7 +135,6 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				ConsumeMana(MaxManaConsume * chargePercent);
 			}
 
-			_isCharging = false;
 			_charge = 0f;
 		}
 	}

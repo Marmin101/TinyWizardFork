@@ -145,30 +145,30 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
   <MaxEnergy>k__BackingField: 200
-  <GUID>k__BackingField: 422fe1fb-9bbe-4d9e-90f2-f9d2fcba2a15
-  ChargeRate: 2
+  <GUID>k__BackingField: 9b3caef2-2f34-462f-a4df-a00ab074e3c8
+  ChargeRate: 3
   MaxCharge: 8
-  BaseChargeToDamage: 70
-  ChargeToDamageFactor:
+  MaxDamage: 70
+  DamageChargeFactor:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
-      inSlope: 0.28711802
-      outSlope: 0.28711802
+      value: 0
+      inSlope: 0.22745481
+      outSlope: 0.22745481
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
-      outWeight: 0.35135368
+      outWeight: 0.69773185
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.21671656
-      outSlope: 0.21671656
+      inSlope: 0.2696405
+      outSlope: 0.2696405
       tangentMode: 0
       weightedMode: 3
-      inWeight: 0.29995072
+      inWeight: 0.62084275
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

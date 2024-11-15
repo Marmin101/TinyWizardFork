@@ -44,7 +44,7 @@ namespace Quinn.DungeonGeneration
 
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
-		public bool HasStarted { get; private set; }
+		public bool IsStarted { get; private set; }
 
 		public bool HasNorthDoor => NorthDoor != null || NoDoors;
 		public bool HasEastDoor => EastDoor != null || NoDoors;
@@ -62,6 +62,12 @@ namespace Quinn.DungeonGeneration
 		public void Awake()
 		{
 			IsConquered = StartConquered;
+			IsStarted = StartConquered;
+
+			if (IsStarted && IsConquered)
+			{
+				RegisterAllAgents();
+			}
 
 			if (StartConquered && MissileBlocker != null)
 			{
@@ -185,21 +191,13 @@ namespace Quinn.DungeonGeneration
 
 		private void StartRoomEncounter()
 		{
-			HasStarted = true;
+			IsStarted = true;
 			Lock();
 
 			if (MissileBlocker != null)
 				Destroy(MissileBlocker.gameObject);
 
-			for (int i = 0; i < AgentsParent.childCount; i++)
-			{
-				Transform child = AgentsParent.GetChild(i);
-
-				if (child.TryGetComponent(out IAgent agent))
-				{
-					RegisterAgent(agent);
-				}
-			}
+			RegisterAllAgents();
 		}
 
 		private async void OnAgentDeath(AIAgent agent)
@@ -225,6 +223,19 @@ namespace Quinn.DungeonGeneration
 				}
 
 				Unlock();
+			}
+		}
+
+		private void RegisterAllAgents()
+		{
+			for (int i = 0; i < AgentsParent.childCount; i++)
+			{
+				Transform child = AgentsParent.GetChild(i);
+
+				if (child.TryGetComponent(out IAgent agent))
+				{
+					RegisterAgent(agent);
+				}
 			}
 		}
 	}

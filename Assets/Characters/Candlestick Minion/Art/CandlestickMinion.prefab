@@ -333,6 +333,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3123992956430733377}
   m_SourcePrefab: {fileID: 100100000, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+--- !u!95 &3126541406468558736 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7039031484908775684, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+  m_PrefabInstance: {fileID: 5389714805405574804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4786387607641431859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 621698114730883495, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
@@ -363,10 +368,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Graph: {fileID: -2247866375124811802, guid: 54e59c214e6b0b9458328ad7dda2f09f, type: 2}
-  m_BlackboardVariableOverridesList: []
+  m_BlackboardVariableOverridesList:
+  - rid: 8332993359419277521
+  - rid: 8332993359419277522
+  - rid: 8332993359419277953
+  - rid: 8332993359419277954
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8332993359419277521
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12687861225854623623
+          m_Value1: 7893673831393828112
+        Name: Animator
+        m_Value: {fileID: 3126541406468558736}
+    - rid: 8332993359419277522
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 4786387607641431859}
+    - rid: 8332993359419277953
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1292061371986029843
+          m_Value1: 920628804966158841
+        Name: MissileOrigin
+        m_Value: {fileID: 846729737996946512}
+    - rid: 8332993359419277954
+      type: {class: 'BlackboardVariable`1[[Quinn.MissileSystem.Missile, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10454758107853877782
+          m_Value1: 7939283389150658875
+        Name: Missile
+        m_Value: {fileID: 378628380131750163, guid: 58da571e55b2bf6439709c449663c4b3, type: 3}
 --- !u!4 &5041226214707813878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1097213129333881698, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}

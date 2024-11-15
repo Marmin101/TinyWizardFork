@@ -15,12 +15,25 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeReference]
 		public BlackboardVariable<Transform> Transform;
 
+		[SerializeReference]
+		public BlackboardVariable<bool> TargetColliderCenter;
+
 		protected override Status OnStart()
 		{
 			if (Transform.Value == null)
 				return Status.Failure;
 
-			Position.Value = Transform.Value.position;
+			if (TargetColliderCenter.Value)
+			{
+				var collider = Transform.Value.GetComponent<Collider2D>();
+				if (collider == null) return Status.Failure;
+				Position.Value = collider.bounds.center;
+			}
+			else
+			{
+				Position.Value = Transform.Value.position;
+			}
+
 			return Status.Success;
 		}
 	}

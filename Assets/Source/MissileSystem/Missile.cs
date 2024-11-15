@@ -34,7 +34,14 @@ namespace Quinn.MissileSystem
 		[Space, SerializeField, BoxGroup("Core"), ShowIf("@DelayDestructionOnDeath.Length > 0"), Unit(Units.Second)]
 		private float DestructionDelay = 3f;
 
+		[Space, SerializeField]
+		private bool SwapVisuals;
 		[SerializeField]
+		private GameObject ChildA, ChildB;
+		[SerializeField]
+		private float SwapInterval = 0.5f;
+
+		[SerializeField, FoldoutGroup("Splash Damage")]
 		private bool HasSplashDamage;
 		[SerializeField, FoldoutGroup("Splash Damage"), ShowIf(nameof(HasSplashDamage))]
 		private float BaseSplashDamage = 1f;
@@ -43,7 +50,7 @@ namespace Quinn.MissileSystem
 		[SerializeField, FoldoutGroup("Splash Damage"), ShowIf(nameof(HasSplashDamage))]
 		private AnimationCurve SplashDamageFalloff;
 
-		[SerializeField]
+		[SerializeField, FoldoutGroup("Oscillate")]
 		private bool DoesOscillate;
 		[SerializeField, FoldoutGroup("Oscillate"), ShowIf(nameof(DoesOscillate))]
 		private float OscillateAmplitude = 0.5f;
@@ -51,6 +58,17 @@ namespace Quinn.MissileSystem
 		private float OscillateFrequency = 0.5f;
 		[SerializeField, FoldoutGroup("Oscillate"), ShowIf(nameof(DoesOscillate))]
 		private bool RandomizeOscillation;
+
+		[SerializeField, FoldoutGroup("Explosion")]
+		private bool SpawnMissilesOnDeath;
+		[SerializeField, FoldoutGroup("Explosion"), ShowIf(nameof(SpawnMissilesOnDeath)), Required]
+		private Missile DeathMissilePrefab;
+		[SerializeField, FoldoutGroup("Explosion"), ShowIf(nameof(SpawnMissilesOnDeath))]
+		private int DeathMissileCount = 8;
+		[SerializeField, FoldoutGroup("Explosion"), ShowIf(nameof(SpawnMissilesOnDeath))]
+		private MissileSpawnBehavior DeathMissileSpawnBehavior = MissileSpawnBehavior.SpreadRandom;
+		[SerializeField, FoldoutGroup("Explosion"), ShowIf(nameof(SpawnMissilesOnDeath))]
+		private float DeathMissileSpread = 360f;
 
 		private Rigidbody2D _rb;
 		private GameObject _owner;
@@ -60,6 +78,9 @@ namespace Quinn.MissileSystem
 		private Vector2 _baseDir;
 
 		private float _oscillateOffset;
+
+		private bool _isChildA;
+		private float _nextSwapTime;
 
 		public void Awake()
 		{
@@ -79,6 +100,16 @@ namespace Quinn.MissileSystem
 			if (Time.time > _endLifeTime)
 			{
 				OnLifespanEnd();
+			}
+
+			if (SwapVisuals && Time.time > _nextSwapTime)
+			{
+				_nextSwapTime = Time.time + SwapInterval;
+
+				_isChildA = !_isChildA;
+
+				ChildA.SetActive(_isChildA);
+				ChildB.SetActive(!_isChildA);
 			}
 		}
 
@@ -161,7 +192,7 @@ namespace Quinn.MissileSystem
 			return Mathf.Sin(time * OscillateFrequency) * OscillateAmplitude * oscDir;
 		}
 
-		private void OnDeath()
+		private async void OnDeath()
 		{
 			if (SpawnOnDeath != null)
 			{
@@ -173,6 +204,11 @@ namespace Quinn.MissileSystem
 			{
 				obj.transform.SetParent(null, true);
 				obj.gameObject.Destroy(DestructionDelay);
+			}
+
+			if (SpawnMissilesOnDeath)
+			{
+				await MissileManager.Instance.SpawnMissileAsync(_owner, DeathMissilePrefab, transform.position, Vector2.right, DeathMissileCount, DeathMissileSpawnBehavior, DeathMissileSpread);
 			}
 		}
 	}

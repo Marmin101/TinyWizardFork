@@ -21,6 +21,9 @@ namespace Quinn.AI.BehaviorTree
 
 		protected override Status OnUpdate()
 		{
+			if (PlayerManager.Instance == null)
+				return Status.Running;
+
 			var player = PlayerManager.Instance.Player;
 
 			if (player == null)

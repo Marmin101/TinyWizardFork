@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e8a3c8a16b6b54ea7aaf4abca8a1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GUID>k__BackingField: 9b3caef2-2f34-462f-a4df-a00ab074e3c8
   <Head>k__BackingField: {fileID: 8949893096219440680}
   <SparkGradient>k__BackingField:
     serializedVersion: 2
@@ -145,9 +146,10 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
   <MaxEnergy>k__BackingField: 200
-  <GUID>k__BackingField: 9b3caef2-2f34-462f-a4df-a00ab074e3c8
+  CastCooldown: 0.1
   ChargeRate: 3
   MaxCharge: 8
+  MinChargeThreshold: 1
   MaxDamage: 70
   DamageChargeFactor:
     serializedVersion: 2
@@ -173,33 +175,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MinChargeThreshold: 1
   DamageRadius: 1
-  BaseSparkCooldown: 0.6
-  CastCooldown: 0.1
-  CombustionVFX: {fileID: 3046125498168810899, guid: 385d91660187d9e4287a7e5326c4627e, type: 3}
-  VFXLifespan: 3
-  SmallExplosionSound:
-    Guid:
-      Data1: -1749370342
-      Data2: 1198380268
-      Data3: -453512056
-      Data4: 424446055
-    Path: event:/CombustionStaffExplode_Small
-  MediumExplosionSound:
-    Guid:
-      Data1: -1358915115
-      Data2: 1265151071
-      Data3: 58498965
-      Data4: -1020683540
-    Path: event:/CombustionStaffExplode_Med
-  LargeExplosionSound:
-    Guid:
-      Data1: -295128833
-      Data2: 1228554532
-      Data3: -1343269714
-      Data4: 514079750
-    Path: event:/CombustionStaffExplode_Big
   MaxEnergyUse: 15
   EnergyUseChargeFactor:
     serializedVersion: 2
@@ -227,10 +203,34 @@ MonoBehaviour:
     m_RotationOrder: 4
   FriendlyKnockbackSpeed: 18
   MaxManaConsume: 60
-  MinFireVFXCount: 32
-  MaxFireVFXCount: 512
+  BaseSparkCooldown: 0.6
+  CombustionVFX: {fileID: 3046125498168810899, guid: 385d91660187d9e4287a7e5326c4627e, type: 3}
+  VFXLifespan: 3
+  MinFireVFXCount: 16
+  MaxFireVFXCount: 128
   MinSmokeVFXCount: 16
   MaxSmokeVFXCount: 256
+  SmallExplosionSound:
+    Guid:
+      Data1: -1749370342
+      Data2: 1198380268
+      Data3: -453512056
+      Data4: 424446055
+    Path: event:/CombustionStaffExplode_Small
+  MediumExplosionSound:
+    Guid:
+      Data1: -1358915115
+      Data2: 1265151071
+      Data3: 58498965
+      Data4: -1020683540
+    Path: event:/CombustionStaffExplode_Med
+  LargeExplosionSound:
+    Guid:
+      Data1: -295128833
+      Data2: 1228554532
+      Data3: -1343269714
+      Data4: 514079750
+    Path: event:/CombustionStaffExplode_Big
 --- !u!4 &8949893096219440680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2432762686052508438, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}

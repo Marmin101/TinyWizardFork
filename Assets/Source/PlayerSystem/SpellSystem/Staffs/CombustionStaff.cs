@@ -8,28 +8,22 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 	public class CombustionStaff : Staff
 	{
 		[SerializeField, Unit(Units.Second)]
+		private float CastCooldown = 0.1f;
+		[SerializeField, Unit(Units.Second)]
 		private float ChargeRate = 1f;
 		[SerializeField, Unit(Units.Second)]
 		private float MaxCharge = 4f;
 		[SerializeField]
+		private float MinChargeThreshold = 1f;
+
+		[Space, SerializeField]
 		private float MaxDamage = 51f;
 		[SerializeField]
 		private AnimationCurve DamageChargeFactor;
 		[SerializeField]
-		private float MinChargeThreshold = 1f;
-		[SerializeField]
 		private float DamageRadius = 1f;
-		[SerializeField]
-		private float BaseSparkCooldown = 0.3f;
-		[SerializeField]
-		private float CastCooldown = 0.1f;
-		[SerializeField]
-		private GameObject CombustionVFX;
-		[SerializeField]
-		private float VFXLifespan = 3f;
-		[SerializeField]
-		private EventReference SmallExplosionSound, MediumExplosionSound, LargeExplosionSound;
-		[SerializeField]
+
+		[Space, SerializeField]
 		private float MaxEnergyUse = 5f;
 		[SerializeField]
 		private AnimationCurve EnergyUseChargeFactor;
@@ -37,10 +31,20 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float FriendlyKnockbackSpeed = 18f;
 		[SerializeField]
 		private float MaxManaConsume = 20f;
+
+		[Space, SerializeField]
+		private float BaseSparkCooldown = 0.3f;
+		[SerializeField]
+		private GameObject CombustionVFX;
+		[SerializeField]
+		private float VFXLifespan = 3f;
 		[SerializeField]
 		private int MinFireVFXCount = 32, MaxFireVFXCount = 128;
 		[SerializeField]
 		private int MinSmokeVFXCount = 16, MaxSmokeVFXCount = 64;
+
+		[SerializeField, FoldoutGroup("SFX")]
+		private EventReference SmallExplosionSound, MediumExplosionSound, LargeExplosionSound;
 
 		private bool _isCharging;
 		private float _charge;
@@ -97,6 +101,9 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				fx[1].SetInt("Count", (int)Mathf.Lerp(MinSmokeVFXCount, MaxSmokeVFXCount, chargePercent));
 				fx[1].SetFloat("SpeedFactor", Mathf.Lerp(0.5f, 2f, chargePercent));
+
+				fx[2].SetInt("SpawnCount", (int)Mathf.Lerp(MinSmokeVFXCount, MaxSmokeVFXCount, chargePercent));
+				fx[2].SetFloat("SpeedFactor", Mathf.Lerp(0.5f, 2f, chargePercent));
 
 				foreach (var f in fx)
 				{

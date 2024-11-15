@@ -11,13 +11,13 @@ namespace Quinn
 
 		public static WorldGrid Instance { get; private set; }
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null, "There should only be one WorldGrid instance!");
 			Instance = this;
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			Instance = null;
 		}

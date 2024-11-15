@@ -101,6 +101,10 @@ namespace Quinn.AI
 
 		public void SetTarget(Transform transform)
 		{
+			// Can't target environmental trap.
+			if (transform.TryGetComponent(out IDamageable dmg) && dmg.Team == Team.Environment)
+				return;
+
 			Target = transform;
 			TargetHealth = transform.GetComponent<Health>();
 			TargetCollider = transform.GetComponent<Collider2D>();

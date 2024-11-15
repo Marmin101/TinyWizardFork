@@ -363,19 +363,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Graph: {fileID: -2247866375124811802, guid: 54e59c214e6b0b9458328ad7dda2f09f, type: 2}
-  m_BlackboardVariableOverridesList:
-  - rid: 8332993350095339699
+  m_BlackboardVariableOverridesList: []
   references:
     version: 2
-    RefIds:
-    - rid: 8332993350095339699
-      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1
-          m_Value1: 0
-        Name: Self
-        m_Value: {fileID: 4786387607641431859}
+    RefIds: []
 --- !u!4 &5041226214707813878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1097213129333881698, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}

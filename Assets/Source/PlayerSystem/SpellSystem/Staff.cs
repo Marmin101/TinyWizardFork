@@ -9,14 +9,15 @@ namespace Quinn.PlayerSystem.SpellSystem
 	[RequireComponent(typeof(Collider2D))]
 	public abstract class Staff : MonoBehaviour, IInteractable
 	{
-		[field: SerializeField, Required]
-		public Transform Head { get; private set; }
-		[field: SerializeField]
-		public Gradient SparkGradient { get; private set; }
-		[field: SerializeField]
-		public float MaxEnergy { get; private set; } = 500f;
-		[field: SerializeField, BoxGroup("ID")]
+		[field: SerializeField, BoxGroup("ID", showLabel: false)]
 		public string GUID { get; private set; }
+
+		[field: SerializeField, Required, BoxGroup("Base", showLabel: false)]
+		public Transform Head { get; private set; }
+		[field: SerializeField, BoxGroup("Base", showLabel: false)]
+		public Gradient SparkGradient { get; private set; }
+		[field: SerializeField, BoxGroup("Base", showLabel: false)]
+		public float MaxEnergy { get; private set; } = 500f;
 
 		public float Energy { get; private set; }
 		public bool CanRegenMana { get; protected set; } = true;
@@ -68,7 +69,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			_group.enabled = false;
 		}
 
-		[Button("Generate"), BoxGroup("ID")]
+		[Button(SdfIconType.ArrowRepeat, "Generate"), BoxGroup("ID")]
 		public void GenerateGUID()
 		{
 			GUID = System.Guid.NewGuid().ToString();

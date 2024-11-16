@@ -373,6 +373,7 @@ MonoBehaviour:
   - rid: 8332993359419277522
   - rid: 8332993359419277953
   - rid: 8332993359419277954
+  - rid: 8332993383747551628
   references:
     version: 2
     RefIds:
@@ -408,6 +409,14 @@ MonoBehaviour:
           m_Value1: 7939283389150658875
         Name: Missile
         m_Value: {fileID: 378628380131750163, guid: 58da571e55b2bf6439709c449663c4b3, type: 3}
+    - rid: 8332993383747551628
+      type: {class: 'BlackboardVariable`1[[Quinn.Health, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10783843001984762092
+          m_Value1: 6520938346847222480
+        Name: Health
+        m_Value: {fileID: 8689911750249942749}
 --- !u!4 &5041226214707813878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1097213129333881698, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
@@ -472,6 +481,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8689911750249942749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+  m_PrefabInstance: {fileID: 5389714805405574804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4786387607641431859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97dad39f9bf8cc4d8b98d70c213cf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5391986630661743427
 PrefabInstance:
   m_ObjectHideFlags: 0

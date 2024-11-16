@@ -12,10 +12,19 @@ namespace Quinn.AI.BehaviorTree
 	{
 		[SerializeReference]
 		public BlackboardVariable<Vector2> Position;
+
 		[SerializeReference]
 		public BlackboardVariable<float> StoppingDistance = new(0.1f);
 
+		[SerializeReference]
+		public BlackboardVariable<bool> LimitMaxDistance = new(false);
+		[SerializeReference]
+		public BlackboardVariable<bool> FailOnMaxReached = new(false);
+		[SerializeReference]
+		public BlackboardVariable<float> MaxDistance = new(5f);
+
 		private BTAgent _agent;
+		private Vector2 _origin;
 
 		protected override Status OnStart()
 		{
@@ -23,12 +32,19 @@ namespace Quinn.AI.BehaviorTree
 				return Status.Failure;
 
 			_agent = GameObject.GetComponent<BTAgent>();
+			_origin = GameObject.transform.position;
 			return Status.Running;
 		}
 
 		protected override Status OnUpdate()
 		{
 			bool reached = _agent.Movement.MoveTo(Position.Value, StoppingDistance.Value);
+
+			if (LimitMaxDistance.Value && GameObject.transform.position.DistanceTo(_origin) > MaxDistance.Value)
+			{
+				return FailOnMaxReached.Value ? Status.Failure : Status.Success;
+			}
+
 			return reached ? Status.Success : Status.Running;
 		}
 	}

@@ -21,7 +21,9 @@ namespace Quinn.AI.BehaviorTree
 
 		public override bool IsTrue()
 		{
-			if (Target.Value == null) return false;
+			// Can't be alive if null, can be dead if null.
+			if (Target.Value == null && State.Value is AliveState.Alive) return false;
+			if (Target.Value == null && State.Value is AliveState.Dead) return true;
 
 			if (State.Value is AliveState.Alive) return Target.Value.IsAlive;
 			if (State.Value is AliveState.Dead) return !Target.Value.IsAlive;

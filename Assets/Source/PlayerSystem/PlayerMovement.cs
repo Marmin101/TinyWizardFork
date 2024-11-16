@@ -48,7 +48,7 @@ namespace Quinn.PlayerSystem
 			GetComponent<PlayerCaster>().OnStaffEquipped += OnStaffEquiped;
 		}
 
-		private void Update()
+		public void Update()
 		{
 			float scale = Rigidbody.linearVelocity.magnitude / MoveSpeed;
 			if (IsDashing) scale = 1f;
@@ -58,7 +58,7 @@ namespace Quinn.PlayerSystem
 			DashTrail.SetBool("Enabled", IsDashing);
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			if (InputManager.Instance != null)
 				InputManager.Instance.OnDash -= OnDash;
@@ -100,10 +100,9 @@ namespace Quinn.PlayerSystem
 				_health.BlockDamage(this);
 
 				Audio.Play(DashSound, transform.position);
-
 				float dashDur = DashDistance / DashSpeed;
-				_dashEndTime = Time.time + dashDur;
 
+				_dashEndTime = Time.time + dashDur;
 				_nextDashTime = Time.time + DashCooldown;
 			}
 		}

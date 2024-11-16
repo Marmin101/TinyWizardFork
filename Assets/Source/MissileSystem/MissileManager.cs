@@ -6,13 +6,13 @@ namespace Quinn.MissileSystem
 	{
 		public static MissileManager Instance { get; private set; }
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null);
 			Instance = this;
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			if (Instance == null)
 				Instance = null;
@@ -70,7 +70,7 @@ namespace Quinn.MissileSystem
 					missileDir = baseDir;
 					break;
 				}
-				case MissileSpawnBehavior.SpreadEven:
+				case MissileSpawnBehavior.SpreadRandom:
 				{
 					float angle = Random.Range(0, maxAngle);
 					angle -= maxAngle / 2f;
@@ -78,7 +78,7 @@ namespace Quinn.MissileSystem
 					missileDir = Quaternion.AngleAxis(angle, Vector3.forward) * baseDir;
 					break;
 				}
-				case MissileSpawnBehavior.SpreadRandom:
+				case MissileSpawnBehavior.SpreadEven:
 				{
 					float angleDelta = maxAngle / count;
 

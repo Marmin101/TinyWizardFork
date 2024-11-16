@@ -94,7 +94,11 @@ namespace Quinn.PlayerSystem.SpellSystem
 				_group.enabled = false;
 
 				Head.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
-				Head.GetComponent<Light2D>().enabled = false;
+
+				if (Head.TryGetComponent(out Light2D light))
+				{
+					light.enabled = false;
+				}
 			}
 			// Equipping.
 			else

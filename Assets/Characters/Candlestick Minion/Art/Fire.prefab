@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5107323819558020287}
   - component: {fileID: 7036289352488623704}
   - component: {fileID: 3727641235968004286}
+  - component: {fileID: 1684353920672589008}
   m_Layer: 0
   m_Name: Flames
   m_TagString: Untagged
@@ -185,6 +186,23 @@ VFXRenderer:
   m_SortingLayerID: -272583499
   m_SortingLayer: 1
   m_SortingOrder: 0
+--- !u!114 &1684353920672589008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545624408836161680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03036d95b3abca342a75e7102ac4e3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 0}
+  VFX: {fileID: 7036289352488623704}
+  Key: SpawnRate
+  FactorAtMaxHP: 0.1
+  FactorAtMinHP: 1
 --- !u!1 &8131839377092469094
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +214,7 @@ GameObject:
   - component: {fileID: 6404929323318143287}
   - component: {fileID: 7734419428080237822}
   - component: {fileID: 6452425274422572688}
+  - component: {fileID: 2361926074807004896}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -364,6 +383,23 @@ VFXRenderer:
   m_SortingLayerID: -272583499
   m_SortingLayer: 1
   m_SortingOrder: 0
+--- !u!114 &2361926074807004896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8131839377092469094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03036d95b3abca342a75e7102ac4e3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 0}
+  VFX: {fileID: 7734419428080237822}
+  Key: SpawnRate
+  FactorAtMaxHP: 0.1
+  FactorAtMinHP: 1
 --- !u!1 &9004448745148142322
 GameObject:
   m_ObjectHideFlags: 0

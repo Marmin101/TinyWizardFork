@@ -145,12 +145,12 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
-  <MaxEnergy>k__BackingField: 200
+  <MaxEnergy>k__BackingField: 100
   CastCooldown: 0.1
   ChargeRate: 3
   MaxCharge: 8
   MinChargeThreshold: 1
-  MaxDamage: 70
+  MaxDamage: 120
   DamageChargeFactor:
     serializedVersion: 2
     m_Curve:
@@ -175,7 +175,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  DamageRadius: 1
+  DamageRadius: 1.5
   MaxEnergyUse: 15
   EnergyUseChargeFactor:
     serializedVersion: 2
@@ -183,12 +183,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.5
-      inSlope: -0.0036624388
-      outSlope: -0.0036624388
+      inSlope: 0.0069479086
+      outSlope: 0.0069479086
       tangentMode: 0
-      weightedMode: 0
+      weightedMode: 3
       inWeight: 0
-      outWeight: 0.14728492
+      outWeight: 0.8799007
     - serializedVersion: 3
       time: 1
       value: 1

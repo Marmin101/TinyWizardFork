@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec295a3f07223d74ea6cb6e9344802b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GUID>k__BackingField: 39417e76-4e7b-4618-b953-73c3065fe732
   <Head>k__BackingField: {fileID: 4720859037852985567}
   <SparkGradient>k__BackingField:
     serializedVersion: 2
@@ -167,7 +168,6 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
   <MaxEnergy>k__BackingField: 1000
-  <GUID>k__BackingField: 39417e76-4e7b-4618-b953-73c3065fe732
   BasicCastSound:
     Guid:
       Data1: -1154755531
@@ -204,15 +204,15 @@ MonoBehaviour:
       Data4: 0
     Path: 
   BasicMissile: {fileID: 8124721946908383700, guid: d08d72d1562c0d34e9a3eb98f5dec6ca, type: 3}
-  BasicCooldown: 0.1
+  BasicCooldown: 0.15
   BasicKnockbackSpeed: 2
-  BasicBehavior: 0
-  BasicSpread: 0
-  BasicCount: 1
+  BasicBehavior: 2
+  BasicSpread: 30
+  BasicCount: 2
   BasicInterval: 0
   ChainWindowDuration: 0.2
   BasicEnergyUse: 0
-  BasicManaConsume: 1
+  BasicManaConsume: 8
   HasBasicFinisher: 1
   BasicFinisherCooldown: 0.6
   BasicFinisherCount: 5
@@ -221,7 +221,7 @@ MonoBehaviour:
   BasicFinisherSpread: 30
   BasicFinisherKnockbackSpeed: 8
   BasicFinisherMissileOverride: {fileID: 8124721946908383700, guid: d08d72d1562c0d34e9a3eb98f5dec6ca, type: 3}
-  BasicFinisherEnergyUse: 4
+  BasicFinisherEnergyUse: 0
   BasicFinisherManaConsume: 6
   HasSpecial: 0
   SpecialMissile: {fileID: 0}

@@ -90,15 +90,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: Lifespan
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DirectSpeed
-      value: 7.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DirectDamage
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DoesOscillate
@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: CustomKnockbackSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: UsesCustomKnockbackSpeed

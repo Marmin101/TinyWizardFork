@@ -18,7 +18,7 @@ MonoBehaviour:
       Data2: 1265082880
       Data3: -557461825
       Data4: -1100324599
-    Path: event:/Music/ThePalance_Ambience
+    Path: event:/Music/ThePalace_Ambience
   Music:
     Guid:
       Data1: -1849080363
@@ -29,14 +29,14 @@ MonoBehaviour:
   StartingRoom: {fileID: 6574645483326721954, guid: 50e68671730ae934fb44b057a4cf3655, type: 3}
   Generatable:
   - Prefab: {fileID: 7734380130235892607, guid: b01daf92ccb97e8489ad37cd4a45ce0b, type: 3}
-    Weight: 80
-    SumWeight: 280
+    Weight: 100
+    SumWeight: 400
   - Prefab: {fileID: 7734380130235892607, guid: 4c45c411a17e2eb4eb0162be91846979, type: 3}
     Weight: 100
-    SumWeight: 280
+    SumWeight: 400
   - Prefab: {fileID: 7734380130235892607, guid: 46ec1cdee28999847bb3dbab470aa131, type: 3}
-    Weight: 40
-    SumWeight: 280
+    Weight: 100
+    SumWeight: 400
   - Prefab: {fileID: 7734380130235892607, guid: 621f46caebb9f8f4791129b97697c355, type: 3}
-    Weight: 60
-    SumWeight: 280
+    Weight: 100
+    SumWeight: 400

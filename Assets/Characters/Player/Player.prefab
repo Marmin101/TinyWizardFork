@@ -433,10 +433,10 @@ MonoBehaviour:
   DoesKnockbackOnDamage: 1
   KnockbackSpeed: 16
   KnockbackDecayRate: 38
-  MoveSpeed: 4
-  DashSpeed: 18
-  DashDistance: 4
-  DashCooldown: 0.7
+  MoveSpeed: 4.5
+  DashSpeed: 20
+  DashDistance: 4.5
+  DashCooldown: 0.5
   DashSound:
     Guid:
       Data1: -534286951

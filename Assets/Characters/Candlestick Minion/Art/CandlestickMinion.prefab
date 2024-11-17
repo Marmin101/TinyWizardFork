@@ -691,9 +691,29 @@ PrefabInstance:
       propertyPath: 'Renderers.Array.data[2]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4891083787612474357, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: WetDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891083787612474357, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: Immune.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891083787612474357, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: WetDamageInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891083787612474357, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: 'Immune.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_Size.y
+      value: 0.92157394
+      objectReference: {fileID: 0}
     - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Offset.y
-      value: 0.44
+      value: 0.40078697
       objectReference: {fileID: 0}
     - target: {fileID: 7039031484908775684, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Controller

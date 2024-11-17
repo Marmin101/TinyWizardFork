@@ -33,7 +33,7 @@ namespace Quinn
 			}
 		}
 
-		private void LateUpdate()
+		public void LateUpdate()
 		{
 			Vector2 vel = GetVelocity();
 

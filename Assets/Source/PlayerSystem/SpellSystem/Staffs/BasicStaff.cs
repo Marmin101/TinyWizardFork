@@ -21,7 +21,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float BasicCooldown = 0.3f;
 		[SerializeField, FoldoutGroup("Basic"), Unit(Units.MetersPerSecond)]
 		private float BasicKnockbackSpeed = 10f;
-		[SerializeField, FoldoutGroup("Basic")]
+
+		[SerializeField, FoldoutGroup("Basic"), Space]
 		private MissileSpawnBehavior BasicBehavior = MissileSpawnBehavior.Direct;
 		[SerializeField, HideIf("@BasicBehavior == MissileSpawnBehavior.Direct"), FoldoutGroup("Basic"), Unit(Units.Degree)]
 		private float BasicSpread = 0f;
@@ -31,7 +32,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float BasicInterval = 0f;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic"), Unit(Units.Second)]
 		private float ChainWindowDuration = 0.4f;
-		[SerializeField, FoldoutGroup("Basic")]
+
+		[SerializeField, FoldoutGroup("Basic"), Space]
 		private float BasicEnergyUse = 2f;
 		[SerializeField, FoldoutGroup("Basic")]
 		private float BasicManaConsume = 4f;
@@ -40,7 +42,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private bool HasBasicFinisher = true;
 		[SerializeField, FoldoutGroup("Basic Finisher"), Unit(Units.Second), ShowIf(nameof(HasBasicFinisher))]
 		private float BasicFinisherCooldown = 0.6f;
-		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
+
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher"), Space]
 		private int BasicFinisherCount = 3;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
 		private int BasicFinisherChain = 3;
@@ -50,19 +53,22 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float BasicFinisherSpread = 45f;
 		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher"), Unit(Units.MetersPerSecond)]
 		private float BasicFinisherKnockbackSpeed = 14f;
-		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher")]
+
+		[SerializeField, ShowIf(nameof(HasBasicFinisher)), FoldoutGroup("Basic Finisher"), Space]
 		[Tooltip("This can be null to use the basic normal missile.")]
 		private Missile BasicFinisherMissileOverride;
-		[SerializeField, FoldoutGroup("Basic Finisher"), ShowIf(nameof(HasBasicFinisher))]
+
+		[SerializeField, FoldoutGroup("Basic Finisher"), ShowIf(nameof(HasBasicFinisher)), Space]
 		private float BasicFinisherEnergyUse = 4f;
-		[SerializeField, FoldoutGroup("Basic Finisher"), ShowIf(nameof(HasBasicFinisher))]
+		[SerializeField, FoldoutGroup("Basic Finisher"), ShowIf(nameof(HasBasicFinisher)), Space]
 		private float BasicFinisherManaConsume = 12f;
 
 		[Space, SerializeField, FoldoutGroup("Special")]
 		private bool HasSpecial = true;
 		[SerializeField, Required, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
 		private Missile SpecialMissile;
-		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial)), Unit(Units.Second)]
+
+		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial)), Unit(Units.Second), Space]
 		private float ChargingSparkInterval = 0.45f;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special"), Unit(Units.Second)]
 		private float SpecialCooldown = 1f;
@@ -72,7 +78,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float SpecialKnockbackSpeed = 10f;
 		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
 		private float ChargingMoveSpeedFactor = 0.5f;
-		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special")]
+
+		[SerializeField, ShowIf(nameof(HasSpecial)), FoldoutGroup("Special"), Space]
 		private int SpecialCount = 1;
 		[SerializeField, ShowIf("@SpecialCount > 1 && HasSpecial"), FoldoutGroup("Special"), Unit(Units.Second)]
 		private float SpecialInterval = 0f;
@@ -80,7 +87,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private MissileSpawnBehavior SpecialBehavior = MissileSpawnBehavior.Direct;
 		[SerializeField, HideIf("@SpecialBehavior == MissileSpawnBehavior.Direct || !HasSpecial"), FoldoutGroup("Special"), Unit(Units.Degree)]
 		private float SpecialSpread = 0f;
-		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
+
+		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial)), Space]
 		private float SpecialEnergyUse = 8f;
 		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
 		private float SpecialManaConsume = 34f;

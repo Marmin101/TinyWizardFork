@@ -1,20 +1,26 @@
 using FMODUnity;
 using Sirenix.OdinInspector;
+using Unity.AppUI.Core;
 using UnityEngine;
 using UnityEngine.VFX;
+using static Unity.VisualScripting.Member;
 
 namespace Quinn.MissileSystem
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class Missile : MonoBehaviour
 	{
-		[SerializeField, BoxGroup("FX")]
+		[SerializeField, BoxGroup("SFX")]
 		private EventReference SpawnSound, HitSound, FizzleOutSound;
 
 		[SerializeField, BoxGroup("Core")]
 		private float DirectSpeed = 8f;
 		[SerializeField, BoxGroup("Core")]
 		private float DirectDamage = 1f;
+		[SerializeField, BoxGroup("Core"), ShowIf(nameof(HasSplashDamage))]
+		private StatusEffect DirectStatusEffect = StatusEffect.None;
+		[SerializeField, BoxGroup("Core"), ShowIf(nameof(HasSplashDamage))]
+		private float DirectStatusEffectDuration = 2f;
 		[SerializeField, BoxGroup("Core")]
 		private Team Team = Team.Monster;
 		[SerializeField, BoxGroup("Core"), Unit(Units.Second)]
@@ -34,11 +40,11 @@ namespace Quinn.MissileSystem
 		[Space, SerializeField, BoxGroup("Core"), ShowIf("@DelayDestructionOnDeath.Length > 0"), Unit(Units.Second)]
 		private float DestructionDelay = 3f;
 
-		[Space, SerializeField]
+		[Space, SerializeField, FoldoutGroup("Flicker")]
 		private bool SwapVisuals;
-		[SerializeField]
+		[SerializeField, ShowIf(nameof(SwapInterval)), FoldoutGroup("Flicker")]
 		private GameObject ChildA, ChildB;
-		[SerializeField]
+		[SerializeField, ShowIf(nameof(SwapInterval)), FoldoutGroup("Flicker")]
 		private float SwapInterval = 0.5f;
 
 		[SerializeField, FoldoutGroup("Splash Damage")]
@@ -49,6 +55,10 @@ namespace Quinn.MissileSystem
 		private float SplashRadius = 1f;
 		[SerializeField, FoldoutGroup("Splash Damage"), ShowIf(nameof(HasSplashDamage))]
 		private AnimationCurve SplashDamageFalloff;
+		[SerializeField, FoldoutGroup("Splash Damage"), ShowIf(nameof(HasSplashDamage))]
+		private StatusEffect SplashStatusEffect = StatusEffect.None;
+		[SerializeField, FoldoutGroup("Splash Damage"), ShowIf(nameof(HasSplashDamage))]
+		private float SplashStatusEffectDuration = 2f;
 
 		[SerializeField, FoldoutGroup("Oscillate")]
 		private bool DoesOscillate;
@@ -123,7 +133,7 @@ namespace Quinn.MissileSystem
 					knockbackSpeed = CustomKnockbackSpeed;
 				}
 
-				if (dmg.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, knockbackSpeed))
+				if (dmg.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, DirectStatusEffect, DirectStatusEffectDuration, knockbackSpeed))
 					OnImpact();
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.CompareTag("MissileBlocker"))
@@ -170,7 +180,7 @@ namespace Quinn.MissileSystem
 					{
 						float dst = transform.position.DistanceTo(collider.transform.position);
 						float dmg = SplashDamageFalloff.Evaluate(dst / SplashRadius) * BaseSplashDamage;
-						health.TakeDamage(dmg, transform.position.DirectionTo(collider.transform.position), Team, gameObject);
+						(health as IDamageable).TakeDamage(dmg, transform.position.DirectionTo(collider.transform.position), Team, gameObject, SplashStatusEffect, SplashStatusEffectDuration);
 					}
 				}
 			}

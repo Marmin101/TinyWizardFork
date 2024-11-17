@@ -54,12 +54,15 @@ namespace Quinn
 		private readonly HashSet<object> _damageBlockers = new();
 		private float _nextHurtImmunityEndTime;
 
-		private void Awake()
+		private StatusEffectManager _statsEffectManager;
+
+		public void Awake()
 		{
 			Current = Max;
+			TryGetComponent(out _statsEffectManager);
 		}
 
-		private void Start()
+		public void Start()
 		{
 			if (HPBar != null)
 			{
@@ -67,7 +70,7 @@ namespace Quinn
 			}
 		}
 
-		private void FixedUpdate()
+		public void FixedUpdate()
 		{
 			if (HPBar != null)
 			{
@@ -76,7 +79,7 @@ namespace Quinn
 			}
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			DestroyHPBar();
 		}
@@ -126,6 +129,11 @@ namespace Quinn
 				return false;
 
 			Audio.Play(HurtSound, transform.position);
+
+			if (_statsEffectManager != null)
+			{
+				_statsEffectManager.ApplyEffect(info.StatusEffect, info.StatusEffectDuration);
+			}
 
 			Current -= info.Damage;
 			Current = Mathf.Max(0, Current);

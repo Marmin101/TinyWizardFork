@@ -7,13 +7,13 @@ namespace Quinn.UnityServices
 	{
 		public static Analytics Instance { get; private set; }
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null, "There should only ever be 1 instance of the Analytics class!");
 			Instance = this;
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			Instance = null;
 		}

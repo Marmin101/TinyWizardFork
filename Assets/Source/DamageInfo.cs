@@ -11,5 +11,7 @@ namespace Quinn
 		public bool UsesCustomKnockbackSpeed;
 		public float CustomKnockbackSpeed;
 		public bool IsLethal;
+		public StatusEffect StatusEffect;
+		public float StatusEffectDuration;
 	}
 }

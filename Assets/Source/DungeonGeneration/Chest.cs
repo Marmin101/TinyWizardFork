@@ -41,6 +41,8 @@ namespace Quinn.DungeonGeneration
 		[SerializeField]
 		private EventReference OpenMusicCueSound;
 		[SerializeField]
+		private EventReference HitSound;
+		[SerializeField]
 		private bool DisableAmbienceOnOpen = true;
 
 		[Space, SerializeField, Required]
@@ -117,6 +119,8 @@ namespace Quinn.DungeonGeneration
 
 		public bool TakeDamage(DamageInfo info)
 		{
+			Audio.Play(HitSound, transform.position);
+
 			if (IsLocked)
 				return true;
 

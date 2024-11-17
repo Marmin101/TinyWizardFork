@@ -146,18 +146,18 @@ MonoBehaviour:
   - {fileID: 8001251376720651001}
   DamageSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1354408908
+      Data2: 1178215607
+      Data3: 379731127
+      Data4: -409170020
+    Path: event:/PillarHit
   DestroySound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -89112766
+      Data2: 1297143857
+      Data3: -207837014
+      Data4: -2122956007
+    Path: event:/PillarDestroy
   DestructionDelay: 5
 --- !u!114 &4476972219660444203
 MonoBehaviour:

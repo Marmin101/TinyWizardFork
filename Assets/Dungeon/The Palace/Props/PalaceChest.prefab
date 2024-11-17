@@ -420,6 +420,13 @@ MonoBehaviour:
       Data3: 460529588
       Data4: 809100206
     Path: event:/ChestOpenMusicCue
+  HitSound:
+    Guid:
+      Data1: 603576245
+      Data2: 1256076515
+      Data3: 819511941
+      Data4: 1454906797
+    Path: event:/ChestHit
   DisableAmbienceOnOpen: 1
   ProximityHelpHandle: {fileID: 3726735568956103742}
   ProximityHelpTextCanvas: {fileID: 1823574942475656219}

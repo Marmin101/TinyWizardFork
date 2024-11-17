@@ -136,17 +136,11 @@
 	<object class="MixerBusFader" id="{2d130d6a-d2fb-4e77-89f3-09c8c2deca99}" />
 	<object class="MixerBusFader" id="{47d06137-f9f6-417d-8a71-9b8c52e68ffe}" />
 	<object class="SpatialiserEffect" id="{af70f3a4-dd33-4251-be54-3ade84e96b3c}">
-		<property name="distanceRolloffType">
-			<value>1</value>
-		</property>
 		<property name="maximumDistance">
 			<value>8.60000038</value>
 		</property>
 		<property name="overrideRange">
 			<value>true</value>
-		</property>
-		<property name="panBlend">
-			<value>0.844999969</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{725e4924-4fe2-48ca-b799-ded5adaffa55}">

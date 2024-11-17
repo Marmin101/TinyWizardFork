@@ -18,13 +18,18 @@ namespace Quinn
 		private bool _isUsed;
 		private bool _isFullHeal;
 
-		private void OnEnable()
+		public void OnEnable()
 		{
 			if (Random.value < FullHealChance)
 			{
 				GetComponent<SpriteRenderer>().sprite = FullHealSprite;
 				_isFullHeal = true;
 			}
+		}
+
+		public void OnDestroy()
+		{
+			transform.DOKill();
 		}
 
 		public async void Interact(Player player)
@@ -62,6 +67,7 @@ namespace Quinn
 
 				transform.DOKill(true);
 				transform.DOPunchScale(Vector3.one * 1.05f, 0.5f, elasticity: 0.5f);
+				transform.DOShakeScale(0.2f);
 			}
 		}
 	}

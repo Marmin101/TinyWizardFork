@@ -1,6 +1,7 @@
 ﻿using FMOD.Studio;
 using FMODUnity;
 using Quinn.AI;
+using Quinn.AI.BehaviorTree;
 using Quinn.AI.Pathfinding;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -62,7 +63,7 @@ namespace Quinn.DungeonGeneration
 		public Vector2Int RoomGridIndex { get; set; }
 
 		private readonly HashSet<Door> _doors = new();
-		private readonly HashSet<AIAgent> _liveAgents = new();
+		private readonly HashSet<IAgent> _liveAgent = new();
 		private readonly HashSet<StaticAgent> _staticAgents = new();
 
 		private EventInstance _customMusic;
@@ -127,10 +128,10 @@ namespace Quinn.DungeonGeneration
 		{
 			agent.StartRoom(this);
 
-			if (agent is AIAgent liveAgent)
+			if (agent is MonoBehaviour mono && mono.TryGetComponent(out Health health))
 			{
-				_liveAgents.Add(liveAgent);
-				liveAgent.Health.OnDeath += () => OnAgentDeath(liveAgent);
+				_liveAgent.Add(agent);
+				health.OnDeath += () => OnAgentDeath(agent);
 			}
 			else if (agent is StaticAgent staticAgent)
 			{
@@ -220,11 +221,11 @@ namespace Quinn.DungeonGeneration
 			RegisterAllAgents();
 		}
 
-		private async void OnAgentDeath(AIAgent agent)
+		private async void OnAgentDeath(IAgent agent)
 		{
-			_liveAgents.Remove(agent);
+			_liveAgent.Remove(agent);
 
-			if (_liveAgents.Count == 0)
+			if (_liveAgent.Count == 0)
 			{
 				IsConquered = true;
 

@@ -1,4 +1,5 @@
-﻿using FMODUnity;
+﻿using FMOD.Studio;
+using FMODUnity;
 using Quinn.AI;
 using Quinn.AI.Pathfinding;
 using Sirenix.OdinInspector;
@@ -35,9 +36,14 @@ namespace Quinn.DungeonGeneration
 		[SerializeField]
 		private Chest Chest;
 		[SerializeField]
+		private float PostConquerDelay = 1f;
+
+		[Space, SerializeField, HideIf(nameof(HasCustomMusic))]
 		private bool DisableMusic;
 		[SerializeField]
-		private float PostConquerDelay = 1f;
+		private bool HasCustomMusic;
+		[SerializeField, ShowIf(nameof(HasCustomMusic))]
+		private EventReference CustomMusic;
 
 		[Space, SerializeField]
 		private Collider2D MissileBlocker;
@@ -58,6 +64,8 @@ namespace Quinn.DungeonGeneration
 		private readonly HashSet<Door> _doors = new();
 		private readonly HashSet<AIAgent> _liveAgents = new();
 		private readonly HashSet<StaticAgent> _staticAgents = new();
+
+		private EventInstance _customMusic;
 
 		public void Awake()
 		{
@@ -145,9 +153,15 @@ namespace Quinn.DungeonGeneration
 					StartRoomEncounter();
 				}
 
-				if (DisableMusic)
+				if (DisableMusic || HasCustomMusic)
 				{
 					RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f);
+				}
+
+				if (HasCustomMusic)
+				{
+					_customMusic = RuntimeManager.CreateInstance(CustomMusic);
+					_customMusic.start();
 				}
 			}
 		}
@@ -159,9 +173,15 @@ namespace Quinn.DungeonGeneration
 				RoomCamera.enabled = false;
 				GenerateRoomAtPlayer(collider);
 
-				if (DisableMusic)
+				if (DisableMusic || HasCustomMusic)
 				{
 					RuntimeManager.StudioSystem.setParameterByName("enable-music", 1f);
+				}
+
+				if (HasCustomMusic)
+				{
+					_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+					_customMusic.release();
 				}
 			}
 		}

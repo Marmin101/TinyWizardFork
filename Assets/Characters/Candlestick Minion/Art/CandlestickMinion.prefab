@@ -680,6 +680,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: <Max>k__BackingField
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: Renderers.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -923,7 +927,6 @@ MonoBehaviour:
   HealthParameterKey: intensity
   HealthParamMin: 1
   HealthParamMax: 0
-  InvertHealthPercent: 0
 --- !u!4 &5041226214707813878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1097213129333881698, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}

@@ -71,7 +71,11 @@
 			<destination>{44ac4cf4-b15c-4415-941e-c382092abcb7}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{31ae5836-3d27-467b-bee1-c7eaefbab584}" />
+	<object class="EventAutomatableProperties" id="{31ae5836-3d27-467b-bee1-c7eaefbab584}">
+		<property name="maximumDistance">
+			<value>45</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{75ed3363-4b49-4a77-a0d6-726b38569f47}" />
 	<object class="GroupTrack" id="{87039942-b72c-4c78-855a-f4ce34080aba}">
 		<relationship name="mixerGroup">
@@ -256,7 +260,20 @@
 	</object>
 	<object class="MixerBusPanner" id="{a4a9a75b-93f2-453d-ad73-51ea655e0c62}" />
 	<object class="MixerBusFader" id="{4b220435-6009-467d-ad03-9602c7ee7fc6}" />
-	<object class="SpatialiserEffect" id="{08a08f42-8d7b-4d80-9d14-81c6422334a8}" />
+	<object class="SpatialiserEffect" id="{08a08f42-8d7b-4d80-9d14-81c6422334a8}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="maximumDistance">
+			<value>45</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+		<property name="panBlend">
+			<value>0.875</value>
+		</property>
+	</object>
 	<object class="Automator" id="{ff9358c8-fba5-4031-ac36-3b5be7882088}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>

@@ -162,6 +162,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5817542905077339643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/StaffEquipFinish
+  m_EditorClassIdentifier: 
+  Path: event:/StaffEquipFinish
+  Guid:
+    Data1: 1484829438
+    Data2: 1092005523
+    Data3: 240164019
+    Data4: 2124585477
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5564302943320622139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,10 +285,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638673764514232255
+  lastModified: 638673810482464524
   FileSizes:
   - Name: Desktop
-    Value: 13578976
+    Value: 13819104
   Exists: 1
 --- !u!114 &-3209723267552545066
 MonoBehaviour:
@@ -332,6 +359,33 @@ MonoBehaviour:
     Data2: 1195982121
     Data3: 801105045
     Data4: -1086876740
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-885696541211051537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/CandlestickMiniBoss
+  m_EditorClassIdentifier: 
+  Path: event:/Music/CandlestickMiniBoss
+  Guid:
+    Data1: -1685421137
+    Data2: 1292703974
+    Data3: -1791702378
+    Data4: 450167308
   Banks:
   - {fileID: -3630161908280164207}
   IsStream: 0
@@ -444,13 +498,16 @@ MonoBehaviour:
   - {fileID: -6212755243701508054}
   - {fileID: -6179893492215647872}
   - {fileID: -8756495220909213256}
+  - {fileID: -885696541211051537}
+  - {fileID: 4511157576989593884}
+  - {fileID: -5817542905077339643}
   EditorParameters:
   - {fileID: 2621229782085821356}
   MasterBanks:
   - {fileID: -3630161908280164207}
   StringsBanks:
   - {fileID: 3892577550561530642}
-  cacheTime: 638673764514284391
+  cacheTime: 638673810482517490
   cacheVersion: 131620
 --- !u!114 &62157592870384906
 MonoBehaviour:
@@ -816,10 +873,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638673764514284391
+  lastModified: 638673810482517490
   FileSizes:
   - Name: Desktop
-    Value: 2492
+    Value: 2646
   Exists: 1
 --- !u!114 &4211346771085354032
 MonoBehaviour:
@@ -875,6 +932,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 117818
+--- !u!114 &4511157576989593884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/StaffEquipCue
+  m_EditorClassIdentifier: 
+  Path: event:/StaffEquipCue
+  Guid:
+    Data1: 1789886064
+    Data2: 1110916434
+    Data3: 994401189
+    Data4: 1534341858
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &4535466361194388576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,5 +1172,5 @@ MonoBehaviour:
   Parameters:
   - {fileID: -2166848657914496212}
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 45
   Length: 0

@@ -3,23 +3,22 @@ using Sirenix.OdinInspector;
 using Unity.AppUI.Core;
 using UnityEngine;
 using UnityEngine.VFX;
-using static Unity.VisualScripting.Member;
 
 namespace Quinn.MissileSystem
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class Missile : MonoBehaviour
 	{
-		[SerializeField, BoxGroup("SFX")]
+		[SerializeField, FoldoutGroup("SFX")]
 		private EventReference SpawnSound, HitSound, FizzleOutSound;
 
 		[SerializeField, BoxGroup("Core")]
 		private float DirectSpeed = 8f;
 		[SerializeField, BoxGroup("Core")]
 		private float DirectDamage = 1f;
-		[SerializeField, BoxGroup("Core"), ShowIf(nameof(HasSplashDamage))]
+		[SerializeField, BoxGroup("Core")]
 		private StatusEffect DirectStatusEffect = StatusEffect.None;
-		[SerializeField, BoxGroup("Core"), ShowIf(nameof(HasSplashDamage))]
+		[SerializeField, BoxGroup("Core")]
 		private float DirectStatusEffectDuration = 2f;
 		[SerializeField, BoxGroup("Core")]
 		private Team Team = Team.Monster;

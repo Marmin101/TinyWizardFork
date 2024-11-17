@@ -564,11 +564,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa427730bf2e844287c7daf5903ebae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Immune: 
   BurningVFX: {fileID: 5704625476332486403}
-  BurnInterval: 1
-  BurnDamage: 5
+  BurnInterval: 2
+  BurnDamage: 1
   WetVFX: {fileID: 9044582197301297558}
   WetSpeedFactor: 0.5
+  WetDamageInterval: 1
+  WetDamage: 0
 --- !u!1 &3416478951583827728
 GameObject:
   m_ObjectHideFlags: 0

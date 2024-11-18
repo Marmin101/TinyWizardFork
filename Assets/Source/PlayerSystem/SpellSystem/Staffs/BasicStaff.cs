@@ -212,10 +212,11 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialUp()
 		{
+			_isCharging = false;
+
 			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume) || !_isCharging)
 				return;
 
-			_isCharging = false;
 			Caster.Spark();
 
 			bool enoughCharge = Time.time > _largeMissileTime;

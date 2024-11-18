@@ -9,7 +9,7 @@ namespace Quinn
 		[SerializeField, ValidateInput("@ChildWeights.Length == transform.childCount", "The number of specified weights must equal the number of children.")]
 		private float[] ChildWeights;
 
-		private void Awake()
+		public void Awake()
 		{
 			int keep = Random.Range(0, transform.childCount);
 			float sum = ChildWeights.Sum();

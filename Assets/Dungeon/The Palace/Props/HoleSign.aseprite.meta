@@ -124,7 +124,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Hole
     originalName: 
-    pivot: {x: 0.47368422, y: 0.04}
+    pivot: {x: 0.5, y: 0.048076913}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,7 +133,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 19
-      height: 25
+      height: 26
     spriteID: 7105ad3746dfbd344a070c5d77da2b4f
     spriteBone: []
     spriteOutline: []
@@ -159,7 +159,7 @@ ScriptedImporter:
         x: 7
         y: 7
         width: 19
-        height: 25
+        height: 26
       spriteId: 7105ad3746dfbd344a070c5d77da2b4f
     linkedCells: []
     parentIndex: -1
@@ -203,4 +203,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 33, y: 33}

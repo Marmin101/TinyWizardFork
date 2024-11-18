@@ -89,7 +89,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!210 &8275462707034425919
 SortingGroup:
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec295a3f07223d74ea6cb6e9344802b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GUID>k__BackingField: 0147c265-f56b-4bbc-aa61-349d88ace13e
   <Head>k__BackingField: {fileID: 2432762686052508438}
   <SparkGradient>k__BackingField:
     serializedVersion: 2
@@ -147,7 +148,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 3
   <MaxEnergy>k__BackingField: 400
-  <GUID>k__BackingField: 0147c265-f56b-4bbc-aa61-349d88ace13e
   BasicCastSound:
     Guid:
       Data1: 1977740527
@@ -198,11 +198,11 @@ MonoBehaviour:
   BasicFinisherCount: 3
   BasicFinisherChain: 3
   BasicFinisherBehavior: 2
-  BasicFinisherSpread: 45
+  BasicFinisherSpread: 15
   BasicFinisherKnockbackSpeed: 14
   BasicFinisherMissileOverride: {fileID: 0}
   BasicFinisherEnergyUse: 4
-  BasicFinisherManaConsume: 12
+  BasicFinisherManaConsume: 24
   HasSpecial: 1
   SpecialMissile: {fileID: 7309199781299206731, guid: 654e31f05ede6eb42898fa1720ea9306, type: 3}
   ChargingSparkInterval: 0.45
@@ -339,7 +339,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!114 &2604928241439567913
 MonoBehaviour:

@@ -34,13 +34,13 @@ namespace Quinn
 
 		private Vector2 _camTargetVel;
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null);
 			Instance = this;
 		}
 
-		private void Update()
+		public void Update()
 		{
 			if (PlayerManager.Instance.IsAlive)
 			{
@@ -52,7 +52,7 @@ namespace Quinn
 			}
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			if (Instance == this)
 				Instance = null;
@@ -80,7 +80,7 @@ namespace Quinn
 
 		public async Awaitable FadeIn()
 		{
-			EnableBlackout();
+			Blackout();
 
 			await _blackout.DOFade(0f, FadeFromBlackDuration)
 				.SetEase(FadeFromBlackEase)
@@ -89,7 +89,10 @@ namespace Quinn
 			_blackout.enabled = false;
 		}
 
-		public void EnableBlackout()
+		/// <summary>
+		/// Change the UI element used for fading to be fully black and opaque instantly.
+		/// </summary>
+		public void Blackout()
 		{
 			_blackout.enabled = true;
 			_blackout.color = new Color(0f, 0f, 0f, 1f);

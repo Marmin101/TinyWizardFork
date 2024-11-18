@@ -49,6 +49,9 @@ namespace Quinn.DungeonGeneration
 		[Space, SerializeField]
 		private Collider2D MissileBlocker;
 
+		[Space, SerializeField]
+		private FloorExit Exit;
+
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
 		public bool IsStarted { get; private set; }

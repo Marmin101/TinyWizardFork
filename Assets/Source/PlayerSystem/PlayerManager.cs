@@ -30,18 +30,18 @@ namespace Quinn.PlayerSystem
 
 		public event Action OnPlayerDeath, OnPlayerDeathPreSceneLoad;
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null);
 			Instance = this;
 		}
 
-		private void Start()
+		public void Start()
 		{
 			SpawnPlayer(InitialSpawnOffset);
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			if (Instance == this)
 				Instance = null;
@@ -61,13 +61,13 @@ namespace Quinn.PlayerSystem
 			}
 		}
 
-		public async void SpawnPlayer(Vector2 position)
+		public void SpawnPlayer(Vector2 position)
 		{
 			var player = PlayerGroupPrefab.Clone(position);
 			Health = player.GetComponentInChildren<Health>();
 
 			var camManager = GetComponent<CameraManager>();
-			camManager.EnableBlackout();
+			camManager.Blackout();
 
 			Health.OnHealed += OnHealed;
 			Health.OnDamaged += OnDamaged;
@@ -75,7 +75,14 @@ namespace Quinn.PlayerSystem
 			Health.OnMaxChange += OnMaxHealthChange;
 
 			InputManager.Instance.EnableInput();
-			await camManager.FadeIn();
+		}
+
+		public async void RespawnSequence()
+		{
+			await SceneManager.LoadSceneAsync(0);
+
+			SpawnPlayer(new(-0.5f, -0.5f));
+			DungeonGenerator.Instance.StartRandomFloor();
 		}
 
 		private void OnHealed(float amount)
@@ -107,10 +114,8 @@ namespace Quinn.PlayerSystem
 
 			await CameraManager.Instance.DeathFadeOut();
 			OnPlayerDeathPreSceneLoad?.Invoke();
-			await SceneManager.LoadSceneAsync(0);
 
-			SpawnPlayer(new(-0.5f, -0.5f));
-			DungeonGenerator.Instance.StartRandomFloor();
+			RespawnSequence();
 		}
 
 		private void UnsubscribeAll()

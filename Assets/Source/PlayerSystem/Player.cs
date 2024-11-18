@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using FMOD.Studio;
 using FMODUnity;
+using Quinn.DungeonGeneration;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -15,15 +16,18 @@ namespace Quinn.PlayerSystem
 	{
 		[SerializeField]
 		private float InteractionRadius = 1f;
-		[SerializeField]
+
+		[SerializeField, Space]
 		private EventReference FootstepSound;
 		[SerializeField]
 		private float StartFootstepCooldown = 0.2f;
-
-		[SerializeField, Required, Space]
+		[SerializeField, Required]
 		private VisualEffect FootstepVFX;
 		[SerializeField, FoldoutGroup("Footstep Colors")]
 		private Color StoneColor, CarpetColor;
+
+		[SerializeField, Space]
+		private VisualEffect LandVFX;
 
 		[SerializeField, Space]
 		private EventReference HurtSnapshot;
@@ -38,7 +42,7 @@ namespace Quinn.PlayerSystem
 
 		private EventInstance _hurtSnapshot;
 
-		private void Awake()
+		public void Awake()
 		{
 			_animator = GetComponent<Animator>();
 
@@ -49,7 +53,7 @@ namespace Quinn.PlayerSystem
 			GetComponent<Health>().OnDamagedExpanded += OnHurt;
 		}
 
-		private void Update()
+		public void Update()
 		{
 			bool isMoving = InputManager.Instance.MoveDirection.sqrMagnitude > 0f;
 			_animator.SetBool("IsMoving", isMoving);
@@ -63,15 +67,22 @@ namespace Quinn.PlayerSystem
 			_wasMoving = isMoving;
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			if (PlayerManager.Instance != null)
 			{
 				PlayerManager.Instance.SetPlayer(null);
 			}
 
+			if (InputManager.Instance != null)
+			{
+				InputManager.Instance.OnInteract -= OnInteract;
+			}
+
 			_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 			_hurtSnapshot.release();
+
+			transform.DOKill();
 		}
 
 		public void OnFootstep_Anim()
@@ -84,11 +95,73 @@ namespace Quinn.PlayerSystem
 				SoundMaterialType.None => Color.black,
 				SoundMaterialType.Stone => StoneColor,
 				SoundMaterialType.Carpet => CarpetColor,
-				_ => throw new System.NotImplementedException(),
+				_ => throw new NotImplementedException(),
 			};
 
 			FootstepVFX.SetVector4("Color", floorColor);
 			FootstepVFX.Play();
+		}
+
+		public void OnLand_Anim()
+		{
+			var mat = GetSoundMaterialType();
+
+			var floorColor = mat switch
+			{
+				SoundMaterialType.None => Color.black,
+				SoundMaterialType.Stone => StoneColor,
+				SoundMaterialType.Carpet => CarpetColor,
+				_ => throw new NotImplementedException(),
+			};
+
+			LandVFX.SetGradient("Color", new Gradient() { colorKeys = new GradientColorKey[] { new(floorColor, 0f) }, alphaKeys = new GradientAlphaKey[] { new(1f, 0f) } });
+			LandVFX.Play();
+		}
+
+		public async Awaitable EnterFloorAsync()
+		{
+			InputManager.Instance.DisableInput();
+
+			var collider = GetComponent<Collider2D>();
+			collider.enabled = false;
+
+			_animator.SetTrigger("EnterSequence");
+			await Wait.Seconds(1f, destroyCancellationToken);
+
+			collider.enabled = true;
+
+			if (InputManager.Instance != null)
+				InputManager.Instance.EnableInput();
+		}
+
+		public async Awaitable ExitFloorAsync(FloorExit exit)
+		{
+			InputManager.Instance.DisableInput();
+
+			var collider = GetComponent<Collider2D>();
+			collider.enabled = false;
+
+			float dur = 0.5f;
+			float halfTime = Time.time + (dur / 2f);
+
+			var tween = transform.DOJump(exit.transform.position, 2f, 1, dur)
+				.SetEase(Ease.Linear)
+				.OnUpdate(() =>
+				{
+					if (Time.time > halfTime)
+					{
+						exit.EnableMask();
+					}
+				});
+
+			await tween.AsyncWaitForCompletion();
+
+			var fade = CameraManager.Instance.FadeOut();
+			transform.DOMoveY(transform.position.y - 2.2f, 20f)
+				.SetEase(Ease.Linear)
+				.SetSpeedBased();
+
+			await fade;
 		}
 
 		private SoundMaterialType GetSoundMaterialType()

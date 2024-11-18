@@ -1,3 +1,4 @@
+using DG.Tweening;
 using FMOD.Studio;
 using FMODUnity;
 using Quinn.PlayerSystem;
@@ -5,7 +6,6 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Quinn.DungeonGeneration
 {
@@ -47,6 +47,8 @@ namespace Quinn.DungeonGeneration
 
 		[SerializeField]
 		private int MaxRoomSize = 48;
+		[SerializeField, Unit(Units.Second)]
+		private float MusicDelay = 1f;
 		[SerializeField, RequiredListLength(MinLength = 1)]
 		private FloorSO[] Floors;
 
@@ -59,13 +61,13 @@ namespace Quinn.DungeonGeneration
 
 		private GameObject _lastGeneratedRoomPrefab;
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null);
 			Instance = this;
 		}
 
-		private void Start()
+		public void Start()
 		{
 			PlayerManager.Instance.OnPlayerDeath += OnPlayerDeath;
 			PlayerManager.Instance.OnPlayerDeathPreSceneLoad += OnPlayerDeathPreSceneLoad;
@@ -73,7 +75,7 @@ namespace Quinn.DungeonGeneration
 			StartRandomFloor();
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			if (Instance == this)
 				Instance = null;
@@ -132,6 +134,8 @@ namespace Quinn.DungeonGeneration
 
 		private async Awaitable StartFloorAsync(FloorSO floor)
 		{
+			CameraManager.Instance.Blackout();
+
 			DestroyAllRooms();
 			ActiveFloor = floor;
 
@@ -155,12 +159,20 @@ namespace Quinn.DungeonGeneration
 
 			if (!floor.Music.IsNull)
 			{
-				_music = RuntimeManager.CreateInstance(floor.Music);
-				_music.start();
+				DOVirtual.DelayedCall(MusicDelay, () =>
+				{
+					_music = RuntimeManager.CreateInstance(floor.Music);
+					_music.start();
+				});
 			}
 
 			var prefab = floor.Generatable.GetWeightedRandom(x => x.Weight).Prefab;
 			await GenerateRoomAsync(floor.StartingRoom, 0, 0);
+
+			var fade = CameraManager.Instance.FadeIn();
+			await PlayerManager.Instance.Player.EnterFloorAsync();
+
+			await fade;
 		}
 
 		private async Awaitable<Room> GenerateRoomAsync(Room prefab, int x, int y)

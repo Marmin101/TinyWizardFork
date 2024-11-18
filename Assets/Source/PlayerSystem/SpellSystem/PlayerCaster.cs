@@ -1,4 +1,5 @@
 using DG.Tweening;
+using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,12 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		[SerializeField, Required, Space]
 		private Transform StoredStaffsParent;
-		[SerializeField]
+		[SerializeField, Unit(Units.Degree)]
 		private float StaffMaxAngle = 30f;
 
 		[Space, SerializeField]
 		private Staff FallbackStaff;
-		[SerializeField, FoldoutGroup("Starting Staffs")]
+		[SerializeField, Tooltip("At game start, one will be chosen at random to be spawned and equipped.")]
 		private Staff[] StartingStaffs;
 
 		[field: Space, SerializeField]
@@ -41,6 +42,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private Light2D EquipLight;
 		[SerializeField, Required]
 		private VisualEffect EquipVFX, EquipEnergyVFX;
+		[SerializeField]
+		private EventReference EquipSound;
 
 		public Staff ActiveStaff {  get; private set; }
 		public bool CanCast => Time.time >= _nextInputTime;
@@ -71,7 +74,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 			Debug.Assert(StartingStaffs.Length > 0);
 			GameObject staff = StartingStaffs.GetRandom().gameObject.Clone();
-			EquipStaff(staff.GetComponent<Staff>(), true);
+			EquipStaff(staff.GetComponent<Staff>(), true, true);
 
 			StoreStaff(FallbackStaff);
 			Mana = MaxMana;
@@ -166,15 +169,26 @@ namespace Quinn.PlayerSystem.SpellSystem
 			}
 		}
 
-		public async void EquipStaff(Staff staff, bool skipSequence = false)
+		/// <param name="staff">The staff being equipped. This must be an instance not a prefab.</param>
+		/// <param name="skipSequence">Skip the rising up animation with FX and such when a player takes a staff from a chest for instance.</param>
+		/// <param name="supressNonSequenceSound">If skip sequence is false and this is true and then an equip sound will play on staff equip.</param>
+		public async void EquipStaff(Staff staff, bool skipSequence = false, bool supressNonSequenceSound = false)
 		{
 			if (staff != ActiveStaff)
 			{
-				if (!skipSequence)
+				// Skip sequence if requested or if current staff is fallback staff.
+				if (!skipSequence && (ActiveStaff != FallbackStaff))
+				{
 					await StaffPickUpSequence(staff);
+				}
+				// Avoid equip sound. The equip sound is otherwise played in the StaffPickUpSequence(Staff) method.
+				else if(!supressNonSequenceSound)
+				{
+					Audio.Play(EquipSound, transform.position);
+				}
 
 				DequipActiveStaff();
-
+				// If the staff being equipped was on the player's back; e.g. the fallback staff.
 				_storedStaffs.Remove(staff);
 
 				ActiveStaff = staff;
@@ -240,17 +254,17 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			if (ActiveStaff != null)
 			{
-				var staff = ActiveStaff;
+				var previousStaff = ActiveStaff;
 
-				staff.SetCaster(null);
-				staff.transform.SetParent(null);
+				previousStaff.SetCaster(null);
+				previousStaff.transform.SetParent(null);
 
 				ActiveStaff = null;
 
 				IsBasicHeld = false;
 				IsSpecialHeld = false;
 
-				StoreStaff(staff);
+				StoreStaff(previousStaff);
 			}
 		}
 
@@ -374,26 +388,13 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				UpdateEnergyVFX(oldStaffHead, newStaffHead);
 			};
-			//tween.onComplete += () =>
-			//{
-			//	var instance = new GameObject("Temp");
-			//	instance.transform.position = oldStaffHeadPos;
-			//	UpdateEnergyVFXFor(instance.transform, newStaffHead, 1f);
-
-			//	instance.Destroy(3f);
-			//};
 
 			EquipEnergyVFX.SetGradient("Color", ActiveStaff.SparkGradient);
 			EquipEnergyVFX.Play();
 
-			// Fade in spotlight over player.
-			// Animate player slowly rising into air (away from their shadow).
-			// Animate energy VFX leaving equipped staff and going into to-be-equipped staff.
-			// Spawn burst of particles over player and to-be-equipped staff, during which the equipped staff is stored and the new staff is equipped.
-			// Light fades away and player plops to ground.
-
 			await Wait.Seconds(4f);
 			EquipVFX.Play();
+			Audio.Play(EquipSound, transform.position);
 
 			await EquipLight.DOFade(0f, 0.2f).AsyncWaitForCompletion();
 			EquipLight.enabled = false;
@@ -402,19 +403,6 @@ namespace Quinn.PlayerSystem.SpellSystem
 			InputManager.Instance.EnableInput();
 			hp.UnblockDamage(this);
 		}
-
-		//private async void UpdateEnergyVFXFor(Transform start, Transform end, float duration)
-		//{
-		//	try
-		//	{
-		//		while (!destroyCancellationToken.IsCancellationRequested)
-		//		{
-		//			UpdateEnergyVFX(start, end);
-		//			await Wait.NextFrame();
-		//		}
-		//	}
-		//	catch (Exception) { }
-		//}
 
 		private void UpdateEnergyVFX(Transform start, Transform end)
 		{

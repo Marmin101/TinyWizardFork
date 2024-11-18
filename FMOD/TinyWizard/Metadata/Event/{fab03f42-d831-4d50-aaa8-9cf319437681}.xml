@@ -103,7 +103,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{13973168-2a65-4b91-ac38-019c02293cc2}">
 		<property name="volume">
-			<value>-6</value>
+			<value>-8</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{0e64b272-50d8-4b1e-a603-d2f9bc17a2dc}</destination>
@@ -279,6 +279,9 @@
 	<object class="SpatialiserEffect" id="{001c0c28-16e6-4150-9d8a-3a11a9e66f22}">
 		<property name="distanceRolloffType">
 			<value>1</value>
+		</property>
+		<property name="panBlend">
+			<value>0.859999955</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{2ea45f80-8921-4740-8778-194dee43f7bb}" />

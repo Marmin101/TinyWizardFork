@@ -7,7 +7,7 @@ namespace Quinn
 	public class Spikes : MonoBehaviour
 	{
 		[SerializeField]
-		private float PlayerDamage = 1f;
+		private float PlayerDamage = 1f, EnemyDamage = 5f;
 		[SerializeField]
 		private float KnockbackSpeed = 12f;
 		[SerializeField, Required]
@@ -27,7 +27,7 @@ namespace Quinn
 				float dmg = PlayerDamage;
 				if (health.Team != Team.Player)
 				{
-					dmg = health.Current + 1f;
+					dmg = EnemyDamage;
 				}
 
 				damageSuccess = health.TakeDamage(dmg, Bounds.bounds.center.DirectionTo(health.transform.position), Team.Environment, gameObject, KnockbackSpeed);

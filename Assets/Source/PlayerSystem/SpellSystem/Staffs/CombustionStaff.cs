@@ -120,7 +120,25 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				Audio.Play(sound, pos);
 
-				foreach (var collider in Physics2D.OverlapCircleAll(pos, DamageRadius))
+				ConsumeEnergy(MaxEnergyUse * EnergyUseChargeFactor.Evaluate(chargePercent));
+				ConsumeMana(MaxManaConsume * chargePercent);
+
+				_charge = 0f;
+
+				// Overlap colliders.
+				var colliders = Physics2D.OverlapCircleAll(pos, DamageRadius);
+
+				// No damage is dealt if we hit a missile blocker.
+				foreach (var collider in colliders)
+				{
+					if (collider.CompareTag("MissileBlocker"))
+					{
+						return;
+					}
+				}
+
+				// Actual damage application.
+				foreach (var collider in colliders)
 				{
 					if (collider.TryGetComponent(out IDamageable damageable))
 					{
@@ -137,12 +155,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 						}
 					}
 				}
-
-				ConsumeEnergy(MaxEnergyUse * EnergyUseChargeFactor.Evaluate(chargePercent));
-				ConsumeMana(MaxManaConsume * chargePercent);
 			}
-
-			_charge = 0f;
 		}
 	}
 }

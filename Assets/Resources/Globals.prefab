@@ -185,7 +185,6 @@ MonoBehaviour:
   MaxRoomSize: 56
   MusicDelay: 1
   Floors:
-  - {fileID: 11400000, guid: 4aad98574400b7d4f8428a2edbf472ae, type: 2}
   - {fileID: 11400000, guid: 8b16aa0ca51db33448af855d9d9069ba, type: 2}
 --- !u!114 &-5411578148068884108
 MonoBehaviour:

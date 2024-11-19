@@ -392,9 +392,9 @@ GameObject:
   - component: {fileID: 7972158715158538529}
   - component: {fileID: -191357972274234662}
   - component: {fileID: 8742490171193552683}
-  - component: {fileID: 7626890514978811671}
   - component: {fileID: 7800004527605478347}
   - component: {fileID: 3649044523170455499}
+  - component: {fileID: 4442709356355215430}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -663,20 +663,6 @@ MonoBehaviour:
       Data3: 2017170605
       Data4: -741774789
     Path: event:/StaffEquip
---- !u!114 &7626890514978811671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3021833085097729151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
 --- !u!114 &7800004527605478347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +695,20 @@ MonoBehaviour:
   WetSpeedFactor: 0.5
   WetDamageInterval: 1
   WetDamage: 0
+--- !u!114 &4442709356355215430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021833085097729151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &3416478951583827728
 GameObject:
   m_ObjectHideFlags: 0

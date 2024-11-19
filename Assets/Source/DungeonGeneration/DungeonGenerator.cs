@@ -60,6 +60,7 @@ namespace Quinn.DungeonGeneration
 		private EventInstance _ambience, _music;
 
 		private GameObject _lastGeneratedRoomPrefab;
+		private FloorSO _lastFloor;
 
 		public void Awake()
 		{
@@ -83,8 +84,20 @@ namespace Quinn.DungeonGeneration
 
 		public async void StartRandomFloor()
 		{
-			var floor = Floors[Random.Range(0, Floors.Length)];
-			await StartFloorAsync(floor);
+			for (int i = 0; i < 1000; i++)
+			{
+				var floor = Floors[Random.Range(0, Floors.Length)];
+				
+				if (floor != _lastFloor)
+				{
+					_lastFloor = floor;
+					await StartFloorAsync(floor);
+
+					return;
+				}
+			}
+
+			throw new System.Exception("Failed to start new floor!");
 		}
 
 		public async void GenerateRoomAt(int x, int y)

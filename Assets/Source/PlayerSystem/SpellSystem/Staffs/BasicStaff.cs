@@ -213,8 +213,12 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		public override void OnSpecialUp()
 		{
 			_isCharging = false;
+			CanRegenMana = true;
 
-			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume) || !_isCharging)
+			Caster.Movement.RemoveSpeedModifier(this);
+			Caster.Movement.CanDash = true;
+
+			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume))
 				return;
 
 			Caster.Spark();
@@ -228,9 +232,6 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			Caster.Movement.Knockback(-GetDirToCrosshair(), SpecialKnockbackSpeed);
 			Audio.Play(Time.time > _largeMissileTime ? SpecialCastBigSound : SpecialCastLittleSound, Head.position);
 
-			Caster.Movement.RemoveSpeedModifier(this);
-			Caster.Movement.CanDash = true;
-
 			if (enoughCharge)
 			{
 				ConsumeEnergy(SpecialEnergyUse);
@@ -241,8 +242,6 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				ConsumeEnergy(BasicFinisherEnergyUse);
 				ConsumeMana(BasicFinisherManaConsume);
 			}
-
-			CanRegenMana = true;
 		}
 
 		private Vector2 GetDirToCrosshair()

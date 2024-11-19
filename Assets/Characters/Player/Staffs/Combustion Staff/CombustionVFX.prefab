@@ -446,7 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8166328983742453846}
   - component: {fileID: 2545743378222241176}
-  - component: {fileID: 52394780680301615}
+  - component: {fileID: 8476068052500211158}
   m_Layer: 0
   m_Name: Singe
   m_TagString: Untagged
@@ -524,7 +524,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &52394780680301615
+--- !u!114 &8476068052500211158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9086559551003915132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2fe5e0e6bd69ac428744777278bc29e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d47e9d695e789e48a10a137bf752465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Delay: 1

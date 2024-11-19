@@ -15,7 +15,7 @@ namespace Quinn.DungeonGeneration
 
 		public async void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.CompareTag("Player"))
+			if (collision.IsPlayer())
 			{
 				await PlayerManager.Instance.Player.ExitFloorAsync(this);
 				PlayerManager.Instance.RespawnSequence();

@@ -144,7 +144,7 @@ namespace Quinn.DungeonGeneration
 
 		private void OnPlayerTriggerEnter(Collider2D collider)
 		{
-			if (collider.CompareTag("Player"))
+			if (collider.IsPlayer())
 			{
 				RoomCamera.enabled = true;
 				RoomCamera.Target.TrackingTarget = CameraManager.Instance.CameraTarget;
@@ -172,7 +172,7 @@ namespace Quinn.DungeonGeneration
 
 		private void OnPlayerTriggerExit(Collider2D collider)
 		{
-			if (collider.CompareTag("Player"))
+			if (collider.IsPlayer())
 			{
 				RoomCamera.enabled = false;
 				GenerateRoomAtPlayer(collider);

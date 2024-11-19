@@ -282,10 +282,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638674710834320917
+  lastModified: 638675632230679463
   FileSizes:
   - Name: Desktop
-    Value: 14337184
+    Value: 14386304
   Exists: 1
 --- !u!114 &-3617841207712752334
 MonoBehaviour:
@@ -612,13 +612,15 @@ MonoBehaviour:
   - {fileID: -319713448867936701}
   - {fileID: 2244570467788250144}
   - {fileID: 8449962414494207323}
+  - {fileID: 6359330839216740930}
+  - {fileID: 4266182856668914866}
   EditorParameters:
   - {fileID: 3095223941934438909}
   MasterBanks:
   - {fileID: -3630161908280164207}
   StringsBanks:
   - {fileID: 3892577550561530642}
-  cacheTime: 638674710834411047
+  cacheTime: 638675632230725541
   cacheVersion: 131620
 --- !u!114 &168088668178052417
 MonoBehaviour:
@@ -902,10 +904,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638674710834411047
+  lastModified: 638675632230725541
   FileSizes:
   - Name: Desktop
-    Value: 2892
+    Value: 2996
   Exists: 1
 --- !u!114 &4012109042610602361
 MonoBehaviour:
@@ -932,6 +934,33 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: 8008747119031577636}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4266182856668914866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FoliageDestroy
+  m_EditorClassIdentifier: 
+  Path: event:/FoliageDestroy
+  Guid:
+    Data1: 563581643
+    Data2: 1150898446
+    Data3: 1266483338
+    Data4: 1198714752
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -1179,6 +1208,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1460
+--- !u!114 &6359330839216740930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FoliageTouch
+  m_EditorClassIdentifier: 
+  Path: event:/FoliageTouch
+  Guid:
+    Data1: 434943920
+    Data2: 1183015832
+    Data3: -230443368
+    Data4: 1232094270
+  Banks:
+  - {fileID: -3630161908280164207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8008747119031577636
 MonoBehaviour:
   m_ObjectHideFlags: 0

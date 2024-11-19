@@ -27,6 +27,9 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeReference]
 		public BlackboardVariable<float> Spread = new(30f);
 
+		[SerializeReference]
+		public BlackboardVariable<float> KnockbackSpeed = new(0f);
+
 		private float _endTime;
 
 		protected override Status OnStart()
@@ -35,6 +38,11 @@ namespace Quinn.AI.BehaviorTree
 				return Status.Failure;
 
 			Vector2 dir = Origin.Value.position.DirectionTo(Target.Value);
+
+			if (KnockbackSpeed.Value > 0f && GameObject.TryGetComponent(out Locomotion movement))
+			{
+				movement.Knockback(-dir, KnockbackSpeed.Value);
+			}
 
 			if (Interval.Value > 0f)
 			{

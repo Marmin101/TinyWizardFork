@@ -327,9 +327,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3180104467074660429, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: <Max>k__BackingField
-      value: 70
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: Renderers.Array.size
@@ -347,6 +351,10 @@ PrefabInstance:
       propertyPath: <Target>k__BackingField
       value: 
       objectReference: {fileID: 2740707142073682643}
+    - target: {fileID: 4686400505576603632, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: <MoveSpeed>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6683238254451349385, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_InitialEventNameOverriden
       value: 1

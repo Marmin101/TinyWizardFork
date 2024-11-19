@@ -13,6 +13,9 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeReference]
 		public BlackboardVariable<Vector2> Position;
 
+		[SerializeReference]
+		public BlackboardVariable<Vector2> AreaFactor = new(Vector2.one);
+
 		protected override Status OnStart()
 		{
 			if (Position.Value == null)
@@ -20,7 +23,9 @@ namespace Quinn.AI.BehaviorTree
 
 			var room = GameObject.GetComponent<BTAgent>().Room;
 			Debug.Assert(room != null);
+
 			var bounds = room.PathfindBounds.bounds;
+			bounds.size *= AreaFactor.Value;
 
 			Position.Value = (Vector2)bounds.center + new Vector2()
 			{

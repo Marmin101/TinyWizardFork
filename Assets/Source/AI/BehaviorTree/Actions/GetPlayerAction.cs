@@ -8,7 +8,7 @@ using Quinn.PlayerSystem;
 namespace Quinn.AI.BehaviorTree
 {
 	[Serializable, GeneratePropertyBag]
-	[NodeDescription(name: "GetPlayer", story: "Get Player as [Target]", category: "Action", id: "f6b1636897ba4f79cf22c67651dca7d1")]
+	[NodeDescription(name: "Get Player", story: "Get Player as [Target]", category: "Action", id: "f6b1636897ba4f79cf22c67651dca7d1")]
 	public partial class GetPlayerAction : Action
 	{
 		[SerializeReference]

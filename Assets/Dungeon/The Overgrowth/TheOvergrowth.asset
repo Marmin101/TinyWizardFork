@@ -28,6 +28,6 @@ MonoBehaviour:
     Path: event:/Music/TheOvergrowth
   StartingRoom: {fileID: 9089302129140360783, guid: 63c6e7b1fc0fad64d9c19998eec74600, type: 3}
   Generatable:
-  - Prefab: {fileID: 0}
+  - Prefab: {fileID: 9089302129140360783, guid: 4b7f45f094a8a4e49addc24173851e31, type: 3}
     Weight: 100
     SumWeight: 100

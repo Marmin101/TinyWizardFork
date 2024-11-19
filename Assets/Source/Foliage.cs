@@ -29,6 +29,9 @@ namespace Quinn
 
 		public bool TakeDamage(DamageInfo info)
 		{
+			if (info.SourceTeam != Team.Player)
+				return false;
+
 			Audio.Play(DestroySound, transform.position);
 
 			GetComponent<Collider2D>().enabled = false;

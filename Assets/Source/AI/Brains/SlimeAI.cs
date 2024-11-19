@@ -21,7 +21,7 @@ namespace Quinn.AI
 
 		protected override async void OnRoomStart()
 		{
-			while (gameObject != null && !DeathTokenSource.IsCancellationRequested)
+			while (!DeathTokenSource.IsCancellationRequested)
 			{
 				FaceTarget();
 				await Wait.Seconds(JumpInterval.GetRandom(), DeathTokenSource.Token);

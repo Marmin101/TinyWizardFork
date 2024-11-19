@@ -49,6 +49,9 @@ namespace Quinn.DungeonGeneration
 		private int MaxRoomSize = 48;
 		[SerializeField, Unit(Units.Second)]
 		private float MusicDelay = 1f;
+
+		[SerializeField, Space]
+		private FloorSO FirstFloor;
 		[SerializeField, RequiredListLength(MinLength = 1)]
 		private FloorSO[] Floors;
 
@@ -60,7 +63,7 @@ namespace Quinn.DungeonGeneration
 		private EventInstance _ambience, _music;
 
 		private GameObject _lastGeneratedRoomPrefab;
-		private FloorSO _lastFloor;
+		private FloorSO _lastGeneratedFloor;
 
 		public void Awake()
 		{
@@ -68,12 +71,12 @@ namespace Quinn.DungeonGeneration
 			Instance = this;
 		}
 
-		public void Start()
+		public async void Start()
 		{
 			PlayerManager.Instance.OnPlayerDeath += OnPlayerDeath;
 			PlayerManager.Instance.OnPlayerDeathPreSceneLoad += OnPlayerDeathPreSceneLoad;
 
-			StartRandomFloor();
+			await StartFloorAsync(FirstFloor);
 		}
 
 		public void OnDestroy()
@@ -88,11 +91,9 @@ namespace Quinn.DungeonGeneration
 			{
 				var floor = Floors[Random.Range(0, Floors.Length)];
 				
-				if (floor != _lastFloor)
+				if (floor != _lastGeneratedFloor)
 				{
-					_lastFloor = floor;
 					await StartFloorAsync(floor);
-
 					return;
 				}
 			}
@@ -121,7 +122,13 @@ namespace Quinn.DungeonGeneration
 
 			// Filter for rooms that support required doors.
 			var validRooms = ActiveFloor.Generatable.Where(roomToGenerate => criteria.IsMatch(roomToGenerate.Prefab));
-			validRooms = validRooms.Where(room => room.Prefab.gameObject != _lastGeneratedRoomPrefab);
+
+			// Avoid using duplicate rooms if we have more than 1 room from the generation pool
+			if (validRooms.Count() > 1)
+			{
+				validRooms = validRooms.Where(room => room.Prefab.gameObject != _lastGeneratedRoomPrefab);
+			}
+
 			// Get random (by weight) room from filtered collection.
 			var selected = validRooms.GetWeightedRandom(x => x.Weight);
 
@@ -147,6 +154,8 @@ namespace Quinn.DungeonGeneration
 
 		private async Awaitable StartFloorAsync(FloorSO floor)
 		{
+			_lastGeneratedFloor = floor;
+
 			CameraManager.Instance.Blackout();
 
 			DestroyAllRooms();

@@ -3,6 +3,7 @@ using FMODUnity;
 using Quinn.AI;
 using Quinn.AI.BehaviorTree;
 using Quinn.AI.Pathfinding;
+using Quinn.EvolutionLearning;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Unity.Cinemachine;
@@ -254,11 +255,24 @@ namespace Quinn.DungeonGeneration
 		{
 			for (int i = 0; i < AgentsParent.childCount; i++)
 			{
-				Transform child = AgentsParent.GetChild(i);
+				Register(AgentsParent.GetChild(i));
+			}
+		}
 
-				if (child.TryGetComponent(out IAgent agent))
+		private void Register(Transform parent)
+		{
+			if (parent.TryGetComponent(out IAgent agent))
+			{
+				RegisterAgent(agent);
+			}
+
+			for (int i = 0; i < parent.childCount; i++)
+			{
+				var child = parent.GetChild(i);
+
+				if (child.TryGetComponent(out IAgent childAgent))
 				{
-					RegisterAgent(agent);
+					RegisterAgent(childAgent);
 				}
 			}
 		}

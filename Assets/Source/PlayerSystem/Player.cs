@@ -121,6 +121,7 @@ namespace Quinn.PlayerSystem
 		public async Awaitable EnterFloorAsync()
 		{
 			InputManager.Instance.DisableInput();
+			transform.position = new Vector2(-1f, -1f);
 
 			var collider = GetComponent<Collider2D>();
 			collider.enabled = false;

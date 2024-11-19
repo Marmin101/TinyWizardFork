@@ -135,6 +135,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8448226805414225309, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
+      propertyPath: DisableMusic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448226805414225309, guid: 72654a6be6cd91f45930840f4568df08, type: 3}
       propertyPath: StartConquered
       value: 1
       objectReference: {fileID: 0}

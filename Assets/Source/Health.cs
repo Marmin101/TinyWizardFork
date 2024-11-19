@@ -36,6 +36,8 @@ namespace Quinn
 
 		[Space, SerializeField]
 		private Slider HPBar;
+		[SerializeField, ShowIf(nameof(HPBar))]
+		private Image HPArrow;
 
 		public float Current { get; private set; }
 		public float Percent => Current / Max;
@@ -76,6 +78,8 @@ namespace Quinn
 			{
 				HPBar.gameObject.SetActive(Current < Max);
 				HPBar.value = Current / Max;
+
+				HPArrow.gameObject.SetActive(HPBar.gameObject.activeInHierarchy);
 			}
 		}
 

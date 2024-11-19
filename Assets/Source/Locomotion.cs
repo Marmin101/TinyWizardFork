@@ -64,15 +64,19 @@ namespace Quinn
 			_knockbackDir = dir.normalized;
 		}
 
-		public bool ApplySpeedModifier(object key, float factor)
+		public void ApplySpeedModifier(object key, float factor)
 		{
 			if (!_speedFactors.ContainsKey(key))
 			{
 				_speedFactors.Add(key, factor);
-				return true;
+				return;
+			}
+			else
+			{
+				_speedFactors[key] = factor;
 			}
 
-			return false;
+			return;
 		}
 
 		public void RemoveSpeedModifier(object key)

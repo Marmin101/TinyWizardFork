@@ -21,6 +21,11 @@ namespace Quinn
 				return default;
 			}
 
+			if (collection.Count() == 1)
+			{
+				return collection.First();
+			}
+
 			float sum = collection.Sum(x => getWeightCallback(x));
 
 			foreach (var item in collection)

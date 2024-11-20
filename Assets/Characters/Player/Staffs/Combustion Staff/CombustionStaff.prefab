@@ -145,12 +145,12 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
-  <MaxEnergy>k__BackingField: 100
+  <MaxEnergy>k__BackingField: 150
   CastCooldown: 0.1
   ChargeRate: 3
   MaxCharge: 8
   MinChargeThreshold: 1
-  MaxDamage: 120
+  MaxDamage: 95
   DamageChargeFactor:
     serializedVersion: 2
     m_Curve:

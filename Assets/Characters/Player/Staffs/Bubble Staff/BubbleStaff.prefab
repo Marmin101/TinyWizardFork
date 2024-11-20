@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec295a3f07223d74ea6cb6e9344802b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GUID>k__BackingField: 184db62f-93e8-40dc-b735-6462060c3ee4
   <Head>k__BackingField: {fileID: 4697962658493810353}
   <SparkGradient>k__BackingField:
     serializedVersion: 2
@@ -150,7 +151,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 4
   <MaxEnergy>k__BackingField: 500
-  <GUID>k__BackingField: 184db62f-93e8-40dc-b735-6462060c3ee4
   BasicCastSound:
     Guid:
       Data1: 2009822478
@@ -195,7 +195,7 @@ MonoBehaviour:
   BasicInterval: 0.05
   ChainWindowDuration: 0.4
   BasicEnergyUse: 2
-  BasicManaConsume: 2
+  BasicManaConsume: 2.5
   HasBasicFinisher: 0
   BasicFinisherCooldown: 0.6
   BasicFinisherCount: 3

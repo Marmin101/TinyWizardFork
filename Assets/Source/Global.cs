@@ -1,19 +1,23 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Quinn
 {
 	public class Global : MonoBehaviour
 	{
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-		private static void Bootstrap()
+		public static void Bootstrap()
 		{
-			var asset = Resources.Load<GameObject>("Globals");
-			var instance = Instantiate(asset);
+			if (SceneManager.GetActiveScene().buildIndex != 0)
+			{
+				var asset = Resources.Load<GameObject>("Globals");
+				var instance = Instantiate(asset);
 
-			DontDestroyOnLoad(instance);
+				DontDestroyOnLoad(instance);
+			}
 		}
 
-		private void Awake()
+		public void Awake()
 		{
 			// Required to avoid issues when exiting playmode in the editor.
 			Physics2D.callbacksOnDisable = false;

@@ -79,9 +79,9 @@ namespace Quinn.PlayerSystem
 
 		public async void RespawnSequence()
 		{
-			await SceneManager.LoadSceneAsync(0);
+			await SceneManager.LoadSceneAsync(1);
 
-			SpawnPlayer(new(-0.5f, -0.5f));
+			SpawnPlayer(InitialSpawnOffset);
 			DungeonGenerator.Instance.StartRandomFloor();
 		}
 

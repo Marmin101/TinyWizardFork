@@ -41,6 +41,7 @@ namespace Quinn.PlayerSystem
 		private float _nextStartFootstepSoundAllowedTime;
 
 		private EventInstance _hurtSnapshot;
+		private float _playerLightIntensity;
 
 		public void Awake()
 		{
@@ -51,6 +52,8 @@ namespace Quinn.PlayerSystem
 
 			_hurtSnapshot = RuntimeManager.CreateInstance(HurtSnapshot);
 			GetComponent<Health>().OnDamagedExpanded += OnHurt;
+
+			_playerLightIntensity = PlayerLight.intensity;
 		}
 
 		public void Update()
@@ -234,7 +237,7 @@ namespace Quinn.PlayerSystem
 			if (!info.IsLethal)
 			{
 				var seq = DOTween.Sequence();
-				float brightness = PlayerLight.intensity;
+				float brightness = _playerLightIntensity;
 
 				seq.Append(PlayerLight.DOFade(brightness * 0.5f, 0.5f));
 				seq.AppendInterval(HurtDuration);

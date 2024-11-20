@@ -5,7 +5,7 @@ namespace Quinn.UI
 {
 	public class VersionUI : MonoBehaviour
 	{
-		private void Awake()
+		public void Awake()
 		{
 			GetComponent<TextMeshProUGUI>().text = Application.version;
 		}

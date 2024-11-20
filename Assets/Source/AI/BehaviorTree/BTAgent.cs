@@ -1,5 +1,6 @@
 using FMODUnity;
 using Quinn.DungeonGeneration;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Unity.Behavior;
 using UnityEngine;
@@ -13,6 +14,12 @@ namespace Quinn.AI.BehaviorTree
 	{
 		[SerializeField]
 		private EventReference FootstepSound;
+
+		[field: SerializeField, FoldoutGroup("Boss")]
+		public bool IsBoss { get; private set; }
+		[field: SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
+		public string BossTitle { get; private set; } = "Boss Title";
+		[field: SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
 
 		public Health Health { get; private set; }
 		public AIMovement Movement { get; private set; }
@@ -85,7 +92,7 @@ namespace Quinn.AI.BehaviorTree
 
 		private void OnDeath()
 		{
-			Destroy(gameObject); // TODO: Implement BTAgent death features.
+			Destroy(gameObject);
 		}
 	}
 }

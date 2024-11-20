@@ -170,6 +170,11 @@ namespace Quinn
 			return true;
 		}
 
+		public void Kill()
+		{
+			TakeDamage(Max + 1f, Vector2.zero, Team.Environment, gameObject);
+		}
+
 		public void BlockDamage(object key)
 		{
 			_damageBlockers.Add(key);

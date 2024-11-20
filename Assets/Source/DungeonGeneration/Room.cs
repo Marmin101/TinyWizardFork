@@ -1,9 +1,7 @@
 ﻿using FMOD.Studio;
 using FMODUnity;
 using Quinn.AI;
-using Quinn.AI.BehaviorTree;
 using Quinn.AI.Pathfinding;
-using Quinn.EvolutionLearning;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Unity.Cinemachine;
@@ -49,9 +47,6 @@ namespace Quinn.DungeonGeneration
 
 		[Space, SerializeField]
 		private Collider2D MissileBlocker;
-
-		[Space, SerializeField]
-		private FloorExit Exit;
 
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
@@ -140,6 +135,22 @@ namespace Quinn.DungeonGeneration
 			else if (agent is StaticAgent staticAgent)
 			{
 				_staticAgents.Add(staticAgent);
+			}
+		}
+
+		public void KillAlLiveAgents()
+		{
+			foreach (var agent in _liveAgent)
+			{
+				if (agent != null)
+				{
+					var health = (agent as MonoBehaviour).GetComponent<Health>();
+
+					if (health.IsAlive)
+					{
+						health.Kill();
+					}
+				}
 			}
 		}
 

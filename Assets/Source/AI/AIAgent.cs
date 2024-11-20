@@ -105,6 +105,10 @@ namespace Quinn.AI
 			if (transform.TryGetComponent(out IDamageable dmg) && dmg.Team == Team.Environment)
 				return;
 
+			// Can't target self.
+			if (transform == this.transform)
+				return;
+
 			Target = transform;
 			TargetHealth = transform.GetComponent<Health>();
 			TargetCollider = transform.GetComponent<Collider2D>();

@@ -113,19 +113,22 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			if (Caster == null)
 				return;
 
+			// Were charging, not anymore.
 			if (_isCharging && !IsSpecialHeld)
 			{
 				_isCharging = false;
 				Caster.Movement.RemoveSpeedModifier(this);
 			}
 
+			// Reset casting chain.
 			if (_castChainCount < BasicFinisherCount && _castChainCount > 0 && Time.time > _chainTimeoutTime)
 			{
 				_castChainCount = 0;
 				Caster.SetCooldown(BasicCooldown);
 			}
 
-			if (_isMovePenaltyApplied && Time.time > _largeMissileTime && HasSpecial && IsSpecialHeld)
+			// Finished charging to max charge.
+			if (_isMovePenaltyApplied && Time.time > _largeMissileTime && HasSpecial && IsSpecialHeld && _isCharging)
 			{
 				_isMovePenaltyApplied = false;
 				Caster.Movement.RemoveSpeedModifier(this);
@@ -133,11 +136,13 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Audio.Play(FullChargeSound);
 			}
 
-			if (IsSpecialHeld && CanCastExcludingCost && HasSpecial && CanAfford(SpecialManaConsume))
+			// Charging staff spark.
+			if (IsSpecialHeld && CanCastExcludingCost && HasSpecial && CanAffordCost(SpecialManaConsume))
 			{
 				Cooldown.Call(this, ChargingSparkInterval, Caster.Spark);
 			}
 
+			// Handle crosshair charge percent.
 			if (_isCharging)
 			{
 				float delta = _largeMissileTime - Time.time;
@@ -151,7 +156,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnBasicDown()
 		{
-			if (!CanCastExcludingCost || IsSpecialHeld || !CanAfford(BasicManaConsume))
+			if (!CanCastExcludingCost || IsSpecialHeld || !CanAffordCost(BasicManaConsume))
 				return;
 
 			_castChainCount++;
@@ -193,7 +198,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialDown()
 		{
-			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume))
+			if (!HasSpecial || !CanCastExcludingCost || !CanAffordCost(SpecialManaConsume))
 				return;
 
 			_isCharging = true;
@@ -218,7 +223,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			Caster.Movement.RemoveSpeedModifier(this);
 			Caster.Movement.CanDash = true;
 
-			if (!HasSpecial || !CanCastExcludingCost || !CanAfford(SpecialManaConsume))
+			if (!HasSpecial || !CanCastExcludingCost || !CanAffordCost(SpecialManaConsume))
 				return;
 
 			Caster.Spark();

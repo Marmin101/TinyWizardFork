@@ -136,7 +136,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			Caster.ConsumeMana(amount);
 		}
 
-		protected bool CanAfford(float amount)
+		protected bool CanAffordCost(float amount)
 		{
 			return Caster.Mana >= amount;
 		}

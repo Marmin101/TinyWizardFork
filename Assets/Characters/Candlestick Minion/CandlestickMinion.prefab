@@ -861,6 +861,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34bcb0e50844dc43894acec5f60f580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FootstepSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <IsBoss>k__BackingField: 1
+  <BossTitle>k__BackingField: Candlestick
 --- !u!114 &2193098795683250030
 MonoBehaviour:
   m_ObjectHideFlags: 0

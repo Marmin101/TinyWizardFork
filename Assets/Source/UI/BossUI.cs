@@ -8,6 +8,8 @@ namespace Quinn.UI
 {
 	public class BossUI : MonoBehaviour
 	{
+		public static BossUI Instance { get; private set; }
+
 		[SerializeField, Required]
 		private GameObject ElementsParent;
 		[SerializeField, Required]
@@ -17,12 +19,26 @@ namespace Quinn.UI
 
 		private BTAgent _boss;
 
+		public void Awake()
+		{
+			Debug.Assert(Instance == null);
+			Instance = this;
+
+			ElementsParent.gameObject.SetActive(false);
+		}
+
 		public void FixedUpdate()
 		{
 			if (_boss != null)
 			{
 				HPBar.value = _boss.Health.Percent;
 			}
+		}
+
+		public void OnDestroy()
+		{
+			Debug.Assert(Instance == this);
+			Instance = null;
 		}
 
 		public void SetBoss(BTAgent agent)

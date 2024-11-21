@@ -626,6 +626,7 @@ MonoBehaviour:
   HurtImmunityDuration: 1.6
   BlinkCount: 4
   BlinkInterval: 0.18
+  HasHBBar: 0
   HPBar: {fileID: 0}
   HPArrow: {fileID: 0}
 --- !u!114 &8742490171193552683

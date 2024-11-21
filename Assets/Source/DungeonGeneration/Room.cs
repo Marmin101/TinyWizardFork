@@ -62,7 +62,7 @@ namespace Quinn.DungeonGeneration
 		public Vector2Int RoomGridIndex { get; set; }
 
 		private readonly HashSet<Door> _doors = new();
-		private readonly HashSet<IAgent> _liveAgent = new();
+		private readonly List<IAgent> _liveAgents = new();
 		private readonly HashSet<StaticAgent> _staticAgents = new();
 
 		private EventInstance _customMusic;
@@ -129,7 +129,7 @@ namespace Quinn.DungeonGeneration
 
 			if (agent is MonoBehaviour mono && mono.TryGetComponent(out Health health))
 			{
-				_liveAgent.Add(agent);
+				_liveAgents.Add(agent);
 				health.OnDeath += () => OnAgentDeath(agent);
 			}
 			else if (agent is StaticAgent staticAgent)
@@ -140,7 +140,7 @@ namespace Quinn.DungeonGeneration
 
 		public void KillAlLiveAgents()
 		{
-			foreach (var agent in _liveAgent)
+			foreach (var agent in new List<IAgent>(_liveAgents))
 			{
 				if (agent != null)
 				{
@@ -238,9 +238,9 @@ namespace Quinn.DungeonGeneration
 
 		private async void OnAgentDeath(IAgent agent)
 		{
-			_liveAgent.Remove(agent);
+			_liveAgents.Remove(agent);
 
-			if (_liveAgent.Count == 0)
+			if (_liveAgents.Count == 0)
 			{
 				IsConquered = true;
 

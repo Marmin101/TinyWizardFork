@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &362356465653520366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1616529674574394424}
+  - component: {fileID: 2490697150784487175}
+  - component: {fileID: 3251229667454308871}
+  m_Layer: 0
+  m_Name: Outline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1616529674574394424
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362356465653520366}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3146100802125101211}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2490697150784487175
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362356465653520366}
+  m_CullTransparentMesh: 1
+--- !u!114 &3251229667454308871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362356465653520366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1746455338533260665, guid: 12d72560e1fc2ae43bbcc46a4933540a, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 5
 --- !u!1 &1039721989378138086
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,8 +267,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3099394278412675475}
   - {fileID: 430552616038992803}
+  - {fileID: 3099394278412675475}
   m_Father: {fileID: 983309001137284816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -710,7 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -726,7 +801,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 10
+  m_PixelsPerUnitMultiplier: 5
 --- !u!1 &5333775049452649991
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +831,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1616529674574394424}
   m_Father: {fileID: 3099394278412675475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -785,7 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2905661, g: 0.076205045, b: 0.15201569, a: 0.9019608}
+  m_Color: {r: 0.23018861, g: 0.084692, b: 0.13759989, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1219,20 +1295,20 @@ VisualEffect:
       - m_Value: 64
         m_Name: SpawnRate
         m_Overridden: 1
-      - m_Value: 0.001
+      - m_Value: 0.5
         m_Name: DragFactor
-        m_Overridden: 1
+        m_Overridden: 0
     m_Vector2f:
       m_Array:
       - m_Value: {x: 10, y: 10}
         m_Name: Size
-        m_Overridden: 1
+        m_Overridden: 0
       - m_Value: {x: -100, y: -100}
         m_Name: MinVelocity
-        m_Overridden: 1
+        m_Overridden: 0
       - m_Value: {x: 100, y: 100}
         m_Name: MaxVelocity
-        m_Overridden: 1
+        m_Overridden: 0
       - m_Value: {x: 0.5, y: 0.6}
         m_Name: Lifespan
         m_Overridden: 1
@@ -1393,9 +1469,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1ce6e6a2d243c49af5a4538b887bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElementsParent: {fileID: 0}
-  Title: {fileID: 0}
-  HPBar: {fileID: 0}
+  ElementsParent: {fileID: 1227945750597446448}
+  Title: {fileID: 4290047805957245182}
+  HPBar: {fileID: 2849164719344999375}
 --- !u!1 &8065875436221326654
 GameObject:
   m_ObjectHideFlags: 0

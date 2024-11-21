@@ -66,8 +66,12 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Cooldown.Call(this, BaseSparkCooldown, Caster.Spark);
 			}
 
-			Caster.SetCharge(_charge / MaxCharge);
 			CanRegenMana = !_isCharging;
+
+			if (_isCharging)
+				Caster.SetCharge(_charge / MaxCharge);
+			else
+				Caster.SetCharge(0f);
 		}
 
 		public override void OnBasicDown()

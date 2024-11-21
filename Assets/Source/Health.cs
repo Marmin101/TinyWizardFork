@@ -35,8 +35,10 @@ namespace Quinn
 		private float BlinkInterval = 0.1f;
 
 		[Space, SerializeField]
+		private bool HasHBBar = true;
+		[SerializeField, ShowIf(nameof(HasHBBar))]
 		private Slider HPBar;
-		[SerializeField, ShowIf(nameof(HPBar))]
+		[SerializeField, ShowIf("@HPBar && HasHBBar")]
 		private Image HPArrow;
 
 		public float Current { get; private set; }
@@ -76,7 +78,7 @@ namespace Quinn
 		{
 			if (HPBar != null)
 			{
-				HPBar.gameObject.SetActive(Current < Max);
+				HPBar.gameObject.SetActive(HasHBBar && Current < Max);
 				HPBar.value = Current / Max;
 
 				HPArrow.gameObject.SetActive(HPBar.gameObject.activeInHierarchy);

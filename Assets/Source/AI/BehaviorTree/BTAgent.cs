@@ -1,8 +1,10 @@
 using FMODUnity;
 using Quinn.DungeonGeneration;
+using Quinn.UI;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Unity.Behavior;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Quinn.AI.BehaviorTree
@@ -19,7 +21,6 @@ namespace Quinn.AI.BehaviorTree
 		public bool IsBoss { get; private set; }
 		[field: SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
 		public string BossTitle { get; private set; } = "Boss Title";
-		[field: SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
 
 		public Health Health { get; private set; }
 		public AIMovement Movement { get; private set; }
@@ -38,6 +39,11 @@ namespace Quinn.AI.BehaviorTree
 		public void StartRoom(Room room)
 		{
 			Room = room;
+
+			if (IsBoss)
+			{
+				BossUI.Instance.SetBoss(this);
+			}
 		}
 
 		public void SetAnimationTrigger(string key)
@@ -93,6 +99,11 @@ namespace Quinn.AI.BehaviorTree
 		private void OnDeath()
 		{
 			Destroy(gameObject);
+
+			if (IsBoss)
+			{
+				Room.KillAlLiveAgents();
+			}
 		}
 	}
 }

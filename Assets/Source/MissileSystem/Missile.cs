@@ -39,6 +39,9 @@ namespace Quinn.MissileSystem
 		[Space, SerializeField, BoxGroup("Core"), ShowIf("@DelayDestructionOnDeath.Length > 0"), Unit(Units.Second)]
 		private float DestructionDelay = 3f;
 
+		[SerializeField, BoxGroup("Core"), Space]
+		private bool IgnoreObstacles;
+
 		[Space, SerializeField, FoldoutGroup("Flicker")]
 		private bool SwapVisuals;
 		[SerializeField, ShowIf(nameof(SwapInterval)), FoldoutGroup("Flicker")]
@@ -135,7 +138,7 @@ namespace Quinn.MissileSystem
 				if (dmg.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, DirectStatusEffect, DirectStatusEffectDuration, knockbackSpeed))
 					OnImpact();
 			}
-			else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.CompareTag("MissileBlocker"))
+			else if ((!IgnoreObstacles && collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) || collision.CompareTag("MissileBlocker"))
 			{
 				OnImpact();
 			}

@@ -150,7 +150,7 @@ MonoBehaviour:
   ChargeRate: 3
   MaxCharge: 8
   MinChargeThreshold: 1
-  MaxDamage: 95
+  MaxDamage: 70
   DamageChargeFactor:
     serializedVersion: 2
     m_Curve:
@@ -175,7 +175,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  DamageRadius: 1.5
+  DamageRadius: 1
   MaxEnergyUse: 15
   EnergyUseChargeFactor:
     serializedVersion: 2
@@ -183,12 +183,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.5
-      inSlope: 0.0069479086
-      outSlope: 0.0069479086
+      inSlope: 0.0023861139
+      outSlope: 0.0023861139
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
-      outWeight: 0.8799007
+      outWeight: 1
     - serializedVersion: 3
       time: 1
       value: 1

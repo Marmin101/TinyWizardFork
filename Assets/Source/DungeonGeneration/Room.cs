@@ -2,7 +2,9 @@
 using FMODUnity;
 using Quinn.AI;
 using Quinn.AI.Pathfinding;
+using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -234,6 +236,13 @@ namespace Quinn.DungeonGeneration
 				Destroy(MissileBlocker.gameObject);
 
 			RegisterAllAgents();
+			PlayerManager.Instance.OnPlayerDeath += OnPlayerDeath;
+		}
+
+		private void OnPlayerDeath()
+		{
+			_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			_customMusic.release();
 		}
 
 		private async void OnAgentDeath(IAgent agent)

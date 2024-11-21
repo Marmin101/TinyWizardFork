@@ -1057,7 +1057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: <Max>k__BackingField
-      value: 1200
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: HealSound.Guid.Data1
@@ -1283,7 +1283,7 @@ MonoBehaviour:
   DeathTrigger: Die
   DeathVFX: {fileID: 0}
   <IsBoss>k__BackingField: 1
-  <BossTitle>k__BackingField: Candlestick
+  <BossTitle>k__BackingField: Candlestick, Lord of Fire
 --- !u!114 &2193098795683250030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,6 +1304,7 @@ MonoBehaviour:
   - rid: 8332993359419277954
   - rid: 8332993383747551628
   - rid: 8332993507402973447
+  - rid: 8332993513484976587
   references:
     version: 2
     RefIds:
@@ -1337,7 +1338,7 @@ MonoBehaviour:
         GUID:
           m_Value0: 10454758107853877782
           m_Value1: 7939283389150658875
-        Name: Missile
+        Name: SprayMissile
         m_Value: {fileID: 4673170907953065690, guid: 2ecb243515a351d479a450e22fc6aa64, type: 3}
     - rid: 8332993383747551628
       type: {class: 'BlackboardVariable`1[[Quinn.Health, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
@@ -1355,6 +1356,14 @@ MonoBehaviour:
           m_Value1: 14262303996267231222
         Name: Minion
         m_Value: {fileID: 5800629104770270796, guid: 95bc19fac7194724983d73bff568d120, type: 3}
+    - rid: 8332993513484976587
+      type: {class: 'BlackboardVariable`1[[Quinn.MissileSystem.Missile, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2006096438039691960
+          m_Value1: 13634637961865456043
+        Name: RingMissile
+        m_Value: {fileID: 4673170907953065690, guid: 7f73241239d31194aaa47da2884edace, type: 3}
 --- !u!114 &3839545687506923732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,7 +1598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3727641235968004286, guid: 3c0a75174bbff2f4d965fb8fc4b8e863, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 3727641235968004286, guid: 3c0a75174bbff2f4d965fb8fc4b8e863, type: 3}
       propertyPath: m_SortingLayerID
@@ -1605,7 +1614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6452425274422572688, guid: 3c0a75174bbff2f4d965fb8fc4b8e863, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 6452425274422572688, guid: 3c0a75174bbff2f4d965fb8fc4b8e863, type: 3}
       propertyPath: m_SortingLayerID

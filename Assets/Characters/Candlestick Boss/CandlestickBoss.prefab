@@ -1052,8 +1052,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: HealSound.Path
+      value: event:/CandleStickBoss/CandlestickBossHurt
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: <Max>k__BackingField
       value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: HealSound.Guid.Data1
+      value: -1768094496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: HealSound.Guid.Data2
+      value: 1176370118
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: HealSound.Guid.Data3
+      value: 1251698577
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: HealSound.Guid.Data4
+      value: 2086116227
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: Renderers.Array.size

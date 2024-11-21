@@ -73,6 +73,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnSound.Path
+      value: event:/CandleStickBoss/CandlestickBossShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DirectStatusEffect
       value: 1
       objectReference: {fileID: 0}
@@ -91,6 +95,22 @@ PrefabInstance:
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SpawnMissilesOnDeath
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnSound.Guid.Data1
+      value: 1424286857
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnSound.Guid.Data2
+      value: 1140682481
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnSound.Guid.Data3
+      value: -1070690155
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnSound.Guid.Data4
+      value: 50595732
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

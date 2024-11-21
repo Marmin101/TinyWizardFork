@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -39,6 +40,8 @@ namespace Quinn
 		{
 			_movement = GetComponent<Locomotion>();
 			_health = GetComponent<Health>();
+
+			_health.OnDeath += OnDeath;
 		}
 
 		public void FixedUpdate()
@@ -143,5 +146,10 @@ namespace Quinn
 			StatusEffect.Wet => WetVFX,
 			_ => throw new System.NotImplementedException()
 		};
+
+		private void OnDeath()
+		{
+			ClearAll();
+		}
 	}
 }

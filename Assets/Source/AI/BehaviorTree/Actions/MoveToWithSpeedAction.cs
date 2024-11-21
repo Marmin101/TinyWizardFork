@@ -16,6 +16,8 @@ namespace Quinn.AI.BehaviorTree
 		public BlackboardVariable<float> Speed = new(4f);
 		[SerializeReference]
 		public BlackboardVariable<float> StoppingDistance = new(0.1f);
+		[SerializeReference]
+		public BlackboardVariable<bool> FaceTarget = new(true);
 
 		private BTAgent _agent;
 
@@ -30,6 +32,11 @@ namespace Quinn.AI.BehaviorTree
 
 		protected override Status OnUpdate()
 		{
+			if (FaceTarget.Value)
+			{
+				GameObject.transform.localScale = new Vector3(Mathf.Sign(GameObject.transform.position.DirectionTo(Position.Value).x), 1f, 1f);
+			}
+
 			bool reached = _agent.Movement.MoveTo(Position.Value, Speed.Value, StoppingDistance.Value);
 			return reached ? Status.Success : Status.Running;
 		}

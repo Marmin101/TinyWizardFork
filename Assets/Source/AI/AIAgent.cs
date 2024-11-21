@@ -52,6 +52,8 @@ namespace Quinn.AI
 
 		protected AIState ActiveState { get; private set; }
 
+		Room IAgent.Room => Room;
+
 		private bool _isActiveFirst;
 
 		protected virtual void Awake()

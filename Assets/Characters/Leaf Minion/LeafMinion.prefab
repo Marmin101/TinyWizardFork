@@ -611,14 +611,6 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.2433802
       objectReference: {fileID: 0}
-    - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
-      propertyPath: m_ForceSendLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 6957710185441235532, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
-      propertyPath: m_ForceReceiveLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 7039031484908775684, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_Controller
       value: 
@@ -812,6 +804,9 @@ MonoBehaviour:
       Data3: 1166992048
       Data4: 1470736741
     Path: event:/LeafMinion/LeafMinionFootstep
+  DeathTrigger: Die
+  <IsBoss>k__BackingField: 0
+  <BossTitle>k__BackingField: Boss Title
 --- !u!114 &9214943053052738701
 MonoBehaviour:
   m_ObjectHideFlags: 0

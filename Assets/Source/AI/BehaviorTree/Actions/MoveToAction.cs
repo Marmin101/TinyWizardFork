@@ -15,6 +15,8 @@ namespace Quinn.AI.BehaviorTree
 
 		[SerializeReference]
 		public BlackboardVariable<float> StoppingDistance = new(0.1f);
+		[SerializeReference]
+		public BlackboardVariable<bool> FaceTarget = new(true);
 
 		[SerializeReference]
 		public BlackboardVariable<bool> LimitMaxDistance = new(false);
@@ -43,6 +45,11 @@ namespace Quinn.AI.BehaviorTree
 			if (LimitMaxDistance.Value && GameObject.transform.position.DistanceTo(_origin) > MaxDistance.Value)
 			{
 				return FailOnMaxReached.Value ? Status.Failure : Status.Success;
+			}
+
+			if (FaceTarget.Value)
+			{
+				GameObject.transform.localScale = new Vector3(Mathf.Sign(GameObject.transform.position.DirectionTo(Position.Value).x), 1f, 1f);
 			}
 
 			return reached ? Status.Success : Status.Running;

@@ -6,16 +6,22 @@ using System.Collections.Generic;
 using Unity.Behavior;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn.AI.BehaviorTree
 {
 	[RequireComponent(typeof(BehaviorGraphAgent))]
 	[RequireComponent(typeof(AIMovement))]
 	[RequireComponent(typeof(Health))]
+	[RequireComponent(typeof(Animator))]
 	public class BTAgent : MonoBehaviour, IAgent
 	{
 		[SerializeField]
 		private EventReference FootstepSound;
+		[SerializeField]
+		private string DeathTrigger = "Die";
+		[SerializeField]
+		private VisualEffect DeathVFX;
 
 		[field: SerializeField, FoldoutGroup("Boss")]
 		public bool IsBoss { get; private set; }
@@ -98,7 +104,12 @@ namespace Quinn.AI.BehaviorTree
 
 		private void OnDeath()
 		{
-			Destroy(gameObject);
+			GetComponent<Animator>().SetTrigger(DeathTrigger);
+
+			if (DeathVFX != null)
+			{
+				DeathVFX.Play();
+			}
 
 			if (IsBoss)
 			{

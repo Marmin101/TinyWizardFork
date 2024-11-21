@@ -39,7 +39,9 @@ namespace Quinn.AI.StaticBrains
 		private float _firingStartTime;
 		private Vector2 _fireDir;
 
-		private void Awake()
+		public override Room Room { get; protected set; }
+
+		public void Awake()
 		{
 			var sprite = Facing switch
 			{
@@ -63,7 +65,7 @@ namespace Quinn.AI.StaticBrains
 			_firingStartTime = Time.time + FireDelay;
 		}
 
-		private void Update()
+		public void Update()
 		{
 			if (Time.time > _firingStartTime && _isActive)
 			{
@@ -78,6 +80,7 @@ namespace Quinn.AI.StaticBrains
 		public override void StartRoom(Room room)
 		{
 			_isActive = true;
+			Room = room;
 		}
 
 		public override void CeaseFire()

@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9068adb8db3f9164ab0d9ec4e88166c1, type: 2}
+  - {fileID: 2100000, guid: 2613db49ddb517c4897f6f399d240dbd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5441052895379524139}
   - component: {fileID: 8188154612950390443}
+  - component: {fileID: 8059763658282916240}
   m_Layer: 7
   m_Name: Leg_B
   m_TagString: Untagged
@@ -142,7 +143,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9068adb8db3f9164ab0d9ec4e88166c1, type: 2}
+  - {fileID: 2100000, guid: 2613db49ddb517c4897f6f399d240dbd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174,6 +175,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &8059763658282916240
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654753843695739967}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_SortAtRoot: 0
 --- !u!1 &2869348502166379458
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +554,7 @@ PrefabInstance:
     - target: {fileID: 2841596595511251762, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9068adb8db3f9164ab0d9ec4e88166c1, type: 2}
+      objectReference: {fileID: 2100000, guid: 2613db49ddb517c4897f6f399d240dbd, type: 2}
     - target: {fileID: 3035076089870465620, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -605,7 +618,7 @@ PrefabInstance:
     - target: {fileID: 8584659218363069571, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9068adb8db3f9164ab0d9ec4e88166c1, type: 2}
+      objectReference: {fileID: 2100000, guid: 2613db49ddb517c4897f6f399d240dbd, type: 2}
     - target: {fileID: 8865879636924115683, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -669,6 +682,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 621698114730883495, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1265036797452979541}
+    - targetCorrespondingSourceObject: {fileID: 621698114730883495, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1066577674417364010}
   m_SourcePrefab: {fileID: 100100000, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
 --- !u!4 &1084062643888719101 stripped
 Transform:
@@ -766,11 +782,23 @@ MonoBehaviour:
       Data2: 1163751166
       Data3: -1641234517
       Data4: -1680359563
-    Path: event:/CandlespiritFootstep
+    Path: event:/CandleSpirit/CandleSpiritFootstep
   DeathTrigger: Die
   DeathVFX: {fileID: 0}
   <IsBoss>k__BackingField: 0
   <BossTitle>k__BackingField: Boss Title
+--- !u!114 &1066577674417364010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5800629104770270796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d41744a149a884d871a003ab112adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7677397018418304930 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}

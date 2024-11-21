@@ -43,7 +43,7 @@ MonoBehaviour:
     collapsed: 1
   uiBounds:
     serializedVersion: 2
-    x: -215
+    x: -214
     y: -1434
     width: 1542
     height: 2438
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   compositionPosition: 0
   compositionAxes: 0
   compositionDirection: 0
-  positionMode: 0
+  positionMode: 1
   spawnMode: 0
   shape: 4
   heightMode: 1

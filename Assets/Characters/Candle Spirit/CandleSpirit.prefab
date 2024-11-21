@@ -564,6 +564,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: HasHBBar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: <Max>k__BackingField
       value: 1
       objectReference: {fileID: 0}

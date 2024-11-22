@@ -4,6 +4,7 @@
 	{
 		None,
 		Stone,
-		Carpet
+		Carpet,
+		HealingPuddle
 	}
 }

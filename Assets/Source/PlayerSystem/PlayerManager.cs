@@ -20,6 +20,8 @@ namespace Quinn.PlayerSystem
 
 		public Player Player { get; private set; }
 		public Health Health { get; private set; }
+		public PlayerMovement Movement { get; private set; }
+
 		public bool IsAlive => !IsDead;
 		public bool IsDead => Health == null || Health.IsDead;
 		public Vector2 Position => Player.transform.position;
@@ -64,8 +66,10 @@ namespace Quinn.PlayerSystem
 
 		public void SpawnPlayer(Vector2 position)
 		{
-			var player = PlayerGroupPrefab.Clone(position);
-			Health = player.GetComponentInChildren<Health>();
+			var playerGroup = PlayerGroupPrefab.Clone(position);
+
+			Health = playerGroup.GetComponentInChildren<Health>();
+			Movement = playerGroup.GetComponentInChildren<PlayerMovement>();
 
 			var camManager = GetComponent<CameraManager>();
 			camManager.Blackout();

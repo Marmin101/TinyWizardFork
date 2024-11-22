@@ -24,7 +24,7 @@ namespace Quinn.PlayerSystem
 		[SerializeField, Required]
 		private VisualEffect FootstepVFX;
 		[SerializeField, FoldoutGroup("Footstep Colors")]
-		private Color StoneColor, CarpetColor;
+		private Color StoneColor, CarpetColor, HealingPuddleColor;
 
 		[SerializeField, Space]
 		private VisualEffect LandVFX;
@@ -35,6 +35,9 @@ namespace Quinn.PlayerSystem
 		private float HurtDuration = 2f;
 		[SerializeField, Required]
 		private Light2D PlayerLight;
+
+		[Space, SerializeField, Required]
+		private SpriteMask PuddleMask;
 
 		private Animator _animator;
 		private bool _wasMoving;
@@ -88,18 +91,22 @@ namespace Quinn.PlayerSystem
 			transform.DOKill();
 		}
 
+		public void EnablePuddleMask()
+		{
+			PuddleMask.enabled = true;
+		}
+
+		public void DisablePuddleMask()
+		{
+			PuddleMask.enabled = false;
+		}
+
 		public void OnFootstep_Anim()
 		{
 			var mat = GetSoundMaterialType();
 			PlayFootstepSound(mat);
 
-			var floorColor = mat switch
-			{
-				SoundMaterialType.None => Color.black,
-				SoundMaterialType.Stone => StoneColor,
-				SoundMaterialType.Carpet => CarpetColor,
-				_ => throw new NotImplementedException(),
-			};
+			var floorColor = SoundMaterialToColor(mat);
 
 			FootstepVFX.SetVector4("Color", floorColor);
 			FootstepVFX.Play();
@@ -108,14 +115,7 @@ namespace Quinn.PlayerSystem
 		public void OnLand_Anim()
 		{
 			var mat = GetSoundMaterialType();
-
-			var floorColor = mat switch
-			{
-				SoundMaterialType.None => Color.black,
-				SoundMaterialType.Stone => StoneColor,
-				SoundMaterialType.Carpet => CarpetColor,
-				_ => throw new NotImplementedException(),
-			};
+			var floorColor = SoundMaterialToColor(mat);
 
 			LandVFX.SetGradient("Color", new Gradient() { colorKeys = new GradientColorKey[] { new(floorColor, 0f) }, alphaKeys = new GradientAlphaKey[] { new(1f, 0f) } });
 			LandVFX.Play();
@@ -166,6 +166,15 @@ namespace Quinn.PlayerSystem
 
 			await fade;
 		}
+
+		private Color SoundMaterialToColor(SoundMaterialType mat) => mat switch
+		{
+			SoundMaterialType.None => Color.black,
+			SoundMaterialType.Stone => StoneColor,
+			SoundMaterialType.Carpet => CarpetColor,
+			SoundMaterialType.HealingPuddle => HealingPuddleColor,
+			_ => throw new NotImplementedException(),
+		};
 
 		private SoundMaterialType GetSoundMaterialType()
 		{

@@ -57,5 +57,13 @@ namespace Quinn.AI
 
 			Audio.Play(LandSound, transform.position);
 		}
+
+		protected override void OnDeath()
+		{
+			DeathTokenSource.Cancel();
+			AIManager.Instance.RemoveAgent(this);
+
+			Animator.SetTrigger("Die");
+		}
 	}
 }

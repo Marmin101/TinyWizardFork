@@ -28,6 +28,7 @@ namespace Quinn.AI.BehaviorTree
 		[field: SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
 		public string BossTitle { get; private set; } = "Boss Title";
 
+		public Animator Animator { get; private set; }
 		public Health Health { get; private set; }
 		public AIMovement Movement { get; private set; }
 		public Room Room { get; private set; }
@@ -36,10 +37,20 @@ namespace Quinn.AI.BehaviorTree
 
 		public void Awake()
 		{
+			Animator = GetComponent<Animator>();
 			Health = GetComponent<Health>();
 			Movement = GetComponent<AIMovement>();
 
 			Health.OnDeath += OnDeath;
+		}
+
+		public void FixedUpdate()
+		{
+			if (IsBoss)
+			{
+				float phase = Health.Percent <= 0.5f ? 1f : 0f;
+				RuntimeManager.StudioSystem.setParameterByName("second-phase", phase);
+			}
 		}
 
 		public void StartRoom(Room room)
@@ -104,7 +115,7 @@ namespace Quinn.AI.BehaviorTree
 
 		private void OnDeath()
 		{
-			GetComponent<Animator>().SetTrigger(DeathTrigger);
+			Animator.SetTrigger(DeathTrigger);
 
 			if (DeathVFX != null)
 			{

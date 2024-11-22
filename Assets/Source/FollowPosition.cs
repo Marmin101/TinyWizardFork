@@ -11,7 +11,7 @@ namespace Quinn
 
 		private Vector3 _localOffset;
 
-		private void Awake()
+		public void Awake()
 		{
 			if (KeepOffset)
 			{
@@ -19,7 +19,7 @@ namespace Quinn
 			}
 		}
 
-		private void LateUpdate()
+		public void LateUpdate()
 		{
 			if (Target != null)
 			{

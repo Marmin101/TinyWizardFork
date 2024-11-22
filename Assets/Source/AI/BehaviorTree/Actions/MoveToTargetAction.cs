@@ -19,6 +19,7 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeReference]
 		public BlackboardVariable<bool> FaceTarget = new(true);
 
+		private BTAgent _agent;
 		private AIMovement _movement;
 
 		protected override Status OnStart()
@@ -33,6 +34,9 @@ namespace Quinn.AI.BehaviorTree
 				return Status.Failure;
 			}
 
+			_agent = GameObject.GetComponent<BTAgent>();
+			_agent.Animator.SetBool("IsMoving", true);
+
 			return Status.Running;
 		}
 
@@ -45,6 +49,11 @@ namespace Quinn.AI.BehaviorTree
 
 			bool reached = _movement.MoveTo(Target.Value.position, StoppingDistance.Value);
 			return reached ? Status.Success : Status.Running;
+		}
+
+		protected override void OnEnd()
+		{
+			_agent.Animator.SetBool("IsMoving", false);
 		}
 	}
 }

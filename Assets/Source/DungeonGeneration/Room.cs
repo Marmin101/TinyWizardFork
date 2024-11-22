@@ -1,8 +1,11 @@
 ﻿using FMOD.Studio;
 using FMODUnity;
 using Quinn.AI;
+using Quinn.AI.BehaviorTree;
 using Quinn.AI.Pathfinding;
+using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -136,6 +139,15 @@ namespace Quinn.DungeonGeneration
 			{
 				_staticAgents.Add(staticAgent);
 			}
+
+			if (agent is BTAgent bt && bt.IsBoss)
+			{
+				bt.Health.OnDeath += () =>
+				{
+					_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+					_customMusic.release();
+				};
+			}
 		}
 
 		public void KillAlLiveAgents()
@@ -234,6 +246,13 @@ namespace Quinn.DungeonGeneration
 				Destroy(MissileBlocker.gameObject);
 
 			RegisterAllAgents();
+			PlayerManager.Instance.OnPlayerDeath += OnPlayerDeath;
+		}
+
+		private void OnPlayerDeath()
+		{
+			_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			_customMusic.release();
 		}
 
 		private async void OnAgentDeath(IAgent agent)

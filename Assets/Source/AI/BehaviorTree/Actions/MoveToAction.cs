@@ -33,7 +33,10 @@ namespace Quinn.AI.BehaviorTree
 			if (Position.Value == null)
 				return Status.Failure;
 
+
 			_agent = GameObject.GetComponent<BTAgent>();
+			_agent.Animator.SetBool("IsMoving", true);
+
 			_origin = GameObject.transform.position;
 			return Status.Running;
 		}
@@ -53,6 +56,11 @@ namespace Quinn.AI.BehaviorTree
 			}
 
 			return reached ? Status.Success : Status.Running;
+		}
+
+		protected override void OnEnd()
+		{
+			_agent.Animator.SetBool("IsMoving", false);
 		}
 	}
 }

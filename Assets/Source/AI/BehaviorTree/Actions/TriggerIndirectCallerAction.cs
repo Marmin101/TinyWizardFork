@@ -15,7 +15,7 @@ namespace Quinn.AI.BehaviorTree
 
 		protected override Status OnStart()
 		{
-			if (Caller.Value == null)
+			if (Caller.Value != null)
 			{
 				Caller.Value.Call();
 				return Status.Success;

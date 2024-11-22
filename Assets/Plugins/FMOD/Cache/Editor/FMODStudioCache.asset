@@ -97,10 +97,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638677983814343494
+  lastModified: 638678214828967341
   FileSizes:
   - Name: Desktop
-    Value: 3672
+    Value: 3622
   Exists: 1
 --- !u!114 &-7604470268882403175
 MonoBehaviour:
@@ -315,34 +315,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-5710838325212991081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/CandlestickBoss
-  m_EditorClassIdentifier: 
-  Path: event:/Music/CandlestickBoss
-  Guid:
-    Data1: -1685421137
-    Data2: 1292703974
-    Data3: -1791702378
-    Data4: 450167308
-  Banks:
-  - {fileID: -2968825907237438240}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 9117656219464822004}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 28428
 --- !u!114 &-5009277779956688599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +342,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4330375014259318471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/CandlestickMiniBoss
+  m_EditorClassIdentifier: 
+  Path: event:/Music/CandlestickMiniBoss
+  Guid:
+    Data1: -1685421137
+    Data2: 1292703974
+    Data3: -1791702378
+    Data4: 450167308
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 29428
 --- !u!114 &-4293329931120212250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,10 +493,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638677983814282753
+  lastModified: 638678214828580466
   FileSizes:
   - Name: Desktop
-    Value: 19399168
+    Value: 17088256
   Exists: 1
 --- !u!114 &-2315468739127671067
 MonoBehaviour:
@@ -607,30 +606,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-472749034419776332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/second-phase
-  m_EditorClassIdentifier: 
-  Name: second-phase
-  StudioPath: parameter:/second-phase
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3302866380
-    data2: 3091200630
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-430211379801330354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,16 +785,15 @@ MonoBehaviour:
   - {fileID: -5859524036531391388}
   - {fileID: 6596591370484447351}
   - {fileID: 6206178416884717791}
-  - {fileID: -5710838325212991081}
+  - {fileID: 1248249546709736863}
   EditorParameters:
   - {fileID: -430211379801330354}
   - {fileID: -5916333677703993173}
-  - {fileID: -472749034419776332}
   MasterBanks:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638677983814343494
+  cacheTime: 638678214828967341
   cacheVersion: 131621
 --- !u!114 &401267390222173494
 MonoBehaviour:
@@ -1011,6 +985,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &1248249546709736863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/CandlestickMiniBoss
+  m_EditorClassIdentifier: 
+  Path: event:/Music/CandlestickMiniBoss
+  Guid:
+    Data1: -1685421137
+    Data2: 1292703974
+    Data3: -1791702378
+    Data4: 450167308
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 29428
 --- !u!114 &1398158556227354956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,27 +1845,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 45
   Length: 0
---- !u!114 &9117656219464822004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/CandlestickBoss/second-phase
-  m_EditorClassIdentifier: 
-  Name: second-phase
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3302866380
-    data2: 3091200630
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1

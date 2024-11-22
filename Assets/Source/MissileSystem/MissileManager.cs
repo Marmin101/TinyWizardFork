@@ -49,10 +49,6 @@ namespace Quinn.MissileSystem
 		{
 			for (int i = 0; i < count; i++)
 			{
-				// Occurs when scene is ended in editor while this loop is active.
-				if (prefab == null)
-					return;
-
 				Vector2 missileDir = GetDirection(behavior, dir, i, spreadAngle, count);
 
 				var instance = prefab.gameObject.Clone(origin, Quaternion.identity, transform);

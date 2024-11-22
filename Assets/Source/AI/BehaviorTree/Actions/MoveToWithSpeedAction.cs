@@ -27,9 +27,6 @@ namespace Quinn.AI.BehaviorTree
 				return Status.Failure;
 
 			_agent = GameObject.GetComponent<BTAgent>();
-
-			_agent.Animator.SetBool("IsMoving", true);
-
 			return Status.Running;
 		}
 
@@ -42,11 +39,6 @@ namespace Quinn.AI.BehaviorTree
 
 			bool reached = _agent.Movement.MoveTo(Position.Value, Speed.Value, StoppingDistance.Value);
 			return reached ? Status.Success : Status.Running;
-		}
-
-		protected override void OnEnd()
-		{
-			_agent.Animator.SetBool("IsMoving", false);
 		}
 	}
 }

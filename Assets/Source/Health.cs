@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.VFX;
 
 namespace Quinn
 {
@@ -19,8 +18,6 @@ namespace Quinn
 		public Team Team { get; private set; }
 		[SerializeField]
 		private SpriteRenderer[] Renderers;
-		[SerializeField]
-		private VisualEffect HitVFX;
 
 		[SerializeField, FoldoutGroup("Hurt Flash")]
 		private float FlashInDuration = 0.1f, FlashHoldDuration = 0.05f, FlashOutDuration = 0.1f;
@@ -142,12 +139,6 @@ namespace Quinn
 			if (_statsEffectManager != null)
 			{
 				_statsEffectManager.ApplyEffect(info.StatusEffect, info.StatusEffectDuration);
-			}
-
-			if (HitVFX != null)
-			{
-				HitVFX.SetVector2("Direction", info.Source.transform.position.DirectionTo(transform.position));
-				HitVFX.Play();
 			}
 
 			Current -= info.Damage;

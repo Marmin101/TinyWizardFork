@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Quinn.MissileSystem
 {
@@ -22,7 +23,10 @@ namespace Quinn.MissileSystem
 		{
 			var instance = prefab.gameObject.Clone(origin);
 			instance.GetComponent<Missile>().Initialize(dir, owner);
+
+			MoveToActiveScene(instance);
 		}
+
 		public async Awaitable SpawnMissileAsync(GameObject owner, Missile prefab, Vector2 origin, Vector2 dir, int count,
 			MissileSpawnBehavior behavior = MissileSpawnBehavior.Direct, float spreadAngle = 360f)
 		{
@@ -34,7 +38,10 @@ namespace Quinn.MissileSystem
 				Vector2 missileDir = GetDirection(behavior, dir, i, spreadAngle, count);
 
 				if (instance != null)
+				{
 					instance.GetComponent<Missile>().Initialize(missileDir, owner);
+					MoveToActiveScene(instance);
+				}
 
 				i++;
 			}
@@ -57,6 +64,8 @@ namespace Quinn.MissileSystem
 
 				var instance = prefab.gameObject.Clone(origin, Quaternion.identity, transform);
 				var missile = instance.GetComponent<Missile>();
+
+				MoveToActiveScene(instance);
 
 				missile.Initialize(missileDir, owner);
 				await Awaitable.WaitForSecondsAsync(interval);
@@ -95,6 +104,11 @@ namespace Quinn.MissileSystem
 			}
 
 			return missileDir;
+		}
+
+		private static void MoveToActiveScene(GameObject instance)
+		{
+			SceneManager.MoveGameObjectToScene(instance, SceneManager.GetActiveScene());
 		}
 	}
 }

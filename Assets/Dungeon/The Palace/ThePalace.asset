@@ -46,3 +46,5 @@ MonoBehaviour:
   - Prefab: {fileID: 6008825111309779296, guid: f5f63069b0452f34e9680321c7b8b689, type: 3}
     Weight: 100
     SumWeight: 600
+  Variants:
+  - {fileID: 1154821115307193441, guid: 9118f15f9732a5d40824bde00eb6c67e, type: 3}

@@ -51,6 +51,9 @@ namespace Quinn.DungeonGeneration
 		[Space, SerializeField]
 		private Collider2D MissileBlocker;
 
+		[Space, SerializeField]
+		private bool StartsEnabled;
+
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
 		public bool IsStarted { get; private set; }
@@ -60,7 +63,7 @@ namespace Quinn.DungeonGeneration
 		public bool HasSouthDoor => SouthDoor != null || NoDoors;
 		public bool HasWestDoor => WestDoor != null || NoDoors;
 
-		public event System.Action OnRoomConquered;
+		public event Action OnRoomConquered;
 
 		public Vector2Int RoomGridIndex { get; set; }
 
@@ -96,6 +99,25 @@ namespace Quinn.DungeonGeneration
 
 			RoomTrigger.OnTriggerEnter += OnPlayerTriggerEnter;
 			RoomTrigger.OnTriggerExit += OnPlayerTriggerExit;
+
+			if (!StartsEnabled)
+			{
+				for (int i = 0; i < transform.childCount; i++)
+				{
+					transform.GetChild(i).gameObject.SetActive(false);
+				}
+			}
+		}
+
+		public void OnTriggerEnter2D(Collider2D collision)
+		{
+			if (collision.IsPlayer())
+			{
+				for (int i = 0; i < transform.childCount; i++)
+				{
+					transform.GetChild(i).gameObject.SetActive(true);
+				}
+			}
 		}
 
 		public void Unlock()
@@ -199,7 +221,7 @@ namespace Quinn.DungeonGeneration
 			if (collider.IsPlayer())
 			{
 				RoomCamera.enabled = false;
-				GenerateRoomAtPlayer(collider);
+				//GenerateRoomAtPlayer(collider);
 
 				if (DisableMusic || HasCustomMusic)
 				{

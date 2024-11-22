@@ -65,6 +65,8 @@ namespace Quinn.DungeonGeneration
 		private GameObject _lastGeneratedRoomPrefab;
 		private FloorSO _lastGeneratedFloor;
 
+		private int _floorIndex;
+
 		public void Awake()
 		{
 			Debug.Assert(Instance == null);
@@ -76,7 +78,7 @@ namespace Quinn.DungeonGeneration
 			PlayerManager.Instance.OnPlayerDeath += OnPlayerDeath;
 			PlayerManager.Instance.OnPlayerDeathPreSceneLoad += OnPlayerDeathPreSceneLoad;
 
-			await StartFloorAsync(FirstFloor);
+			await StartFloorAsync(Floors[0]);
 		}
 
 		public void OnDestroy()
@@ -89,7 +91,8 @@ namespace Quinn.DungeonGeneration
 		{
 			for (int i = 0; i < 1000; i++)
 			{
-				var floor = Floors[Random.Range(0, Floors.Length)];
+				//var floor = Floors[Random.Range(0, Floors.Length)];
+				var floor = Floors[_floorIndex];
 				
 				if (floor != _lastGeneratedFloor)
 				{
@@ -140,6 +143,16 @@ namespace Quinn.DungeonGeneration
 			await GenerateRoomAsync(prefab, x, y);
 		}
 
+		public void IncrementFloorIndex()
+		{
+			_floorIndex++;
+
+			if (_floorIndex >= Floors.Length)
+			{
+				Debug.Log("Game Finished!");
+			}
+		}
+
 		private bool GetRoomAt(int x, int y, out Room room)
 		{
 			if (_generatedRooms.TryGetValue(new(x, y), out GameObject value))
@@ -188,8 +201,10 @@ namespace Quinn.DungeonGeneration
 				});
 			}
 
-			var prefab = floor.Generatable.GetWeightedRandom(x => x.Weight).Prefab;
-			await GenerateRoomAsync(floor.StartingRoom, 0, 0);
+			//var prefab = floor.Generatable.GetWeightedRandom(x => x.Weight).Prefab;
+			//await GenerateRoomAsync(floor.StartingRoom, 0, 0);
+
+			await floor.Variants.GetRandom().CloneAsync();
 
 			var fade = CameraManager.Instance.FadeIn();
 			await PlayerManager.Instance.Player.EnterFloorAsync();

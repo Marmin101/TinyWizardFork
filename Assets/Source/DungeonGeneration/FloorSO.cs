@@ -14,7 +14,10 @@ namespace Quinn.DungeonGeneration
 		public Room StartingRoom;
 		public RoomEntry[] Generatable;
 
-		private void OnValidate()
+		[Space, Tooltip("Whole floor prefabs.")]
+		public GameObject[] Variants;
+
+		public void OnValidate()
 		{
 			if (Generatable != null)
 			{

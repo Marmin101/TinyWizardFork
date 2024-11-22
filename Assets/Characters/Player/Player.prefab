@@ -567,9 +567,9 @@ MonoBehaviour:
   KnockbackSpeed: 16
   KnockbackDecayRate: 38
   MoveSpeed: 4.5
-  DashSpeed: 16
-  DashDistance: 3.5
-  DashCooldown: 0.5
+  DashSpeed: 18
+  DashDistance: 4.5
+  DashCooldown: 0.6
   DashSound:
     Guid:
       Data1: -534286951

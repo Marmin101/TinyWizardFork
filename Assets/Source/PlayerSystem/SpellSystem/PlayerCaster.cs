@@ -150,7 +150,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 			// Instead make player face dash direction.
 			if (Movement.IsDashing)
 			{
-				faceDir = Movement.DashDirection.normalized;
+				// Disabling this feature.
+				//faceDir = Movement.DashDirection.normalized;
 			}
 
 			// Do not change facing direction if input is disabled as it's a form of input.

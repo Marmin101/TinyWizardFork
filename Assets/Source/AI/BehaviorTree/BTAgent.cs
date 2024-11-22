@@ -116,7 +116,6 @@ namespace Quinn.AI.BehaviorTree
 		private void OnDeath()
 		{
 			Animator.SetTrigger(DeathTrigger);
-			DungeonGenerator.Instance.IncrementFloorIndex();
 
 			if (DeathVFX != null)
 			{
@@ -126,6 +125,7 @@ namespace Quinn.AI.BehaviorTree
 			if (IsBoss)
 			{
 				Room.KillAlLiveAgents();
+				DungeonGenerator.Instance.IncrementFloorIndex();
 			}
 		}
 	}

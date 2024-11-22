@@ -108,6 +108,7 @@ namespace Quinn.MissileSystem
 
 		private static void MoveToActiveScene(GameObject instance)
 		{
+			instance.transform.SetParent(null, true);
 			SceneManager.MoveGameObjectToScene(instance, SceneManager.GetActiveScene());
 		}
 	}

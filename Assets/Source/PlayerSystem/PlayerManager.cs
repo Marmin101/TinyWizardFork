@@ -28,7 +28,8 @@ namespace Quinn.PlayerSystem
 		public event Action<float> OnPlayerHealthChange;
 		public event Action OnPlayerMaxHealthChange;
 
-		public event Action OnPlayerDeath, OnPlayerDeathPreSceneLoad;
+		public event Action OnPlayerDeath;
+		public event Action OnPlayerDeathPreSceneLoad;
 
 		public void Awake()
 		{

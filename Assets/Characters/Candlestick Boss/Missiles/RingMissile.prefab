@@ -275,12 +275,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Path
+      value: event:/CandleStickBoss/RingMissileDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: HasSplashDamage
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SpawnSound.Path
-      value: 
+      value: event:/CandleStickBoss/RingMissileSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DeathMissileCount
@@ -303,6 +307,22 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data1
+      value: -1818462410
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data2
+      value: 1322588554
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data3
+      value: -1508252543
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: HitSound.Guid.Data4
+      value: -128208614
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: RandomizeOscillation
       value: 1
       objectReference: {fileID: 0}
@@ -312,19 +332,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SpawnSound.Guid.Data1
-      value: 0
+      value: 1886100559
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SpawnSound.Guid.Data2
-      value: 0
+      value: 1123969414
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SpawnSound.Guid.Data3
-      value: 0
+      value: -762690140
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SpawnSound.Guid.Data4
-      value: 0
+      value: 433782624
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DeathMissileSpawnBehavior

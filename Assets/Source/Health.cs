@@ -81,7 +81,7 @@ namespace Quinn
 		{
 			if (HPBar != null)
 			{
-				HPBar.gameObject.SetActive(HasHBBar && Current < Max);
+				HPBar.gameObject.SetActive(HasHBBar && Current < Max && IsAlive);
 				HPBar.value = Current / Max;
 
 				HPArrow.gameObject.SetActive(HPBar.gameObject.activeInHierarchy);

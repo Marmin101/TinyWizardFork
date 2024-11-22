@@ -2,6 +2,7 @@ using DG.Tweening;
 using FMODUnity;
 using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
@@ -97,6 +98,13 @@ namespace Quinn.DungeonGeneration
 				ProximityHelpTextCanvas.transform.position = pos;
 				ProximityHelpHandle.transform.position = pos;
 			}
+		}
+
+		public void OnDestroy()
+		{
+			transform.DOKill();
+			ItemGlow.DOKill();
+			ContentHandle.transform.DOKill();
 		}
 
 		public void Open()

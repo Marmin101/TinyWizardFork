@@ -1,6 +1,7 @@
 ﻿using FMOD.Studio;
 using FMODUnity;
 using Quinn.AI;
+using Quinn.AI.BehaviorTree;
 using Quinn.AI.Pathfinding;
 using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
@@ -137,6 +138,15 @@ namespace Quinn.DungeonGeneration
 			else if (agent is StaticAgent staticAgent)
 			{
 				_staticAgents.Add(staticAgent);
+			}
+
+			if (agent is BTAgent bt && bt.IsBoss)
+			{
+				bt.Health.OnDeath += () =>
+				{
+					_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+					_customMusic.release();
+				};
 			}
 		}
 

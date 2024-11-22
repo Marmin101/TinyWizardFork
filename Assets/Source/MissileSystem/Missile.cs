@@ -136,7 +136,9 @@ namespace Quinn.MissileSystem
 				}
 
 				if (dmg.TakeDamage(DirectDamage, _rb.linearVelocity.normalized, Team, _owner, DirectStatusEffect, DirectStatusEffectDuration, knockbackSpeed))
+				{
 					OnImpact();
+				}
 			}
 			else if ((!IgnoreObstacles && collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) || collision.CompareTag("MissileBlocker"))
 			{

@@ -283,6 +283,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: DeathMissileCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DeathMissilePrefab
       value: 
       objectReference: {fileID: 4673170907953065690, guid: a2c86fb3da40b3b4093b66d13c785641, type: 3}

@@ -27,7 +27,7 @@ namespace Quinn.MissileSystem
 
 		private Vector2 _dir;
 
-		private async void Start()
+		public async void Start()
 		{
 			_dir = InitialDirection.normalized;
 			await Awaitable.WaitForSecondsAsync(StartDelay);
@@ -39,7 +39,7 @@ namespace Quinn.MissileSystem
 			}
 		}
 
-		private void Update()
+		public void Update()
 		{
 			if (RotationRate != 0f)
 			{

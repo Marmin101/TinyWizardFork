@@ -137,7 +137,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			}
 
 			// Charging staff spark.
-			if (IsSpecialHeld && CanCastExcludingCost && HasSpecial && CanAffordCost(SpecialManaConsume))
+			if (_isCharging)
 			{
 				Cooldown.Call(this, ChargingSparkInterval, Caster.Spark);
 			}
@@ -217,14 +217,19 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 		public override void OnSpecialUp()
 		{
-			_isCharging = false;
 			CanRegenMana = true;
 
 			Caster.Movement.RemoveSpeedModifier(this);
 			Caster.Movement.CanDash = true;
 
-			if (!HasSpecial || !CanCastExcludingCost || !CanAffordCost(SpecialManaConsume))
+			if (!HasSpecial || !CanCastExcludingCost || !CanAffordCost(SpecialManaConsume) || !_isCharging)
+			{
+				_isCharging = false;
 				return;
+			}
+
+			// Mustn't set to false because the if statement above must check it first.
+			_isCharging = false;
 
 			Caster.Spark();
 

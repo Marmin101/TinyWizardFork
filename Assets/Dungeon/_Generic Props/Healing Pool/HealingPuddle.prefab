@@ -1085,7 +1085,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.29839242}
+  m_Offset: {x: 0, y: 0.39104593}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.030303031}
@@ -1095,7 +1095,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.55781066, y: 0.060647815}
+  m_Size: {x: 0.55781066, y: 0.24595487}
   m_EdgeRadius: 0.1
 --- !u!210 &2878451563086054116
 SortingGroup:
@@ -1129,6 +1129,13 @@ MonoBehaviour:
       Data3: -1953428036
       Data4: -1254126884
     Path: event:/SteamSizzle
+  AdditionalSFX:
+    Guid:
+      Data1: 1741175908
+      Data2: 1205139220
+      Data3: -1203631977
+      Data4: 1589158022
+    Path: event:/HealingPuddle_HitLaugh
 --- !u!1 &7004830112275765551
 GameObject:
   m_ObjectHideFlags: 0

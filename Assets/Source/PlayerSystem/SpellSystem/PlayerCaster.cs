@@ -58,6 +58,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public PlayerMovement Movement { get; private set; }
 		public event Action<Staff> OnStaffEquipped;
 
+		public event Action<float> OnManaAdded, OnManaRemoved;
+
 		private float _nextInputTime;
 		private readonly BufferManager _inputBuffer = new();
 		private readonly List<Staff> _storedStaffs = new();
@@ -280,11 +282,18 @@ namespace Quinn.PlayerSystem.SpellSystem
 			{
 				_manaRegenStartTime = Time.time + ManaRegenDelay;
 			}
+
+			OnManaRemoved?.Invoke(amount);
 		}
 
 		public void ReplenishMana(float amount)
 		{
+			if (Mana >= MaxMana)
+				return;
+
 			Mana = Mathf.Min(Mana + amount, MaxMana);
+
+			OnManaAdded?.Invoke(amount);
 		}
 
 		public void FullyReplenishMana()

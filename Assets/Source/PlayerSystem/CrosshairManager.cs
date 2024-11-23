@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using FMODUnity;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Quinn.PlayerSystem
@@ -20,7 +21,7 @@ namespace Quinn.PlayerSystem
 		private float _frameSize;
 		private float _chargeScale;
 
-		private void Awake()
+		public void Awake()
 		{
 			Debug.Assert(Instance == null);
 			Instance = this;
@@ -38,12 +39,12 @@ namespace Quinn.PlayerSystem
 			_chargeScale = 1f;
 		}
 
-		private void LateUpdate()
+		public void LateUpdate()
 		{
 			_crosshair.transform.position = Position;
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			if (Instance == this)
 				Instance = null;
@@ -66,6 +67,8 @@ namespace Quinn.PlayerSystem
 		{
 			_chargeScale = percent;
 			_chargeTransform.sizeDelta = _chargeScale * _frameSize * Vector2.one;
+
+			RuntimeManager.StudioSystem.setParameterByName("staff-charge", Mathf.Clamp01(percent));
 		}
 	}
 }

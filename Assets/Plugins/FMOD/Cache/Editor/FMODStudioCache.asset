@@ -150,10 +150,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638679112347391417
+  lastModified: 638679239859434996
   FileSizes:
   - Name: Desktop
-    Value: 4166
+    Value: 4382
   Exists: 1
 --- !u!114 &-7547616128454381924
 MonoBehaviour:
@@ -333,6 +333,33 @@ MonoBehaviour:
     Data2: 1112889997
     Data3: -1801340
     Data4: -583115887
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6081536867106167308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CandleStickBoss/TP_Reappear
+  m_EditorClassIdentifier: 
+  Path: event:/CandleStickBoss/TP_Reappear
+  Guid:
+    Data1: -1348980430
+    Data2: 1280761452
+    Data3: -255090518
+    Data4: -721429751
   Banks:
   - {fileID: -2968825907237438240}
   IsStream: 0
@@ -733,10 +760,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638679112346102407
+  lastModified: 638679239859352255
   FileSizes:
   - Name: Desktop
-    Value: 21055264
+    Value: 21248736
   Exists: 1
 --- !u!114 &-2434292276413304711
 MonoBehaviour:
@@ -1114,6 +1141,11 @@ MonoBehaviour:
   - {fileID: 3615147995808045134}
   - {fileID: -8386629255943556981}
   - {fileID: 6386098666644167591}
+  - {fileID: 6404985545914959916}
+  - {fileID: 216871848012550747}
+  - {fileID: -6081536867106167308}
+  - {fileID: 197576933216355229}
+  - {fileID: 7001978688876898816}
   EditorParameters:
   - {fileID: -1107108986341929734}
   - {fileID: 5635148614794159091}
@@ -1123,7 +1155,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638679112347391417
+  cacheTime: 638679239859434996
   cacheVersion: 131621
 --- !u!114 &102219430115634501
 MonoBehaviour:
@@ -1147,6 +1179,60 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   IsStream: 0
   Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &197576933216355229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CandleStickBoss/TP_Disappear
+  m_EditorClassIdentifier: 
+  Path: event:/CandleStickBoss/TP_Disappear
+  Guid:
+    Data1: 1468959709
+    Data2: 1142100936
+    Data3: 1343431053
+    Data4: 1368046596
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &216871848012550747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CandleStickBoss/Death
+  m_EditorClassIdentifier: 
+  Path: event:/CandleStickBoss/Death
+  Guid:
+    Data1: -1182026105
+    Data2: 1192709635
+    Data3: 1446077362
+    Data4: -881031735
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -1931,6 +2017,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 19636
+--- !u!114 &6404985545914959916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SecretDiscovered
+  m_EditorClassIdentifier: 
+  Path: event:/SecretDiscovered
+  Guid:
+    Data1: 1878546677
+    Data2: 1082999125
+    Data3: -1565199734
+    Data4: -2008328417
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &6522334929721642438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,6 +2122,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &7001978688876898816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CandleStickBoss/Footstep
+  m_EditorClassIdentifier: 
+  Path: event:/CandleStickBoss/Footstep
+  Guid:
+    Data1: 1023188043
+    Data2: 1308523099
+    Data3: 1094943922
+    Data4: -1228423479
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &7480735667609874300
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,9 @@ namespace Quinn.DungeonGeneration
 		[Space, Tooltip("Whole floor prefabs.")]
 		public GameObject[] Variants;
 
+		[Tooltip("For testing purposes. Doesn't work outside of editor mode.")]
+		public GameObject OverrideVariant;
+
 		public void OnValidate()
 		{
 			if (Generatable != null)
@@ -32,8 +35,14 @@ namespace Quinn.DungeonGeneration
 
 		public GameObject GetVariant()
 		{
-			// Buttons to solo
-			return null;
+#if UNITY_EDITOR
+			if (OverrideVariant != null)
+			{
+				return OverrideVariant;
+			}
+#endif
+
+			return Variants.GetRandom();
 		}
 	}
 }

@@ -64,6 +64,7 @@ namespace Quinn.AI
 			AIManager.Instance.RemoveAgent(this);
 
 			Animator.SetTrigger("Die");
+			GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
 		}
 	}
 }

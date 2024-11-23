@@ -234,14 +234,14 @@
 	</object>
 	<object class="MixerBusFader" id="{c1a2ddad-c34e-4aa7-a0f4-102ebc5103cb}" />
 	<object class="SpatialiserEffect" id="{a339fef3-9ba5-43be-8990-5a0373093328}">
-		<property name="distanceRolloffType">
-			<value>2</value>
-		</property>
 		<property name="maximumDistance">
-			<value>5</value>
+			<value>30</value>
 		</property>
 		<property name="overrideRange">
 			<value>true</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{d956962b-b912-48a1-af98-fdc037115e05}">

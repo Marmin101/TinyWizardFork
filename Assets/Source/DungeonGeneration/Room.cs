@@ -72,6 +72,7 @@ namespace Quinn.DungeonGeneration
 		private readonly HashSet<StaticAgent> _staticAgents = new();
 
 		private EventInstance _customMusic;
+		private bool _isBossDead;
 
 		public void Awake()
 		{
@@ -203,15 +204,18 @@ namespace Quinn.DungeonGeneration
 					StartRoomEncounter();
 				}
 
-				if (DisableMusic || HasCustomMusic)
+				if (!_isBossDead)
 				{
-					RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f);
-				}
+					if (DisableMusic || HasCustomMusic)
+					{
+						RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f);
+					}
 
-				if (HasCustomMusic)
-				{
-					_customMusic = RuntimeManager.CreateInstance(CustomMusic);
-					_customMusic.start();
+					if (HasCustomMusic)
+					{
+						_customMusic = RuntimeManager.CreateInstance(CustomMusic);
+						_customMusic.start();
+					}
 				}
 			}
 		}
@@ -280,6 +284,11 @@ namespace Quinn.DungeonGeneration
 		private async void OnAgentDeath(IAgent agent)
 		{
 			_liveAgents.Remove(agent);
+
+			if (agent is BTAgent bt && bt.IsBoss)
+			{
+				_isBossDead = true;
+			}
 
 			if (_liveAgents.Count == 0)
 			{

@@ -28,7 +28,7 @@ namespace Quinn.DungeonGeneration
 				filtered = Staffs;
 			}
 
-			var instance = Staffs.GetRandom().Clone(transform);
+			var instance = filtered.GetRandom().Clone(transform);
 			instance.GetComponent<Staff>().OnPickedUp += () =>
 			{
 				transform.DOKill();

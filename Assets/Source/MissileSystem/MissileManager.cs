@@ -35,6 +35,9 @@ namespace Quinn.MissileSystem
 			int i = 0;
 			foreach (var instance in instances)
 			{
+				if (instance == null)
+					return;
+
 				Vector2 missileDir = GetDirection(behavior, dir, i, spreadAngle, count);
 
 				if (instance != null)

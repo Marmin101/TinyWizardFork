@@ -17,6 +17,8 @@ namespace Quinn.DungeonGeneration
 		{
 			if (collision.IsPlayer())
 			{
+				DungeonGenerator.Instance.IncrementFloorIndex();
+
 				await PlayerManager.Instance.Player.ExitFloorAsync(this);
 				PlayerManager.Instance.RespawnSequence();
 			}

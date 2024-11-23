@@ -1228,6 +1228,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 621698114730883495, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3839545687506923732}
+    - targetCorrespondingSourceObject: {fileID: 621698114730883495, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8072228063993851239}
     - targetCorrespondingSourceObject: {fileID: 4140999475625117699, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8707294235502916513}
@@ -1388,6 +1391,18 @@ MonoBehaviour:
   HealthParameterKey: intensity
   HealthParamMin: 1
   HealthParamMax: 0
+--- !u!114 &8072228063993851239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4786387607641431859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d41744a149a884d871a003ab112adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5041226214707813878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1097213129333881698, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}

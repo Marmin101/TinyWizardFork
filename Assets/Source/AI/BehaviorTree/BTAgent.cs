@@ -125,7 +125,6 @@ namespace Quinn.AI.BehaviorTree
 			if (IsBoss)
 			{
 				Room.KillAlLiveAgents();
-				DungeonGenerator.Instance.IncrementFloorIndex();
 			}
 		}
 	}

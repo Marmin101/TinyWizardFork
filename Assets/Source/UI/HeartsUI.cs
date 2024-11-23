@@ -114,7 +114,7 @@ namespace Quinn.UI
 					var img = child.GetComponent<Image>();
 					img.sprite = isFull ? FullHeart : EmptyHeart;
 
-					if (isFull)
+					if (isFull && isHealing)
 					{
 						PunchHeart(child, i);
 					}

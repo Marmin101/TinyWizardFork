@@ -1047,9 +1047,23 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.15
+    functionName: Play
+    data: event:/CandlestickBoss/TP_Disappear
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5833333
     functionName: SetAnimationTrigger
     data: tp
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.98333335
+    functionName: Play
+    data: event:/CandlestickBoss/TP_Reappear
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

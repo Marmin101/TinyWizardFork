@@ -204,7 +204,7 @@ namespace Quinn.DungeonGeneration
 			//var prefab = floor.Generatable.GetWeightedRandom(x => x.Weight).Prefab;
 			//await GenerateRoomAsync(floor.StartingRoom, 0, 0);
 
-			await floor.Variants.GetRandom().CloneAsync();
+			await floor.GetVariant().CloneAsync();
 
 			var fade = CameraManager.Instance.FadeIn();
 			await PlayerManager.Instance.Player.EnterFloorAsync();

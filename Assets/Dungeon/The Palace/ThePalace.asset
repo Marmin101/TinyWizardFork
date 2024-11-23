@@ -26,6 +26,9 @@ MonoBehaviour:
       Data3: 321471146
       Data4: 989156169
     Path: event:/Music/ThePalace
+  Title: 'The
+
+    Palace'
   StartingRoom: {fileID: 6574645483326721954, guid: 50e68671730ae934fb44b057a4cf3655, type: 3}
   Generatable:
   - Prefab: {fileID: 7734380130235892607, guid: b01daf92ccb97e8489ad37cd4a45ce0b, type: 3}
@@ -48,3 +51,4 @@ MonoBehaviour:
     SumWeight: 600
   Variants:
   - {fileID: 1154821115307193441, guid: 9118f15f9732a5d40824bde00eb6c67e, type: 3}
+  OverrideVariant: {fileID: 0}

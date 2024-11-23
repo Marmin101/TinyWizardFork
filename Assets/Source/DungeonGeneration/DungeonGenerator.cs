@@ -196,13 +196,12 @@ namespace Quinn.DungeonGeneration
 			{
 				DOVirtual.DelayedCall(MusicDelay, () =>
 				{
+					RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f, ignoreseekspeed: true);
+
 					_music = RuntimeManager.CreateInstance(floor.Music);
 					_music.start();
 				});
 			}
-
-			//var prefab = floor.Generatable.GetWeightedRandom(x => x.Weight).Prefab;
-			//await GenerateRoomAsync(floor.StartingRoom, 0, 0);
 
 			await floor.GetVariant().CloneAsync();
 

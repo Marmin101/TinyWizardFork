@@ -9,6 +9,8 @@ namespace Quinn.DungeonGeneration
 	{
 		public EventReference Ambience;
 		public EventReference Music;
+		[Multiline]
+		public string Title = "Floor\nTitle";
 
 		[Space]
 		public Room StartingRoom;

@@ -2,9 +2,11 @@
 using FMOD.Studio;
 using FMODUnity;
 using Quinn.DungeonGeneration;
+using Quinn.UI;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
@@ -41,6 +43,13 @@ namespace Quinn.PlayerSystem
 		[SerializeField, Required]
 		private VisualEffect PuddleVFX, PuddleHealingVFX;
 
+		[Space, SerializeField, Required]
+		private CanvasGroup FloorTitleGroup;
+		[SerializeField, Required]
+		private TextMeshProUGUI FloorTitleText;
+		[SerializeField]
+		private EventReference FloorEnterCue;
+
 		private Animator _animator;
 		private bool _wasMoving;
 		private float _nextStartFootstepSoundAllowedTime;
@@ -64,6 +73,8 @@ namespace Quinn.PlayerSystem
 
 			_puddleHealingVFXSpawnRate = PuddleHealingVFX.GetFloat("SpawnRate");
 			PuddleHealingVFX.SetFloat("SpawnRate", 0f);
+
+			FloorTitleGroup.alpha = 0f;
 		}
 
 		public void Update()
@@ -144,6 +155,10 @@ namespace Quinn.PlayerSystem
 
 		public async Awaitable EnterFloorAsync()
 		{
+			HUD.Instance.Hide();
+			FloorTitleText.text = DungeonGenerator.Instance.ActiveFloor.Title;
+			FloorTitleGroup.alpha = 1f;
+
 			InputManager.Instance.DisableInput();
 
 			var collider = GetComponent<Collider2D>();
@@ -152,10 +167,16 @@ namespace Quinn.PlayerSystem
 			_animator.SetTrigger("EnterSequence");
 			await Wait.Seconds(1f, destroyCancellationToken);
 
+			Audio.Play(FloorEnterCue);
+
 			collider.enabled = true;
 
 			if (InputManager.Instance != null)
 				InputManager.Instance.EnableInput();
+
+			await Wait.Seconds(2f);
+			await FloorTitleGroup.DOFade(0f, 0.3f).AsyncWaitForCompletion();
+			HUD.Instance.FadeIn();
 		}
 
 		public async Awaitable ExitFloorAsync(FloorExit exit)

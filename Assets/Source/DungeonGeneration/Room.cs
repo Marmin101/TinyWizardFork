@@ -225,41 +225,14 @@ namespace Quinn.DungeonGeneration
 			if (collider.IsPlayer())
 			{
 				RoomCamera.enabled = false;
-				//GenerateRoomAtPlayer(collider);
-
-				if (DisableMusic || HasCustomMusic)
-				{
-					RuntimeManager.StudioSystem.setParameterByName("enable-music", 1f);
-				}
+				// Always enable music upon leaivng sot that starting room (which don't start with music) will have music in their hallways.
+				RuntimeManager.StudioSystem.setParameterByName("enable-music", 1f);
 
 				if (HasCustomMusic)
 				{
 					_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 					_customMusic.release();
 				}
-			}
-		}
-
-		private void GenerateRoomAtPlayer(Collider2D collider)
-		{
-			var generator = DungeonGenerator.Instance;
-			if (generator == null)
-				return;
-
-			Vector2 playerExitDir = transform.position.DirectionTo(collider.transform.position);
-			if (playerExitDir.IsVertical())
-			{
-				if (playerExitDir.y > 0f)
-					generator.GenerateRoomAt(RoomGridIndex.x, RoomGridIndex.y + 1);
-				else
-					generator.GenerateRoomAt(RoomGridIndex.x, RoomGridIndex.y - 1);
-			}
-			else
-			{
-				if (playerExitDir.x > 0f)
-					generator.GenerateRoomAt(RoomGridIndex.x + 1, RoomGridIndex.y);
-				else
-					generator.GenerateRoomAt(RoomGridIndex.x - 1, RoomGridIndex.y);
 			}
 		}
 

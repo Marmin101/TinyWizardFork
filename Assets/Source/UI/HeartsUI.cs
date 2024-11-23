@@ -67,7 +67,7 @@ namespace Quinn.UI
 					Audio.Play(GainHeartSound);
 				}
 
-				UpdateHearts();
+				UpdateHearts(isHealing: delta > 0f);
 
 				await transform.parent.DOScale(PunchScale, PunchDur / 2f)
 					.SetEase(PunchBigEase)
@@ -99,7 +99,7 @@ namespace Quinn.UI
 			}
 		}
 
-		private void UpdateHearts()
+		private void UpdateHearts(bool isHealing = false)
 		{
 			int current = Mathf.RoundToInt(PlayerManager.Instance.Health.Current);
 
@@ -109,10 +109,25 @@ namespace Quinn.UI
 
 				if (child != null)
 				{
+					bool isFull = i < current;
+
 					var img = child.GetComponent<Image>();
-					img.sprite = i < current ? FullHeart : EmptyHeart;
+					img.sprite = isFull ? FullHeart : EmptyHeart;
+
+					if (isFull)
+					{
+						PunchHeart(child, i);
+					}
 				}
 			}
+		}
+
+		private async void PunchHeart(Transform heart, int index)
+		{
+			await Wait.Seconds(index * 0.1f);
+
+			await heart.DOScale(2f, 0.1f).AsyncWaitForCompletion();
+			heart.DOScale(1f, 0.1f);
 		}
 	}
 }

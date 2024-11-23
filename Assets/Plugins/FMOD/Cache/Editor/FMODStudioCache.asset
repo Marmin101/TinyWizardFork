@@ -163,6 +163,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-8143979176360325787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SlimeDeath
+  m_EditorClassIdentifier: 
+  Path: event:/SlimeDeath
+  Guid:
+    Data1: 431280200
+    Data2: 1084119507
+    Data3: 2030128319
+    Data4: -1500561691
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-7990004874220230085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,10 +287,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638679701570839833
+  lastModified: 638679716701506787
   FileSizes:
   - Name: Desktop
-    Value: 4482
+    Value: 4518
   Exists: 1
 --- !u!114 &-7689791116744549865
 MonoBehaviour:
@@ -843,10 +870,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638679701570763012
+  lastModified: 638679716701422570
   FileSizes:
   - Name: Desktop
-    Value: 21906848
+    Value: 22019424
   Exists: 1
 --- !u!114 &-2838422600137601042
 MonoBehaviour:
@@ -1259,6 +1286,7 @@ MonoBehaviour:
   - {fileID: -88885292239963342}
   - {fileID: -3653328144137714907}
   - {fileID: -8158266037929583886}
+  - {fileID: -8143979176360325787}
   EditorParameters:
   - {fileID: -5851875343020371348}
   - {fileID: 2034490303827622854}
@@ -1268,7 +1296,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638679701570839833
+  cacheTime: 638679716701506787
   cacheVersion: 131621
 --- !u!114 &391205543735344162
 MonoBehaviour:

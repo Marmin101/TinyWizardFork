@@ -38,6 +38,8 @@ namespace Quinn.PlayerSystem
 
 		[Space, SerializeField, Required]
 		private SpriteMask PuddleMask;
+		[SerializeField, Required]
+		private VisualEffect PuddleVFX;
 
 		private Animator _animator;
 		private bool _wasMoving;
@@ -108,8 +110,15 @@ namespace Quinn.PlayerSystem
 
 			var floorColor = SoundMaterialToColor(mat);
 
-			FootstepVFX.SetVector4("Color", floorColor);
-			FootstepVFX.Play();
+			if (mat is SoundMaterialType.HealingPuddle)
+			{
+				PuddleVFX.Play();
+			}
+			else
+			{
+				FootstepVFX.SetVector4("Color", floorColor);
+				FootstepVFX.Play();
+			}
 		}
 
 		public void OnLand_Anim()

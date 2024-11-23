@@ -144,7 +144,7 @@
 			<value>-11.5</value>
 		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Near</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{26b9711e-5359-49db-b598-c10f254a6e16}</destination>
@@ -175,7 +175,7 @@
 			<value>-18.5</value>
 		</property>
 		<property name="name">
-			<value>Audio 2</value>
+			<value>Far</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{0071ef2d-74a6-4a7a-968d-21a19fd8d9c1}</destination>
@@ -286,6 +286,12 @@
 	</object>
 	<object class="MixerBusFader" id="{e53452c3-261a-4d34-b327-2aa95b21e545}" />
 	<object class="SpatialiserEffect" id="{f1d5cdee-ef23-4213-995d-942463a0c445}">
+		<property name="distanceRolloffType">
+			<value>3</value>
+		</property>
+		<property name="minimumDistance">
+			<value>1.80000007</value>
+		</property>
 		<property name="maximumDistance">
 			<value>10</value>
 		</property>

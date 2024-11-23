@@ -82,6 +82,9 @@ namespace Quinn.MissileSystem
 		[SerializeField, FoldoutGroup("Explosion"), ShowIf(nameof(SpawnMissilesOnDeath))]
 		private float DeathMissileSpread = 360f;
 
+		[Space, SerializeField, FoldoutGroup("Misc")]
+		private bool CreateSteam;
+
 		private Rigidbody2D _rb;
 		private GameObject _owner;
 
@@ -143,6 +146,11 @@ namespace Quinn.MissileSystem
 			else if ((!IgnoreObstacles && collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) || collision.CompareTag("MissileBlocker"))
 			{
 				OnImpact();
+
+				if (CreateSteam && collision.TryGetComponent(out SteamGenerator gen))
+				{
+					gen.Create();
+				}
 			}
 		}
 

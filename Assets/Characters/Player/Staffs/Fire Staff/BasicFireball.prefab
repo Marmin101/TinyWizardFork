@@ -299,6 +299,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnOnDeath
+      value: 
+      objectReference: {fileID: 3759161245162595829, guid: e15b78116c2e2144baa45ddfc551c63f, type: 3}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashRadius
       value: 0.5
       objectReference: {fileID: 0}

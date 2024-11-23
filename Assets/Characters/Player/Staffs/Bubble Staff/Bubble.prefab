@@ -77,6 +77,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SpawnOnDeath
+      value: 
+      objectReference: {fileID: 3759161245162595829, guid: e79eec4a1061ed14ba3ec156ef95b36a, type: 3}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashRadius
       value: 0.6
       objectReference: {fileID: 0}
@@ -135,6 +139,10 @@ PrefabInstance:
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: UsesCustomKnockbackSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: DelayDestructionOnDeath.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

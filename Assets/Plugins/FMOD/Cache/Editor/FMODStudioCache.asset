@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9127872754805016547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HealingPuddle_Healing
+  m_EditorClassIdentifier: 
+  Path: event:/HealingPuddle_Healing
+  Guid:
+    Data1: 904920476
+    Data2: 1202122291
+    Data3: 964696240
+    Data4: -734862543
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 38491
 --- !u!114 &-8560040797665532739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +54,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 113454
+--- !u!114 &-8386629255943556981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HealingPuddle_HitLaugh
+  m_EditorClassIdentifier: 
+  Path: event:/HealingPuddle_HitLaugh
+  Guid:
+    Data1: 1741175908
+    Data2: 1205139220
+    Data3: -1203631977
+    Data4: 1589158022
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8291917029079521960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,10 +150,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638679078085262757
+  lastModified: 638679104128356301
   FileSizes:
   - Name: Desktop
-    Value: 3986
+    Value: 4076
   Exists: 1
 --- !u!114 &-7547616128454381924
 MonoBehaviour:
@@ -155,6 +209,30 @@ MonoBehaviour:
   - Stone
   - Carpet
   - HealingPuddle
+  Exists: 1
+--- !u!114 &-7232500897850866189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CandlestickMinion_Ambient/intensity
+  m_EditorClassIdentifier: 
+  Name: intensity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3925878183
+    data2: 3765186856
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &-7113194547132341263
 MonoBehaviour:
@@ -264,33 +342,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-5954444374186711479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/HealingPool_Amb
-  m_EditorClassIdentifier: 
-  Path: event:/HealingPool_Amb
-  Guid:
-    Data1: -657960060
-    Data2: 1181893894
-    Data3: 607606413
-    Data4: -1153108623
-  Banks:
-  - {fileID: -2968825907237438240}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 4000
 --- !u!114 &-5754518565329419540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,30 +477,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-4801985427754574225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/CandleStickMinion_Ambient/intensity
-  m_EditorClassIdentifier: 
-  Name: intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3925878183
-    data2: 3765186856
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-4547670663335114107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,38 +709,11 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638679078085194664
+  lastModified: 638679104128289879
   FileSizes:
   - Name: Desktop
-    Value: 20433600
+    Value: 21052576
   Exists: 1
---- !u!114 &-2728910455281039084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/HealingPool_Stream
-  m_EditorClassIdentifier: 
-  Path: event:/HealingPool_Stream
-  Guid:
-    Data1: 1958878615
-    Data2: 1332820010
-    Data3: 319727267
-    Data4: -1829367757
-  Banks:
-  - {fileID: -2968825907237438240}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 36000
 --- !u!114 &-2434292276413304711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,6 +876,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-605783344207277473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HealingPuddle_Stream
+  m_EditorClassIdentifier: 
+  Path: event:/HealingPuddle_Stream
+  Guid:
+    Data1: 1958878615
+    Data2: 1332820010
+    Data3: 319727267
+    Data4: -1829367757
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22678
 --- !u!114 &-334840332311676355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,7 +1031,6 @@ MonoBehaviour:
   - {fileID: 3046989114476348994}
   - {fileID: 2819544395752808584}
   - {fileID: -334840332311676355}
-  - {fileID: -5954444374186711479}
   - {fileID: -5625566802308062048}
   - {fileID: 4322180190768798155}
   - {fileID: -3051070407911946401}
@@ -1015,7 +1041,6 @@ MonoBehaviour:
   - {fileID: 7480735667609874300}
   - {fileID: -4161204371100370177}
   - {fileID: 4607241038561559709}
-  - {fileID: 7912495559643190558}
   - {fileID: 7496015496139200795}
   - {fileID: 3765663462551295787}
   - {fileID: 3044461073969518523}
@@ -1033,9 +1058,13 @@ MonoBehaviour:
   - {fileID: -4547670663335114107}
   - {fileID: 226509730689486319}
   - {fileID: 1770658701810568276}
-  - {fileID: -2728910455281039084}
   - {fileID: -3191679025124013497}
   - {fileID: 7522921050492314938}
+  - {fileID: -9127872754805016547}
+  - {fileID: 590328935015715296}
+  - {fileID: -605783344207277473}
+  - {fileID: 3615147995808045134}
+  - {fileID: -8386629255943556981}
   EditorParameters:
   - {fileID: -1107108986341929734}
   - {fileID: 5635148614794159091}
@@ -1044,7 +1073,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638679078085262757
+  cacheTime: 638679104128356301
   cacheVersion: 131621
 --- !u!114 &102219430115634501
 MonoBehaviour:
@@ -1126,6 +1155,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+  Length: 0
+--- !u!114 &590328935015715296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CandleStickBoss/CandlestickMinion_Ambient
+  m_EditorClassIdentifier: 
+  Path: event:/CandleStickBoss/CandlestickMinion_Ambient
+  Guid:
+    Data1: 129820587
+    Data2: 1313076969
+    Data3: -1702617955
+    Data4: 1728699023
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7232500897850866189}
+  MinDistance: 1
+  MaxDistance: 45
   Length: 0
 --- !u!114 &1077211779039115075
 MonoBehaviour:
@@ -1449,6 +1506,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &3615147995808045134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HealingPuddle_Amb
+  m_EditorClassIdentifier: 
+  Path: event:/HealingPuddle_Amb
+  Guid:
+    Data1: -657960060
+    Data2: 1181893894
+    Data3: 607606413
+    Data4: -1153108623
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 19636
 --- !u!114 &3765663462551295787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1984,34 +2068,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1090
---- !u!114 &7912495559643190558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/CandleStickMinion_Ambient
-  m_EditorClassIdentifier: 
-  Path: event:/CandleStickMinion_Ambient
-  Guid:
-    Data1: 129820587
-    Data2: 1313076969
-    Data3: -1702617955
-    Data4: 1728699023
-  Banks:
-  - {fileID: -2968825907237438240}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -4801985427754574225}
-  MinDistance: 1
-  MaxDistance: 45
-  Length: 0
 --- !u!114 &8732376562501023406
 MonoBehaviour:
   m_ObjectHideFlags: 0

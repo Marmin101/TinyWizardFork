@@ -1382,7 +1382,7 @@ MonoBehaviour:
       Data2: 1313076969
       Data3: -1702617955
       Data4: 1728699023
-    Path: event:/CandlestickMinion_Ambient
+    Path: event:/CandleStickBoss/CandlestickMinion_Ambient
   HealthControlsParameter: 1
   Health: {fileID: 8689911750249942749}
   HealthParameterKey: intensity

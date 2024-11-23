@@ -35,7 +35,7 @@ namespace Quinn.UI
 
 		public void Update()
 		{
-			if (PlayerManager.Instance.Health.Current == 1f)
+			if (PlayerManager.Instance.Health != null && PlayerManager.Instance.Health.Current == 1f)
 			{
 				transform.localPosition = new Vector3()
 				{

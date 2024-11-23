@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000212EF96F078 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000212EF9754F8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,3 +18,227 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002127DA17B28, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002127DA17B28
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002127DA17B28
+[LOG] SoundI::release                          : ChestAmbience (0000021404A73E28)
+[LOG] SoundI::release                          :     ChestAmbience (0000021057DD3C68)
+[LOG] SoundI::release                          :     ChestAmbience (000002145775E1C8)
+[LOG] SystemI::createSound                     : filename = FMOD/TinyWizard/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000212742714D8, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000212742714D8
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/TinyWizard/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 20881440
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 171136
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000213D2AAD2E0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ChestAmbience', format=5, channels=2, frequency=48000, lengthbytes=201056, lengthpcm=942558, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.113586.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000212742714D8
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000213C93DA808, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000213C93DA808
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000213C93DA808
+[LOG] SoundI::release                          : ChestAmbience (000002142CC248D8)
+[LOG] SoundI::release                          :     ChestAmbience (000002127A092DC8)
+[LOG] SoundI::release                          :     ChestAmbience (000002127DA17B28)
+[LOG] SystemI::createSound                     : filename = FMOD/TinyWizard/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002140B3D6928, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002140B3D6928
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/TinyWizard/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 20881440
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 171136
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000212741ADB50
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ChestAmbience', format=5, channels=2, frequency=48000, lengthbytes=201056, lengthpcm=942558, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.113586.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002140B3D6928
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002127DA172B8, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002127DA172B8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002127DA172B8
+[LOG] SoundI::release                          : ChestAmbience (00000212742714D8)
+[LOG] SoundI::release                          :     ChestAmbience (0000021273EEFF78)
+[LOG] SoundI::release                          :     ChestAmbience (00000213C93DA808)
+[LOG] SystemI::createSound                     : filename = FMOD/TinyWizard/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000021274270C68, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000021274270C68
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/TinyWizard/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 20881440
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 171136
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000213D2AAD1A0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ChestAmbience', format=5, channels=2, frequency=48000, lengthbytes=201056, lengthpcm=942558, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.113586.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000021274270C68
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000213D9794228, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000213D9794228
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000213D9794228
+[LOG] SoundI::release                          : ChestAmbience (000002140B3D6928)
+[LOG] SoundI::release                          :     ChestAmbience (000002127A092A88)
+[LOG] SoundI::release                          :     ChestAmbience (000002127DA172B8)
+[LOG] SystemI::createSound                     : filename = FMOD/TinyWizard/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002145775E378, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002145775E378
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/TinyWizard/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 20881440
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 171136
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000213D2AAD420
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ChestAmbience', format=5, channels=2, frequency=48000, lengthbytes=201056, lengthpcm=942558, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.113586.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002145775E378
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002140A96B238, queue head = 00000213C8D26B38, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002140A96B238
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002140A96B238
+[LOG] SoundI::release                          : ChestAmbience (0000021274270C68)
+[LOG] SoundI::release                          :     ChestAmbience (000002127A093448)
+[LOG] SoundI::release                          :     ChestAmbience (00000213D9794228)
+[LOG] SoundI::release                          :  (00000213C976B918)
+[LOG] SoundI::release                          :     Inst_GainHeart_04 (00000213832FC3F8)
+[LOG] SoundI::release                          :  (00000213C976BD68)
+[LOG] SoundI::release                          :     Inst_GainHeart_05 (00000213832FC8D8)
+[LOG] SoundI::release                          :  (00000212F0E7C638)
+[LOG] SoundI::release                          :     SpellFullyCharged_01 (0000021273EEEA58)
+[LOG] SoundI::release                          :  (00000212F0E7CBF8)
+[LOG] SoundI::release                          :     SpellFullyCharged_02 (0000021273EED878)
+[LOG] SoundI::release                          :  (00000212F0E7B218)
+[LOG] SoundI::release                          :     SpellFullyCharged_03 (0000021273EED1F8)
+[LOG] SoundI::release                          :  (00000212F0E7B0A8)
+[LOG] SoundI::release                          :     SpellFullyCharged_04 (0000021273EEF418)
+[LOG] SoundI::release                          :  (00000212F0E7CED8)
+[LOG] SoundI::release                          :     SpellFullyCharged_05 (0000021273EECD18)
+[LOG] SoundI::release                          :  (00000212F0048C28)
+[LOG] SoundI::release                          :     Fireball Hit (1) (0000021279CD5358)
+[LOG] SoundI::release                          :  (00000212F00480A8)
+[LOG] SoundI::release                          :     Fireball Hit (2) (0000021279CD4CD8)
+[LOG] SoundI::release                          :  (00000212F0048668)
+[LOG] SoundI::release                          :     HealingPuddle_Hit_Laugh-01 (0000021473FCC548)
+[LOG] SoundI::release                          :  (00000212F00484F8)
+[LOG] SoundI::release                          :     HealingPuddle_Hit_Laugh-02 (0000021473FCC6E8)
+[LOG] SoundI::release                          :  (00000214C0F0F668)
+[LOG] SoundI::release                          :     HealingPuddle_Hit_Laugh-03 (0000021279CD5018)
+[LOG] SoundI::release                          :  (00000214C0F0F0A8)
+[LOG] SoundI::release                          :     Fireball Cast (1) (0000021276855078)
+[LOG] SoundI::release                          :  (00000214C0F0FD98)
+[LOG] SoundI::release                          :     Fireball Cast (2) (0000021458058738)
+[LOG] SoundI::release                          :  (00000214C0F0F7D8)
+[LOG] SoundI::release                          :     Fireball Cast (3) (00000214580583F8)
+[LOG] SoundI::release                          :  (00000214C0F0FAB8)
+[LOG] SoundI::release                          :     Fireball Cast (4) (0000021276855898)
+[LOG] SoundI::release                          :  (00000214C0F0FC28)
+[LOG] SoundI::release                          :     Inst_FireStaff_Cast_01 (0000021276855A38)
+[LOG] SoundI::release                          :  (00000214C0F0F388)
+[LOG] SoundI::release                          :     Inst_FireStaff_Cast_02 (0000021279CD54F8)
+[LOG] SoundI::release                          :  (00000214C0F0F4F8)
+[LOG] SoundI::release                          :     Inst_FireStaff_Cast_03 (0000021279CD4B38)
+[LOG] SoundI::release                          :  (00000214C0F0F948)
+[LOG] SoundI::release                          :     Inst_FireStaff_Cast_04 (0000021276855BD8)
+[LOG] SoundI::release                          :  (00000213E038D5A8)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_01 (00000212787D87C8)
+[LOG] SoundI::release                          :  (00000213D28A1A38)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_02 (0000021277F0F5A8)
+[LOG] SoundI::release                          :  (00000214C05FE938)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_03 (0000021277F0E708)
+[LOG] SoundI::release                          :  (000002128AB72808)
+[LOG] SoundI::release                          :     Inst_Footstep_Stone_04 (0000021057DD3FA8)
+[LOG] SoundI::release                          :  (00000213D28A1E88)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_01 (0000021277F112E8)
+[LOG] SoundI::release                          :  (000002128AB723B8)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_02 (0000021057DD47C8)
+[LOG] SoundI::release                          :  (00000213E038D9F8)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_03 (00000212787D9B48)
+[LOG] SoundI::release                          :  (00000213D28A1478)
+[LOG] SoundI::release                          :     Inst_Footstep_Carpet_04 (0000021277F11628)
+[LOG] SoundI::release                          :  (00000214C05FEAA8)
+[LOG] SoundI::release                          :     footstep_stone_01 (0000021277F0F268)
+[LOG] SoundI::release                          :  (00000214C05FE378)
+[LOG] SoundI::release                          :     footstep_stone_02 (0000021057DD18A8)
+[LOG] SoundI::release                          :  (00000214C05FE098)
+[LOG] SoundI::release                          :     footstep_stone_03 (0000021277F0EF28)
+[LOG] SoundI::release                          :  (00000213E038CD08)
+[LOG] SoundI::release                          :     footstep_stone_04 (00000212787D94C8)
+[LOG] SoundI::release                          :  (00000213D28A18C8)
+[LOG] SoundI::release                          :     footstep_stone_05 (0000021277F105E8)
+[LOG] SoundI::release                          :  (000002128AB72DC8)
+[LOG] SoundI::release                          :     footstep_stone_06 (0000021057DD1D88)
+[LOG] SoundI::release                          :  (00000213E038CFE8)
+[LOG] SoundI::release                          :     footstep_stone_07 (0000021277F0F408)
+[LOG] SoundI::release                          :  (00000214C05FE7C8)
+[LOG] SoundI::release                          :     footstep_stone_08 (0000021277F10AC8)
+[LOG] SoundI::release                          :  (00000213E038D2C8)
+[LOG] SoundI::release                          :     footstep_stone_09 (0000021277F10C68)
+[LOG] SoundI::release                          :  (00000213D28A1BA8)
+[LOG] SoundI::release                          :     footstep_stone_10 (0000021277F0F8E8)
+[LOG] SoundI::release                          :  (00000213D28A1FF8)
+[LOG] SoundI::release                          :     footstep_stone_11 (0000021277F0FF68)
+[LOG] SoundI::release                          :  (00000214C05FE658)
+[LOG] SoundI::release                          :     footstep_stone_12 (0000021057DD13C8)
+[LOG] SoundI::release                          :  (000002128AB72698)
+[LOG] SoundI::release                          :     footstep_carpet_01 (0000021057DD3788)
+[LOG] SoundI::release                          :  (00000214C05FED88)
+[LOG] SoundI::release                          :     footstep_carpet_02 (0000021277F0E8A8)
+[LOG] SoundI::release                          :  (00000213D28A1758)
+[LOG] SoundI::release                          :     footstep_carpet_03 (0000021277F11968)
+[LOG] SoundI::release                          :  (00000214C05FE4E8)
+[LOG] SoundI::release                          :     footstep_carpet_04 (0000021057DD1228)
+[LOG] SoundI::release                          :  (00000214C05FE208)
+[LOG] SoundI::release                          :     footstep_carpet_05 (0000021277F0EBE8)
+[LOG] SoundI::release                          :  (00000214C05FEC18)
+[LOG] SoundI::release                          :     footstep_carpet_06 (0000021277F11E48)
+[LOG] SoundI::release                          :  (00000213E038CE78)
+[LOG] SoundI::release                          :     Liquid Water Water Footstep Single Step In Puddle 01 (00000212787D7FA8)
+[LOG] SoundI::release                          :  (00000213E038D718)
+[LOG] SoundI::release                          :     Liquid Water Water Footstep Single Step Into Pool 02 (00000212787D82E8)
+[LOG] SoundI::release                          :  (00000213D28A1D18)
+[LOG] SoundI::release                          :     Liquid Water Water Footstep Single Step In Puddle 05 (0000021277F0E3C8)
+[LOG] SoundI::release                          :  (000002128AB72248)
+[LOG] SoundI::release                          :     Inst_Footstep_HealingPool_01 (0000021057DD2DC8)
+[LOG] SoundI::release                          : ChestAmbience (000002145775E378)
+[LOG] SoundI::release                          :     ChestAmbience (0000021057DD3AC8)
+[LOG] SoundI::release                          :     ChestAmbience (000002140A96B238)
+[LOG] SoundI::release                          : the_palace_ambience (00000213C93DB3D8)
+[LOG] SoundI::release                          :     the_palace_ambience (0000021457A36378)
+[LOG] SoundI::release                          :     the_palace_ambience (0000021273D958D8)
+[LOG] SoundI::release                          : Gregor_Quendel_Free_Water_Stream_Sounds_02_105 (000002140A96AD28)
+[LOG] SoundI::release                          :     Gregor_Quendel_Free_Water_Stream_Sounds_02_105 (0000021273CDDA68)
+[LOG] SoundI::release                          :     Gregor_Quendel_Free_Water_Stream_Sounds_02_105 (0000021473DA13F8)
+[LOG] SoundI::release                          : ThePalace (0000021423EAD3E8)
+[LOG] SoundI::release                          :     ThePalace (00000212787D8CA8)
+[LOG] SoundI::release                          :     ThePalace (00000212FD5868A8)
+[LOG] SoundI::release                          :  (000002128AB720D8)
+[LOG] SoundI::release                          :     Inst_Footstep_HealingPool_02 (0000021057DD2A88)
+[LOG] SoundI::release                          :  (00000213D28A2168)
+[LOG] SoundI::release                          :     Inst_Footstep_HealingPool_03 (0000021277F11488)
+[LOG] SoundI::release                          :  (000002128AB72528)
+[LOG] SoundI::release                          :     Inst_Footstep_HealingPool_04 (0000021057DD32A8)
+[LOG] SoundI::release                          :  (00000213D28A15E8)
+[LOG] SoundI::release                          :     Inst_Footstep_HealingPool_05 (0000021277F0F748)
+[LOG] SoundI::release                          :  (00000212F0048D98)
+[LOG] SoundI::release                          :     Fire Torch Sizzle Water Extinguish 01 (0000021473FCC068)
+[LOG] SoundI::release                          :  (00000213C976C328)
+[LOG] SoundI::release                          :     Inst_HealingPool_Amb (00000212FD2BE3F8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.

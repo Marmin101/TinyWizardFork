@@ -12,10 +12,14 @@ namespace Quinn
 		[SerializeField]
 		private EventReference SFX;
 
+		[Space, SerializeField]
+		private EventReference AdditionalSFX;
+
 		public void Generate()
 		{
 			VFX.Play();
 			Audio.Play(SFX, transform.position);
+			Audio.Play(AdditionalSFX, transform.position);
 		}
 	}
 }

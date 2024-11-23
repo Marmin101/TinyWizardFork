@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,12 +14,16 @@ namespace Quinn
 		private float HealAmount = 1f;
 		[SerializeField]
 		private float SpeedFactor = 0.3f;
+		[SerializeField]
+		private EventReference HealingSound;
 
 		[Space, SerializeField, Required]
 		private Animator Animator;
 
 		private float _nextHealTime;
 		private bool _isHealing;
+
+		private EventInstance _healingSound;
 
 		public void OnTriggerEnter2D(Collider2D collision)
 		{
@@ -39,10 +45,22 @@ namespace Quinn
 				if (_isHealing && !wasHealing)
 				{
 					PlayerManager.Instance.Player.OnHealingPuddleHealStart();
+
+					_healingSound = RuntimeManager.CreateInstance(HealingSound);
+					_healingSound.start();
+
 				}
 				else if (!_isHealing && wasHealing)
 				{
 					PlayerManager.Instance.Player.OnHealingPuddleHealEnd();
+
+					_healingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+					_healingSound.release();
+				}
+
+				if (!_isHealing)
+				{
+					_nextHealTime = Time.time + HealInterval;
 				}
 
 				Animator.SetBool("IsHealing", _isHealing);
@@ -63,6 +81,14 @@ namespace Quinn
 			{
 				PlayerManager.Instance.Movement.RemoveSpeedModifier(this);
 				PlayerManager.Instance.Player.DisablePuddleMask();
+
+				PlayerManager.Instance.Player.OnHealingPuddleHealEnd();
+				
+				if (_healingSound.isValid())
+				{
+					_healingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+					_healingSound.release();
+				}
 
 				Animator.SetBool("IsHealing", false);
 			}

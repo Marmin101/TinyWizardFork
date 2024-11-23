@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{74c21d97-382a-4f71-a3a6-0e133310f692}">
 		<property name="name">
-			<value>HealingPool_Stream</value>
+			<value>HealingPuddle_Stream</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -115,7 +115,7 @@
 	<object class="MixerBusPanner" id="{51006d0f-2937-4cc2-8cbe-411c05dec16b}" />
 	<object class="SingleSound" id="{1153a25d-9809-498c-85ba-9b2e97a789d4}">
 		<property name="length">
-			<value>36</value>
+			<value>22.678578898107716</value>
 		</property>
 		<property name="pitch">
 			<value>8</value>
@@ -159,7 +159,7 @@
 			<value>2.4000000000000004</value>
 		</property>
 		<property name="length">
-			<value>31.100000000000001</value>
+			<value>19.099999999999998</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{9d42d3da-3258-4c95-9b78-ede7164f6360}</destination>

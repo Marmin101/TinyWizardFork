@@ -884,7 +884,7 @@ MonoBehaviour:
       Data2: 1332820010
       Data3: 319727267
       Data4: -1829367757
-    Path: event:/HealingPool_Stream
+    Path: event:/HealingPuddle_Stream
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
@@ -947,7 +947,7 @@ MonoBehaviour:
       Data2: 1181893894
       Data3: 607606413
       Data4: -1153108623
-    Path: event:/HealingPool_Amb
+    Path: event:/HealingPuddle_Amb
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
@@ -1412,6 +1412,13 @@ MonoBehaviour:
   HealInterval: 1
   HealAmount: 1
   SpeedFactor: 0.5
+  HealingSound:
+    Guid:
+      Data1: 904920476
+      Data2: 1202122291
+      Data3: 964696240
+      Data4: -734862543
+    Path: event:/HealingPuddle_Healing
   Animator: {fileID: 5607037284423843421}
 --- !u!114 &1890352072167123586
 MonoBehaviour:

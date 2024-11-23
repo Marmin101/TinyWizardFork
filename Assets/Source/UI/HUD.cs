@@ -18,6 +18,11 @@ namespace Quinn.UI
 			Instance = this;
 		}
 
+		public void OnDestroy()
+		{
+			Group.DOKill();
+		}
+
 		public void Hide()
 		{
 			Group.alpha = 0f;

@@ -88,7 +88,7 @@ namespace Quinn.PlayerSystem
 			await SceneManager.LoadSceneAsync(1);
 
 			SpawnPlayer(InitialSpawnOffset);
-			DungeonGenerator.Instance.StartRandomFloor();
+			DungeonGenerator.Instance.StartFloorOfCurrentIndex();
 		}
 
 		private void OnHealed(float amount)
@@ -124,7 +124,11 @@ namespace Quinn.PlayerSystem
 			await CameraManager.Instance.DeathFadeOut();
 			OnPlayerDeathPreSceneLoad?.Invoke();
 
-			RespawnSequence();
+			Camera.main.enabled = false;
+			var gameOver = await Resources.Load<GameObject>("GameOver").CloneAsync();
+			DontDestroyOnLoad(gameOver);
+
+			await SceneManager.LoadSceneAsync(1);
 		}
 
 		private void UnsubscribeAll()

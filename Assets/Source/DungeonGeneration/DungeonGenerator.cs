@@ -85,7 +85,7 @@ namespace Quinn.DungeonGeneration
 				Instance = null;
 		}
 
-		public async void StartRandomFloor()
+		public async void StartFloorOfCurrentIndex()
 		{
 			await StartFloorAsync(Floors[_floorIndex]);
 		}

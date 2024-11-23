@@ -13,7 +13,16 @@ namespace Quinn.PlayerSystem
 
 		private CrosshairHandle _crosshair;
 
-		public Vector2 Position => Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		public Vector2 Position
+		{
+			get
+			{
+				if (Camera.main == null) 
+					return Vector2.zero;
+
+				return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			}
+		}
 
 		private RectTransform _frameTransform, _chargeTransform;
 		private float _initFrameSize, _initChargeSize;

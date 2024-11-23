@@ -1,5 +1,6 @@
 ﻿using FMODUnity;
 using Quinn.DungeonGeneration;
+using Quinn.PlayerSystem.SpellSystem;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
@@ -107,6 +108,9 @@ namespace Quinn.PlayerSystem
 
 		private async void OnDeath()
 		{
+			var caster = Player.GetComponent<PlayerCaster>();
+			caster.StoreStaff(caster.ActiveStaff);
+
 			UnsubscribeAll();
 
 			Player = null;

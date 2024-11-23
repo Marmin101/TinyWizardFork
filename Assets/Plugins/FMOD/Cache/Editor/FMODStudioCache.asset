@@ -136,6 +136,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 22678
+--- !u!114 &-8158266037929583886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FloorExit_Swoosh
+  m_EditorClassIdentifier: 
+  Path: event:/FloorExit_Swoosh
+  Guid:
+    Data1: -1171910227
+    Data2: 1208109868
+    Data3: 2039148691
+    Data4: 733190333
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-7990004874220230085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,10 +260,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638679680268253197
+  lastModified: 638679701570839833
   FileSizes:
   - Name: Desktop
-    Value: 4432
+    Value: 4482
   Exists: 1
 --- !u!114 &-7689791116744549865
 MonoBehaviour:
@@ -816,10 +843,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638679680268190148
+  lastModified: 638679701570763012
   FileSizes:
   - Name: Desktop
-    Value: 21836832
+    Value: 21906848
   Exists: 1
 --- !u!114 &-2838422600137601042
 MonoBehaviour:
@@ -1111,7 +1138,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -2968825907237438240}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -1231,6 +1258,7 @@ MonoBehaviour:
   - {fileID: -249314790346786664}
   - {fileID: -88885292239963342}
   - {fileID: -3653328144137714907}
+  - {fileID: -8158266037929583886}
   EditorParameters:
   - {fileID: -5851875343020371348}
   - {fileID: 2034490303827622854}
@@ -1240,7 +1268,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638679680268253197
+  cacheTime: 638679701570839833
   cacheVersion: 131621
 --- !u!114 &391205543735344162
 MonoBehaviour:

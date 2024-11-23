@@ -5,7 +5,7 @@
 			<value>SecretDiscovered</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b79ba1c2-1e8e-457c-8f9f-468280306593}</destination>
@@ -73,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{0378f0c6-62f4-44b5-bdc4-78a75c23bbd0}">
 		<property name="volume">
-			<value>-6</value>
+			<value>-8</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{4342d7c8-8ff8-435d-b868-110797538615}</destination>
@@ -100,6 +100,7 @@
 		<relationship name="effects">
 			<destination>{4ea2f5d5-3acb-4c22-8be7-5316c4cf3fe0}</destination>
 			<destination>{9c9ed2d0-fdda-44c3-b336-4fe882505073}</destination>
+			<destination>{46078656-3906-4ad0-afcb-e71b7c0c7d70}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a031e259-aef6-4aa3-ac9e-b3fb0db948c0}" />
@@ -111,4 +112,9 @@
 	<object class="MixerBusFader" id="{ff8fe3fd-3a85-412b-97d7-fc8826301763}" />
 	<object class="MixerBusFader" id="{4ea2f5d5-3acb-4c22-8be7-5316c4cf3fe0}" />
 	<object class="SFXReverbEffect" id="{9c9ed2d0-fdda-44c3-b336-4fe882505073}" />
+	<object class="SpatialiserEffect" id="{46078656-3906-4ad0-afcb-e71b7c0c7d70}">
+		<property name="panBlend">
+			<value>0.870000005</value>
+		</property>
+	</object>
 </objects>

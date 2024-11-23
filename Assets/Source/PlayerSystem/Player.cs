@@ -48,7 +48,7 @@ namespace Quinn.PlayerSystem
 		[SerializeField, Required]
 		private TextMeshProUGUI FloorTitleText;
 		[SerializeField]
-		private EventReference FloorEnterCue;
+		private EventReference FloorEnterCue, FloorExitWooshSound;
 
 		private Animator _animator;
 		private bool _wasMoving;
@@ -186,6 +186,8 @@ namespace Quinn.PlayerSystem
 			var collider = GetComponent<Collider2D>();
 			collider.enabled = false;
 
+			bool wooshPlayed = false;
+
 			float dur = 0.5f;
 			float halfTime = Time.time + (dur / 2f);
 
@@ -196,6 +198,12 @@ namespace Quinn.PlayerSystem
 					if (Time.time > halfTime)
 					{
 						exit.EnableMask();
+
+						if (!wooshPlayed)
+						{
+							wooshPlayed = true;
+							Audio.Play(FloorExitWooshSound, transform.position);
+						}
 					}
 				});
 

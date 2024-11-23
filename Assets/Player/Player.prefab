@@ -731,6 +731,13 @@ MonoBehaviour:
       Data3: 1148342168
       Data4: 415990556
     Path: event:/FloorEnterCue
+  FloorExitWooshSound:
+    Guid:
+      Data1: -1171910227
+      Data2: 1208109868
+      Data3: 2039148691
+      Data4: 733190333
+    Path: event:/FloorExit_Swoosh
 --- !u!114 &7972158715158538529
 MonoBehaviour:
   m_ObjectHideFlags: 0

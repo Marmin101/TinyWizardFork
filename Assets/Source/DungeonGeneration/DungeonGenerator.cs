@@ -50,8 +50,6 @@ namespace Quinn.DungeonGeneration
 		[SerializeField, Unit(Units.Second)]
 		private float MusicDelay = 1f;
 
-		[SerializeField, Space]
-		private FloorSO FirstFloor;
 		[SerializeField, RequiredListLength(MinLength = 1)]
 		private FloorSO[] Floors;
 
@@ -89,19 +87,7 @@ namespace Quinn.DungeonGeneration
 
 		public async void StartRandomFloor()
 		{
-			for (int i = 0; i < 1000; i++)
-			{
-				//var floor = Floors[Random.Range(0, Floors.Length)];
-				var floor = Floors[_floorIndex];
-				
-				if (floor != _lastGeneratedFloor)
-				{
-					await StartFloorAsync(floor);
-					return;
-				}
-			}
-
-			throw new System.Exception("Failed to start new floor!");
+			await StartFloorAsync(Floors[_floorIndex]);
 		}
 
 		public async void GenerateRoomAt(int x, int y)

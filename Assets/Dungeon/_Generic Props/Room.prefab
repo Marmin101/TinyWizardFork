@@ -28334,6 +28334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3616485603978272553}
   - component: {fileID: 5752541803024859684}
+  - component: {fileID: 7801438477791652254}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -28404,9 +28405,64 @@ MonoBehaviour:
   EastDoor: {fileID: 4822959630363621678}
   WestDoor: {fileID: 1290332386032603610}
   Chest: {fileID: 0}
-  DisableMusic: 0
   PostConquerDelay: 0.7
+  DisableMusic: 0
+  HasCustomMusic: 0
+  CustomMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   MissileBlocker: {fileID: 3166939023511724175}
+  StartsEnabled: 0
+--- !u!61 &7801438477791652254
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446014019648216660}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 60, y: 60}
+  m_EdgeRadius: 0
 --- !u!1 &6627044298079856012
 GameObject:
   m_ObjectHideFlags: 0

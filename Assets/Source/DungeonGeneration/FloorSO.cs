@@ -29,5 +29,11 @@ namespace Quinn.DungeonGeneration
 				}
 			}
 		}
+
+		public GameObject GetVariant()
+		{
+			// Buttons to solo
+			return null;
+		}
 	}
 }

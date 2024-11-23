@@ -149,7 +149,7 @@ namespace Quinn.MissileSystem
 
 				if (CreateSteam && collision.TryGetComponent(out SteamGenerator gen))
 				{
-					gen.Create();
+					gen.Generate();
 				}
 			}
 		}

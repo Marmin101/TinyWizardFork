@@ -1,6 +1,7 @@
-﻿using Quinn.PlayerSystem;
+﻿using DG.Tweening;
+using FMODUnity;
+using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,20 @@ namespace Quinn.UI
 		[SerializeField, Required]
 		private GameObject HeartPrefab;
 		[SerializeField, Required]
-		private Sprite FullHeart, HalfHeart, EmptyHeart;
+		private Sprite FullHeart, EmptyHeart;
 
-		private void Start()
+		[SerializeField, BoxGroup("Last Heart Shake")]
+		private float LastHeartAmplitude = 5f, LastHeartFrequency = 50f;
+
+		[SerializeField, BoxGroup("HP Change Punch")]
+		private float PunchScale = 1.1f, PunchDur = 0.2f;
+		[SerializeField, BoxGroup("HP Change Punch")]
+		private Ease PunchBigEase = Ease.Linear, PunchSmallEase = Ease.Linear;
+
+		[SerializeField, BoxGroup("SFX")]
+		private EventReference GainHeartSound;
+
+		public void Start()
 		{
 			PlayerManager.Instance.OnPlayerHealthChange += OnHealthChange;
 			PlayerManager.Instance.OnPlayerMaxHealthChange += OnMaxHealthChange;
@@ -21,7 +33,23 @@ namespace Quinn.UI
 			ReconstructHearts();
 		}
 
-		private void OnDestroy()
+		public void Update()
+		{
+			if (PlayerManager.Instance.Health.Current == 1f)
+			{
+				transform.localPosition = new Vector3()
+				{
+					x = Mathf.Sin(Time.time * LastHeartFrequency),
+					y = Mathf.Cos((Time.time + Random.value) * LastHeartFrequency)
+				} * LastHeartAmplitude;
+			}
+			else
+			{
+				transform.localPosition = Vector3.zero;
+			}
+		}
+
+		public void OnDestroy()
 		{
 			if (PlayerManager.Instance != null)
 			{
@@ -30,9 +58,24 @@ namespace Quinn.UI
 			}
 		}
 
-		private void OnHealthChange(float delta)
+		private async void OnHealthChange(float delta)
 		{
-			UpdateHearts();
+			if (delta != 0f)
+			{
+				if (delta > 0f)
+				{
+					Audio.Play(GainHeartSound);
+				}
+
+				UpdateHearts();
+
+				await transform.parent.DOScale(PunchScale, PunchDur / 2f)
+					.SetEase(PunchBigEase)
+					.AsyncWaitForCompletion();
+
+				transform.parent.DOScale(1, PunchDur / 2f)
+					.SetEase(PunchSmallEase);
+			}
 		}
 
 		private void OnMaxHealthChange()

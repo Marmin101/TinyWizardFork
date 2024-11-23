@@ -158,6 +158,10 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 							locomotion.Knockback(pos.DirectionTo(collider.transform.position), FriendlyKnockbackSpeed);
 						}
 					}
+					else if (collider.TryGetComponent(out SteamGenerator gen))
+					{
+						gen.Generate();
+					}
 				}
 			}
 		}

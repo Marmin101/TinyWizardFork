@@ -1068,6 +1068,42 @@ MonoBehaviour:
   FadeOutDuration: 1
   HurtVignette: {fileID: 2324364297932760570}
   CriticalVignette: {fileID: 0}
+--- !u!1 &5661836720707288651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3934007445974758707}
+  m_Layer: 0
+  m_Name: HeartsParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3934007445974758707
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5661836720707288651}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1553179828881361356}
+  m_Father: {fileID: 5176653248572290296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 26}
+  m_SizeDelta: {x: 698.8401, y: 37.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6551115605965835781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1136,7 @@ RectTransform:
   m_Children:
   - {fileID: 5642939504510884365}
   - {fileID: 7792129926756584195}
-  - {fileID: 1553179828881361356}
+  - {fileID: 3934007445974758707}
   - {fileID: 5009194302915327150}
   - {fileID: 8959539081929596415}
   - {fileID: 6584982564970794504}
@@ -1533,7 +1569,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8487068204789142012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1543,11 +1579,11 @@ RectTransform:
   - {fileID: 6002996066060890956}
   - {fileID: 4426645708460399215}
   - {fileID: 7705037152937139770}
-  m_Father: {fileID: 5176653248572290296}
+  m_Father: {fileID: 3934007445974758707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30, y: 26}
+  m_AnchoredPosition: {x: 349.42007, y: 18.749985}
   m_SizeDelta: {x: 698.84, y: 37.5}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &6561576002201088941
@@ -1590,8 +1626,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeartPrefab: {fileID: 8765451987971455427, guid: 5c4839a6a46f79745a974b351cf9f29b, type: 3}
   FullHeart: {fileID: -97003750754964358, guid: 954cdfbbf10476840aacf1db0cd7e341, type: 3}
-  HalfHeart: {fileID: -3409412196438529678, guid: 954cdfbbf10476840aacf1db0cd7e341, type: 3}
   EmptyHeart: {fileID: -1043539915054185952, guid: 954cdfbbf10476840aacf1db0cd7e341, type: 3}
+  LastHeartAmplitude: 5
+  LastHeartFrequency: 50
+  PunchScale: 1.1
+  PunchDur: 0.2
+  PunchBigEase: 1
+  PunchSmallEase: 1
+  GainHeartSound:
+    Guid:
+      Data1: -1975578012
+      Data2: 1210630240
+      Data3: -423685957
+      Data4: 1184519302
+    Path: event:/GainHeart
 --- !u!1 &8656283404603180485
 GameObject:
   m_ObjectHideFlags: 0

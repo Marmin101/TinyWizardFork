@@ -1,4 +1,5 @@
 using Quinn.PlayerSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Quinn
@@ -12,7 +13,11 @@ namespace Quinn
 		[SerializeField]
 		private float SpeedFactor = 0.3f;
 
+		[Space, SerializeField, Required]
+		private Animator Animator;
+
 		private float _nextHealTime;
+		private bool _isHealing;
 
 		public void OnTriggerEnter2D(Collider2D collision)
 		{
@@ -28,7 +33,21 @@ namespace Quinn
 		{
 			if (collision.IsPlayer())
 			{
-				if (Time.time > _nextHealTime)
+				bool wasHealing = _isHealing;
+				_isHealing = PlayerManager.Instance.Health.Percent < 1f;
+
+				if (_isHealing && !wasHealing)
+				{
+					PlayerManager.Instance.Player.OnHealingPuddleHealStart();
+				}
+				else if (!_isHealing && wasHealing)
+				{
+					PlayerManager.Instance.Player.OnHealingPuddleHealEnd();
+				}
+
+				Animator.SetBool("IsHealing", _isHealing);
+
+				if (Time.time > _nextHealTime && _isHealing)
 				{
 					var hp = PlayerManager.Instance.Health;
 					hp.Heal(HealAmount);
@@ -44,6 +63,8 @@ namespace Quinn
 			{
 				PlayerManager.Instance.Movement.RemoveSpeedModifier(this);
 				PlayerManager.Instance.Player.DisablePuddleMask();
+
+				Animator.SetBool("IsHealing", false);
 			}
 		}
 	}

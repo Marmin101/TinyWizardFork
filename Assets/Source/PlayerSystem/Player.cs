@@ -39,7 +39,7 @@ namespace Quinn.PlayerSystem
 		[Space, SerializeField, Required]
 		private SpriteMask PuddleMask;
 		[SerializeField, Required]
-		private VisualEffect PuddleVFX;
+		private VisualEffect PuddleVFX, PuddleHealingVFX;
 
 		private Animator _animator;
 		private bool _wasMoving;
@@ -47,6 +47,8 @@ namespace Quinn.PlayerSystem
 
 		private EventInstance _hurtSnapshot;
 		private float _playerLightIntensity;
+
+		private float _puddleHealingVFXSpawnRate;
 
 		public void Awake()
 		{
@@ -59,6 +61,9 @@ namespace Quinn.PlayerSystem
 			GetComponent<Health>().OnDamagedExpanded += OnHurt;
 
 			_playerLightIntensity = PlayerLight.intensity;
+
+			_puddleHealingVFXSpawnRate = PuddleHealingVFX.GetFloat("SpawnRate");
+			PuddleHealingVFX.SetFloat("SpawnRate", 0f);
 		}
 
 		public void Update()
@@ -73,6 +78,13 @@ namespace Quinn.PlayerSystem
 			}
 
 			_wasMoving = isMoving;
+
+#if UNITY_EDITOR
+			if (Input.GetKeyDown(KeyCode.Alpha8))
+			{
+				GetComponent<Health>().TakeDamage(1f, Vector2.zero, Team.Environment, gameObject);
+			}
+#endif
 		}
 
 		public void OnDestroy()
@@ -174,6 +186,17 @@ namespace Quinn.PlayerSystem
 				.SetSpeedBased();
 
 			await fade;
+		}
+
+		public void OnHealingPuddleHealStart()
+		{
+			PuddleHealingVFX.SetFloat("SpawnRate", _puddleHealingVFXSpawnRate);
+			PuddleHealingVFX.Play();
+		}
+
+		public void OnHealingPuddleHealEnd()
+		{
+			PuddleHealingVFX.SetFloat("SpawnRate", 0f);
 		}
 
 		private Color SoundMaterialToColor(SoundMaterialType mat) => mat switch

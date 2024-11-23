@@ -1283,6 +1283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4611949150854619743}
   - component: {fileID: 4156098027133802201}
+  - component: {fileID: 5607037284423843421}
   - component: {fileID: 8664393585592471821}
   - component: {fileID: 3890869008293775623}
   - component: {fileID: 1890352072167123586}
@@ -1328,6 +1329,28 @@ SortingGroup:
   m_SortingLayer: -1
   m_SortingOrder: 500
   m_SortAtRoot: 0
+--- !u!95 &5607037284423843421
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787817653326611610}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 089997388fdd2704c9012040cc29d259, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &8664393585592471821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1389,6 +1412,7 @@ MonoBehaviour:
   HealInterval: 1
   HealAmount: 1
   SpeedFactor: 0.5
+  Animator: {fileID: 5607037284423843421}
 --- !u!114 &1890352072167123586
 MonoBehaviour:
   m_ObjectHideFlags: 0

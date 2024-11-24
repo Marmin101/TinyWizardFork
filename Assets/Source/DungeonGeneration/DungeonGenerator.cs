@@ -47,8 +47,6 @@ namespace Quinn.DungeonGeneration
 
 		[SerializeField]
 		private int MaxRoomSize = 48;
-		[SerializeField, Unit(Units.Second)]
-		private float MusicDelay = 1f;
 
 		[SerializeField, RequiredListLength(MinLength = 1)]
 		private FloorSO[] Floors;
@@ -61,7 +59,6 @@ namespace Quinn.DungeonGeneration
 		private EventInstance _ambience, _music;
 
 		private GameObject _lastGeneratedRoomPrefab;
-		private FloorSO _lastGeneratedFloor;
 
 		private int _floorIndex;
 
@@ -139,6 +136,11 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
+		public void SetFloorIndex(int i)
+		{
+			_floorIndex = Mathf.Min(i, Floors.Length - 1);
+		}
+
 		private bool GetRoomAt(int x, int y, out Room room)
 		{
 			if (_generatedRooms.TryGetValue(new(x, y), out GameObject value))
@@ -153,8 +155,6 @@ namespace Quinn.DungeonGeneration
 
 		private async Awaitable StartFloorAsync(FloorSO floor)
 		{
-			_lastGeneratedFloor = floor;
-
 			CameraManager.Instance.Blackout();
 
 			DestroyAllRooms();
@@ -180,19 +180,20 @@ namespace Quinn.DungeonGeneration
 
 			if (!floor.Music.IsNull)
 			{
-				DOVirtual.DelayedCall(MusicDelay, () =>
-				{
-					RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f, ignoreseekspeed: true);
+				RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f, ignoreseekspeed: true);
 
-					_music = RuntimeManager.CreateInstance(floor.Music);
-					_music.start();
-				});
+				_music = RuntimeManager.CreateInstance(floor.Music);
+				_music.start();
 			}
 
 			await floor.GetVariant().CloneAsync();
 
 			var fade = CameraManager.Instance.FadeIn();
-			await PlayerManager.Instance.Player.EnterFloorAsync();
+
+			if (!floor.SkipDropSequence)
+			{
+				await PlayerManager.Instance.Player.EnterFloorAsync();
+			}
 
 			await fade;
 		}

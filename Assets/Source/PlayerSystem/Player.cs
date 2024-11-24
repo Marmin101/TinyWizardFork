@@ -174,8 +174,8 @@ namespace Quinn.PlayerSystem
 			if (InputManager.Instance != null)
 				InputManager.Instance.EnableInput();
 
-			await Wait.Seconds(2f);
-			await FloorTitleGroup.DOFade(0f, 0.3f).AsyncWaitForCompletion();
+			await Wait.Seconds(3f);
+			await FloorTitleGroup.DOFade(0f, 2f).SetEase(Ease.InCubic).AsyncWaitForCompletion();
 			HUD.Instance.FadeIn();
 		}
 

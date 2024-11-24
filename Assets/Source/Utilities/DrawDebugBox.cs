@@ -11,8 +11,10 @@ namespace Quinn
 
 		private BoxCollider2D _box;
 
-		private void OnDrawGizmos()
+		public void OnDrawGizmos()
 		{
+			if (!enabled) return;
+
 			if (_box == null)
 			{
 				_box = GetComponent<BoxCollider2D>();

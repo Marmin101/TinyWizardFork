@@ -17,10 +17,16 @@ namespace Quinn.AI
 		[SerializeField]
 		private EventReference LandSound;
 
+		[Space, SerializeField]
+		private bool DisableAI;
+
 		protected override void OnThink() { }
 
 		protected override async void OnRoomStart()
 		{
+			if (DisableAI)
+				return;
+
 			while (!DeathTokenSource.IsCancellationRequested)
 			{
 				FaceTarget();

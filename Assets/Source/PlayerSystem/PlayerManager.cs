@@ -45,6 +45,24 @@ namespace Quinn.PlayerSystem
 			SpawnPlayer(InitialSpawnOffset);
 		}
 
+		public void Update()
+		{
+#if UNITY_EDITOR
+			if (Input.GetKeyDown(KeyCode.Alpha1))
+				GoToFloor(0);
+			else if (Input.GetKeyDown(KeyCode.Alpha2))
+				GoToFloor(1);
+			else if (Input.GetKeyDown(KeyCode.Alpha3))
+				GoToFloor(2);
+			else if (Input.GetKeyDown(KeyCode.Alpha4))
+				GoToFloor(3);
+			else if (Input.GetKeyDown(KeyCode.Alpha5))
+				GoToFloor(4);
+			else if (Input.GetKeyDown(KeyCode.Alpha6))
+				GoToFloor(5);
+#endif
+		}
+
 		public void OnDestroy()
 		{
 			if (Instance == this)
@@ -140,6 +158,12 @@ namespace Quinn.PlayerSystem
 				Health.OnDeath -= OnDeath;
 				Health.OnMaxChange -= OnMaxHealthChange;
 			}
+		}
+
+		private void GoToFloor(int index)
+		{
+			DungeonGenerator.Instance.SetFloorIndex(index);
+			RespawnSequence();
 		}
 	}
 }

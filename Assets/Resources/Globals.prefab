@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRoomSize: 56
-  MusicDelay: 1
-  FirstFloor: {fileID: 11400000, guid: 4aad98574400b7d4f8428a2edbf472ae, type: 2}
+  MusicDelay: 0
   Floors:
+  - {fileID: 11400000, guid: d23be91f0ac387946bd02e98c85f0e55, type: 2}
   - {fileID: 11400000, guid: 4aad98574400b7d4f8428a2edbf472ae, type: 2}
   - {fileID: 11400000, guid: 8b16aa0ca51db33448af855d9d9069ba, type: 2}
 --- !u!114 &-5411578148068884108

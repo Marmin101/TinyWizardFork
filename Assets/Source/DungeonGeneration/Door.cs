@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FMODUnity;
+using UnityEngine;
 using UnityEngine.VFX;
 
 namespace Quinn.DungeonGeneration
@@ -7,8 +8,17 @@ namespace Quinn.DungeonGeneration
 	{
 		[SerializeField]
 		private VisualEffect OpenVFX, CloseVFX;
+		[SerializeField]
+		private bool StartsClosed;
+		[SerializeField]
+		private EventReference OpenSound, CloseSound;
 
 		public bool IsOpened { get; private set; } = true;
+
+		public virtual void Awake()
+		{
+			IsOpened = !StartsClosed;
+		}
 
 		public void Open()
 		{
@@ -16,6 +26,8 @@ namespace Quinn.DungeonGeneration
 			{
 				IsOpened = true;
 				OnOpen();
+
+				Audio.Play(OpenSound);
 
 				if (OpenVFX != null)
 				{
@@ -30,6 +42,8 @@ namespace Quinn.DungeonGeneration
 			{
 				IsOpened = false;
 				OnClose();
+
+				Audio.Play(CloseSound);
 
 				if (CloseVFX != null)
 				{

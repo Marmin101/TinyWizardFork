@@ -34,7 +34,7 @@ namespace Quinn.PlayerSystem
 
 			CursorWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-			if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift))
+			if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
 			{
 				OnDash?.Invoke();
 			}

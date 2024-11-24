@@ -20,6 +20,22 @@ namespace Quinn.AI
 		[SerializeField, ShowIf("@Behavior != MissileSpawnBehavior.Direct")]
 		private float Spread = 30f;
 
+		[Space, SerializeField]
+		private bool AutoFire;
+		[SerializeField, ShowIf(nameof(AutoFire))]
+		private float FireInterval = 2f;
+
+		private float _nextFireTime;
+
+		public void Update()
+		{
+			if (AutoFire && Time.time > _nextFireTime)
+			{
+				_nextFireTime = Time.time + FireInterval + ((Count - 1) * Interval);
+				Fire();
+			}
+		}
+
 		public void Fire()
 		{
 			if (Count == 1)

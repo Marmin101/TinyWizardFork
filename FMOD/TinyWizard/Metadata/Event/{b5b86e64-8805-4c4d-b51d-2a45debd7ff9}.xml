@@ -5,7 +5,7 @@
 			<value>FloorExitAmbience</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b79ba1c2-1e8e-457c-8f9f-468280306593}</destination>
@@ -166,7 +166,7 @@
 	<object class="MixerBusEffectChain" id="{b85cc156-a1ba-4c2e-b9b9-2c19aa147c2d}">
 		<relationship name="effects">
 			<destination>{d2e78d66-4d25-41f4-95ac-d82d97193584}</destination>
-			<destination>{0e547629-0303-4814-90d5-5757528f3eba}</destination>
+			<destination>{8d532514-a038-4fb0-97ca-929e47fe43ec}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d4fcc9c0-8a5f-48b7-914c-47b15d0dedfe}" />
@@ -202,12 +202,24 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{d2e78d66-4d25-41f4-95ac-d82d97193584}" />
-	<object class="ObjectSpatialiserEffect" id="{0e547629-0303-4814-90d5-5757528f3eba}">
+	<object class="SpatialiserEffect" id="{8d532514-a038-4fb0-97ca-929e47fe43ec}">
+		<property name="minimumDistance">
+			<value>2</value>
+		</property>
 		<property name="maximumDistance">
 			<value>10</value>
 		</property>
 		<property name="overrideRange">
 			<value>true</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="minimumExtent">
+			<value>360</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>45.4444046</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{51528c22-df49-4f68-aeed-fe8c3c1033ed}">

@@ -93,6 +93,11 @@ namespace Quinn
 			DestroyHPBar();
 		}
 
+		public void SetCurrent(float value)
+		{
+			Current = Mathf.Clamp(value, 0f, Max);
+		}
+
 		public void Heal(float health)
 		{
 			if (IsDead)

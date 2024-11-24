@@ -240,6 +240,12 @@
 		<property name="overrideRange">
 			<value>true</value>
 		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="minimumExtent">
+			<value>360</value>
+		</property>
 		<property name="userStereoSeparation">
 			<value>0</value>
 		</property>

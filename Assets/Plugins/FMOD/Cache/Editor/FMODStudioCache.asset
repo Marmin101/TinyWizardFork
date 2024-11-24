@@ -287,10 +287,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638679821981011735
+  lastModified: 638679895404865659
   FileSizes:
   - Name: Desktop
-    Value: 4618
+    Value: 4808
   Exists: 1
 --- !u!114 &-7689791116744549865
 MonoBehaviour:
@@ -692,6 +692,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-3843420396450451567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Tutorial
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Tutorial
+  Guid:
+    Data1: 1921777794
+    Data2: 1085313823
+    Data3: -1921740409
+    Data4: 1562046572
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5049631173075004526}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3796853518202059672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,10 +898,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638679821980934811
+  lastModified: 638679895404732342
   FileSizes:
   - Name: Desktop
-    Value: 22020416
+    Value: 22024288
   Exists: 1
 --- !u!114 &-2838422600137601042
 MonoBehaviour:
@@ -1063,6 +1091,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 113454
+--- !u!114 &-1616783401653222839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DialogueWrite
+  m_EditorClassIdentifier: 
+  Path: event:/DialogueWrite
+  Guid:
+    Data1: 1193183216
+    Data2: 1261015922
+    Data3: -2130769494
+    Data4: -1164116004
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1411264811803878590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,6 +1280,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4254525763197795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DoorClose
+  m_EditorClassIdentifier: 
+  Path: event:/DoorClose
+  Guid:
+    Data1: -1668409666
+    Data2: 1284192020
+    Data3: -503199855
+    Data4: 791725371
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,6 +1398,10 @@ MonoBehaviour:
   - {fileID: -8143979176360325787}
   - {fileID: 71266910099676025}
   - {fileID: -2670398327767640702}
+  - {fileID: -3843420396450451567}
+  - {fileID: -1616783401653222839}
+  - {fileID: 6582836989416691364}
+  - {fileID: -4254525763197795}
   EditorParameters:
   - {fileID: -5851875343020371348}
   - {fileID: 2034490303827622854}
@@ -1325,7 +1411,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638679821981011735
+  cacheTime: 638679895404865659
   cacheVersion: 131621
 --- !u!114 &71266910099676025
 MonoBehaviour:
@@ -2022,6 +2108,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &5049631173075004526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Tutorial/enable-music
+  m_EditorClassIdentifier: 
+  Name: enable-music
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 154107630
+    data2: 1794656962
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &5160557053507365781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2096,7 +2206,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 5735321704687701328}
   MinDistance: 1
   MaxDistance: 20
   Length: 79545
@@ -2182,6 +2293,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 19636
+--- !u!114 &5735321704687701328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainMenu/enable-music
+  m_EditorClassIdentifier: 
+  Name: enable-music
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 154107630
+    data2: 1794656962
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &6284642477997651098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2231,6 +2366,33 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   IsStream: 0
   Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6582836989416691364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DoorOpen
+  m_EditorClassIdentifier: 
+  Path: event:/DoorOpen
+  Guid:
+    Data1: 1493177639
+    Data2: 1111561306
+    Data3: 627174814
+    Data4: 1007282667
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1

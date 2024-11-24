@@ -25,6 +25,13 @@ namespace Quinn.UI
 		[SerializeField, BoxGroup("SFX")]
 		private EventReference GainHeartSound;
 
+		public static HeartsUI Instance { get; private set; }
+
+		public void Awake()
+		{
+			Instance = this;
+		}
+
 		public void Start()
 		{
 			PlayerManager.Instance.OnPlayerHealthChange += OnHealthChange;
@@ -58,6 +65,12 @@ namespace Quinn.UI
 			}
 		}
 
+		public void Regenerate()
+		{
+			ReconstructHearts();
+			UpdateHearts();
+		}
+
 		private async void OnHealthChange(float delta)
 		{
 			if (delta != 0f)
@@ -81,7 +94,7 @@ namespace Quinn.UI
 		private void OnMaxHealthChange()
 		{
 			ReconstructHearts();
-			UpdateHearts();
+			Regenerate();
 		}
 
 		private void ReconstructHearts()
@@ -101,7 +114,7 @@ namespace Quinn.UI
 
 		private void UpdateHearts(bool isHealing = false)
 		{
-			int current = Mathf.RoundToInt(PlayerManager.Instance.Health.Current);
+			int current = Mathf.CeilToInt(PlayerManager.Instance.Health.Current);
 
 			for (int i = 0; i < transform.childCount; i++)
 			{

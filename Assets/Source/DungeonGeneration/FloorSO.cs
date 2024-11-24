@@ -11,6 +11,7 @@ namespace Quinn.DungeonGeneration
 		public EventReference Music;
 		[Multiline]
 		public string Title = "Floor\nTitle";
+		public bool SkipDropSequence;
 
 		[Space]
 		public Room StartingRoom;

@@ -173,7 +173,7 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
-		public void KillAlLiveAgents()
+		public void KillAllLiveAgents()
 		{
 			foreach (var agent in new List<IAgent>(_liveAgents))
 			{
@@ -209,6 +209,10 @@ namespace Quinn.DungeonGeneration
 					if (DisableMusic || HasCustomMusic)
 					{
 						RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f);
+					}
+					else if (!DisableMusic && !HasCustomMusic)
+					{
+						RuntimeManager.StudioSystem.setParameterByName("enable-music", 1f);
 					}
 
 					if (HasCustomMusic)

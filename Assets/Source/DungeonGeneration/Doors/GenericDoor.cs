@@ -8,10 +8,18 @@ namespace Quinn.DungeonGeneration.Doors
 		[SerializeField, Required]
 		private GameObject OpenChild, ClosedChild;
 
-		private void Awake()
+		public override void Awake()
 		{
-			OpenChild.SetActive(true);
-			ClosedChild.SetActive(false);
+			base.Awake();
+
+			if (IsOpened)
+			{
+				OnOpen();
+			}
+			else
+			{
+				OnClose();
+			}
 		}
 
 		protected override void OnOpen()

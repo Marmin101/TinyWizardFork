@@ -124,7 +124,7 @@ namespace Quinn.AI.BehaviorTree
 
 			if (IsBoss)
 			{
-				Room.KillAlLiveAgents();
+				Room.KillAllLiveAgents();
 			}
 		}
 	}

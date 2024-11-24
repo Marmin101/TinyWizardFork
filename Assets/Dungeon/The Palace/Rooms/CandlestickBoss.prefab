@@ -50,6 +50,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &360070758074204400
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +102,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &1652716223053948349
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +238,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &1901897555180981774
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +290,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &2056436606257494316
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +342,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &2467577695072757784
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +768,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &2966312674768384174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1214,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &6027588131929154635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1266,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &6116534394368584011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1318,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &6173217703711885863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1370,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &6414634293657923186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,6 +1422,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1 &7895656629903512276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,6 +3593,8 @@ MonoBehaviour:
   Interval: 0.7
   Behavior: 0
   Spread: 30
+  AutoFire: 0
+  FireInterval: 2
 --- !u!1001 &1612273373854695071
 PrefabInstance:
   m_ObjectHideFlags: 0

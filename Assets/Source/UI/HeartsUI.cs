@@ -2,6 +2,8 @@
 using FMODUnity;
 using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +29,8 @@ namespace Quinn.UI
 
 		public static HeartsUI Instance { get; private set; }
 
+		private readonly List<Image> _hearts = new();
+
 		public void Awake()
 		{
 			Instance = this;
@@ -37,6 +41,7 @@ namespace Quinn.UI
 			PlayerManager.Instance.OnPlayerHealthChange += OnHealthChange;
 			PlayerManager.Instance.OnPlayerMaxHealthChange += OnMaxHealthChange;
 
+			transform.DestroyChildren();
 			ReconstructHearts();
 		}
 
@@ -99,38 +104,37 @@ namespace Quinn.UI
 
 		private void ReconstructHearts()
 		{
-			for (int i = 0; i < transform.childCount; i++)
+			foreach (var heart in _hearts.ToArray())
 			{
-				transform.GetChild(i).gameObject.Destroy();
+				Destroy(heart.gameObject);
 			}
+
+			_hearts.Clear();
 
 			int max = Mathf.RoundToInt(PlayerManager.Instance.Health.Max);
 
 			for (int i = 0; i < max; i++)
 			{
-				HeartPrefab.Clone(transform);
+				var heart = HeartPrefab.Clone(transform);
+				_hearts.Add(heart.GetComponent<Image>());
 			}
 		}
 
 		private void UpdateHearts(bool isHealing = false)
 		{
-			int current = Mathf.CeilToInt(PlayerManager.Instance.Health.Current);
+			int current = Mathf.RoundToInt(PlayerManager.Instance.Health.Current);
 
-			for (int i = 0; i < transform.childCount; i++)
+			for (int i = 0; i < _hearts.Count; i++)
 			{
-				var child = transform.GetChild(i);
+				var child = _hearts[i];
 
-				if (child != null)
+				bool isFull = i < current;
+
+				child.sprite = isFull ? FullHeart : EmptyHeart;
+
+				if (isFull && isHealing)
 				{
-					bool isFull = i < current;
-
-					var img = child.GetComponent<Image>();
-					img.sprite = isFull ? FullHeart : EmptyHeart;
-
-					if (isFull && isHealing)
-					{
-						PunchHeart(child, i);
-					}
+					PunchHeart(child.transform, i);
 				}
 			}
 		}

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: 1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: -1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: -1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: 1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: -1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -764,7 +764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: -1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: -1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: 1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: 1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: -1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -1418,7 +1418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: 1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30
@@ -3589,7 +3589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Direction: {x: 1, y: 0}
   Missile: {fileID: 4673170907953065690, guid: 1334ee2c4cc505b44891a5d68a4d04f7, type: 3}
-  Count: 5
+  Count: 3
   Interval: 0.7
   Behavior: 0
   Spread: 30

@@ -260,12 +260,12 @@ namespace Quinn.DungeonGeneration
 
 		private async void OnAgentDeath(IAgent agent)
 		{
-			_liveAgents.Remove(agent);
-
 			if (agent is BTAgent bt && bt.IsBoss)
 			{
 				_isBossDead = true;
 			}
+
+			_liveAgents.Remove(agent);
 
 			if (_liveAgents.Count == 0)
 			{

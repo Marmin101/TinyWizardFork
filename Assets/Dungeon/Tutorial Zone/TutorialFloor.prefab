@@ -5779,7 +5779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8449522695445618622, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: Dialogue
-      value: <u>WASD</u> to <u>Move</u>
+      value: WASD to Move
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7609,10 +7609,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8449522695445618622, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: Dialogue
-      value: '<u>M1</u> or <u>M2</u> to <u>Shoot</u>
+      value: 'M1 or M2 to Shoot
 
-        (some magic staffs
-        require you hold the mouse button down)'
+        (some magic staffs require you hold the
+        mouse button down)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7755,7 +7755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8449522695445618622, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: Dialogue
-      value: Bathe in <u>Pool</u> to <u>Heal</u>
+      value: Bathe in Pool to Heal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7775,6 +7775,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8819562834074555567}
     m_Modifications:
+    - target: {fileID: 195860170028960130, guid: c13b60fc1816fd24f881cd32d21b2130, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8565128
+      objectReference: {fileID: 0}
+    - target: {fileID: 195860170028960130, guid: c13b60fc1816fd24f881cd32d21b2130, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2770889
+      objectReference: {fileID: 0}
+    - target: {fileID: 195860170028960130, guid: c13b60fc1816fd24f881cd32d21b2130, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.23
+      objectReference: {fileID: 0}
     - target: {fileID: 1256788726801341637, guid: c13b60fc1816fd24f881cd32d21b2130, type: 3}
       propertyPath: m_Name
       value: AutoGate
@@ -7937,12 +7949,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 6235671714373469185}
     m_Modifications:
     - target: {fileID: 3878685759146039025, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878685759146039025, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 3878685759146039025, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2200003
+      value: -2.88
       objectReference: {fileID: 0}
     - target: {fileID: 3878685759146039025, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7986,7 +8002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8449522695445618622, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: Dialogue
-      value: '<u>Space</u> or <u>Shift</u> to <u>Dash</u>
+      value: 'Space or Shift to Dash
 
         (dashing has immunity)'
       objectReference: {fileID: 0}

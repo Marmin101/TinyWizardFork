@@ -1,5 +1,6 @@
 using FMODUnity;
 using Quinn.DungeonGeneration;
+using Quinn.PlayerSystem;
 using Quinn.UI;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;

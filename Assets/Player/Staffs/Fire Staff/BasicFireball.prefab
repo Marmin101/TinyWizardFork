@@ -355,6 +355,10 @@ PrefabInstance:
       value: -214412736
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: DirectStatusEffectDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashStatusEffectDuration
       value: 2.5
       objectReference: {fileID: 0}

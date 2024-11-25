@@ -29,10 +29,12 @@ MonoBehaviour:
   Title: 'The
 
     Overgrowth'
+  SkipDropSequence: 0
   StartingRoom: {fileID: 9089302129140360783, guid: 63c6e7b1fc0fad64d9c19998eec74600, type: 3}
   Generatable:
   - Prefab: {fileID: 9089302129140360783, guid: 4b7f45f094a8a4e49addc24173851e31, type: 3}
     Weight: 100
     SumWeight: 100
-  Variants: []
+  Variants:
+  - {fileID: 4007627806934550419, guid: 4004d39fe575a5644a7adfc435d6f62f, type: 3}
   OverrideVariant: {fileID: 0}

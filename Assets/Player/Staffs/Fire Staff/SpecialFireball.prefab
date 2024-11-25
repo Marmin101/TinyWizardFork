@@ -289,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DirectDamage
-      value: 16
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SpawnOnDeath
@@ -309,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: BaseSplashDamage
-      value: 30
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashStatusEffect
@@ -332,6 +332,10 @@ PrefabInstance:
       value: -214412736
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: DirectStatusEffectDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashStatusEffectDuration
       value: 8
       objectReference: {fileID: 0}
@@ -345,15 +349,43 @@ PrefabInstance:
       objectReference: {fileID: 1607415577987747651}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashDamageFalloff.m_Curve.Array.data[0].inSlope
-      value: -0.47139496
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SplashDamageFalloff.m_Curve.Array.data[1].inSlope
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashDamageFalloff.m_Curve.Array.data[0].outSlope
-      value: -0.47139496
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SplashDamageFalloff.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SplashDamageFalloff.m_Curve.Array.data[1].outSlope
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: SplashDamageFalloff.m_Curve.Array.data[0].outWeight
-      value: 0.5108657
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SplashDamageFalloff.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SplashDamageFalloff.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SplashDamageFalloff.m_Curve.Array.data[0].weightedMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: SplashDamageFalloff.m_Curve.Array.data[1].weightedMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -29,12 +29,16 @@ namespace Quinn.AI.BehaviorTree
 		[field: SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
 		public string BossTitle { get; private set; } = "Boss Title";
 
+		[FoldoutGroup("Debug"), SerializeField]
+		private bool PrintAnimationTriggers;
+
 		public Animator Animator { get; private set; }
 		public Health Health { get; private set; }
 		public AIMovement Movement { get; private set; }
 		public Room Room { get; private set; }
 
-		private readonly HashSet<string> _setAnimTriggers = new();
+		// A trigger is "set" by virtue of being present in this set.
+		private readonly HashSet<string> _animTriggers = new();
 
 		public void Awake()
 		{
@@ -66,15 +70,29 @@ namespace Quinn.AI.BehaviorTree
 
 		public void SetAnimationTrigger(string key)
 		{
-			_setAnimTriggers.Add(key);
+			_animTriggers.Add(key);
+
+			if (PrintAnimationTriggers)
+			{
+				Debug.Log($"<color=#{GetColorOfString(key)}>Trigger set: '{key}'!</color>");
+			}
 		}
 
 		public bool GetAnimationTrigger(string key)
 		{
-			bool isSet = _setAnimTriggers.Contains(key);
-			_setAnimTriggers.Remove(key);
+			if (!_animTriggers.Contains(key))
+			{
+				return false;
+			}
 
-			return isSet;
+			_animTriggers.Remove(key);
+
+			if (PrintAnimationTriggers)
+			{
+				Debug.Log($"<color=#{GetColorOfString(key)}>Trigger consumed: '{key}'!</color>");
+			}
+
+			return true;
 		}
 
 		public void OnFootstep_Anim()
@@ -127,6 +145,15 @@ namespace Quinn.AI.BehaviorTree
 			{
 				Room.KillAllLiveAgents();
 			}
+		}
+
+		private string GetColorOfString(string str)
+		{
+			var rand = new System.Random(str.GetHashCode());
+			float hue = (float)rand.NextDouble();
+
+			var color = Color.HSVToRGB(hue, 1f, 1f);
+			return color.ToHexString();
 		}
 	}
 }

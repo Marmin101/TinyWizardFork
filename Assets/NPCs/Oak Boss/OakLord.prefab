@@ -778,7 +778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6683238254451349385, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: 32
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6683238254451349385, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
@@ -806,7 +806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6683238254451349385, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: 0.576898
+      value: 2.0900536
       objectReference: {fileID: 0}
     - target: {fileID: 6683238254451349385, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
@@ -818,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6683238254451349385, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
-      value: -0.6406961
+      value: 0.1158818
       objectReference: {fileID: 0}
     - target: {fileID: 6683238254451349385, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Overridden
@@ -894,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7931271033067694364, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: 24
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7931271033067694364, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
@@ -954,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7931271033067694364, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: 0.51432973
+      value: 1.6848837
       objectReference: {fileID: 0}
     - target: {fileID: 7931271033067694364, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
@@ -966,7 +966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7931271033067694364, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
-      value: 0.17728451
+      value: 0.7625615
       objectReference: {fileID: 0}
     - target: {fileID: 7931271033067694364, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_PropertySheet.m_Vector2f.m_Array.Array.data[0].m_Overridden
@@ -1027,6 +1027,26 @@ PrefabInstance:
     - target: {fileID: 8865879636924115683, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002506124415015863, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002506124415015863, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002506124415015863, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: Factor
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002506124415015863, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002506124415015863, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1103,6 +1123,9 @@ MonoBehaviour:
   - rid: 8332993583021556006
   - rid: 8332993583021556007
   - rid: 8332993583021556151
+  - rid: 8332993604956979269
+  - rid: 8332993605164859767
+  - rid: 8332993605164859768
   references:
     version: 2
     RefIds:
@@ -1128,7 +1151,7 @@ MonoBehaviour:
         GUID:
           m_Value0: 1948131628280299671
           m_Value1: 205879473243174865
-        Name: MinionMissileOrigin
+        Name: MinionMouth
         m_Value: {fileID: 5895532089324844473}
     - rid: 8332993583021556007
       type: {class: 'BlackboardVariable`1[[Quinn.MissileSystem.Missile, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
@@ -1146,6 +1169,30 @@ MonoBehaviour:
           m_Value1: 11150120694171031364
         Name: SelfAnimator
         m_Value: {fileID: 1719680710377201469}
+    - rid: 8332993604956979269
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 9112020396631143244
+          m_Value1: 6583896370142179921
+        Name: BossMouth
+        m_Value: {fileID: 1495713588304035703, guid: 9dfdeabdb0df75741b140ef732b49a1f, type: 3}
+    - rid: 8332993605164859767
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 768889301063871691
+          m_Value1: 17364692795041895646
+        Name: Shadow
+        m_Value: {fileID: 5891076701322276443}
+    - rid: 8332993605164859768
+      type: {class: 'BlackboardVariable`1[[Quinn.MissileSystem.Missile, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 9795762834130661057
+          m_Value1: 9891298063551658281
+        Name: RingMissile
+        m_Value: {fileID: 4196127319712592105, guid: 9dfdeabdb0df75741b140ef732b49a1f, type: 3}
 --- !u!114 &-1984301384065678884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,3 +1216,4 @@ MonoBehaviour:
   DeathVFX: {fileID: 0}
   <IsBoss>k__BackingField: 1
   <BossTitle>k__BackingField: The Oak Lord
+  PrintAnimationTriggers: 0

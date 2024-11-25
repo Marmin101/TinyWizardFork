@@ -41,6 +41,9 @@ namespace Quinn.UI
 			Instance = null;
 		}
 
+		/// <summary>
+		/// Will automatically hide the boss bar upon this agent's death.
+		/// </summary>
 		public void SetBoss(BTAgent agent)
 		{
 			_boss = agent;

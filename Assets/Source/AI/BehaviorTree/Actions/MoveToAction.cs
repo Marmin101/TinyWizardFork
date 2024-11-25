@@ -25,6 +25,9 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeReference]
 		public BlackboardVariable<float> MaxDistance = new(5f);
 
+		[SerializeReference]
+		public BlackboardVariable<float> ContinueFlowAfterPercent = new(1f);
+
 		private BTAgent _agent;
 		private Vector2 _origin;
 
@@ -44,6 +47,12 @@ namespace Quinn.AI.BehaviorTree
 		protected override Status OnUpdate()
 		{
 			bool reached = _agent.Movement.MoveTo(Position.Value, StoppingDistance.Value);
+
+			// If the percent progress made passes a threshold, continue flow of the graph.
+			if (GameObject.transform.position.DistanceTo(_origin) / _origin.DistanceTo(Position.Value) >= ContinueFlowAfterPercent.Value)
+			{
+				reached = true;
+			}
 
 			if (LimitMaxDistance.Value && GameObject.transform.position.DistanceTo(_origin) > MaxDistance.Value)
 			{

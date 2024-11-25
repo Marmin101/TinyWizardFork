@@ -1087,6 +1087,10 @@ PrefabInstance:
       propertyPath: KnockbackDecayRate
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 4686400505576603632, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: DoesKnockbackOnDamage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4891083787612474357, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: WetDamage
       value: 10

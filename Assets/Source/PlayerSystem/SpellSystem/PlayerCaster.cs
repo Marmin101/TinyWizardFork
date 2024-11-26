@@ -1,8 +1,11 @@
 using DG.Tweening;
 using FMODUnity;
+using NUnit.Framework.Constraints;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
@@ -28,8 +31,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		[Space, SerializeField]
 		private Staff FallbackStaff;
-		[SerializeField, Tooltip("At game start, one will be chosen at random to be spawned and equipped.")]
-		private Staff[] StartingStaffs;
+		[SerializeField]
+		private Staff[] AllStaffs, StartingStaffs;
 
 		[field: Space, SerializeField]
 		public float MaxMana { get; private set; } = 100f;
@@ -74,9 +77,30 @@ namespace Quinn.PlayerSystem.SpellSystem
 			input.OnCastStart += OnBasicStart;
 			input.OnSpecialStart += OnSpecialStart;
 
-			Debug.Assert(StartingStaffs.Length > 0);
-			GameObject staff = StartingStaffs.GetRandom().gameObject.Clone();
-			EquipStaff(staff.GetComponent<Staff>(), true, true);
+			if (!string.IsNullOrEmpty(PlayerManager.Instance.EquippedStaffGUID))
+			{
+				GameObject instance = StaffGUIDToPrefab(PlayerManager.Instance.EquippedStaffGUID).gameObject.Clone();
+				Staff staff = instance.GetComponent<Staff>();
+
+				EquipStaff(staff, true, true);
+				staff.SetCaster(this);
+				staff.SetEnergy(PlayerManager.Instance.EquippedStaffEnergy);
+
+				foreach (string guid in PlayerManager.Instance.StoredStaffGUIDs)
+				{
+					instance = StaffGUIDToPrefab(guid).gameObject.Clone();
+					staff = instance.GetComponent<Staff>();
+
+					StoreStaff(staff);
+					staff.SetCaster(this);
+				}
+			}
+			else
+			{
+				Debug.Assert(StartingStaffs.Length > 0);
+				GameObject staff = StartingStaffs.GetRandom().gameObject.Clone();
+				EquipStaff(staff.GetComponent<Staff>(), true, true);
+			}
 
 			StoreStaff(FallbackStaff);
 			Mana = MaxMana;
@@ -99,7 +123,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 					ActiveStaff = null;
 				}
 
-				GameObject staff = StartingStaffs.GetRandom().gameObject.Clone(StaffPivot);
+				GameObject staff = AllStaffs.GetRandom().gameObject.Clone(StaffPivot);
 				EquipStaff(staff.GetComponent<Staff>(), true);
 			}
 #endif
@@ -163,6 +187,17 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public void OnDestroy()
 		{
+			if (ActiveStaff != null)
+			{
+				PlayerManager.Instance.EquippedStaffGUID = ActiveStaff.GUID;
+				PlayerManager.Instance.EquippedStaffEnergy = ActiveStaff.Energy;
+
+				PlayerManager.Instance.StoredStaffGUIDs = _storedStaffs
+					.Select(staff => staff.GUID)
+					.Where(guid => guid != FallbackStaff.GUID)
+					.ToArray();
+			}
+
 			var input = InputManager.Instance;
 
 			if (input != null)
@@ -179,18 +214,21 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			if (staff != ActiveStaff)
 			{
+				staff.OnEnergyDepleted += OnStaffEnergyDepleted;
+
 				// Skip sequence if requested or if current staff is fallback staff.
 				if (!skipSequence && (ActiveStaff != FallbackStaff))
 				{
 					await StaffPickUpSequence(staff);
 				}
 				// Avoid equip sound. The equip sound is otherwise played in the StaffPickUpSequence(Staff) method.
-				else if(!supressNonSequenceSound)
+				else if (!supressNonSequenceSound)
 				{
 					Audio.Play(EquipSound, transform.position);
 				}
 
 				DequipActiveStaff();
+
 				// If the staff being equipped was on the player's back; e.g. the fallback staff.
 				_storedStaffs.Remove(staff);
 
@@ -198,12 +236,12 @@ namespace Quinn.PlayerSystem.SpellSystem
 				staff.transform.SetParent(transform, false);
 				staff.SetCaster(this);
 
+				FullyReplenishMana();
+				SetCharge(0f);
+
 				CastingSpark.SetGradient("Color", staff.SparkGradient);
 				CastingSpark.transform.SetParent(staff.Head, false);
 				CastingSpark.transform.localPosition = Vector3.zero;
-
-				FullyReplenishMana();
-				SetCharge(0f);
 
 				OnStaffEquipped?.Invoke(staff);
 			}
@@ -214,6 +252,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			if (!_storedStaffs.Contains(staff))
 			{
 				_storedStaffs.Add(staff);
+				staff.OnEnergyDepleted -= OnStaffEnergyDepleted;
 
 				if (ActiveStaff == staff)
 				{
@@ -304,6 +343,14 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public void SetCharge(float percent)
 		{
 			Charge = percent;
+		}
+
+		private Staff StaffGUIDToPrefab(string guid)
+		{
+			var staff = AllStaffs.FirstOrDefault(x => x.GUID == guid);
+			Debug.Assert(staff != null, "Failed to find staff. Make sure staff is in AllStaffs array in PlayerCaster!");
+
+			return staff;
 		}
 
 		private void OnBasicStart()
@@ -433,6 +480,16 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 			EquipEnergyVFX.SetVector2("StartBias", startBias);
 			EquipEnergyVFX.SetVector2("EndBias", endBias);
+		}
+
+		private void OnStaffEnergyDepleted(Staff staff)
+		{
+			var p = PlayerManager.Instance;
+
+			if (p.EquippedStaffGUID == staff.GUID)
+			{
+				p.EquippedStaffGUID = string.Empty;
+			}
 		}
 	}
 }

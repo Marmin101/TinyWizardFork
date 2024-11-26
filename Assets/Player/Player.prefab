@@ -754,8 +754,10 @@ MonoBehaviour:
   KnockbackSpeed: 16
   KnockbackDecayRate: 38
   MoveSpeed: 4.5
-  DashSpeed: 18
-  DashDistance: 4.5
+  VortexMaxSpeed: 14
+  VortexMaxRadius: 30
+  DashSpeed: 17
+  DashDistance: 4
   DashCooldown: 0.6
   DashSound:
     Guid:
@@ -836,10 +838,12 @@ MonoBehaviour:
   StoredStaffsParent: {fileID: 2134589046034292582}
   StaffMaxAngle: 60
   FallbackStaff: {fileID: 6154076365990238944}
-  StartingStaffs:
+  AllStaffs:
+  - {fileID: 5412239994484745951, guid: 3a7f5f5d31023f94c8b869fd48a5580f, type: 3}
   - {fileID: 2408369836229230331, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
   - {fileID: -2936809453692542970, guid: debf9f51430d0014f9d99a71ea0951a5, type: 3}
-  - {fileID: 5412239994484745951, guid: 3a7f5f5d31023f94c8b869fd48a5580f, type: 3}
+  StartingStaffs:
+  - {fileID: 2408369836229230331, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
   <MaxMana>k__BackingField: 110
   ManaRegenDelay: 1
   ManaRegenRate: 135

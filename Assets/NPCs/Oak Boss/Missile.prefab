@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4882161879067048, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8823622418821198597, guid: 7c1e8e99db46bd84a9048fc015ed2338, type: 3}
+    - target: {fileID: 4882161879067048, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4882161879067048, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4882161879067048, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4882161879067048, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 11e2a14178dec2e4ca793d87b460e751, type: 2}
     - target: {fileID: 287705240417758359, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,13 +68,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1591558883108775646, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Radius
+      value: 0.15422061
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591558883108775646, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2155629128015402347, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: m_Name
       value: Missile
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DirectSpeed
-      value: 4.5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

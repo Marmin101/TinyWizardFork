@@ -14,9 +14,10 @@ namespace Quinn.PlayerSystem
 	{
 		[SerializeField]
 		private float MoveSpeed = 6f;
-		[SerializeField]
+
+		[SerializeField, BoxGroup("Vortex")]
 		private float VortexMaxSpeed = 6f;
-		[SerializeField]
+		[SerializeField, BoxGroup("Vortex")]
 		private float VortexMaxRadius = 24f;
 
 		[SerializeField, BoxGroup("Dash")]

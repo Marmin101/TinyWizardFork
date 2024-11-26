@@ -38,7 +38,7 @@ namespace Quinn.AI.BehaviorTree
 		protected override Status OnStart()
 		{
 			if (Missile.Value == null || Origin.Value == null)
-				return Status.Failure;
+				throw new Exception();
 
 			Vector2 dir = Origin.Value.position.DirectionTo(Target.Value);
 

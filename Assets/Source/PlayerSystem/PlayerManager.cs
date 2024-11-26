@@ -3,6 +3,7 @@ using Quinn.DungeonGeneration;
 using Quinn.PlayerSystem.SpellSystem;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,10 @@ namespace Quinn.PlayerSystem
 		public Player Player { get; private set; }
 		public Health Health { get; private set; }
 		public PlayerMovement Movement { get; private set; }
+
+		public string EquippedStaffGUID { get; set; }
+		public float EquippedStaffEnergy { get; set; }
+		public string[] StoredStaffGUIDs { get; set; }
 
 		public bool IsAlive => !IsDead;
 		public bool IsDead => Health == null || Health.IsDead;
@@ -126,8 +131,7 @@ namespace Quinn.PlayerSystem
 
 		private async void OnDeath()
 		{
-			var caster = Player.GetComponent<PlayerCaster>();
-			caster.StoreStaff(caster.ActiveStaff);
+			EquippedStaffGUID = null;
 
 			UnsubscribeAll();
 

@@ -74,6 +74,9 @@ namespace Quinn.DungeonGeneration
 		private EventInstance _customMusic;
 		private bool _isBossDead;
 
+		private bool _hasLoaded;
+		private bool _isExitQueued;
+
 		public void Awake()
 		{
 			IsConquered = StartConquered;
@@ -112,8 +115,10 @@ namespace Quinn.DungeonGeneration
 
 		public void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.IsPlayer())
+			if (collision.IsPlayer() && !_hasLoaded)
 			{
+				_hasLoaded = true;
+
 				for (int i = 0; i < transform.childCount; i++)
 				{
 					transform.GetChild(i).gameObject.SetActive(true);
@@ -191,6 +196,9 @@ namespace Quinn.DungeonGeneration
 
 		private void OnPlayerTriggerEnter(Collider2D collider)
 		{
+			if (IsStarted && !IsConquered)
+				return;
+
 			if (collider.IsPlayer())
 			{
 				RoomCamera.enabled = true;
@@ -224,19 +232,17 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
-		private void OnPlayerTriggerExit(Collider2D collider)
+		private async void OnPlayerTriggerExit(Collider2D collider)
 		{
-			if (collider.IsPlayer())
+			if (collider.IsPlayer() && (!_isExitQueued || IsConquered))
 			{
-				RoomCamera.enabled = false;
-				// Always enable music upon leaivng sot that starting room (which don't start with music) will have music in their hallways.
-				RuntimeManager.StudioSystem.setParameterByName("enable-music", 1f);
-
-				if (HasCustomMusic)
+				if (!IsConquered && IsStarted)
 				{
-					_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-					_customMusic.release();
+					_isExitQueued = true;
+					await Wait.Until(() => IsConquered);
 				}
+
+				OnPlayerExitRoom();
 			}
 		}
 
@@ -312,6 +318,19 @@ namespace Quinn.DungeonGeneration
 				{
 					RegisterAgent(childAgent);
 				}
+			}
+		}
+
+		private void OnPlayerExitRoom()
+		{
+			RoomCamera.enabled = false;
+			// Always enable music upon leaivng sot that starting room (which don't start with music) will have music in their hallways.
+			RuntimeManager.StudioSystem.setParameterByName("enable-music", 1f);
+
+			if (HasCustomMusic)
+			{
+				_customMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				_customMusic.release();
 			}
 		}
 	}

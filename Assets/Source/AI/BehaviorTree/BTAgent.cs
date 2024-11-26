@@ -49,6 +49,16 @@ namespace Quinn.AI.BehaviorTree
 			Health.OnDeath += OnDeath;
 		}
 
+#if UNITY_EDITOR
+		public void Update()
+		{
+			if (IsBoss && Input.GetKeyDown(KeyCode.Alpha7) && Health.Percent > 0.51f)
+			{
+				Health.TakeDamage((Health.Max / 2f) + 1f, Vector2.zero, Team.Player, PlayerManager.Instance.Player.gameObject);
+			}
+		}
+#endif
+
 		public void FixedUpdate()
 		{
 			if (IsBoss)

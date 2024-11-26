@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -23,6 +24,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public bool CanRegenMana { get; protected set; } = true;
 
 		public event Action OnPickedUp;
+		public event Action<Staff> OnEnergyDepleted;
 
 		protected PlayerCaster Caster { get; private set; }
 
@@ -121,14 +123,25 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public virtual void OnSpecialDown() { }
 		public virtual void OnSpecialUp() { }
 
+		public void SetEnergy(float energy)
+		{
+			Energy = Mathf.Clamp(energy, 0f, MaxEnergy);
+		}
+
 		public void ConsumeEnergy(float amount)
 		{
 			Energy = Mathf.Max(0f, Energy - amount);
+
+			if (Energy == 0f)
+			{
+				OnEnergyDepleted?.Invoke(this);
+			}
 		}
 
 		public void ConsumeAllEnergy()
 		{
 			Energy = 0f;
+			OnEnergyDepleted?.Invoke(this);
 		}
 
 		public void ConsumeMana(float amount)

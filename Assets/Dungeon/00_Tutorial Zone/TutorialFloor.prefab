@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 5438255819899298002}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.79, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3547,6 +3547,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 365045768008272380, guid: 437d39236b49c1045aebeb6aa0e77a8a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 463836624546316334, guid: 437d39236b49c1045aebeb6aa0e77a8a, type: 3}
       propertyPath: DisableAI
       value: 1
@@ -3602,6 +3606,18 @@ PrefabInstance:
     - target: {fileID: 5925340277677071186, guid: 437d39236b49c1045aebeb6aa0e77a8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510763340765859393, guid: 437d39236b49c1045aebeb6aa0e77a8a, type: 3}
+      propertyPath: KnockbackSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510763340765859393, guid: 437d39236b49c1045aebeb6aa0e77a8a, type: 3}
+      propertyPath: KnockbackDecayRate
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510763340765859393, guid: 437d39236b49c1045aebeb6aa0e77a8a, type: 3}
+      propertyPath: DoesKnockbackOnDamage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7838,10 +7854,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8449522695445618622, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: Dialogue
-      value: 'M1 or M2 to Shoot
+      value: 'Mouse 1 or Mouse 2 to Shoot
 
-        (some magic staffs require you hold the
-        mouse button down)'
+        (some staffs can charge attacks)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8187,7 +8202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3878685759146039025, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.88
+      value: -4.58
       objectReference: {fileID: 0}
     - target: {fileID: 3878685759146039025, guid: 0e14f4eb293640641902fb959002dc75, type: 3}
       propertyPath: m_LocalPosition.y

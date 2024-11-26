@@ -1081,7 +1081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: <Max>k__BackingField
-      value: 1400
+      value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: Renderers.Array.size
@@ -1125,7 +1125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4686400505576603632, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: <MoveSpeed>k__BackingField
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4891083787612474357, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: BurnDamage
@@ -1586,7 +1586,7 @@ MonoBehaviour:
           m_Value0: 9112020396631143244
           m_Value1: 6583896370142179921
         Name: BossMouth
-        m_Value: {fileID: 1495713588304035703, guid: 9dfdeabdb0df75741b140ef732b49a1f, type: 3}
+        m_Value: {fileID: 6327311177767668593}
     - rid: 8332993605164859767
       type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1625,5 +1625,5 @@ MonoBehaviour:
   DeathTrigger: Die
   DeathVFX: {fileID: 0}
   <IsBoss>k__BackingField: 1
-  <BossTitle>k__BackingField: The Oak Lord
+  <BossTitle>k__BackingField: Father Oak, Lord of the Fallen
   PrintAnimationTriggers: 0

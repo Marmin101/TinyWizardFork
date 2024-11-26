@@ -1056,6 +1056,10 @@ PrefabInstance:
       value: event:/CandleStickBoss/CandlestickBossHurt
       objectReference: {fileID: 0}
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: <Max>k__BackingField
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: HealSound.Guid.Data1
       value: -1768094496
       objectReference: {fileID: 0}
@@ -1287,6 +1291,7 @@ MonoBehaviour:
   DeathVFX: {fileID: 0}
   <IsBoss>k__BackingField: 1
   <BossTitle>k__BackingField: Candlestick, Lord of Fire
+  PrintAnimationTriggers: 0
 --- !u!114 &2193098795683250030
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ambience:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -239895624
+      Data2: 1265082880
+      Data3: -557461825
+      Data4: -1100324599
+    Path: event:/Music/ThePalace_Ambience
   Music:
     Guid:
       Data1: 800017633
@@ -26,6 +26,7 @@ MonoBehaviour:
       Data3: -1174605652
       Data4: -574884441
     Path: event:/Music/TheOvergrowth
+  AmbientVFX: {fileID: 8926484042661614526, guid: 02a5c43d95cc08e448fa12e2e6715fcc, type: 3}
   Title: 'The
 
     Overgrowth'

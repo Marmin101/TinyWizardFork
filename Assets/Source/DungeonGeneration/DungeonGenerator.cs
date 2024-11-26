@@ -55,6 +55,8 @@ namespace Quinn.DungeonGeneration
 
 		public FloorSO ActiveFloor { get; private set; }
 
+		public event System.Action<FloorSO> OnFloorStart;
+
 		private readonly Dictionary<Vector2Int, GameObject> _generatedRooms = new();
 		private EventInstance _ambience, _music;
 
@@ -188,12 +190,24 @@ namespace Quinn.DungeonGeneration
 			}
 
 			await floor.GetVariant().CloneAsync();
+			OnFloorStart?.Invoke(floor);
 
 			var fade = CameraManager.Instance.FadeIn();
 
 			if (!floor.SkipDropSequence)
 			{
-				await PlayerManager.Instance.Player.EnterFloorAsync();
+				var player = PlayerManager.Instance.Player;
+
+				if (floor.AmbientVFX != null)
+				{
+					player.SetAmbientVFX(floor.AmbientVFX);
+				}
+				else
+				{
+					player.ClearAmbientVFX();
+				}
+
+				await player.EnterFloorAsync();
 			}
 
 			await fade;

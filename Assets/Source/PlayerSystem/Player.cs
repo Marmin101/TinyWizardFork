@@ -49,6 +49,8 @@ namespace Quinn.PlayerSystem
 		private TextMeshProUGUI FloorTitleText;
 		[SerializeField]
 		private EventReference FloorEnterCue, FloorExitWooshSound;
+		[SerializeField, Required]
+		private VisualEffect AmbientVFX;
 
 		private Animator _animator;
 		private bool _wasMoving;
@@ -151,6 +153,18 @@ namespace Quinn.PlayerSystem
 
 			LandVFX.SetGradient("Color", new Gradient() { colorKeys = new GradientColorKey[] { new(floorColor, 0f) }, alphaKeys = new GradientAlphaKey[] { new(1f, 0f) } });
 			LandVFX.Play();
+		}
+
+		public void SetAmbientVFX(VisualEffectAsset asset)
+		{
+			AmbientVFX.visualEffectAsset = asset;
+			AmbientVFX.Play();
+		}
+
+		public void ClearAmbientVFX()
+		{
+			AmbientVFX.Stop();
+			AmbientVFX.visualEffectAsset = null;
 		}
 
 		public async Awaitable EnterFloorAsync()

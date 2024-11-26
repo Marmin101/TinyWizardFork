@@ -1,6 +1,7 @@
 ﻿using FMODUnity;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn.DungeonGeneration
 {
@@ -9,6 +10,7 @@ namespace Quinn.DungeonGeneration
 	{
 		public EventReference Ambience;
 		public EventReference Music;
+		public VisualEffectAsset AmbientVFX;
 		[Multiline]
 		public string Title = "Floor\nTitle";
 		public bool SkipDropSequence;

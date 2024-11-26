@@ -150,7 +150,7 @@ MonoBehaviour:
   ChargeRate: 3
   MaxCharge: 8
   MinChargeThreshold: 1
-  MaxDamage: 50
+  MaxDamage: 70
   DamageChargeFactor:
     serializedVersion: 2
     m_Curve:

@@ -1365,8 +1365,8 @@ GameObject:
   - component: {fileID: 5176653248572290296}
   - component: {fileID: 8563553701259864966}
   - component: {fileID: 8015037270306086786}
-  - component: {fileID: 7026041817551357659}
   - component: {fileID: 716360381360672900}
+  - component: {fileID: 7026041817551357659}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -1447,6 +1447,18 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!225 &716360381360672900
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551115605965835781}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &7026041817551357659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,7 +1474,7 @@ MonoBehaviour:
   Group: {fileID: 716360381360672900}
   FadeDuration: 1
   Dialogue: {fileID: 451627977483923001}
-  WriteInterval: 0.01
+  WriteInterval: 0.03
   WriteSound:
     Guid:
       Data1: 1193183216
@@ -1470,18 +1482,6 @@ MonoBehaviour:
       Data3: -2130769494
       Data4: -1164116004
     Path: event:/DialogueWrite
---- !u!225 &716360381360672900
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6551115605965835781}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &6614280212481953147
 GameObject:
   m_ObjectHideFlags: 0

@@ -187,7 +187,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public void OnDestroy()
 		{
-			if (ActiveStaff != null)
+			if (ActiveStaff != null && PlayerManager.Instance != null)
 			{
 				PlayerManager.Instance.EquippedStaffGUID = ActiveStaff.GUID;
 				PlayerManager.Instance.EquippedStaffEnergy = ActiveStaff.Energy;

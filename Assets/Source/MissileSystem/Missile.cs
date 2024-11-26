@@ -1,4 +1,5 @@
 using FMODUnity;
+using Quinn.AI;
 using Sirenix.OdinInspector;
 using Unity.AppUI.Core;
 using UnityEngine;
@@ -161,6 +162,20 @@ namespace Quinn.MissileSystem
 			_owner = owner;
 
 			Audio.Play(SpawnSound);
+
+			if (owner != null && owner.TryGetComponent(out IAgent agent))
+			{
+				if (agent != null && agent.Room != null)
+				{
+					agent.Room.OnRoomConquered += () =>
+					{
+						if (this != null && gameObject != null)
+						{
+							OnLifespanEnd();
+						}
+					};
+				}
+			}
 		}
 
 		private void OnImpact()

@@ -156,6 +156,7 @@ namespace Quinn.DungeonGeneration
 		private async Awaitable StartFloorAsync(FloorSO floor)
 		{
 			CameraManager.Instance.Blackout();
+			RuntimeManager.StudioSystem.setParameterByName("reverb", floor.Reverb);
 
 			DestroyAllRooms();
 			ActiveFloor = floor;

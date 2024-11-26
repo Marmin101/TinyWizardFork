@@ -26,5 +26,12 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  Title: 'Floor
+
+    Title'
+  SkipDropSequence: 0
   StartingRoom: {fileID: 0}
   Generatable: []
+  Reverb: 1
+  OverrideVariant: {fileID: 0}
+  Variants: []

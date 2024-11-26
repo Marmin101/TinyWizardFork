@@ -53,6 +53,8 @@ namespace Quinn.DungeonGeneration
 
 		[Space, SerializeField]
 		private bool StartsEnabled;
+		[SerializeField]
+		private Door[] OnlyUnlock;
 
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
@@ -134,9 +136,19 @@ namespace Quinn.DungeonGeneration
 			IsLocked = false;
 			Audio.Play(UnlockSound, transform.position);
 
-			foreach (var door in _doors)
+			if (OnlyUnlock.Length > 0)
 			{
-				door.Open();
+				foreach (var door in OnlyUnlock)
+				{
+					door.Open();
+				}
+			}
+			else
+			{
+				foreach (var door in _doors)
+				{
+					door.Open();
+				}
 			}
 		}
 

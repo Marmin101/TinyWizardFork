@@ -17,11 +17,13 @@ namespace Quinn.DungeonGeneration
 		public Room StartingRoom;
 		public RoomEntry[] Generatable;
 
-		[Space, Tooltip("Whole floor prefabs.")]
-		public GameObject[] Variants;
+		[Space, Range(0f, 1f)]
+		public float Reverb;
 
-		[Tooltip("For testing purposes. Doesn't work outside of editor mode.")]
+		[Space, Tooltip("For testing purposes. Doesn't work outside of editor mode.")]
 		public GameObject OverrideVariant;
+		[Tooltip("Whole floor prefabs.")]
+		public GameObject[] Variants;
 
 		public void OnValidate()
 		{

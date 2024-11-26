@@ -35,6 +35,7 @@ MonoBehaviour:
   - Prefab: {fileID: 9089302129140360783, guid: 4b7f45f094a8a4e49addc24173851e31, type: 3}
     Weight: 100
     SumWeight: 100
+  Reverb: 0.5
+  OverrideVariant: {fileID: 0}
   Variants:
   - {fileID: 4007627806934550419, guid: 4004d39fe575a5644a7adfc435d6f62f, type: 3}
-  OverrideVariant: {fileID: 0}

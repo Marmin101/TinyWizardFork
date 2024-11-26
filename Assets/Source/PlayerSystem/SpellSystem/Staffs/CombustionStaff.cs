@@ -44,10 +44,12 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private int MinSmokeVFXCount = 16, MaxSmokeVFXCount = 64;
 
 		[SerializeField, FoldoutGroup("SFX")]
-		private EventReference SmallExplosionSound, MediumExplosionSound, LargeExplosionSound;
+		private EventReference SmallExplosionSound, MediumExplosionSound, LargeExplosionSound, FullChargeSound;
 
 		private bool _isCharging;
 		private float _charge;
+
+		private bool _isFullCharge;
 
 		public void FixedUpdate()
 		{
@@ -64,6 +66,16 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				if (percent > 0.3f) cooldown *= 0.4f;
 				else if (percent > 0.8f) cooldown *= 0.1f;
 				Cooldown.Call(this, BaseSparkCooldown, Caster.Spark);
+
+				if (percent > 0.99f && !_isFullCharge)
+				{
+					_isFullCharge = true;
+					Audio.Play(FullChargeSound);
+				}
+			}
+			else
+			{
+				_isFullCharge = false;
 			}
 
 			CanRegenMana = !_isCharging;

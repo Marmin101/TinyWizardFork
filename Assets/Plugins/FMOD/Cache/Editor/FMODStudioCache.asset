@@ -147,10 +147,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638682218167500582
+  lastModified: 638682383118668476
   FileSizes:
   - Name: Desktop
-    Value: 4896
+    Value: 5040
   Exists: 1
 --- !u!114 &-7445233790183576452
 MonoBehaviour:
@@ -228,6 +228,33 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   IsStream: 0
   Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6960221123015867314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RockStaffSpecial
+  m_EditorClassIdentifier: 
+  Path: event:/RockStaffSpecial
+  Guid:
+    Data1: -1076446747
+    Data2: 1159302373
+    Data3: -369212288
+    Data4: -526625798
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -836,10 +863,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638682218167239246
+  lastModified: 638682383118584026
   FileSizes:
   - Name: Desktop
-    Value: 23715936
+    Value: 24038880
   Exists: 1
 --- !u!114 &-2689539372815235778
 MonoBehaviour:
@@ -1450,6 +1477,9 @@ MonoBehaviour:
   - {fileID: 6256640175765355933}
   - {fileID: -6036693558771649418}
   - {fileID: -6440692846267616266}
+  - {fileID: 8944495598491140940}
+  - {fileID: 4331398390904331815}
+  - {fileID: -6960221123015867314}
   EditorParameters:
   - {fileID: 6534374544836703813}
   - {fileID: 3980948695932294083}
@@ -1460,7 +1490,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638682218167500582
+  cacheTime: 638682383118668476
   cacheVersion: 131621
 --- !u!114 &840300883672108918
 MonoBehaviour:
@@ -2023,6 +2053,33 @@ MonoBehaviour:
   - Carpet
   - HealingPuddle
   Exists: 1
+--- !u!114 &4331398390904331815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RockStaffBasic
+  m_EditorClassIdentifier: 
+  Path: event:/RockStaffBasic
+  Guid:
+    Data1: 45901539
+    Data2: 1112768468
+    Data3: 1718326687
+    Data4: -260878548
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &4580590346513571341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2713,6 +2770,33 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   IsStream: 0
   Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8944495598491140940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FireflyShoot
+  m_EditorClassIdentifier: 
+  Path: event:/FireflyShoot
+  Guid:
+    Data1: 632417083
+    Data2: 1199254510
+    Data3: 432943516
+    Data4: -1690374687
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1

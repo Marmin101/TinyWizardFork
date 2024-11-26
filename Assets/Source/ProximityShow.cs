@@ -11,8 +11,11 @@ namespace Quinn
 		[SerializeField, Required]
 		private GameObject TargetChild;
 
-		private void FixedUpdate()
+		public void FixedUpdate()
 		{
+			if (PlayerManager.Instance == null || PlayerManager.Instance.IsDead)
+				return;
+
 			if (Time.frameCount % 2 == 0)
 			{
 				var player = PlayerManager.Instance.Player.transform;
@@ -20,7 +23,7 @@ namespace Quinn
 			}
 		}
 
-		private void OnDisable()
+		public void OnDisable()
 		{
 			TargetChild.SetActive(false);
 		}

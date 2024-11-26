@@ -123,7 +123,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 					ActiveStaff = null;
 				}
 
-				GameObject staff = AllStaffs.GetRandom().gameObject.Clone(StaffPivot);
+				GameObject staff = AllStaffs.Where(x => ActiveStaff == null || x.GUID != ActiveStaff.GUID).GetRandom().gameObject.Clone(StaffPivot);
 				EquipStaff(staff.GetComponent<Staff>(), true);
 			}
 #endif

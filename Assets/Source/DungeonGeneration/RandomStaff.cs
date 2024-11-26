@@ -11,24 +11,24 @@ namespace Quinn.DungeonGeneration
 	{
 		[SerializeField]
 		private bool AvoidPlayersActiveStaff = true;
-		[SerializeField, AssetsOnly]
-		private GameObject[] Staffs;
+		[SerializeField, Required]
+		private StaffsSO Staffs;
 
 		public void Start()
 		{
-			GameObject[] filtered;
+			Staff[] filtered;
 			Staff activeStaff = PlayerManager.Instance.Player.GetComponent<PlayerCaster>().ActiveStaff;
 
 			if (activeStaff != null && AvoidPlayersActiveStaff)
 			{
-				filtered = Staffs.Where(x => x.GetComponent<Staff>().GUID != activeStaff.GUID).ToArray();
+				filtered = Staffs.Staffs.Where(x => x.GUID != activeStaff.GUID).ToArray();
 			}
 			else
 			{
-				filtered = Staffs;
+				filtered = Staffs.Staffs;
 			}
 
-			var instance = filtered.GetRandom().Clone(transform);
+			var instance = filtered.GetRandom().gameObject.Clone(transform);
 			instance.GetComponent<Staff>().OnPickedUp += () =>
 			{
 				transform.DOKill();

@@ -45,10 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvoidPlayersActiveStaff: 1
-  Staffs:
-  - {fileID: 5556168969788869389, guid: debf9f51430d0014f9d99a71ea0951a5, type: 3}
-  - {fileID: 8078778520645663636, guid: 3a7f5f5d31023f94c8b869fd48a5580f, type: 3}
-  - {fileID: 3308763497516412586, guid: 9702eba9ef004fb4087a36c4a2f246b9, type: 3}
+  Staffs: {fileID: 11400000, guid: cee87d24b164bbd4dbfaab753b0969a3, type: 2}
 --- !u!1 &1009763247797771274
 GameObject:
   m_ObjectHideFlags: 0

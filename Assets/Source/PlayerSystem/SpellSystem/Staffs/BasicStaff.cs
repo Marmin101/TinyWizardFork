@@ -67,6 +67,8 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private bool HasSpecial = true;
 		[SerializeField, Required, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
 		private Missile SpecialMissile;
+		[SerializeField, Required, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial))]
+		private bool RequireFullChargeForSpecial;
 
 		[SerializeField, FoldoutGroup("Special"), ShowIf(nameof(HasSpecial)), Unit(Units.Second), Space]
 		private float ChargingSparkInterval = 0.45f;
@@ -232,15 +234,19 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			_isCharging = false;
 
 			Caster.Spark();
-
 			bool enoughCharge = Time.time > _largeMissileTime;
+
+			if (!enoughCharge && RequireFullChargeForSpecial)
+			{
+				return;
+			}
 
 			var prefab = enoughCharge ? SpecialMissile : BasicMissile;
 			MissileManager.Instance.SpawnMissile(Caster.gameObject, prefab, Head.position, GetDirToCrosshair(),
 				SpecialCount, SpecialInterval, SpecialBehavior, SpecialSpread);
 
 			Caster.Movement.Knockback(-GetDirToCrosshair(), SpecialKnockbackSpeed);
-			Audio.Play(Time.time > _largeMissileTime ? SpecialCastBigSound : SpecialCastLittleSound, Head.position);
+			Audio.Play(enoughCharge ? SpecialCastBigSound : SpecialCastLittleSound, Head.position);
 
 			if (enoughCharge)
 			{

@@ -47,5 +47,10 @@ namespace Quinn.AI
 				MissileManager.Instance.SpawnMissile(gameObject, Missile, transform.position, Direction.normalized, Count, Interval, Behavior, Spread);
 			}
 		}
+
+		public void CeaseAutoFire()
+		{
+			AutoFire = false;
+		}
 	}
 }

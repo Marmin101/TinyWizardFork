@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6235671714373469185}
+  m_Father: {fileID: 2599098073637882116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5590196251816263261
 MonoBehaviour:
@@ -52,6 +52,190 @@ MonoBehaviour:
   Spread: 30
   AutoFire: 1
   FireInterval: 0.3
+--- !u!1 &1154036765822460587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3305115060099823492}
+  - component: {fileID: 4915109244623095814}
+  - component: {fileID: 5906578849258133639}
+  - component: {fileID: 2940105484428069115}
+  m_Layer: 0
+  m_Name: SpawnerStopper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3305115060099823492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154036765822460587}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.96, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 11, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6235671714373469185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4915109244623095814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154036765822460587}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &5906578849258133639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154036765822460587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aba73bb581906144848096de3f420d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Color: {r: 0.4037736, g: 0.4037736, b: 0.4037736, a: 1}
+--- !u!114 &2940105484428069115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154036765822460587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27572c7b4d8bb24890217c47af63523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FilterForPlayer: 1
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5590196251816263261}
+        m_TargetAssemblyTypeName: Quinn.AI.MissileSpawnerAI, Assembly-CSharp
+        m_MethodName: CeaseAutoFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4497427420117477945}
+        m_TargetAssemblyTypeName: Quinn.AI.MissileSpawnerAI, Assembly-CSharp
+        m_MethodName: CeaseAutoFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7220499601244621191}
+        m_TargetAssemblyTypeName: Quinn.AI.MissileSpawnerAI, Assembly-CSharp
+        m_MethodName: CeaseAutoFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4280793263392231942}
+        m_TargetAssemblyTypeName: Quinn.AI.MissileSpawnerAI, Assembly-CSharp
+        m_MethodName: CeaseAutoFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4054152064906597585}
+        m_TargetAssemblyTypeName: Quinn.AI.MissileSpawnerAI, Assembly-CSharp
+        m_MethodName: CeaseAutoFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7168176711335084757}
+        m_TargetAssemblyTypeName: Quinn.AI.MissileSpawnerAI, Assembly-CSharp
+        m_MethodName: CeaseAutoFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3031822431167009985
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6235671714373469185}
+  m_Father: {fileID: 2599098073637882116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4497427420117477945
 MonoBehaviour:
@@ -134,7 +318,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6235671714373469185}
+  m_Father: {fileID: 2599098073637882116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4280793263392231942
 MonoBehaviour:
@@ -156,6 +340,43 @@ MonoBehaviour:
   Spread: 30
   AutoFire: 1
   FireInterval: 0.3
+--- !u!1 &5438255819899298002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2599098073637882116}
+  m_Layer: 0
+  m_Name: Missile Spawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2599098073637882116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438255819899298002}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2842057852188250915}
+  - {fileID: 7720528886766313744}
+  - {fileID: 7277607428227123745}
+  - {fileID: 8181273829208605620}
+  - {fileID: 7436855042026621824}
+  - {fileID: 7784773122076019364}
+  m_Father: {fileID: 6235671714373469185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5655828873618187035
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +407,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6235671714373469185}
+  m_Father: {fileID: 2599098073637882116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7220499601244621191
 MonoBehaviour:
@@ -283,7 +504,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6235671714373469185}
+  m_Father: {fileID: 2599098073637882116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4054152064906597585
 MonoBehaviour:
@@ -335,7 +556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6235671714373469185}
+  m_Father: {fileID: 2599098073637882116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7168176711335084757
 MonoBehaviour:
@@ -6056,22 +6277,10 @@ PrefabInstance:
       addedObject: {fileID: 3238144096738883264}
     - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2842057852188250915}
+      addedObject: {fileID: 3305115060099823492}
     - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7720528886766313744}
-    - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7277607428227123745}
-    - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8181273829208605620}
-    - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7436855042026621824}
-    - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7784773122076019364}
+      addedObject: {fileID: 2599098073637882116}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
 --- !u!4 &6235671714373469185 stripped

@@ -40,11 +40,8 @@ namespace Quinn.MissileSystem
 
 				Vector2 missileDir = GetDirection(behavior, dir, i, spreadAngle, count);
 
-				if (instance != null)
-				{
-					instance.GetComponent<Missile>().Initialize(missileDir, owner);
-					MoveToActiveScene(instance);
-				}
+				instance.GetComponent<Missile>().Initialize(missileDir, owner);
+				MoveToActiveScene(instance);
 
 				i++;
 			}

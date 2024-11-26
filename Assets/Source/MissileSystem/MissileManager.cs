@@ -6,6 +6,7 @@ namespace Quinn.MissileSystem
 	public class MissileManager : MonoBehaviour
 	{
 		public static MissileManager Instance { get; private set; }
+		public static float AngleOffset = 0f;
 
 		public void Awake()
 		{
@@ -45,6 +46,8 @@ namespace Quinn.MissileSystem
 
 				i++;
 			}
+
+			AngleOffset = 0f;
 		}
 		public async void SpawnMissile(GameObject owner, Missile prefab, Vector2 origin, Vector2 dir, int count,
 			MissileSpawnBehavior behavior = MissileSpawnBehavior.Direct, float spreadAngle = 360f)
@@ -97,6 +100,8 @@ namespace Quinn.MissileSystem
 
 					float angle = index * angleDelta;
 					angle -= maxAngle / 2f;
+
+					angle += AngleOffset;
 
 					missileDir = Quaternion.AngleAxis(angle, Vector3.forward) * baseDir;
 					break;

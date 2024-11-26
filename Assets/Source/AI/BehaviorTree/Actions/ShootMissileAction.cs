@@ -30,6 +30,9 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeReference]
 		public BlackboardVariable<float> KnockbackSpeed = new(0f);
 
+		[SerializeReference]
+		public BlackboardVariable<float> AngleOffset = new(0f);
+
 		private float _endTime;
 
 		protected override Status OnStart()
@@ -43,6 +46,8 @@ namespace Quinn.AI.BehaviorTree
 			{
 				movement.Knockback(-dir, KnockbackSpeed.Value);
 			}
+
+			MissileManager.AngleOffset = AngleOffset.Value;
 
 			if (Interval.Value > 0f)
 			{

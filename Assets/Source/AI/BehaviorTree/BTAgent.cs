@@ -100,6 +100,16 @@ namespace Quinn.AI.BehaviorTree
 			PlayFootstepSound(GetSoundMaterialType());
 		}
 
+		public void DisableCharacterCollision()
+		{
+			GetComponent<Collider2D>().excludeLayers |= LayerMask.GetMask("Character");
+		}
+
+		public void EnableCharacterCollision()
+		{
+			GetComponent<Collider2D>().excludeLayers &= ~LayerMask.GetMask("Character");
+		}
+
 		private SoundMaterialType GetSoundMaterialType()
 		{
 			SoundMaterialType mat = SoundMaterialType.None;

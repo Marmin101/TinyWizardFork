@@ -14,6 +14,10 @@ namespace Quinn.PlayerSystem
 	{
 		[SerializeField]
 		private float MoveSpeed = 6f;
+		[SerializeField]
+		private float VortexMaxSpeed = 6f;
+		[SerializeField]
+		private float VortexMaxRadius = 24f;
 
 		[SerializeField, BoxGroup("Dash")]
 		private float DashSpeed = 12f;
@@ -33,6 +37,8 @@ namespace Quinn.PlayerSystem
 
 		private Animator _animator;
 		private Health _health;
+
+		private Transform _vortexOrigin;
 
 		private float _nextDashTime;
 		private float _dashEndTime;
@@ -83,6 +89,17 @@ namespace Quinn.PlayerSystem
 			{
 				vel += MoveSpeed * moveDir;
 
+				if (_vortexOrigin != null)
+				{
+					float dstToVortex = transform.position.DistanceTo(_vortexOrigin.position);
+					Vector2 dirToVortex = transform.position.DirectionTo(_vortexOrigin.position);
+
+					float t = Mathf.Clamp01(dstToVortex / VortexMaxRadius);
+					float vortexSpeed = Mathf.Lerp(VortexMaxSpeed, 0f, t);
+
+					vel += dirToVortex * vortexSpeed;
+				}
+
 				if (moveDir.sqrMagnitude > 0f)
 				{
 					DashDirection = moveDir;
@@ -90,6 +107,17 @@ namespace Quinn.PlayerSystem
 			}
 
 			return vel;
+		}
+
+		public void SetVortexOrigin(Transform origin)
+		{
+			Debug.Assert(origin != null);
+			_vortexOrigin = origin;
+		}
+
+		public void ClearVortexOrigin()
+		{
+			_vortexOrigin = null;
 		}
 
 		private void OnDash()

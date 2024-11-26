@@ -195,7 +195,7 @@ MonoBehaviour:
   BasicInterval: 0.05
   ChainWindowDuration: 0.4
   BasicEnergyUse: 3
-  BasicManaConsume: 5.5
+  BasicManaConsume: 11
   HasBasicFinisher: 0
   BasicFinisherCooldown: 0.6
   BasicFinisherCount: 3

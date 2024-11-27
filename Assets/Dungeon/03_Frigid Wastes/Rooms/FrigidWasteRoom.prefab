@@ -1597,7 +1597,7 @@ Transform:
   m_GameObject: {fileID: 2103213529999045247}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.56, y: -0.07, z: 0}
+  m_LocalPosition: {x: 1.482, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6805,7 +6805,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 86020002077384696, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_Intensity
-      value: 0.4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 86020002077384696, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.136
       objectReference: {fileID: 0}
     - target: {fileID: 86020002077384696, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_LightVolumeEnabled
@@ -6814,6 +6818,10 @@ PrefabInstance:
     - target: {fileID: 86020002077384696, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_LightVolumeIntensity
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 86020002077384696, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 15.47
       objectReference: {fileID: 0}
     - target: {fileID: 427347692375294297, guid: 129b5b7ab878b2f4f91701edb8934f31, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size

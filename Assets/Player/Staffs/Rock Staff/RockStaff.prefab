@@ -206,7 +206,7 @@ MonoBehaviour:
   RequireFullChargeForSpecial: 1
   ChargingSparkInterval: 0.8
   SpecialCooldown: 1
-  SpecialChargeTime: 2
+  SpecialChargeTime: 1
   SpecialKnockbackSpeed: 15
   ChargingMoveSpeedFactor: 0.5
   SpecialCount: 5

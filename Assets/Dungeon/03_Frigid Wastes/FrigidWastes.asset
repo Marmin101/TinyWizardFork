@@ -21,11 +21,11 @@ MonoBehaviour:
     Path: event:/Music/FrigidWastes_Ambience
   Music:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -257461447
+      Data2: 1332719627
+      Data3: 1306850191
+      Data4: 1379167
+    Path: event:/Music/Frigid Wastes/FrigidWastes
   AmbientVFX: {fileID: 8926484042661614526, guid: 2329a4942494ecb49b60cabc86fba6b5, type: 3}
   Title: 'Frigid
 

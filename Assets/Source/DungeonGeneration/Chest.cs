@@ -13,6 +13,9 @@ namespace Quinn.DungeonGeneration
 	public class Chest : MonoBehaviour, IInteractable, IDamageable
 	{
 		[SerializeField]
+		private Sprite[] RandomOpen, RandomClosed;
+
+		[SerializeField, Space]
 		private bool StartOpen;
 		[SerializeField]
 		private bool IsInteractable = true;
@@ -57,6 +60,7 @@ namespace Quinn.DungeonGeneration
 		public Team Team => Team.Environment;
 
 		private bool _isOpening;
+		private int _randomIndex;
 
 		public void Awake()
 		{
@@ -64,6 +68,12 @@ namespace Quinn.DungeonGeneration
 			{
 				Open_Internal();
 				AnimateContent(true);
+			}
+
+			if (RandomClosed.Length > 0)
+			{
+				_randomIndex = Random.Range(0, RandomClosed.Length);
+				GetComponent<SpriteRenderer>().sprite = RandomClosed[_randomIndex];
 			}
 		}
 
@@ -153,8 +163,15 @@ namespace Quinn.DungeonGeneration
 
 		private void Open_Internal()
 		{
+			var sprite = OpenSprite;
+
+			if (RandomOpen.Length > 0)
+			{
+				sprite = RandomOpen[_randomIndex];
+			}
+
 			IsOpen = true;
-			GetComponent<SpriteRenderer>().sprite = OpenSprite;
+			GetComponent<SpriteRenderer>().sprite = sprite;
 
 			if (DisableAmbienceOnOpen)
 			{

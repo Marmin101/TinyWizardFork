@@ -48,6 +48,14 @@ namespace Quinn.PlayerSystem
 			_chargeScale = 1f;
 		}
 
+		public void Start()
+		{
+			PlayerManager.Instance.OnPlayerDeath += () =>
+			{
+				SetCharge(0f);
+			};
+		}
+
 		public void LateUpdate()
 		{
 			_crosshair.transform.position = Position;

@@ -153,7 +153,7 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
-  <MaxEnergy>k__BackingField: 300
+  <MaxEnergy>k__BackingField: 400
   BasicCastSound:
     Guid:
       Data1: 632417083
@@ -190,11 +190,11 @@ MonoBehaviour:
       Data4: 0
     Path: 
   BasicMissile: {fileID: 8392550596553358742, guid: 1063e14e10034d74196f398242cfe4f8, type: 3}
-  BasicCooldown: 0.2
+  BasicCooldown: 0.1
   BasicKnockbackSpeed: 5
   BasicBehavior: 0
   BasicSpread: 0
-  BasicCount: 2
+  BasicCount: 1
   BasicInterval: 0.1
   ChainWindowDuration: 0.2
   BasicEnergyUse: 2
@@ -211,6 +211,7 @@ MonoBehaviour:
   BasicFinisherManaConsume: 12
   HasSpecial: 0
   SpecialMissile: {fileID: 0}
+  RequireFullChargeForSpecial: 0
   ChargingSparkInterval: 0.45
   SpecialCooldown: 1
   SpecialChargeTime: 1

@@ -12289,6 +12289,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8448226805414225309, guid: e87ed4746c550ca40ab146a514b2635f, type: 3}
+      propertyPath: StartsEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448226805414225309, guid: e87ed4746c550ca40ab146a514b2635f, type: 3}
       propertyPath: MissileBlocker
       value: 
       objectReference: {fileID: 0}

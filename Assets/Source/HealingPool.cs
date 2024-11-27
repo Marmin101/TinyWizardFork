@@ -1,3 +1,4 @@
+using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using Quinn.PlayerSystem;
@@ -83,6 +84,8 @@ namespace Quinn
 				PlayerManager.Instance.Player.DisablePuddleMask();
 
 				PlayerManager.Instance.Player.OnHealingPuddleHealEnd();
+
+				_isHealing = false;
 				
 				if (_healingSound.isValid())
 				{

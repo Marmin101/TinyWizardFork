@@ -23,6 +23,8 @@ namespace Quinn.AI.BehaviorTree
 		private string DeathTrigger = "Die";
 		[SerializeField]
 		private VisualEffect DeathVFX;
+		[SerializeField]
+		private GameObject[] SpawnOnDeath;
 
 		[field: SerializeField, FoldoutGroup("Boss")]
 		public bool IsBoss { get; private set; }
@@ -164,6 +166,11 @@ namespace Quinn.AI.BehaviorTree
 			if (IsBoss)
 			{
 				Room.KillAllLiveAgents();
+			}
+
+			foreach (var prefab in SpawnOnDeath)
+			{
+				prefab.Clone(transform.position);
 			}
 		}
 

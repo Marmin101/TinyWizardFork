@@ -26,7 +26,7 @@ namespace Quinn.PlayerSystem
 		[SerializeField, Required]
 		private VisualEffect FootstepVFX;
 		[SerializeField, FoldoutGroup("Footstep Colors")]
-		private Color StoneColor, CarpetColor, HealingPuddleColor;
+		private Color StoneColor, CarpetColor, HealingPuddleColor, SnowColor;
 
 		[SerializeField, Space]
 		private VisualEffect LandVFX;
@@ -87,7 +87,7 @@ namespace Quinn.PlayerSystem
 			if (isMoving && !_wasMoving && Time.time > _nextStartFootstepSoundAllowedTime)
 			{
 				_nextStartFootstepSoundAllowedTime = Time.time + StartFootstepCooldown;
-				PlayFootstepSound(GetSoundMaterialType());
+				PlayFootstepSound(GetSoundMaterialType(out _));
 			}
 
 			_wasMoving = isMoving;
@@ -130,29 +130,35 @@ namespace Quinn.PlayerSystem
 
 		public void OnFootstep_Anim()
 		{
-			var mat = GetSoundMaterialType();
+			var mat = GetSoundMaterialType(out bool vfx);
 			PlayFootstepSound(mat);
 
 			var floorColor = SoundMaterialToColor(mat);
 
-			if (mat is SoundMaterialType.HealingPuddle)
+			if (vfx)
 			{
-				PuddleVFX.Play();
-			}
-			else
-			{
-				FootstepVFX.SetVector4("Color", floorColor);
-				FootstepVFX.Play();
+				if (mat is SoundMaterialType.HealingPuddle)
+				{
+					PuddleVFX.Play();
+				}
+				else
+				{
+					FootstepVFX.SetVector4("Color", floorColor);
+					FootstepVFX.Play();
+				}
 			}
 		}
 
 		public void OnLand_Anim()
 		{
-			var mat = GetSoundMaterialType();
+			var mat = GetSoundMaterialType(out bool vfx);
 			var floorColor = SoundMaterialToColor(mat);
 
-			LandVFX.SetGradient("Color", new Gradient() { colorKeys = new GradientColorKey[] { new(floorColor, 0f) }, alphaKeys = new GradientAlphaKey[] { new(1f, 0f) } });
-			LandVFX.Play();
+			if (vfx)
+			{
+				LandVFX.SetGradient("Color", new Gradient() { colorKeys = new GradientColorKey[] { new(floorColor, 0f) }, alphaKeys = new GradientAlphaKey[] { new(1f, 0f) } });
+				LandVFX.Play();
+			}
 		}
 
 		public void SetAmbientVFX(VisualEffectAsset asset)
@@ -248,15 +254,17 @@ namespace Quinn.PlayerSystem
 			SoundMaterialType.Stone => StoneColor,
 			SoundMaterialType.Carpet => CarpetColor,
 			SoundMaterialType.HealingPuddle => HealingPuddleColor,
+			SoundMaterialType.Snow => SnowColor,
 			_ => throw new NotImplementedException(),
 		};
 
-		private SoundMaterialType GetSoundMaterialType()
+		private SoundMaterialType GetSoundMaterialType(out bool playVFX)
 		{
 			SoundMaterialType mat = SoundMaterialType.None;
 			int highestPriority = -9999;
 
 			var colliders = Physics2D.OverlapPointAll(transform.position);
+			playVFX = false;
 
 			foreach (var collider in colliders)
 			{
@@ -266,10 +274,12 @@ namespace Quinn.PlayerSystem
 					{
 						mat = soundMat.Material;
 						highestPriority = soundMat.Priority;
+						playVFX = soundMat.PlayVFX;
 					}
 				}
 			}
 
+			
 			return mat;
 		}
 

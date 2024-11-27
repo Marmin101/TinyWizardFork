@@ -5,6 +5,7 @@
 		None,
 		Stone,
 		Carpet,
-		HealingPuddle
+		HealingPuddle,
+		Snow
 	}
 }

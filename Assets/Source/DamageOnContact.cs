@@ -10,13 +10,16 @@ namespace Quinn
 
 		private Health _health;
 
-		private void Awake()
+		public void Awake()
 		{
 			_health = GetComponent<Health>();
 		}
 
-		private void OnCollisionEnter2D(Collision2D collision)
+		public void OnCollisionEnter2D(Collision2D collision)
 		{
+			if (!enabled)
+				return;
+
 			if (collision.gameObject.TryGetComponent(out Health health))
 			{
 				health.TakeDamage(Damage, transform.position.DirectionTo(collision.transform.position), _health.Team, gameObject);

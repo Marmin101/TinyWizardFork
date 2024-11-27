@@ -710,6 +710,7 @@ MonoBehaviour:
   StoneColor: {r: 0.18, g: 0.18, b: 0.18, a: 0}
   CarpetColor: {r: 0.5, g: 0.038461536, b: 0.038461536, a: 0}
   HealingPuddleColor: {r: 1, g: 0.088679194, b: 0.088679194, a: 0}
+  SnowColor: {r: 0.6862745, g: 0.69803923, b: 0.73333335, a: 0}
   LandVFX: {fileID: 6940159827444675947}
   HurtSnapshot:
     Guid:

@@ -1,5 +1,7 @@
+using FMODUnity;
 using Quinn.PlayerSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Quinn.DungeonGeneration
 {
@@ -7,6 +9,8 @@ namespace Quinn.DungeonGeneration
 	{
 		[SerializeField]
 		private SpriteMask Mask;
+		[SerializeField]
+		private bool IsVictoryExit;
 
 		private bool _isTriggered;
 
@@ -19,6 +23,16 @@ namespace Quinn.DungeonGeneration
 		{
 			if (collision.IsPlayer() && !_isTriggered)
 			{
+				if (IsVictoryExit)
+				{
+					RuntimeManager.StudioSystem.setParameterByName("enable-music", 0f);
+
+					await PlayerManager.Instance.Player.ExitFloorAsync(this);
+					await SceneManager.LoadSceneAsync(2);
+
+					return;
+				}
+
 				_isTriggered = true;
 				DungeonGenerator.Instance.IncrementFloorIndex();
 

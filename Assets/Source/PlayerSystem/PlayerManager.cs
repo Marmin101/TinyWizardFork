@@ -44,6 +44,9 @@ namespace Quinn.PlayerSystem
 		public event Action OnPlayerDeathPreSceneLoad;
 
 		private bool _isDead;
+		private bool _isGameStarted;
+
+		private float _startTime;
 
 		public void Awake()
 		{
@@ -84,6 +87,15 @@ namespace Quinn.PlayerSystem
 		{
 			if (Instance == this)
 				Instance = null;
+		}
+
+		public void GameStart()
+		{
+			if (!_isGameStarted)
+			{
+				_isGameStarted = true;
+				_startTime = Time.unscaledTime;
+			}
 		}
 
 		public void SetPlayer(Player player)

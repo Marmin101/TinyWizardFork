@@ -99,7 +99,8 @@ namespace Quinn.UI
 				.SetEase(Ease.OutBack)
 				.AsyncWaitForCompletion();
 
-			btn.interactable = true;
+			if (btn != null)
+				btn.interactable = true;
 		}
 	}
 }

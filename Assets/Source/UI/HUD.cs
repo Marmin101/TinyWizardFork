@@ -53,7 +53,7 @@ namespace Quinn.UI
 			var color = LowHPVignette.color;
 
 			float targetAlpha = 0f;
-			if (PlayerManager.Instance.Health.Current <= 1.55f)
+			if (PlayerManager.Instance.IsDead || PlayerManager.Instance.Health.Current <= 1.55f)
 			{
 				targetAlpha = 1f;
 			}

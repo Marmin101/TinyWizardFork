@@ -345,6 +345,11 @@ namespace Quinn.PlayerSystem
 				await Wait.Seconds(HurtDuration);
 				_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
+			// Is dead.
+			else
+			{
+				GetComponent<Animator>().SetTrigger("Die");
+			}
 		}
 	}
 }

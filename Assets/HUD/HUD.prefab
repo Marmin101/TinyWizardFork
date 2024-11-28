@@ -1550,7 +1550,7 @@ MonoBehaviour:
   FadeDuration: 1
   LowHPVignette: {fileID: 6072184261594098350}
   SmoothTime: 0.2
-  ScaleFrequency: 1
+  ScaleFrequency: 2
   ScaleAmplitude: 0.1
   Dialogue: {fileID: 451627977483923001}
   WriteInterval: 0.03

@@ -151,7 +151,11 @@ namespace Quinn
 
 			if (HitVFX != null)
 			{
-				HitVFX.SetVector2("Direction", info.Source.transform.position.DirectionTo(transform.position));
+				if (HitVFX.HasVector2("Direction"))
+				{
+					HitVFX.SetVector2("Direction", info.Source.transform.position.DirectionTo(transform.position));
+				}
+
 				HitVFX.Play();
 			}
 

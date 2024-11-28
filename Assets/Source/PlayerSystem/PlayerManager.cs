@@ -1,10 +1,12 @@
-﻿using FMODUnity;
+﻿using DG.Tweening;
+using FMODUnity;
 using Quinn.DungeonGeneration;
 using Quinn.PlayerSystem.SpellSystem;
 using Quinn.UnityServices;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -177,6 +179,14 @@ namespace Quinn.PlayerSystem
 
 			InputManager.Instance.DisableInput();
 			Audio.Play(DeathMusicCue);
+
+			var vcam = CinemachineBrain.GetActiveBrain(0).ActiveVirtualCamera as CinemachineCamera;
+			vcam.GetComponent<CinemachineConfiner2D>().enabled = false;
+			var t = DOTween.To(() => vcam.Lens.OrthographicSize, x => vcam.Lens.OrthographicSize = x, 4f, 4f).SetEase(Ease.OutCubic);
+
+			var seq = DOTween.Sequence();
+			seq.AppendInterval(1f);
+			seq.Append(t);
 
 			await CameraManager.Instance.DeathFadeOut();
 			OnPlayerDeathPreSceneLoad?.Invoke();

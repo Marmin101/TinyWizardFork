@@ -1,10 +1,12 @@
 ﻿using DG.Tweening;
 using FMODUnity;
+using Quinn.PlayerSystem;
 using Sirenix.OdinInspector;
 using System.Text;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Quinn.UI
 {
@@ -14,6 +16,15 @@ namespace Quinn.UI
 		private CanvasGroup Group;
 		[SerializeField]
 		private float FadeDuration = 1f;
+
+		[SerializeField, Required, Space]
+		private Image LowHPVignette;
+		[SerializeField]
+		private float SmoothTime = 0.2f;
+		[SerializeField]
+		private float ScaleFrequency = 0.5f;
+		[SerializeField]
+		private float ScaleAmplitude = 0.2f;
 
 		[SerializeField, Required, Space]
 		private TextMeshProUGUI Dialogue;
@@ -26,10 +37,33 @@ namespace Quinn.UI
 
 		private CancellationTokenSource _cancelDialogue = new();
 
+		private float _alphaVel;
+		private float _defaultScale;
+
 		public void Awake()
 		{
 			Instance = this;
+
 			Dialogue.alpha = 0f;
+			_defaultScale = LowHPVignette.transform.localScale.y;
+		}
+
+		public void Update()
+		{
+			var color = LowHPVignette.color;
+
+			float targetAlpha = 0f;
+			if (PlayerManager.Instance.Health.Current <= 1.55f)
+			{
+				targetAlpha = 1f;
+			}
+
+			color.a = Mathf.SmoothDamp(LowHPVignette.color.a, targetAlpha, ref _alphaVel, SmoothTime);
+			LowHPVignette.color = color;
+
+			float scale = Mathf.Sin(Time.time * ScaleFrequency) * ScaleAmplitude;
+			scale += _defaultScale;
+			LowHPVignette.transform.localScale = new Vector3(scale, scale, 1f);
 		}
 
 		public void OnDestroy()

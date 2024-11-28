@@ -11,6 +11,9 @@ namespace Quinn.UI
 		public void Start()
 		{
 			HUD.Instance.WriteDialogue(Dialogue);
+
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 		}
 
 		public async void MainMenu_Button()

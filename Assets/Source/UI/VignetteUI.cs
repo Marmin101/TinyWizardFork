@@ -16,15 +16,17 @@ namespace Quinn.UI
 		private float FadeOutDuration = 1f;
 
 		[SerializeField, Required]
-		private Image HurtVignette, CriticalVignette;
+		private Image HurtVignette;
 
-		private void Start()
+		public void Start()
 		{
 			PlayerManager.Instance.Player.GetComponent<Health>().OnDamagedExpanded += OnHurt;
 		}
 
 		private void OnHurt(DamageInfo info)
 		{
+			HurtVignette.DOKill();
+
 			HurtVignette.DOFade(1f, FadeInDuration)
 				.onComplete += () =>
 				{

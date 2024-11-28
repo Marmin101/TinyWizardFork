@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2604928241439567913, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_Intensity
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2604928241439567913, guid: 583a648d42ef5c34a9c90258cf6aa15b, type: 3}
       propertyPath: m_LightVolumeEnabled

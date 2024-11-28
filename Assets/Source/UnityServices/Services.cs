@@ -1,4 +1,5 @@
-﻿using Unity.Services.Authentication;
+﻿using Unity.Services.Analytics;
+using Unity.Services.Authentication;
 using UnityEngine;
 
 namespace Quinn.UnityServices
@@ -9,6 +10,8 @@ namespace Quinn.UnityServices
 		{
 			await Unity.Services.Core.UnityServices.Instance.InitializeAsync();
 			await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+			AnalyticsService.Instance.StartDataCollection();
 		}
 	}
 }

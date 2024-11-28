@@ -18,9 +18,13 @@ namespace Quinn
 		public Team Team => Team.Environment;
 
 		private int _hits;
+		private bool _isDead;
 
 		public bool TakeDamage(DamageInfo info)
 		{
+			if (_isDead)
+				return false;
+
 			if (DestroyedSprites.Length > 0)
 			{
 				if (_hits >= DestroyedSprites.Length)
@@ -39,6 +43,7 @@ namespace Quinn
 			else
 			{
 				Death();
+				_isDead = true;
 			}
 
 			return true;
@@ -48,7 +53,11 @@ namespace Quinn
 		{
 
 			GetComponent<SpriteRenderer>().enabled = false;
-			GetComponent<Collider2D>().enabled = false;
+
+			foreach (var collider in GetComponents<Collider2D>())
+			{
+				collider.enabled = false;
+			}
 
 			foreach (var vfx in VFX)
 			{

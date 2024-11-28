@@ -11,6 +11,8 @@ namespace Quinn.UnityServices
 		{
 			Debug.Assert(Instance == null, "There should only ever be 1 instance of the Analytics class!");
 			Instance = this;
+
+			// Data collection is started inside the 'Services' class.
 		}
 
 		public void OnDestroy()
@@ -26,5 +28,10 @@ namespace Quinn.UnityServices
 		{
 			AnalyticsService.Instance.RecordEvent(evt);
 		}
+
+		//private void Log(string name)
+		//{
+		//	Debug.Log($"Analytics Pushed: '{name}'!");
+		//}
 	}
 }

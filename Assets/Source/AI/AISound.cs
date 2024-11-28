@@ -28,6 +28,12 @@ namespace Quinn.AI
 			_sound.start();
 		}
 
+		public void OnDisable()
+		{
+			_sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			_sound.release();
+		}
+
 		public void FixedUpdate()
 		{
 			if (HealthControlsParameter)

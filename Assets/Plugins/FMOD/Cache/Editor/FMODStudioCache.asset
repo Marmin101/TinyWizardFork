@@ -205,10 +205,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638684137135227814
+  lastModified: 638684162645110194
   FileSizes:
   - Name: Desktop
-    Value: 5486
+    Value: 5536
   Exists: 1
 --- !u!114 &-7706551185004846098
 MonoBehaviour:
@@ -340,6 +340,33 @@ MonoBehaviour:
     Data2: 1140682481
     Data3: -1070690155
     Data4: 50595732
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6499668880336079425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CandleStickBoss/DeathExplosion
+  m_EditorClassIdentifier: 
+  Path: event:/CandleStickBoss/DeathExplosion
+  Guid:
+    Data1: -12930960
+    Data2: 1290073110
+    Data3: 1014837143
+    Data4: 1496419840
   Banks:
   - {fileID: -2968825907237438240}
   IsStream: 0
@@ -735,10 +762,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638684137134878045
+  lastModified: 638684162644985476
   FileSizes:
   - Name: Desktop
-    Value: 27775168
+    Value: 27802816
   Exists: 1
 --- !u!114 &-2738815290374418259
 MonoBehaviour:
@@ -1278,6 +1305,7 @@ MonoBehaviour:
   - {fileID: 4788888958857553209}
   - {fileID: 5553950249870844384}
   - {fileID: 2231778188400292079}
+  - {fileID: -6499668880336079425}
   EditorParameters:
   - {fileID: 20146426969059659}
   - {fileID: 29961334457208506}
@@ -1288,7 +1316,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638684137135227814
+  cacheTime: 638684162645110194
   cacheVersion: 131621
 --- !u!114 &20146426969059659
 MonoBehaviour:

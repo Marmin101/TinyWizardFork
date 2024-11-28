@@ -56,6 +56,13 @@ namespace Quinn.DungeonGeneration
 		[SerializeField]
 		private Door[] OnlyUnlock;
 
+		[Space, SerializeField, BoxGroup("Analytics")]
+		private bool IsLootRoom;
+		[SerializeField, BoxGroup("Analytics")]
+		private bool IsBossRoom;
+		[SerializeField, BoxGroup("Analytics")]
+		private bool IsHealingRoom;
+
 		public bool IsLocked { get; private set; }
 		public bool IsConquered { get; private set; }
 		public bool IsStarted { get; private set; }
@@ -224,7 +231,10 @@ namespace Quinn.DungeonGeneration
 
 					UnityServices.Analytics.Instance.Push(new UnityServices.Events.EnterRoomEvent()
 					{
-						RoomsExploredThisFloor = PlayerManager.Instance.NewRoomsExploredThisFloor
+						RoomsExploredThisFloor = PlayerManager.Instance.NewRoomsExploredThisFloor,
+						IsLootRoom = IsLootRoom,
+						IsBossRoom = IsBossRoom,
+						IsHealingRoom = IsHealingRoom
 					});
 				}
 

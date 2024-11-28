@@ -3200,6 +3200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1001 &504849557590996870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3471,6 +3472,10 @@ PrefabInstance:
     - target: {fileID: 512071233663396010, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
       propertyPath: m_Name
       value: HealingRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277557476123997402, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
+      propertyPath: IsHealingRoom
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
       propertyPath: m_LocalPosition.x

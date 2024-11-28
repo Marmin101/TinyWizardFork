@@ -130,8 +130,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 34
-      y: 108
+      x: 69
+      y: 41
       width: 23
       height: 5
     spriteID: fabd4a43e80ca3745a1b5336601e0cad
@@ -142,7 +142,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 108}
+    uvTransform: {x: 69, y: 41}
   - name: Arm_B
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -151,8 +151,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 34
-      y: 73
+      x: 4
+      y: 70
       width: 21
       height: 27
     spriteID: 09176bb48d3f70c48af10d7170ecab44
@@ -163,7 +163,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 73}
+    uvTransform: {x: 4, y: 70}
   - name: Legs
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -172,8 +172,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 41
+      x: 48
+      y: 4
       width: 27
       height: 24
     spriteID: 223079c93cddf8940a8517139ac44fca
@@ -184,7 +184,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 41}
+    uvTransform: {x: 48, y: 4}
   - name: Torso
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -214,7 +214,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 39
+      x: 40
       y: 41
       width: 21
       height: 18
@@ -226,7 +226,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 39, y: 41}
+    uvTransform: {x: 40, y: 41}
   - name: Arm_F
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -235,8 +235,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 73
+      x: 83
+      y: 4
       width: 22
       height: 28
     spriteID: 08cd27bb86a688a418b4280bb1ccd1d7
@@ -247,7 +247,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 73}
+    uvTransform: {x: 83, y: 4}
   - name: Eyes
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -256,8 +256,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 109
+      x: 113
+      y: 4
       width: 11
       height: 2
     spriteID: b561e2d9f89e61e4694e44b36f904255
@@ -268,7 +268,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 109}
+    uvTransform: {x: 113, y: 4}
   - name: Brows
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -277,8 +277,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 34
-      y: 121
+      x: 100
+      y: 41
       width: 13
       height: 2
     spriteID: 23f52e15e4f24ad48afd58d09734ff3e
@@ -289,7 +289,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 121}
+    uvTransform: {x: 100, y: 41}
   - name: Mouth
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -298,10 +298,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 119
+      x: 113
+      y: 14
       width: 7
-      height: 2
+      height: 3
     spriteID: aefe3ead2f5096547971580d4beb7180
     spriteBone: []
     spriteOutline: []
@@ -310,7 +310,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 119}
+    uvTransform: {x: 113, y: 14}
+  - name: Hat
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 41
+      width: 28
+      height: 21
+    spriteID: 0191eae416225de4cb3333d58d11d0b9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 41}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -471,8 +492,26 @@ ScriptedImporter:
         x: 34
         y: 36
         width: 7
-        height: 2
+        height: 3
       spriteId: aefe3ead2f5096547971580d4beb7180
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 9
+    guid: 1446319456
+    name: Hat
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Hat
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 16
+        y: 37
+        width: 28
+        height: 21
+      spriteId: 0191eae416225de4cb3333d58d11d0b9
     linkedCells: []
     parentIndex: -1
   platformSettings:

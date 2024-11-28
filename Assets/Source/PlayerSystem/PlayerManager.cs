@@ -1,6 +1,7 @@
 ﻿using FMODUnity;
 using Quinn.DungeonGeneration;
 using Quinn.PlayerSystem.SpellSystem;
+using Quinn.UnityServices;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -32,12 +33,17 @@ namespace Quinn.PlayerSystem
 		public bool IsDead => Health == null || Health.IsDead;
 		public Vector2 Position => Player.transform.position;
 
+		public int CurrentFloorAttempts { get; private set; }
+		public int NewRoomsExploredThisFloor { get; set; }
+
 		public event Action<Player> OnPlayerSet;
 		public event Action<float> OnPlayerHealthChange;
 		public event Action OnPlayerMaxHealthChange;
 
 		public event Action OnPlayerDeath;
 		public event Action OnPlayerDeathPreSceneLoad;
+
+		private bool _isDead;
 
 		public void Awake()
 		{
@@ -47,6 +53,12 @@ namespace Quinn.PlayerSystem
 
 		public void Start()
 		{
+			DungeonGenerator.Instance.OnFloorStart += _ =>
+			{
+				CurrentFloorAttempts = 0;
+				NewRoomsExploredThisFloor = 0;
+			};
+
 			SpawnPlayer(InitialSpawnOffset);
 		}
 
@@ -122,6 +134,16 @@ namespace Quinn.PlayerSystem
 		private void OnDamaged(float amount, Vector2 dir, GameObject source)
 		{
 			OnPlayerHealthChange?.Invoke(-amount);
+
+			if (Health.Current == 0f && !_isDead)
+			{
+				_isDead = true;
+
+				Analytics.Instance.Push(new UnityServices.Events.PlayerDeathEvent()
+				{
+					Name = source.name
+				});
+			}
 		}
 
 		private void OnMaxHealthChange()
@@ -131,8 +153,9 @@ namespace Quinn.PlayerSystem
 
 		private async void OnDeath()
 		{
-			EquippedStaffGUID = null;
+			CurrentFloorAttempts++;
 
+			EquippedStaffGUID = null;
 			UnsubscribeAll();
 
 			Player = null;

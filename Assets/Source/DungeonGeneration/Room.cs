@@ -79,6 +79,8 @@ namespace Quinn.DungeonGeneration
 		private bool _hasLoaded;
 		private bool _isExitQueued;
 
+		private bool _explored;
+
 		public void Awake()
 		{
 			IsConquered = StartConquered;
@@ -215,6 +217,17 @@ namespace Quinn.DungeonGeneration
 
 			if (collider.IsPlayer())
 			{
+				if (!_explored)
+				{
+					_explored = true;
+					PlayerManager.Instance.NewRoomsExploredThisFloor++;
+
+					UnityServices.Analytics.Instance.Push(new UnityServices.Events.EnterRoomEvent()
+					{
+						RoomsExploredThisFloor = PlayerManager.Instance.NewRoomsExploredThisFloor
+					});
+				}
+
 				RoomCamera.enabled = true;
 				RoomCamera.Target.TrackingTarget = CameraManager.Instance.CameraTarget;
 
@@ -246,17 +259,17 @@ namespace Quinn.DungeonGeneration
 			}
 		}
 
-		private async void OnPlayerTriggerExit(Collider2D collider)
+		private /*async*/ void OnPlayerTriggerExit(Collider2D collider)
 		{
 			if (collider.IsPlayer() && (!_isExitQueued || IsConquered))
 			{
-				if (!IsConquered && IsStarted)
-				{
-					_isExitQueued = true;
-					await Wait.Until(() => IsConquered);
-				}
-
 				OnPlayerExitRoom();
+
+				//if (!IsConquered && IsStarted)
+				//{
+				//	_isExitQueued = true;
+				//	await Wait.Until(() => IsConquered);
+				//}
 			}
 		}
 

@@ -156,6 +156,11 @@ namespace Quinn.DungeonGeneration
 
 		private async Awaitable StartFloorAsync(FloorSO floor)
 		{
+			UnityServices.Analytics.Instance.Push(new UnityServices.Events.DiscoveredFloorEvent()
+			{
+				Name = floor.name
+			});
+
 			CameraManager.Instance.Blackout();
 			RuntimeManager.StudioSystem.setParameterByName("reverb", floor.Reverb);
 

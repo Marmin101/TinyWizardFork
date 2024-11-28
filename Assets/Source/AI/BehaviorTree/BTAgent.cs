@@ -1,7 +1,10 @@
 using FMODUnity;
 using Quinn.DungeonGeneration;
 using Quinn.PlayerSystem;
+using Quinn.PlayerSystem.SpellSystem;
 using Quinn.UI;
+using Quinn.UnityServices;
+using Quinn.UnityServices.Events;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Unity.Behavior;
@@ -166,6 +169,13 @@ namespace Quinn.AI.BehaviorTree
 			if (IsBoss)
 			{
 				Room.KillAllLiveAgents();
+
+				Analytics.Instance.Push(new BossDeathEvent()
+				{
+					Name = BossTitle,
+					Attempts = PlayerManager.Instance.CurrentFloorAttempts,
+					Staff = PlayerManager.Instance.Player.GetComponent<PlayerCaster>().ActiveStaff.gameObject.name
+				});
 			}
 
 			foreach (var prefab in SpawnOnDeath)

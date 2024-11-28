@@ -6,10 +6,12 @@ using Quinn.UI;
 using Quinn.UnityServices;
 using Quinn.UnityServices.Events;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using Unity.Behavior;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.VFX;
 
 namespace Quinn.AI.BehaviorTree
@@ -33,6 +35,10 @@ namespace Quinn.AI.BehaviorTree
 		public bool IsBoss { get; private set; }
 		[field: SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
 		public string BossTitle { get; private set; } = "Boss Title";
+		[SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
+		private GameObject[] ActivateOnSecondPhase;
+		[SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
+		private UnityEvent OnSecondPhaseStartEvent, OnDeathEvent;
 
 		[FoldoutGroup("Debug"), SerializeField]
 		private bool PrintAnimationTriggers;
@@ -44,6 +50,7 @@ namespace Quinn.AI.BehaviorTree
 
 		// A trigger is "set" by virtue of being present in this set.
 		private readonly HashSet<string> _animTriggers = new();
+		private bool _inSecondPhase;
 
 		public void Awake()
 		{
@@ -51,6 +58,7 @@ namespace Quinn.AI.BehaviorTree
 			Health = GetComponent<Health>();
 			Movement = GetComponent<AIMovement>();
 
+			Health.OnDamaged += OnDamaged;
 			Health.OnDeath += OnDeath;
 		}
 
@@ -157,6 +165,20 @@ namespace Quinn.AI.BehaviorTree
 			instance.release();
 		}
 
+		private void OnDamaged(float damage, Vector2 direction, GameObject source)
+		{
+			if (IsBoss && !_inSecondPhase && Health.Percent <= 0.5f)
+			{
+				_inSecondPhase = true;
+				OnSecondPhaseStartEvent?.Invoke();
+
+				foreach (var obj in ActivateOnSecondPhase)
+				{
+					obj.SetActive(true);
+				}
+			}
+		}
+
 		private void OnDeath()
 		{
 			Animator.SetTrigger(DeathTrigger);
@@ -169,6 +191,8 @@ namespace Quinn.AI.BehaviorTree
 			if (IsBoss)
 			{
 				Room.KillAllLiveAgents();
+
+				OnDeathEvent?.Invoke();
 
 				Analytics.Instance.Push(new BossDeathEvent()
 				{

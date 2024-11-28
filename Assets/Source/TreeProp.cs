@@ -1,6 +1,8 @@
 using DG.Tweening;
 using FMODUnity;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Quinn
 {
@@ -9,6 +11,8 @@ namespace Quinn
 	{
 		[SerializeField]
 		private EventReference HitSound;
+		[SerializeField, Required]
+		private VisualEffect HitVFX;
 
 		[Space, SerializeField, Range(0f, 1f)]
 		private float LightsChance;
@@ -47,6 +51,10 @@ namespace Quinn
 			seq.Append(transform.DOScale(1f, 0.2f));
 
 			_animator.SetTrigger("Hit");
+
+			HitVFX.SetVector2("Direction", info.Direction);
+			HitVFX.Play();
+
 			return true;
 		}
 	}

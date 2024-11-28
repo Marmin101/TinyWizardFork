@@ -106,6 +106,8 @@ namespace Quinn.DungeonGeneration
 			RoomTrigger.OnTriggerEnter += OnPlayerTriggerEnter;
 			RoomTrigger.OnTriggerExit += OnPlayerTriggerExit;
 
+			_hasLoaded = StartsEnabled;
+
 			if (!StartsEnabled)
 			{
 				for (int i = 0; i < transform.childCount; i++)

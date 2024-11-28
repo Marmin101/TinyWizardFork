@@ -31,6 +31,7 @@ MonoBehaviour:
 
     Forest'
   SkipDropSequence: 0
+  SkipEnterCue: 1
   StartingRoom: {fileID: 0}
   Generatable: []
   Reverb: 0.2

@@ -314,6 +314,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.214
       objectReference: {fileID: 0}
+    - target: {fileID: 8564971635375091321, guid: 1bd0b254c8441694c8247d8126187e5d, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
+      value: 3.4169846
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564971635375091321, guid: 1bd0b254c8441694c8247d8126187e5d, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
+      value: 2.2237558
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

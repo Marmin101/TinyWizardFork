@@ -14,6 +14,7 @@ namespace Quinn.DungeonGeneration
 		[Multiline]
 		public string Title = "Floor\nTitle";
 		public bool SkipDropSequence;
+		public bool SkipEnterCue;
 
 		[Space]
 		public Room StartingRoom;

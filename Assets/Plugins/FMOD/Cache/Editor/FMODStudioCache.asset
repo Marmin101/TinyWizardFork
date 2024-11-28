@@ -360,10 +360,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638683196419360189
+  lastModified: 638683326113096506
   FileSizes:
   - Name: Desktop
-    Value: 5344
+    Value: 5486
   Exists: 1
 --- !u!114 &-7272311515424276967
 MonoBehaviour:
@@ -609,6 +609,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5581189399501529556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/FrigidWastes/enable-music
+  m_EditorClassIdentifier: 
+  Name: enable-music
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 154107630
+    data2: 1794656962
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-4991673469556614891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,10 +1023,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638683196419257758
+  lastModified: 638683326113001681
   FileSizes:
   - Name: Desktop
-    Value: 27614976
+    Value: 27775168
   Exists: 1
 --- !u!114 &-2966793826311647790
 MonoBehaviour:
@@ -1303,6 +1327,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 117818
+--- !u!114 &-1134026312282522741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FrigidChestAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/FrigidChestAmbience
+  Guid:
+    Data1: -1951312071
+    Data2: 1312905134
+    Data3: 1207205299
+    Data4: -1218934939
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 19636
 --- !u!114 &-641747938867345894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,6 +1486,9 @@ MonoBehaviour:
   - {fileID: 1377109352250810208}
   - {fileID: -3809830318781137462}
   - {fileID: 746542378308757114}
+  - {fileID: 8602360955859776814}
+  - {fileID: 1257291284596566765}
+  - {fileID: -1134026312282522741}
   EditorParameters:
   - {fileID: 1382453765547996586}
   - {fileID: 8273300120200360690}
@@ -1445,7 +1499,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638683196419360189
+  cacheTime: 638683326113096506
   cacheVersion: 131621
 --- !u!114 &241884679266223525
 MonoBehaviour:
@@ -1633,6 +1687,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1460
+--- !u!114 &1257291284596566765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IceBlockHit
+  m_EditorClassIdentifier: 
+  Path: event:/IceBlockHit
+  Guid:
+    Data1: -534180934
+    Data2: 1105738433
+    Data3: 588062646
+    Data4: -1402251923
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1377109352250810208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2140,7 +2221,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: -5581189399501529556}
   MinDistance: 1
   MaxDistance: 20
   Length: 109629
@@ -2962,6 +3044,33 @@ MonoBehaviour:
     Data2: 1146218642
     Data3: 405630111
     Data4: -798151991
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8602360955859776814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IceBlockDestroy
+  m_EditorClassIdentifier: 
+  Path: event:/IceBlockDestroy
+  Guid:
+    Data1: 2025606431
+    Data2: 1314801014
+    Data3: -1677335130
+    Data4: -458408909
   Banks:
   - {fileID: -2968825907237438240}
   IsStream: 0

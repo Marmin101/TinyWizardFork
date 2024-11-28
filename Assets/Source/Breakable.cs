@@ -8,7 +8,7 @@ namespace Quinn
 	{
 		[SerializeField]
 		private Sprite[] DestroyedSprites;
-		[SerializeField]
+		[SerializeField, Tooltip("Played on destruction.")]
 		private VisualEffect[] VFX;
 		[SerializeField]
 		private EventReference DamageSound, DestroySound;

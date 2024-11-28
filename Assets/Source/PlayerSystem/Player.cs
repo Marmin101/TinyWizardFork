@@ -187,7 +187,10 @@ namespace Quinn.PlayerSystem
 			_animator.SetTrigger("EnterSequence");
 			await Wait.Seconds(1f, destroyCancellationToken);
 
-			Audio.Play(FloorEnterCue);
+			if (!DungeonGenerator.Instance.ActiveFloor.SkipEnterCue)
+			{
+				Audio.Play(FloorEnterCue);
+			}
 
 			collider.enabled = true;
 

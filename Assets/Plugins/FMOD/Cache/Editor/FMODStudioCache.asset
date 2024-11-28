@@ -360,7 +360,7 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638683326113096506
+  lastModified: 638683399396985000
   FileSizes:
   - Name: Desktop
     Value: 5486
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638683326113001681
+  lastModified: 638683399396876731
   FileSizes:
   - Name: Desktop
     Value: 27775168
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638683326113096506
+  cacheTime: 638683399396985000
   cacheVersion: 131621
 --- !u!114 &241884679266223525
 MonoBehaviour:

@@ -39,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 2841596595511251762, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -876546973899608171, guid: de03e8d348a139046aed384cf5444b2a, type: 3}
+      objectReference: {fileID: 2100000, guid: 9e6a3cb19bf68684898a39c93b91fec4, type: 2}
     - target: {fileID: 3035076089870465620, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -59,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 3626763007255177289, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: 'Renderers.Array.data[2]'
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686400505576603632, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      propertyPath: KnockbackDecayRate
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 4891083787612474357, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: WetDamage
@@ -119,7 +123,7 @@ PrefabInstance:
     - target: {fileID: 8584659218363069571, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -876546973899608171, guid: de03e8d348a139046aed384cf5444b2a, type: 3}
+      objectReference: {fileID: 2100000, guid: 9e6a3cb19bf68684898a39c93b91fec4, type: 2}
     - target: {fileID: 8865879636924115683, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -231,22 +235,22 @@ MonoBehaviour:
   IdealMaxDistanceToTarget: 3.5
   FireSound:
     Guid:
-      Data1: 1977740527
-      Data2: 1119442525
-      Data3: -1189839231
-      Data4: -376738683
-    Path: event:/FireStaffBasic
+      Data1: -1981943571
+      Data2: 1242448195
+      Data3: -106239557
+      Data4: 1768860949
+    Path: event:/LeafMinion/LeafMinionMissileHit
   SpecialChanceOnIdle: 0.2
   SpecialCount: 8
   SpecialSpread: 360
   SpecialBehavior: 1
   SpecialSound:
     Guid:
-      Data1: -1196230266
-      Data2: 1333570169
-      Data3: -1068401729
-      Data4: 1253843065
-    Path: event:/FireStaffBasicFinisher
+      Data1: -1981943571
+      Data2: 1242448195
+      Data3: -106239557
+      Data4: 1768860949
+    Path: event:/LeafMinion/LeafMinionMissileHit
 --- !u!4 &8209992082937319532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2162489182612900323, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}

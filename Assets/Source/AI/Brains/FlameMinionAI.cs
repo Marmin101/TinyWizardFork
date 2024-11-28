@@ -89,6 +89,14 @@ namespace Quinn.AI
 			}
 		}
 
+		protected override void OnDeath()
+		{
+			DeathTokenSource.Cancel();
+			AIManager.Instance.RemoveAgent(this);
+
+			Animator.SetTrigger("Die");
+		}
+
 		private bool OnIdle(bool isStart)
 		{
 			if (isStart)

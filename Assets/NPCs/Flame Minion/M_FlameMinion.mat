@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlameMinion
-  m_Shader: {fileID: -6465566751694194690, guid: 057e229af5f9b2a4e9ec255740734990, type: 3}
+  m_Name: M_FlameMinion
+  m_Shader: {fileID: -6465566751694194690, guid: de03e8d348a139046aed384cf5444b2a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -67,10 +67,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _Flash: 0
+    - _GlowFactor: 1
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _FlashColor: {r: 1, g: 1, b: 1, a: 1}
     - _Glow: {r: 2.9960787, g: 1.68076, b: 0.94404733, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 4.0102725, g: 1.7615801, b: 1.2030814, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

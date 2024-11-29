@@ -61,6 +61,9 @@ namespace Quinn.PlayerSystem
 
 		private float _puddleHealingVFXSpawnRate;
 
+		private bool _noClip;
+		private bool _godMode;
+
 		public void Awake()
 		{
 			_animator = GetComponent<Animator>();
@@ -96,6 +99,36 @@ namespace Quinn.PlayerSystem
 			if (Input.GetKeyDown(KeyCode.Alpha8))
 			{
 				GetComponent<Health>().TakeDamage(1f, Vector2.zero, Team.Environment, gameObject);
+			}
+
+			if (Input.GetKeyDown(KeyCode.V))
+			{
+				_noClip = !_noClip;
+
+				if (_noClip)
+				{
+					GetComponent<Collider2D>().forceReceiveLayers &= ~LayerMask.GetMask("Obstacle");
+					GetComponent<PlayerMovement>().SetSpeedOverride(16f);
+				}
+				else
+				{
+					GetComponent<Collider2D>().forceReceiveLayers |= LayerMask.GetMask("Obstacle");
+					GetComponent<PlayerMovement>().ClearSpeedOverride();
+				}
+			}
+
+			if (Input.GetKeyDown(KeyCode.G))
+			{
+				_godMode = !_godMode;
+
+				if (_godMode)
+				{
+					GetComponent<Health>().IsGodModeEnabled = true;
+				}
+				else
+				{
+					GetComponent<Health>().IsGodModeEnabled = false;
+				}
 			}
 #endif
 		}

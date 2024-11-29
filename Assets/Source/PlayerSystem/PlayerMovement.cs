@@ -44,6 +44,8 @@ namespace Quinn.PlayerSystem
 		private float _nextDashTime;
 		private float _dashEndTime;
 
+		private float? _speedOverride;
+
 		protected override void Awake()
 		{
 			base.Awake();
@@ -88,7 +90,8 @@ namespace Quinn.PlayerSystem
 			}
 			else
 			{
-				vel += MoveSpeed * moveDir;
+				float moveSpeed = _speedOverride ?? MoveSpeed;
+				vel += moveSpeed * moveDir;
 
 				if (_vortexOrigin != null)
 				{
@@ -119,6 +122,16 @@ namespace Quinn.PlayerSystem
 		public void ClearVortexOrigin()
 		{
 			_vortexOrigin = null;
+		}
+
+		public void SetSpeedOverride(float speed)
+		{
+			_speedOverride = speed;
+		}
+
+		public void ClearSpeedOverride()
+		{
+			_speedOverride = null;
 		}
 
 		private void OnDash()

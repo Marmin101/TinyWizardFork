@@ -51,6 +51,8 @@ namespace Quinn
 		public bool IsDead { get; private set; }
 		public bool IsImmune => _isHurtImmune || _damageBlockers.Count > 0;
 
+		public bool IsGodModeEnabled { get; set; }
+
 		public event Action<float> OnHealed;
 		public event Action<float, Vector2, GameObject> OnDamaged;
 		public event Action<DamageInfo> OnDamagedExpanded;
@@ -136,6 +138,11 @@ namespace Quinn
 		}
 		public bool TakeDamage(DamageInfo info)
 		{
+#if UNITY_EDITOR
+			if (IsGodModeEnabled)
+				return false;
+#endif
+
 			if (Time.time >= _nextHurtImmunityEndTime)
 				_isHurtImmune = false;
 

@@ -40,6 +40,9 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeField, FoldoutGroup("Boss"), ShowIf(nameof(IsBoss))]
 		private UnityEvent OnSecondPhaseStartEvent, OnDeathEvent;
 
+		[Space, SerializeField]
+		private VisualEffect[] PlayableVFX;
+
 		[FoldoutGroup("Debug"), SerializeField]
 		private bool PrintAnimationTriggers;
 
@@ -131,6 +134,11 @@ namespace Quinn.AI.BehaviorTree
 		public void EnableCharacterCollision()
 		{
 			GetComponent<Collider2D>().excludeLayers &= ~LayerMask.GetMask("Character");
+		}
+
+		public void PlayVFX(int index)
+		{
+			PlayableVFX[index].Play();
 		}
 
 		private SoundMaterialType GetSoundMaterialType()

@@ -62,6 +62,7 @@ namespace Quinn.PlayerSystem
 		private float _puddleHealingVFXSpawnRate;
 
 		private bool _noClip;
+		private int _preNoClipMask;
 		private bool _godMode;
 
 		public void Awake()
@@ -107,12 +108,15 @@ namespace Quinn.PlayerSystem
 
 				if (_noClip)
 				{
-					GetComponent<Collider2D>().forceReceiveLayers &= ~LayerMask.GetMask("Obstacle");
+					var collider = GetComponent<Collider2D>();
+					_preNoClipMask = collider.forceReceiveLayers;
+					collider.forceReceiveLayers = 0;
+
 					GetComponent<PlayerMovement>().SetSpeedOverride(16f);
 				}
 				else
 				{
-					GetComponent<Collider2D>().forceReceiveLayers |= LayerMask.GetMask("Obstacle");
+					GetComponent<Collider2D>().forceReceiveLayers = _preNoClipMask;
 					GetComponent<PlayerMovement>().ClearSpeedOverride();
 				}
 			}

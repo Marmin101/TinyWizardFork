@@ -1290,6 +1290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2870360260883226453}
   - component: {fileID: 6317654392282603119}
+  - component: {fileID: 3680900517451036638}
   m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
@@ -1371,6 +1372,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &3680900517451036638
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864320887109562367}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &8934310492341120438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1757,13 @@ MonoBehaviour:
   SpawnOnDeath: []
   <IsBoss>k__BackingField: 1
   <BossTitle>k__BackingField: Festive Yeti
+  ActivateOnSecondPhase: []
+  OnSecondPhaseStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   PrintAnimationTriggers: 0
 --- !u!114 &2814794928114910992 stripped
 MonoBehaviour:

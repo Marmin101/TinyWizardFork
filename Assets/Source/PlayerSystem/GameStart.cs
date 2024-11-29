@@ -4,7 +4,7 @@ namespace Quinn.PlayerSystem
 {
 	public class GameStart : MonoBehaviour
 	{
-		public void Awake()
+		public void Start()
 		{
 			PlayerManager.Instance.GameStart();
 		}

@@ -29,6 +29,10 @@ namespace Quinn.AI.BehaviorTree
 		[SerializeField]
 		private VisualEffect DeathVFX;
 		[SerializeField]
+		private EventReference DeathSFX;
+		[SerializeField, ShowIf("@!DeathSFX.IsNull")]
+		private float StopDeathSFXAfter = -1f;
+		[SerializeField]
 		private GameObject[] SpawnOnDeath;
 
 		[field: SerializeField, FoldoutGroup("Boss")]
@@ -187,7 +191,7 @@ namespace Quinn.AI.BehaviorTree
 			}
 		}
 
-		private void OnDeath()
+		private async void OnDeath()
 		{
 			Animator.SetTrigger(DeathTrigger);
 
@@ -213,6 +217,19 @@ namespace Quinn.AI.BehaviorTree
 			foreach (var prefab in SpawnOnDeath)
 			{
 				prefab.Clone(transform.position);
+			}
+
+			if (!DeathSFX.IsNull)
+			{
+				var sfx = RuntimeManager.CreateInstance(DeathSFX);
+				sfx.start();
+
+				if (StopDeathSFXAfter > 0f)
+				{
+					await Wait.Seconds(StopDeathSFXAfter, destroyCancellationToken);
+					sfx.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+					sfx.release();
+				}
 			}
 		}
 

@@ -59,7 +59,7 @@ namespace Quinn.DungeonGeneration
 		[Space, SerializeField, BoxGroup("Analytics")]
 		private bool IsLootRoom;
 		[SerializeField, BoxGroup("Analytics")]
-		private bool IsBossRoom;
+		public bool IsBossRoom;
 		[SerializeField, BoxGroup("Analytics")]
 		private bool IsHealingRoom;
 

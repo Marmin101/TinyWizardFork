@@ -77,6 +77,26 @@ namespace Quinn.DungeonGeneration
 			await StartFloorAsync(Floors[0]);
 		}
 
+#if UNITY_EDITOR
+		public void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.B))
+			{
+				var player = PlayerManager.Instance.Player;
+				Vector2 pos = player.transform.position;
+
+				var room = GameObject.FindGameObjectsWithTag("Room").FirstOrDefault(x => x.GetComponent<Room>().IsBossRoom);
+				if (room != null)
+				{
+					pos = room.transform.position;
+					pos += Vector2.down * 4f;
+				}
+
+				player.transform.position = pos;
+			}
+		}
+#endif
+
 		public void OnDestroy()
 		{
 			if (Instance == this)

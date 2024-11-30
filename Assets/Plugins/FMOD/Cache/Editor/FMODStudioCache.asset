@@ -177,10 +177,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638684972149226348
+  lastModified: 638685131840664333
   FileSizes:
   - Name: Desktop
-    Value: 5714
+    Value: 5802
   Exists: 1
 --- !u!114 &-7739191155568929589
 MonoBehaviour:
@@ -291,6 +291,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 19636
+--- !u!114 &-5742916705838777839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Yeti/SummonRoar
+  m_EditorClassIdentifier: 
+  Path: event:/Yeti/SummonRoar
+  Guid:
+    Data1: 1523630726
+    Data2: 1083758083
+    Data3: -45788273
+    Data4: -196887806
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5719839236154478707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,10 +733,10 @@ MonoBehaviour:
   Path: FMOD/TinyWizard/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638684972149103732
+  lastModified: 638685131840527187
   FileSizes:
   - Name: Desktop
-    Value: 28028576
+    Value: 28133504
   Exists: 1
 --- !u!114 &-2968291262461561624
 MonoBehaviour:
@@ -1410,6 +1437,8 @@ MonoBehaviour:
   - {fileID: 1343457371559628462}
   - {fileID: -7877932037187650972}
   - {fileID: -3343336778576938340}
+  - {fileID: -5742916705838777839}
+  - {fileID: 1346603053759806840}
   EditorParameters:
   - {fileID: 9129892658785338309}
   - {fileID: 6694370073835860198}
@@ -1420,7 +1449,7 @@ MonoBehaviour:
   - {fileID: -2968825907237438240}
   StringsBanks:
   - {fileID: -7742439810462443831}
-  cacheTime: 638684972149226348
+  cacheTime: 638685131840664333
   cacheVersion: 131621
 --- !u!114 &173570376881977602
 MonoBehaviour:
@@ -1829,6 +1858,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &1346603053759806840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Yeti/DeathSound
+  m_EditorClassIdentifier: 
+  Path: event:/Yeti/DeathSound
+  Guid:
+    Data1: 787637341
+    Data2: 1166539860
+    Data3: -1886490211
+    Data4: -1480985667
+  Banks:
+  - {fileID: -2968825907237438240}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 19636
 --- !u!114 &1629633423674381951
 MonoBehaviour:
   m_ObjectHideFlags: 0

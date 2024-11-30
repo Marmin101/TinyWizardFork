@@ -43,7 +43,7 @@ MonoBehaviour:
     collapsed: 1
   uiBounds:
     serializedVersion: 2
-    x: -215
+    x: -214
     y: -1434
     width: 1542
     height: 2438
@@ -639,7 +639,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614662}
   - {fileID: 8926484042661614681}
   dataType: 0
-  capacity: 1024
+  capacity: 2048
   stripCapacity: 1
   particlePerStripCount: 32
   needsComputeBounds: 1
@@ -2386,7 +2386,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614907}
   m_ExposedName: MinVelocity
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 5
   m_Category: Spawn
   m_Min:
     m_Type:
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614915}
   m_ExposedName: MinAngularVelocity
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 6
   m_Category: Spawn
   m_Min:
     m_Type:
@@ -2772,7 +2772,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614917}
   m_ExposedName: MaxAngularVelocity
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 7
   m_Category: Spawn
   m_Min:
     m_Type:
@@ -3587,7 +3587,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614945}
   m_ExposedName: Gravity
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 8
   m_Category: Update
   m_Min:
     m_Type:
@@ -3668,7 +3668,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614947}
   m_ExposedName: Texture
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 9
   m_Category: Render
   m_Min:
     m_Type:
@@ -3749,7 +3749,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614949}
   m_ExposedName: Color
   m_Exposed: 1
-  m_Order: 11
+  m_Order: 10
   m_Category: Render
   m_Min:
     m_Type:
@@ -3830,7 +3830,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614951}
   m_ExposedName: MaxSize
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 11
   m_Category: Spawn
   m_Min:
     m_Type:
@@ -4125,7 +4125,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614960}
   m_ExposedName: SizeFactor
   m_Exposed: 1
-  m_Order: 13
+  m_Order: 12
   m_Category: Render
   m_Min:
     m_Type:
@@ -4920,7 +4920,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614983}
   m_ExposedName: HasTurbulence
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 13
   m_Category: Update
   m_Min:
     m_Type:
@@ -5001,7 +5001,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614985}
   m_ExposedName: Intensity
   m_Exposed: 1
-  m_Order: 15
+  m_Order: 14
   m_Category: Update
   m_Min:
     m_Type:
@@ -5082,7 +5082,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614987}
   m_ExposedName: Frequency
   m_Exposed: 1
-  m_Order: 16
+  m_Order: 15
   m_Category: Update
   m_Min:
     m_Type:
@@ -5163,7 +5163,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614989}
   m_ExposedName: SpawnCount
   m_Exposed: 1
-  m_Order: 17
+  m_Order: 16
   m_Category: Spawn
   m_Min:
     m_Type:
@@ -6012,7 +6012,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615013}
   m_ExposedName: Drag
   m_Exposed: 1
-  m_Order: 18
+  m_Order: 17
   m_Category: Update
   m_Min:
     m_Type:
@@ -6093,7 +6093,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615015}
   m_ExposedName: SpawnBox
   m_Exposed: 1
-  m_Order: 19
+  m_Order: 18
   m_Category: 
   m_Min:
     m_Type:

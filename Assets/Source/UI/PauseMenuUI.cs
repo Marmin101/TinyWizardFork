@@ -85,6 +85,8 @@ namespace Quinn.UI
 
 		private void Unpause()
 		{
+			IsPaused = false;
+
 			Time.timeScale = 1f;
 			CanvasGroup.DOFade(0f, 0.1f)
 				.SetUpdate(true)

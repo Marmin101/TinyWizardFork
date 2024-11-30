@@ -13,6 +13,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		public string GUID { get; private set; }
 
 		[field: SerializeField, Required, BoxGroup("Base", showLabel: false)]
+		public string Name { get; private set; } = "No Name";
+		[field: SerializeField, Required, BoxGroup("Base", showLabel: false)]
 		public Transform Head { get; private set; }
 		[field: SerializeField, BoxGroup("Base", showLabel: false)]
 		public Gradient SparkGradient { get; private set; }

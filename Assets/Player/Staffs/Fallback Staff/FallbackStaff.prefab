@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <GUID>k__BackingField: 39417e76-4e7b-4618-b953-73c3065fe732
+  <Name>k__BackingField: Fallback Staff
   <Head>k__BackingField: {fileID: 4720859037852985567}
   <SparkGradient>k__BackingField:
     serializedVersion: 2
@@ -225,6 +226,7 @@ MonoBehaviour:
   BasicFinisherManaConsume: 6
   HasSpecial: 0
   SpecialMissile: {fileID: 0}
+  RequireFullChargeForSpecial: 0
   ChargingSparkInterval: 0.45
   SpecialCooldown: 1
   SpecialChargeTime: 1

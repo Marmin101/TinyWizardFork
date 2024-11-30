@@ -3543,6 +3543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1 &8850195225191626068
 GameObject:
   m_ObjectHideFlags: 0

@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1 &746893393787822180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,6 +2464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1 &3252125559169684032
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,6 +3869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1 &3660269130007432510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,6 +4325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1 &5248619572169861736
 GameObject:
   m_ObjectHideFlags: 0
@@ -4746,6 +4750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1 &6618899213888772827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,6 +6106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: 2
   <Priority>k__BackingField: 100
+  PlayVFX: 1
 --- !u!1 &7253783663429431700
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quinn.UI;
+using System;
 using UnityEngine;
 
 namespace Quinn.PlayerSystem
@@ -26,6 +27,9 @@ namespace Quinn.PlayerSystem
 
 		public void Update()
 		{
+			if (PauseMenuUI.Instance.IsPaused)
+				return;
+
 			MoveDirection = new Vector2()
 			{
 				x = Input.GetAxisRaw("Horizontal"),

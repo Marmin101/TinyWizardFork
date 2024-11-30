@@ -215,8 +215,8 @@ MonoBehaviour:
   SpecialInterval: 0
   SpecialBehavior: 0
   SpecialSpread: 0
-  SpecialEnergyUse: 8
-  SpecialManaConsume: 34
+  SpecialEnergyUse: 12
+  SpecialManaConsume: 36
 --- !u!58 &248853247630090666
 CircleCollider2D:
   m_ObjectHideFlags: 0

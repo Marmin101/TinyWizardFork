@@ -65,6 +65,10 @@ namespace Quinn.UI
 			{
 				targetAlpha = 1f;
 			}
+			else if (PlayerManager.Instance.Health.Current < 2.55f)
+			{
+				targetAlpha = 0.3f;
+			}
 
 			color.a = Mathf.SmoothDamp(LowHPVignette.color.a, targetAlpha, ref _alphaVel, SmoothTime);
 			LowHPVignette.color = color;

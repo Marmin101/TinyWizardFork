@@ -87,5 +87,15 @@ namespace Quinn.PlayerSystem
 
 			RuntimeManager.StudioSystem.setParameterByName("staff-charge", Mathf.Clamp01(percent));
 		}
+
+		public void Show()
+		{
+			_crosshair.gameObject.SetActive(true);
+		}
+
+		public void Hide()
+		{
+			_crosshair.gameObject.SetActive(false);
+		}
 	}
 }

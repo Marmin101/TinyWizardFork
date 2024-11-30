@@ -602,7 +602,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 312.68005, y: -21.599998}
-  m_SizeDelta: {x: 396.4, y: 22}
+  m_SizeDelta: {x: 774.73, y: 22}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4145078282969516519
 CanvasRenderer:
@@ -632,7 +632,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Durability <color=#aaaaaa>(can't use staff when empty)
+  m_text: Durability <color=#aaaaaa>(can't use staff when empty; old staff durability
+    transers to new)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c3f94e608e38eb488d38667b78d2d40, type: 2}
   m_sharedMaterial: {fileID: -594890994472134885, guid: 5c3f94e608e38eb488d38667b78d2d40, type: 2}

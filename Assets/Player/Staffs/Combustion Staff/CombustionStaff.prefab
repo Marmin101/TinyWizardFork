@@ -147,7 +147,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 3
   <MaxEnergy>k__BackingField: 300
   CastCooldown: 0.1
-  ChargeRate: 3
+  ChargeRate: 4.5
   MaxCharge: 8
   MinChargeThreshold: 1
   MaxDamage: 80

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using FMODUnity;
+using Quinn.UI;
 using Quinn.UnityServices;
 using Sirenix.OdinInspector;
 using System;
@@ -132,6 +133,9 @@ namespace Quinn.PlayerSystem.SpellSystem
 			}
 #endif
 
+			if (PauseMenuUI.Instance.IsPaused)
+				return;
+
 			if (ActiveStaff != null && ActiveStaff.Energy <= 0f)
 			{
 				StoreStaff(ActiveStaff);
@@ -184,9 +188,12 @@ namespace Quinn.PlayerSystem.SpellSystem
 				//faceDir = Movement.DashDirection.normalized;
 			}
 
-			// Do not change facing direction if input is disabled as it's a form of input.
-			if (InputManager.Instance.enabled)
-				transform.localScale = new Vector3(Mathf.Sign(faceDir.x), 1f, 1f);
+			if (!PauseMenuUI.Instance.IsPaused)
+			{
+				// Do not change facing direction if input is disabled as it's a form of input.
+				if (InputManager.Instance.enabled)
+					transform.localScale = new Vector3(Mathf.Sign(faceDir.x), 1f, 1f);
+			}
 		}
 
 		public void OnDestroy()

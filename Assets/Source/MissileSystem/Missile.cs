@@ -82,6 +82,8 @@ namespace Quinn.MissileSystem
 		private MissileSpawnBehavior DeathMissileSpawnBehavior = MissileSpawnBehavior.SpreadRandom;
 		[SerializeField, FoldoutGroup("Explosion"), ShowIf(nameof(SpawnMissilesOnDeath))]
 		private float DeathMissileSpread = 360f;
+		[SerializeField, FoldoutGroup("Explosion")]
+		private GameObject ExplosionVFX;
 
 		[Space, SerializeField, FoldoutGroup("Misc")]
 		private bool CreateSteam;
@@ -245,6 +247,12 @@ namespace Quinn.MissileSystem
 
 			if (SpawnMissilesOnDeath)
 			{
+				if (ExplosionVFX != null)
+				{
+					var vfx = ExplosionVFX.Clone(transform.position);
+					vfx.Destroy(3f);
+				}
+
 				await MissileManager.Instance.SpawnMissileAsync(_owner, DeathMissilePrefab, transform.position, Vector2.right, DeathMissileCount, DeathMissileSpawnBehavior, DeathMissileSpread);
 			}
 		}

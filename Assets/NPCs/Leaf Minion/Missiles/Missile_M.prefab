@@ -89,12 +89,16 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
+      propertyPath: ExplosionVFX
+      value: 
+      objectReference: {fileID: 3779520623377372135, guid: 9571c15b3f91ed247a3cad68e7b7edac, type: 3}
+    - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: HitSound.Path
       value: event:/LeafMinion/LeafMinionMissileHit
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DeathMissileCount
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3243812608378118921, guid: 259e10adc8f055649823abfa23b9d597, type: 3}
       propertyPath: DeathMissilePrefab

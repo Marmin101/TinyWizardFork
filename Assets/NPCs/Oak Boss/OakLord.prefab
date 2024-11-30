@@ -91,6 +91,170 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642972601697610784}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -272583499
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+--- !u!1 &1462171141488440859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684751886284537089}
+  - component: {fileID: 3181918128243266589}
+  - component: {fileID: 6236804246770648846}
+  m_Layer: 7
+  m_Name: DeathVFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &684751886284537089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462171141488440859}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2424681279180328239}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!2083052967 &3181918128243266589
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462171141488440859}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: de592f7f95311e74eab5b09c8f0ea50c, type: 3}
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 0.4
+        m_Name: MaxSize
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: 5, y: 10}
+        m_Name: MaxVelocity
+        m_Overridden: 1
+      - m_Value: {x: -5, y: -1}
+        m_Name: MinVelocity
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 1.8590381, y: 2.5851963, z: 1}
+        m_Name: SpawnBox_size
+        m_Overridden: 1
+      - m_Value: {x: 0.03408885, y: 1.2544682, z: 0}
+        m_Name: SpawnBox_center
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array:
+      - m_Value: 1024
+        m_Name: SpawnCount
+        m_Overridden: 1
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.17788847, g: 0.38642952, b: 0.05448028, a: 1}
+          key1: {r: 0.11443538, g: 0.26225072, b: 0.029556843, a: 1}
+          key2: {r: 0.028426038, g: 0.1878208, b: 0.026241222, a: 0}
+          key3: {r: 0.0041936534, g: 0.07169801, b: 0.01129938, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 16577
+          ctime2: 38319
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 53893
+          atime2: 65535
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 2
+          m_ColorSpace: 1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 3
+        m_Name: Color
+        m_Overridden: 1
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &6236804246770648846
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462171141488440859}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -1455,6 +1619,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6328704744274377494, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       insertIndex: 0
       addedObject: {fileID: 5891076701322276443}
+    - targetCorrespondingSourceObject: {fileID: 6328704744274377494, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 684751886284537089}
     - targetCorrespondingSourceObject: {fileID: 1444399717368300927, guid: 95f4e05ce39780d42ae1d3868b2ccc69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7985406267754434399}
@@ -1624,6 +1791,24 @@ MonoBehaviour:
     Path: event:/CandleStickBoss/Footstep
   DeathTrigger: Die
   DeathVFX: {fileID: 0}
+  DeathSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  StopDeathSFXAfter: -1
+  SpawnOnDeath: []
   <IsBoss>k__BackingField: 1
   <BossTitle>k__BackingField: Father Oak, Lord of the Fallen
+  ActivateOnSecondPhase: []
+  OnSecondPhaseStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayableVFX:
+  - {fileID: 3181918128243266589}
   PrintAnimationTriggers: 0

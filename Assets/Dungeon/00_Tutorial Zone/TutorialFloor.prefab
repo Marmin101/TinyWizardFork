@@ -474,6 +474,130 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!1 &6500993602485565234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1524751192098463315}
+  - component: {fileID: 7789954502579012686}
+  - component: {fileID: 238821293472490444}
+  - component: {fileID: 7653238548997433827}
+  m_Layer: 0
+  m_Name: CloseTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1524751192098463315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500993602485565234}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.61, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 9.8532, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1009587444938144591}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7789954502579012686
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500993602485565234}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &238821293472490444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500993602485565234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27572c7b4d8bb24890217c47af63523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FilterForPlayer: 1
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6400612640183738565}
+        m_TargetAssemblyTypeName: Quinn.DungeonGeneration.Door, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7653238548997433827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500993602485565234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aba73bb581906144848096de3f420d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Color: {r: 1, g: 0.4760973, b: 0, a: 1}
 --- !u!1 &6997864536020821836
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,6 +3653,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1302396680718244886}
+    - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8100006376319233244}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
 --- !u!4 &9114504128841309828 stripped
@@ -5887,9 +6014,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8871419153658129416}
-    - targetCorrespondingSourceObject: {fileID: 7809171338611026391, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8100006376319233244}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab52e962047e3d41b43a9207bcc46c5, type: 3}
 --- !u!4 &8819562834074555567 stripped
@@ -6105,7 +6229,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8819562834074555567}
+    m_TransformParent: {fileID: 9114504128841309828}
     m_Modifications:
     - target: {fileID: 2029613999104362258, guid: 4ca203e8050246e4785fd68726c4ab83, type: 3}
       propertyPath: m_Name
@@ -6121,7 +6245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5964835479959908415, guid: 4ca203e8050246e4785fd68726c4ab83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.6899986
       objectReference: {fileID: 0}
     - target: {fileID: 5964835479959908415, guid: 4ca203e8050246e4785fd68726c4ab83, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7931,7 +8055,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4728678647990814390, guid: 02d0b2c4b6605d7458c3c188ae43ad4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1524751192098463315}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02d0b2c4b6605d7458c3c188ae43ad4e, type: 3}
 --- !u!4 &1009587444938144591 stripped

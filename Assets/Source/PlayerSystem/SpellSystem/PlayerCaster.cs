@@ -1,6 +1,5 @@
 using DG.Tweening;
 using FMODUnity;
-using NUnit.Framework.Constraints;
 using Quinn.UnityServices;
 using Sirenix.OdinInspector;
 using System;
@@ -24,6 +23,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private float InputBufferTimeout = 0.2f;
 		[SerializeField, Required]
 		private VisualEffect CastingSpark;
+		[SerializeField]
+		private float EnergyTransferRate = 0.5f;
 
 		[SerializeField, Required, Space]
 		private Transform StoredStaffsParent;
@@ -50,6 +51,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		private EventReference EquipSound;
 
 		public Staff ActiveStaff {  get; private set; }
+		// Used by EnergyUI.cs to update energy value during equipping sequence before ActiveStaff is changed.
+		public Staff UIStaff { get; private set; }
 		public bool CanCast => Time.time >= _nextInputTime;
 
 		public float Mana { get; private set; }
@@ -242,6 +245,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 				_storedStaffs.Remove(staff);
 
 				ActiveStaff = staff;
+				UIStaff = staff;
+
 				staff.transform.SetParent(transform, false);
 				staff.SetCaster(this);
 
@@ -340,7 +345,6 @@ namespace Quinn.PlayerSystem.SpellSystem
 				return;
 
 			Mana = Mathf.Min(Mana + amount, MaxMana);
-
 			OnManaAdded?.Invoke(amount);
 		}
 
@@ -433,6 +437,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		private async Awaitable StaffPickUpSequence(Staff targetStaff)
 		{
+			float energyToTransfer = ActiveStaff.Energy * EnergyTransferRate;
+
 			InputManager.Instance.DisableInput();
 			var hp = GetComponent<Health>();
 			hp.BlockDamage(this);
@@ -441,6 +447,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 			EquipLight.DOFade(0f, 0.5f).From();
 
 			GetComponent<Animator>().SetTrigger("EquipSequence");
+
+			UIStaff = targetStaff;
+			DOTween.To(() => targetStaff.Energy, x => targetStaff.SetEnergy(x), targetStaff.Energy + energyToTransfer, 4f)
+				.SetEase(Ease.OutCubic);
 
 			Transform oldStaffHead = ActiveStaff.Head;
 			Vector3 oldStaffHeadPos = oldStaffHead.position;
@@ -459,6 +469,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 			EquipEnergyVFX.Play();
 
 			await Wait.Seconds(4f);
+
 			EquipVFX.Play();
 			Audio.Play(EquipSound, transform.position);
 

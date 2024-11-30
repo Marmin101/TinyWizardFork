@@ -33,6 +33,9 @@ namespace Quinn.UI
 		[SerializeField]
 		private EventReference WriteSound;
 
+		[Space, SerializeField, Required]
+		private TextMeshProUGUI[] HelpText;
+
 		public static HUD Instance { get; private set; }
 
 		private CancellationTokenSource _cancelDialogue = new();
@@ -46,6 +49,11 @@ namespace Quinn.UI
 
 			Dialogue.alpha = 0f;
 			_defaultScale = LowHPVignette.transform.localScale.y;
+
+			foreach (var text in HelpText)
+			{
+				text.alpha = 0f;
+			}
 		}
 
 		public void Update()
@@ -64,6 +72,21 @@ namespace Quinn.UI
 			float scale = Mathf.Sin(Time.time * ScaleFrequency) * ScaleAmplitude;
 			scale += _defaultScale;
 			LowHPVignette.transform.localScale = new Vector3(scale, scale, 1f);
+
+			if (Input.GetKeyDown(KeyCode.Tab))
+			{
+				foreach (var text in HelpText)
+				{
+					text.DOFade(1f, 0.1f);
+				}
+			}
+			else if (Input.GetKeyUp(KeyCode.Tab))
+			{
+				foreach (var text in HelpText)
+				{
+					text.DOFade(0f, 0.2f);
+				}
+			}
 		}
 
 		public void OnDestroy()

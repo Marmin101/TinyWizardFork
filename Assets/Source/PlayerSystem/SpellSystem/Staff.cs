@@ -132,7 +132,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public void SetEnergy(float energy)
 		{
-			Energy = Mathf.Clamp(energy, 0f, MaxEnergy);
+			Energy = Mathf.Max(0f, energy);
 		}
 
 		public void ConsumeEnergy(float amount)

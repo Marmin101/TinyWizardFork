@@ -91,11 +91,17 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 			if (CanCastExcludingCost)
 			{
 				_isCharging = true;
+
+				Caster.Movement.CanDash = false;
+				Caster.Movement.ApplySpeedModifier(this, 0.5f);
 			}
 		}
 
 		public override void OnBasicUp()
 		{
+			Caster.Movement.CanDash = true;
+			Caster.Movement.RemoveSpeedModifier(this);
+
 			if (!_isCharging)
 				return;
 

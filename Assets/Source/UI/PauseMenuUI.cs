@@ -44,15 +44,7 @@ namespace Quinn.UI
 
 				if (IsPaused)
 				{
-					Time.timeScale = 0f;
-
-					Canvas.enabled = true;
-					CanvasGroup.DOFade(1f, 0.1f).SetUpdate(true);
-
-					Cursor.visible = true;
-					Cursor.lockState = CursorLockMode.None;
-
-					CrosshairManager.Instance.Hide();
+					Pause();
 				}
 				else
 				{
@@ -69,11 +61,15 @@ namespace Quinn.UI
 
 		public void Unpause_Button()
 		{
-			Unpause();
+			if (IsPaused)
+				Unpause();
 		}
 
 		public async void Quit_Button()
 		{
+			if (!IsPaused)
+				return;
+
 			await Wait.Seconds(0.2f);
 
 #if UNITY_EDITOR
@@ -81,6 +77,23 @@ namespace Quinn.UI
 #endif
 
 			Application.Quit();
+		}
+
+		private void Pause()
+		{
+			IsPaused = true;
+			Time.timeScale = 0f;
+
+			Canvas.enabled = true;
+			CanvasGroup.DOFade(1f, 0.1f).SetUpdate(true);
+
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+
+			CrosshairManager.Instance.Hide();
+
+			SFXSlider.interactable = true;
+			MusicSlider.interactable = true;
 		}
 
 		private void Unpause()
@@ -96,6 +109,9 @@ namespace Quinn.UI
 			Cursor.lockState = CursorLockMode.Confined;
 
 			CrosshairManager.Instance.Show();
+
+			SFXSlider.interactable = false;
+			MusicSlider.interactable = false;
 		}
 	}
 }

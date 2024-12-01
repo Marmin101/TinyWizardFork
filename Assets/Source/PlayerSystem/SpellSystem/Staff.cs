@@ -33,7 +33,7 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			get
 			{
-				if (Caster == null || Energy <= 0f || Caster.Mana <= 0f)
+				if (Caster == null || Energy <= 0f || Caster.Mana <= 0f || !IsEquipped)
 					return false;
 
 				return Caster.CanCast;
@@ -59,13 +59,13 @@ namespace Quinn.PlayerSystem.SpellSystem
 				return Caster.IsSpecialHeld;
 			}
 		}
+		protected bool IsEquipped { get; private set; }
 
 		private SortingGroup _group;
 
 		protected virtual void Awake()
 		{
 			Debug.Assert(!string.IsNullOrWhiteSpace(GUID), $"Staff '{gameObject.name}' is missing a GUID!");
-
 			Energy = MaxEnergy;
 
 			_group = GetComponentInChildren<SortingGroup>();
@@ -96,28 +96,37 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		public void SetCaster(PlayerCaster caster)
 		{
+			Debug.Assert(caster != null, "Can't set caster to null. Use ClearCaster() to do that!");
 			Caster = caster;
 
-			// Storing or destroying.
-			if (caster == null)
-			{
-				GetComponent<Collider2D>().enabled = true;
-				_group.enabled = false;
+			IsEquipped = true;
+			GetComponent<Collider2D>().enabled = false;
 
-				Head.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
-
-				if (Head.TryGetComponent(out Light2D light))
-				{
-					light.enabled = false;
-				}
-			}
-			// Equipping.
-			else
-			{
-				GetComponent<Collider2D>().enabled = false;
+			if (_group != null)
 				_group.enabled = true;
 
-				Head.GetComponent<SpriteRenderer>().color = Color.white;
+			Head.GetComponent<SpriteRenderer>().color = Color.white;
+		}
+
+		public void ClearCaster()
+		{
+			IsEquipped = false;
+			SetStoredState();
+		}
+
+		public void SetStoredState()
+		{
+			if (_group != null)
+			{
+				_group.enabled = true;
+			}
+
+			GetComponent<Collider2D>().enabled = false;
+			Head.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+
+			if (Head.TryGetComponent(out Light2D light))
+			{
+				light.enabled = false;
 			}
 		}
 

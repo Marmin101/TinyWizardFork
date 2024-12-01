@@ -17,7 +17,7 @@ namespace Quinn.DungeonGeneration
 		public void Start()
 		{
 			Staff[] filtered;
-			Staff activeStaff = PlayerManager.Instance.Player.GetComponent<PlayerCaster>().ActiveStaff;
+			Staff activeStaff = PlayerManager.Instance.Player.GetComponent<PlayerCaster>().EquippedStaff;
 
 			if (activeStaff != null && AvoidPlayersActiveStaff)
 			{

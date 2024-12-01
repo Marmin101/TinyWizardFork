@@ -131,7 +131,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 37
+      y: 36
       width: 7
       height: 10
     spriteID: 095ca7a77004dda408a50339935cae41
@@ -142,7 +142,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 37}
+    uvTransform: {x: 4, y: 36}
   - name: RightArrow
     originalName: 
     pivot: {x: 0.5075, y: 0.375}
@@ -175,7 +175,7 @@ ScriptedImporter:
       x: 4
       y: 21
       width: 11
-      height: 8
+      height: 7
     spriteID: 9b96e254e9198674d870045fb0cb0208
     spriteBone: []
     spriteOutline: []
@@ -237,7 +237,7 @@ ScriptedImporter:
         x: 10
         y: 18
         width: 11
-        height: 8
+        height: 7
       spriteId: 9b96e254e9198674d870045fb0cb0208
     linkedCells: []
     parentIndex: -1

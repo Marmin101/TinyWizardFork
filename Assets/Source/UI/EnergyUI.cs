@@ -28,7 +28,7 @@ namespace Quinn.UI
 #if UNITY_EDITOR
 			if (Input.GetKeyDown(KeyCode.H))
 			{
-				_caster.ActiveStaff.SetEnergy(_caster.ActiveStaff.Energy * 1.5f);
+				_caster.EquippedStaff.SetEnergy(_caster.EquippedStaff.Energy * 1.5f);
 			}
 #endif
 

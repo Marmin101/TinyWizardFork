@@ -1244,7 +1244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3591728302427652077, guid: 1b5b67a43b29baa4d803bae9e778e2f8, type: 3}
       propertyPath: m_text
-      value: Unpause
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 3693167224894932816, guid: 1b5b67a43b29baa4d803bae9e778e2f8, type: 3}
       propertyPath: m_Sprite
@@ -1328,7 +1328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5661765399201919781, guid: 1b5b67a43b29baa4d803bae9e778e2f8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 328
+      value: 278
       objectReference: {fileID: 0}
     - target: {fileID: 5661765399201919781, guid: 1b5b67a43b29baa4d803bae9e778e2f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

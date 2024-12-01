@@ -61,5 +61,10 @@ namespace Quinn
 				_buffers.Remove(key);
 			}
 		}
+
+		public void Clear()
+		{
+			_buffers.Clear();
+		}
 	}
 }

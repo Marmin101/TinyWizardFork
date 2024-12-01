@@ -210,7 +210,7 @@ namespace Quinn.AI.BehaviorTree
 				{
 					Name = BossTitle,
 					Attempts = PlayerManager.Instance.CurrentFloorAttempts,
-					Staff = PlayerManager.Instance.Player.GetComponent<PlayerCaster>().ActiveStaff.gameObject.name
+					Staff = PlayerManager.Instance.Player.GetComponent<PlayerCaster>().EquippedStaff.gameObject.name
 				});
 			}
 

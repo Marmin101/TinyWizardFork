@@ -1,4 +1,6 @@
-﻿using Quinn.PlayerSystem;
+﻿using DG.Tweening;
+using Quinn.AI;
+using Quinn.PlayerSystem;
 using Quinn.PlayerSystem.SpellSystem;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -17,65 +19,61 @@ namespace Quinn.UI
 		[Space, SerializeField]
 		private StaffsSO Staffs;
 
-		private TextMeshProUGUI _equippedStaff;
+		private PlayerCaster _caster;
 		private readonly List<TextMeshProUGUI> _staffs = new();
+		private string _activeStaffGUID;
 
 		public void Start()
 		{
-			var caster = PlayerManager.Instance.Player.GetComponent<PlayerCaster>();
-			caster.OnStaffEquipped += OnStaffEquipped;
-
 			foreach (var child in ListParent.GetChildren())
 			{
 				child.gameObject.Destroy();
 			}
 
-			if (caster.ActiveStaff != null)
-			{
-				AddStaff(caster.ActiveStaff);
-			}
+			_caster = PlayerManager.Instance.Player.GetComponent<PlayerCaster>();
 		}
 
-		private void OnStaffEquipped(Staff staff)
+		public void FixedUpdate()
 		{
-			AddStaff(staff);
+			if (_caster.EquippedStaff != null && _caster.EquippedStaff.GUID != _activeStaffGUID)
+			{
+				_activeStaffGUID = _caster.EquippedStaff.GUID;
+				UpdateStaffs();
+			}
 		}
 
 		private void UpdateStaffs()
 		{
+			_staffs.ForEach(staff => staff.gameObject.Destroy());
+			_staffs.Clear();
 
-		}
+			var manager = PlayerManager.Instance;
 
-		private void AddStaff(Staff staff)
-		{
-			GameObject instance;
-
-			if (_equippedStaff != null)
+			if (!string.IsNullOrEmpty(manager.EquippedStaffGUID))
 			{
-				if (staff.Name == "Fallback Staff")
-				{ 
-					// TODO: Do not store but do equip fallback staff.
-				}
+				var equipped = CloneItem(isEquipped: true);
+				equipped.text = Staffs.GetStaff(manager.EquippedStaffGUID).Name;
 
-				// TODO: Reference saved staffs in player manager.
-
-				instance = StoredStaffPrefab.Clone(ListParent);
-				instance.transform.SetAsFirstSibling();
-
-				var stored = instance.GetComponent<TextMeshProUGUI>();
-				stored.text = _equippedStaff.text;
-
-				_staffs.Add(stored);
-				_equippedStaff.gameObject.Destroy();
-
-				_equippedStaff = null;
+				var seq = DOTween.Sequence();
+				seq.Append(equipped.transform.DOScale(1.1f, 0.05f));
+				seq.Append(equipped.transform.DOScale(1f, 0.1f));
 			}
 
-			instance = EquippedStaffPrefab.Clone(ListParent);
-			instance.transform.SetAsFirstSibling();
+			foreach (var guid in manager.StoredStaffGUIDs)
+			{
+				var stored = CloneItem(isEquipped: false);
+				stored.text = Staffs.GetStaff(guid).Name;
+			}
+		}
 
-			_equippedStaff = instance.GetComponent<TextMeshProUGUI>();
-			_equippedStaff.text = staff.Name;
+		private TextMeshProUGUI CloneItem(bool isEquipped)
+		{
+			var prefab = isEquipped ? EquippedStaffPrefab : StoredStaffPrefab;
+
+			var instance = prefab.Clone(ListParent).GetComponent<TextMeshProUGUI>();
+			_staffs.Add(instance);
+
+			return instance;
 		}
 	}
 }

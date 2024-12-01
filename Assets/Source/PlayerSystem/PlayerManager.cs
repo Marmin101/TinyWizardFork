@@ -27,7 +27,7 @@ namespace Quinn.PlayerSystem
 
 		public string EquippedStaffGUID { get; set; }
 		public float EquippedStaffEnergy { get; set; }
-		public string[] StoredStaffGUIDs { get; set; }
+		public string[] StoredStaffGUIDs { get; set; } = Array.Empty<string>();
 
 		public bool IsAlive => !IsDead;
 		public bool IsDead => Health == null || Health.IsDead;
@@ -46,6 +46,7 @@ namespace Quinn.PlayerSystem
 		private bool _isDead;
 		private bool _isGameStarted;
 
+		// For the, now scrapped, time-based leaderboard.
 		private float _startTime;
 
 		public void Awake()

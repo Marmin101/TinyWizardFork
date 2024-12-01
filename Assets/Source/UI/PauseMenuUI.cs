@@ -38,6 +38,7 @@ namespace Quinn.UI
 			_music.setVolume(MusicSlider.value);
 
 			EventSystem.SetActive(false);
+			Canvas.enabled = false;
 		}
 
 		public void Update()

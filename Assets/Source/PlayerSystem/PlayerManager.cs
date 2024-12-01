@@ -28,6 +28,8 @@ namespace Quinn.PlayerSystem
 		public string EquippedStaffGUID { get; set; }
 		public float EquippedStaffEnergy { get; set; }
 		public string[] StoredStaffGUIDs { get; set; } = Array.Empty<string>();
+		public int DiscoveredStaffCount { get; set; }
+		public int PathsFound { get; set; }
 
 		public bool IsAlive => !IsDead;
 		public bool IsDead => Health == null || Health.IsDead;
@@ -35,6 +37,7 @@ namespace Quinn.PlayerSystem
 
 		public int CurrentFloorAttempts { get; private set; }
 		public int NewRoomsExploredThisFloor { get; set; }
+		public float GameplayDuration => _endTime - _startTime;
 
 		public event Action<Player> OnPlayerSet;
 		public event Action<float> OnPlayerHealthChange;
@@ -46,8 +49,8 @@ namespace Quinn.PlayerSystem
 		private bool _isDead;
 		private bool _isGameStarted;
 
-		// For the, now scrapped, time-based leaderboard.
 		private float _startTime;
+		private float _endTime;
 
 		public void Awake()
 		{
@@ -96,7 +99,7 @@ namespace Quinn.PlayerSystem
 			if (!_isGameStarted)
 			{
 				_isGameStarted = true;
-				_startTime = Time.unscaledTime;
+				_startTime = Time.time;
 			}
 		}
 
@@ -138,6 +141,11 @@ namespace Quinn.PlayerSystem
 
 			SpawnPlayer(InitialSpawnOffset);
 			DungeonGenerator.Instance.StartFloorOfCurrentIndex();
+		}
+
+		public void MarkVictoryTime()
+		{
+			_endTime = Time.time;
 		}
 
 		private void OnHealed(float amount)

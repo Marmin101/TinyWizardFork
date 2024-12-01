@@ -435,6 +435,13 @@ namespace Quinn.PlayerSystem.SpellSystem
 						.ToArray();
 				}
 			}
+
+			var discovered = _storedStaffs.ToList();
+			if (EquippedStaff != null)
+				discovered.Add(EquippedStaff);
+
+			discovered.Remove(FallbackStaff);
+			PlayerManager.Instance.DiscoveredStaffCount = discovered.Count;
 		}
 
 		private Staff StaffGUIDToPrefab(string guid)

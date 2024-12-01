@@ -18,12 +18,15 @@ namespace Quinn.UI
 		public void OnPointerEnter(PointerEventData eventData)
 		{
 			Audio.Play(HoverSound);
-			transform.DOScale(1.05f, 0.1f).SetEase(Ease.OutCubic);
+			transform.DOScale(1.05f, 0.1f)
+				.SetEase(Ease.OutCubic)
+				.SetUpdate(true);
 		}
 
 		public void OnPointerExit(PointerEventData eventData)
 		{
-			transform.DOScale(1, 0.2f);
+			transform.DOScale(1, 0.2f)
+				.SetUpdate(true);
 		}
 
 		public void OnPointerClick(PointerEventData eventData)
@@ -31,7 +34,8 @@ namespace Quinn.UI
 			Audio.Play(ClickSound);
 
 			transform.DOMoveY(transform.position.y - 0.1f, 0.15f)
-				.SetEase(Ease.OutBack);
+				.SetEase(Ease.OutBack)
+				.SetUpdate(true);
 		}
 	}
 }

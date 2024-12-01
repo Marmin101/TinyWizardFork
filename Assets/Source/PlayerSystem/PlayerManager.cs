@@ -77,10 +77,11 @@ namespace Quinn.PlayerSystem
 				GoToFloor(2);
 			else if (Input.GetKeyDown(KeyCode.Alpha4))
 				GoToFloor(3);
-			else if (Input.GetKeyDown(KeyCode.Alpha5))
-				GoToFloor(4);
-			else if (Input.GetKeyDown(KeyCode.Alpha6))
-				GoToFloor(5);
+
+			if (Input.GetKeyDown(KeyCode.Alpha7))
+			{
+				Health.Kill();
+			}
 #endif
 		}
 

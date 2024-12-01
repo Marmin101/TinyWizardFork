@@ -62,6 +62,8 @@ namespace Quinn.UI
 
 		public async void Retry_Button()
 		{
+			RetryButton.GetComponent<Button>().interactable = false;
+			QuitButton.GetComponent<Button>().interactable = false;
 			await Wait.Seconds(0.1f);
 
 			Cursor.lockState = CursorLockMode.Confined;
@@ -73,6 +75,8 @@ namespace Quinn.UI
 
 		public async void Quit_Button()
 		{
+			RetryButton.GetComponent<Button>().interactable = false;
+			QuitButton.GetComponent<Button>().interactable = false;
 			await Wait.Seconds(0.1f);
 
 #if UNITY_EDITOR

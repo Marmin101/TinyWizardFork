@@ -37,9 +37,9 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 501
+    x: 565
     y: -1434
-    width: 826
+    width: 762
     height: 2447
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: UILoop
+  m_Name: UILoop_Local
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -345,7 +345,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UILoop
+  m_Name: UILoop_Local
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -575,7 +575,7 @@ MonoBehaviour:
   particlePerStripCount: 32
   needsComputeBounds: 1
   boundsMode: 2
-  m_Space: 1
+  m_Space: 0
 --- !u!114 &8926484042661614628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,7 +1680,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614858}
   - {fileID: 8926484042661614862}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614853}
   m_MasterData:
@@ -2146,9 +2146,8 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614867}
       inputSlot: {fileID: 8926484042661614853}
-    position: {x: 500.80002, y: -794.39996}
-    expandedSlots:
-    - {fileID: 8926484042661614867}
+    position: {x: 640.8, y: -772.8}
+    expandedSlots: []
     expanded: 1
     supecollapsed: 0
 --- !u!114 &8926484042661614867

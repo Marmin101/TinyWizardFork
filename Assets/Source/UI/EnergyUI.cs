@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 namespace Quinn.UI
 {
@@ -13,14 +14,14 @@ namespace Quinn.UI
 		private Slider NormalBar, OverMaxBar;
 		[SerializeField, Required]
 		private TextMeshProUGUI OverMaxText;
+		[SerializeField, Required]
+		private VisualEffect OverMaxVFX;
 
 		private PlayerCaster _caster;
 
 		public void Start()
 		{
 			_caster = PlayerManager.Instance.Player.GetComponent<PlayerCaster>();
-
-			// TODO: VFX when over max
 		}
 
 		public void Update()
@@ -64,6 +65,8 @@ namespace Quinn.UI
 					NormalBar.value = 0f;
 					OverMaxBar.gameObject.SetActive(false);
 				}
+
+				OverMaxVFX.SetBool("Enabled", _caster.UIStaff.Energy > _caster.UIStaff.MaxEnergy);
 			}
 		}
 	}

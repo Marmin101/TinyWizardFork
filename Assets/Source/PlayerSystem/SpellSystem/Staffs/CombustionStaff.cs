@@ -86,6 +86,11 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				Caster.SetCharge(0f);
 		}
 
+		public override string ToString()
+		{
+			return Name;
+		}
+
 		public override void OnBasicDown()
 		{
 			if (CanCastExcludingCost)

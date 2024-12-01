@@ -4,6 +4,7 @@ using Quinn.DungeonGeneration;
 using Quinn.UnityServices;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,8 @@ namespace Quinn.PlayerSystem
 		public Player Player { get; private set; }
 		public Health Health { get; private set; }
 		public PlayerMovement Movement { get; private set; }
+
+		public List<string> RecentlyLooted { get; } = new();
 
 		public string EquippedStaffGUID { get; set; }
 		public float EquippedStaffEnergy { get; set; }
@@ -84,6 +87,11 @@ namespace Quinn.PlayerSystem
 			if (Input.GetKeyDown(KeyCode.Alpha7))
 			{
 				Health.Kill();
+			}
+
+			if (Input.GetKeyDown(KeyCode.L))
+			{
+				SceneManager.LoadSceneAsync(2);
 			}
 #endif
 		}

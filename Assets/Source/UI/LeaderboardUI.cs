@@ -49,18 +49,18 @@ namespace Quinn.UI
 			float duration = PlayerManager.Instance.GameplayDuration;
 
 			Stats.text =
-				$"{staffCount} Staffs Collected\n" +
-				$"{pathCount} Paths Discovered\n" +
-				$"{duration:0}s Start to Finish";
+				$"{staffCount} <color=#aaaaaa>Staffs</color> Collected\n" +
+				$"{pathCount} <color=#aaaaaa>Paths</color> Discovered\n" +
+				$"{duration:0}s <color=#aaaaaa>Start to Finish</color>";
 
 			float staffScore = StaffScore * staffCount;
 			float pathScore = PathScore * pathCount;
 			float timeScore = DurationBaseScore - (DurationPenalty * duration);
 
 			Score.text = 
-				$"{staffCount}x Staffs = {GetSign(staffScore)}{staffScore:0}\n" +
-				$"{pathCount}x Paths = {GetSign(pathScore)}{pathScore:0}\n" +
-				$"{duration:0}s Time = {GetSign(timeScore, true)}{timeScore:0}";
+				$"{staffCount}x <color=#aaaaaa>Staffs</color> = <color={GetColor(staffScore)}>{GetSign(staffScore)}{staffScore:0}</color>\n" +
+				$"{pathCount}x <color=#aaaaaa>Paths</color> = <color={GetColor(pathScore)}>{GetSign(pathScore)}{pathScore:0}</color>\n" +
+				$"{duration:0}s <color=#aaaaaa>Time</color> = <color={GetColor(timeScore)}>{GetSign(timeScore, true)}{timeScore:0}</color>";
 
 			_score = staffScore + pathScore + timeScore;
 			Total.text = $"Total Score: {_score:0}!";
@@ -97,6 +97,14 @@ namespace Quinn.UI
 			return sign;
 		}
 
+		private string GetColor(float value)
+		{
+			if (value > 0f) return "green";
+			if (value < 0f) return "red";
+
+			return "white";
+		}
+
 		private async void UpdateLeaderobardUI()
 		{
 			LeaderboardContent.DestroyChildren();
@@ -111,7 +119,7 @@ namespace Quinn.UI
 				double score = entry.Score;
 
 				var tm = ScorePrefab.Clone(LeaderboardContent).GetComponent<TextMeshProUGUI>();
-				tm.text = $"{index}. [{score:0}] {name}";
+				tm.text = $"{index}. <color=#FEB100>[{score:0}]</color> {name}";
 
 				index++;
 			}

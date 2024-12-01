@@ -66,7 +66,8 @@ namespace Quinn.UI
 					OverMaxBar.gameObject.SetActive(false);
 				}
 
-				OverMaxVFX.SetBool("Enabled", _caster.UIStaff.Energy > _caster.UIStaff.MaxEnergy);
+				bool enableOvermax = _caster.UIStaff.Energy > _caster.UIStaff.MaxEnergy && HUD.Instance.Alpha > 0.8f;
+				OverMaxVFX.SetBool("Enabled", enableOvermax);
 			}
 		}
 	}

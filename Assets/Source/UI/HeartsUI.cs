@@ -13,7 +13,7 @@ namespace Quinn.UI
 		[SerializeField, Required]
 		private GameObject HeartPrefab;
 		[SerializeField, Required]
-		private Sprite FullHeart, EmptyHeart;
+		private Sprite FullHeart, HalfHeart, EmptyHeart;
 
 		[SerializeField, BoxGroup("Last Heart Shake")]
 		private float LastHeartAmplitude = 5f, LastHeartFrequency = 50f;
@@ -127,11 +127,15 @@ namespace Quinn.UI
 			{
 				var child = _hearts[i];
 
-				bool isFull = i < current;
+				bool isNotEmpty = i < current;
+				child.sprite = isNotEmpty ? FullHeart : EmptyHeart;
 
-				child.sprite = isFull ? FullHeart : EmptyHeart;
+				if (isNotEmpty && PlayerManager.Instance.Health.IsHalfHeart)
+				{
+					child.sprite = HalfHeart;
+				}
 
-				if (isFull && isHealing)
+				if (isNotEmpty && isHealing)
 				{
 					PunchHeart(child.transform, i);
 				}

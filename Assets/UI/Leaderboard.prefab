@@ -1467,9 +1467,9 @@ MonoBehaviour:
   LeaderboardContent: {fileID: 9021422669021795918}
   ScorePrefab: {fileID: 3182595743445862552, guid: d53c5848bed7b3a4eb3289f0e0d6fa77, type: 3}
   StaffScore: 100
-  PathScore: 200
-  DurationBaseScore: 300
-  DurationPenalty: 2
+  PathScore: 300
+  DurationBaseScore: 500
+  DurationPenalty: 0.5
 --- !u!1 &7216965365932826205
 GameObject:
   m_ObjectHideFlags: 0

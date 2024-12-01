@@ -98,7 +98,7 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 				_isCharging = true;
 
 				Caster.Movement.CanDash = false;
-				Caster.Movement.ApplySpeedModifier(this, 0.5f);
+				Caster.Movement.ApplySpeedModifier(this, 0.85f);
 			}
 		}
 

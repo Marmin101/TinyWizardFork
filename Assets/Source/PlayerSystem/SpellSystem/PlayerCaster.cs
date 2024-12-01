@@ -438,7 +438,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 		{
 			var discovered = _storedStaffs.ToList();
 			if (EquippedStaff != null)
+			{
 				discovered.Add(EquippedStaff);
+				PlayerManager.Instance.EquippedStaffGUID = EquippedStaff.GUID;
+			}
 
 			discovered.Remove(FallbackStaff);
 			PlayerManager.Instance.DiscoveredStaffCount = discovered.Count;

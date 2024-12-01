@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e8a3c8a16b6b54ea7aaf4abca8a1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <GUID>k__BackingField: 9b3caef2-2f34-462f-a4df-a00ab074e3c8
+  <GUID>k__BackingField: 6ae7b44e-f09e-409c-902f-d2422b4223a3
   <Name>k__BackingField: Combustion Staff
   <Head>k__BackingField: {fileID: 8949893096219440680}
   <SparkGradient>k__BackingField:
@@ -176,7 +176,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  DamageRadius: 1.2
+  DamageRadius: 2.2
   MaxEnergyUse: 15
   EnergyUseChargeFactor:
     serializedVersion: 2
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   FriendlyKnockbackSpeed: 18
-  MaxManaConsume: 60
+  MaxManaConsume: 40
   BaseSparkCooldown: 0.6
   CombustionVFX: {fileID: 3046125498168810899, guid: 385d91660187d9e4287a7e5326c4627e, type: 3}
   VFXLifespan: 3

@@ -3990,6 +3990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeartPrefab: {fileID: 8765451987971455427, guid: 5c4839a6a46f79745a974b351cf9f29b, type: 3}
   FullHeart: {fileID: -97003750754964358, guid: 954cdfbbf10476840aacf1db0cd7e341, type: 3}
+  HalfHeart: {fileID: -3409412196438529678, guid: 954cdfbbf10476840aacf1db0cd7e341, type: 3}
   EmptyHeart: {fileID: -1043539915054185952, guid: 954cdfbbf10476840aacf1db0cd7e341, type: 3}
   LastHeartAmplitude: 5
   LastHeartFrequency: 50

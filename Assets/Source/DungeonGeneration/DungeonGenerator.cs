@@ -59,8 +59,6 @@ namespace Quinn.DungeonGeneration
 		private readonly Dictionary<Vector2Int, GameObject> _generatedRooms = new();
 		private EventInstance _ambience, _music;
 
-		private GameObject _lastGeneratedRoomPrefab;
-
 		private int _floorIndex;
 
 		public void Awake()
@@ -108,45 +106,6 @@ namespace Quinn.DungeonGeneration
 			await StartFloorAsync(Floors[_floorIndex]);
 		}
 
-		public async void GenerateRoomAt(int x, int y)
-		{
-			if (_generatedRooms.ContainsKey(new Vector2Int(x, y)))
-				return;
-
-			Debug.Assert(ActiveFloor != null, "Failed to generate room. There is no active floor!");
-
-			// Rules to be used for filtering rooms while deciding which room to generate.
-			var criteria = new RoomCriteria();
-
-			if (GetRoomAt(x, y + 1, out Room n))
-				criteria.North = n.HasSouthDoor ? DoorCriteria.Required : DoorCriteria.Banned;
-			if (GetRoomAt(x, y - 1, out Room s))
-				criteria.South = s.HasNorthDoor ? DoorCriteria.Required : DoorCriteria.Banned;
-			if (GetRoomAt(x - 1, y, out Room e))
-				criteria.East = e.HasWestDoor ? DoorCriteria.Required : DoorCriteria.Banned;
-			if (GetRoomAt(x + 1, y, out Room w))
-				criteria.West = w.HasEastDoor ? DoorCriteria.Required : DoorCriteria.Banned;
-
-			// Filter for rooms that support required doors.
-			var validRooms = ActiveFloor.Generatable.Where(roomToGenerate => criteria.IsMatch(roomToGenerate.Prefab));
-
-			// Avoid using duplicate rooms if we have more than 1 room from the generation pool
-			if (validRooms.Count() > 1)
-			{
-				validRooms = validRooms.Where(room => room.Prefab.gameObject != _lastGeneratedRoomPrefab);
-			}
-
-			// Get random (by weight) room from filtered collection.
-			var selected = validRooms.GetWeightedRandom(x => x.Weight);
-
-			Debug.Assert(selected != null, $"Failed to generate room. No valid option found! Criteria: {criteria}.");
-			Room prefab = selected.Prefab;
-			_lastGeneratedRoomPrefab = prefab.gameObject;
-
-			// Generate actual room.
-			await GenerateRoomAsync(prefab, x, y);
-		}
-
 		public void IncrementFloorIndex()
 		{
 			_floorIndex++;
@@ -160,18 +119,6 @@ namespace Quinn.DungeonGeneration
 		public void SetFloorIndex(int i)
 		{
 			_floorIndex = Mathf.Min(i, Floors.Length - 1);
-		}
-
-		private bool GetRoomAt(int x, int y, out Room room)
-		{
-			if (_generatedRooms.TryGetValue(new(x, y), out GameObject value))
-			{
-				room = value.GetComponent<Room>();
-				return true;
-			}
-
-			room = null;
-			return false;
 		}
 
 		private async Awaitable StartFloorAsync(FloorSO floor)
@@ -235,29 +182,6 @@ namespace Quinn.DungeonGeneration
 			}
 
 			await fade;
-		}
-
-		private async Awaitable<Room> GenerateRoomAsync(Room prefab, int x, int y)
-		{
-			Vector2 pos = RoomGridToWorld(x, y) - Vector2.one;
-			var instance = await prefab.gameObject.CloneAsync(pos, Quaternion.identity, transform);
-
-			if (instance == null)
-			{
-				throw new System.NullReferenceException("Failed to generate room!");
-			}
-
-			_generatedRooms.Add(new(x, y), instance);
-
-			var room = instance.GetComponent<Room>();
-			room.RoomGridIndex = new(x, y);
-
-			return room;
-		}
-
-		private Vector2 RoomGridToWorld(int x, int y)
-		{
-			return new Vector2(x, y) * MaxRoomSize;
 		}
 
 		private void DestroyAllRooms()

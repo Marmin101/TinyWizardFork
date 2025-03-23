@@ -1,4 +1,5 @@
 ﻿using FMODUnity;
+using Quinn.PlayerSystem;
 using UnityEngine;
 
 namespace Quinn.AI
@@ -20,7 +21,23 @@ namespace Quinn.AI
 		[Space, SerializeField]
 		private bool DisableAI;
 
-		protected override void OnThink() { }
+		//Variable to keep track of where the player is
+		private Transform playerLocation;
+
+        private void Start()
+        {
+			//initialize the players location by searching for its tag
+            playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
+        new private void Update()
+        {
+			//The Ai can jump further the further it is from the player.
+			float distance = Vector2.Distance(this.transform.position, playerLocation.position);
+			JumpDistance = (distance/3) + 2;
+        }
+
+        protected override void OnThink() { }
 
 		protected override async void OnRoomStart()
 		{

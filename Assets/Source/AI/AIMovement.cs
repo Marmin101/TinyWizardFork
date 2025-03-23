@@ -23,7 +23,6 @@ namespace Quinn.AI
 			base.Awake();
 			_agent = GetComponent<AIAgent>();
 		}
-
 		public override Vector2 GetVelocity()
 		{
 			var vel = _cumulativeVel;

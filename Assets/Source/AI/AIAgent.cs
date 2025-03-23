@@ -54,7 +54,7 @@ namespace Quinn.AI
 
 		Room IAgent.Room => Room;
 
-		private bool _isActiveFirst;
+		protected bool _isActiveFirst;
 
 		protected virtual void Awake()
 		{

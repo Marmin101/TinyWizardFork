@@ -100,10 +100,12 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 		private float _chainTimeoutTime;
 		private bool _isMovePenaltyApplied;
 
+
 		private bool _isCharging;
 
 		public void Update()
 		{
+
 			if (IsBasicHeld && CanCastExcludingCost)
 			{
 				OnBasicDown();
@@ -196,6 +198,12 @@ namespace Quinn.PlayerSystem.SpellSystem.Staffs
 
 				ConsumeMana(BasicManaConsume);
 			}
+
+			//the lower your energy, the stronger the staff
+			BasicCooldown = .5f * (Energy / (1.5f * MaxEnergy));
+			SpecialCooldown = 1f * (Energy / (1.5f * MaxEnergy));
+			BasicFinisherCooldown = .75f * (Energy / (1.5f * MaxEnergy));
+			
 		}
 
 		public override void OnSpecialDown()

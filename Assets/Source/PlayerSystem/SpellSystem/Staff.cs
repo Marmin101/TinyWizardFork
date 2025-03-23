@@ -65,9 +65,10 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		protected virtual void Awake()
 		{
-			Debug.Assert(!string.IsNullOrWhiteSpace(GUID), $"Staff '{gameObject.name}' is missing a GUID!");
+//Not needed
+            //Debug.Assert(!string.IsNullOrWhiteSpace(GUID), $"Staff '{gameObject.name}' is missing a GUID!");
 
-			_group = GetComponentInChildren<SortingGroup>();
+            _group = GetComponentInChildren<SortingGroup>();
 			_group.enabled = false;
 
 			Energy = MaxEnergy;
@@ -84,7 +85,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 		[Button(SdfIconType.ArrowRepeat, "Generate"), BoxGroup("ID")]
 		public void GenerateGUID()
 		{
-			GUID = System.Guid.NewGuid().ToString();
+//not needed
+			//GUID = System.Guid.NewGuid().ToString();
 		}
 
 		public void Interact(Player player)
@@ -93,6 +95,8 @@ namespace Quinn.PlayerSystem.SpellSystem
 			caster.EquipStaff(this);
 
 			OnPickedUp?.Invoke();
+            //picking up a wand adds it to the linked list
+            player.playerInventory.inventory.AddToInventory(this);
 		}
 
 		public void SetCaster(PlayerCaster caster)

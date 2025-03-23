@@ -9,71 +9,69 @@ using UnityEngine;
 
 namespace Quinn.UI
 {
-	public class CollectedStaffsUI : MonoBehaviour
-	{
-		[SerializeField, Required]
-		private Transform ListParent;
-		[SerializeField, Required]
-		private GameObject EquippedStaffPrefab, StoredStaffPrefab;
+    public class CollectedStaffsUI : MonoBehaviour
+    {
+        [SerializeField, Required]
+        private Transform ListParent;
+        [SerializeField, Required]
+        private GameObject EquippedStaffPrefab, StoredStaffPrefab;
 
-		[Space, SerializeField]
-		private StaffsSO Staffs;
+        [Space, SerializeField]
+        private StaffsSO Staffs;
 
-		private PlayerCaster _caster;
-		private readonly List<TextMeshProUGUI> _staffs = new();
-		private string _activeStaffGUID;
+        private PlayerCaster _caster;
+        private readonly List<TextMeshProUGUI> _staffs = new();
+        private string _activeStaffGUID;
 
-		public void Start()
-		{
-			foreach (var child in ListParent.GetChildren())
-			{
-				child.gameObject.Destroy();
-			}
+        public void Start()
+        {
+            foreach (var child in ListParent.GetChildren())
+            {
+                child.gameObject.Destroy();
+            }
 
-			_caster = PlayerManager.Instance.Player.GetComponent<PlayerCaster>();
-		}
+            _caster = PlayerManager.Instance.Player.GetComponent<PlayerCaster>();
+        }
 
-		public void FixedUpdate()
-		{
-			if (_caster.EquippedStaff != null && _caster.EquippedStaff.GUID != _activeStaffGUID)
-			{
-				_activeStaffGUID = _caster.EquippedStaff.GUID;
-				UpdateStaffs();
-			}
-		}
+        public void FixedUpdate()
+        { 
+            if (_caster.EquippedStaff != null && _caster.EquippedStaff.GUID != _activeStaffGUID)
+            {
+                _activeStaffGUID = _caster.EquippedStaff.GUID;
+                UpdateStaffs();
+            }
+        }
 
-		private void UpdateStaffs()
-		{
-			_staffs.ForEach(staff => staff.gameObject.Destroy());
-			_staffs.Clear();
+        private void UpdateStaffs()
+        {
+            _staffs.ForEach(staff => staff.gameObject.Destroy());
+            _staffs.Clear();
 
-			var manager = PlayerManager.Instance;
+            var manager = PlayerManager.Instance;
 
-			if (!string.IsNullOrEmpty(manager.EquippedStaffGUID))
-			{
-				var equipped = CloneItem(isEquipped: true);
-				equipped.text = Staffs.GetStaff(manager.EquippedStaffGUID).Name;
+            if (!string.IsNullOrEmpty(manager.EquippedStaffGUID))
+            {
+                var equipped = CloneItem(isEquipped: true);
+                equipped.text = Staffs.GetStaff(manager.EquippedStaffGUID).Name;
+                //Changes the text for the item that comes next
+                if (Staffs.GetStaff(manager.StoredStaffGUID).Name != null)
+                {
+                    equipped = CloneItem(isEquipped: false);
 
-				var seq = DOTween.Sequence();
-				seq.Append(equipped.transform.DOScale(1.1f, 0.05f));
-				seq.Append(equipped.transform.DOScale(1f, 0.1f));
-			}
+                    equipped.text = Staffs.GetStaff(manager.StoredStaffGUID).Name;
+                }
+                
+            }
+        }
 
-			foreach (var guid in manager.StoredStaffGUIDs)
-			{
-				var stored = CloneItem(isEquipped: false);
-				stored.text = Staffs.GetStaff(guid).Name;
-			}
-		}
+        private TextMeshProUGUI CloneItem(bool isEquipped)
+        {
+            var prefab = isEquipped ? EquippedStaffPrefab : StoredStaffPrefab;
 
-		private TextMeshProUGUI CloneItem(bool isEquipped)
-		{
-			var prefab = isEquipped ? EquippedStaffPrefab : StoredStaffPrefab;
+            var instance = prefab.Clone(ListParent).GetComponent<TextMeshProUGUI>();
+            _staffs.Add(instance);
 
-			var instance = prefab.Clone(ListParent).GetComponent<TextMeshProUGUI>();
-			_staffs.Add(instance);
-
-			return instance;
-		}
-	}
+            return instance;
+        }
+    }
 }

@@ -30,7 +30,8 @@ namespace Quinn.PlayerSystem
 
 		public string EquippedStaffGUID { get; set; }
 		public float EquippedStaffEnergy { get; set; }
-		public string[] StoredStaffGUIDs { get; set; } = Array.Empty<string>();
+//No longer saving every item for the ui. Only using the item coming next in the list		
+public string StoredStaffGUID { get; set; }
 		public int DiscoveredStaffCount { get; set; }
 		public int PathsFound { get; set; }
 

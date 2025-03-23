@@ -75,10 +75,14 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 		private float _manaRegenStartTime;
 
-		/* UNITY MESSAGES */
+//Create a variable to check if inventory has been created
+        private bool initializedInventory = false;
 
-		public void Awake()
+        /* UNITY MESSAGES */
+
+        public void Awake()
 		{
+
 			Movement = GetComponent<PlayerMovement>();
 			var input = InputManager.Instance;
 
@@ -103,16 +107,22 @@ namespace Quinn.PlayerSystem.SpellSystem
 				EquipStaff(staff.GetComponent<Staff>(), true, true, supressAnalytics: true);
 
 				UpdateStaffTransientData();
-				PlayerManager.Instance.RecentlyLooted.Add(staff.GetComponent<Staff>().GUID);
-			}
+				PlayerManager.Instance.RecentlyLooted.Add(staff.GetComponent<Staff>().GUID);      
+            }
 
 			Mana = MaxMana;
-		}
+        }
 
-		public void Update()
+        public void Update()
 		{
+			//Add Starter wand to the empty inventory
+			if (!initializedInventory && this.gameObject.GetComponent<Player>().playerInventory.inventory != null)
+			{
+                this.gameObject.GetComponent<Player>().playerInventory.inventory.AddToInventory(EquippedStaff);
+                initializedInventory = true;
+            }
 #if UNITY_EDITOR
-			if (Input.GetKeyDown(KeyCode.Alpha0) && EquippedStaff != null && EquippedStaff.Energy > 0f)
+            if (Input.GetKeyDown(KeyCode.Alpha0) && EquippedStaff != null && EquippedStaff.Energy > 0f)
 			{
 				EquippedStaff.ConsumeAllEnergy();
 			}
@@ -136,9 +146,13 @@ namespace Quinn.PlayerSystem.SpellSystem
 
 			if (EquippedStaff != null && EquippedStaff.Energy <= 0f)
 			{
-				StoreStaff(EquippedStaff);
+//If a wand runs out of energy, remove it from the list
+                this.gameObject.GetComponent<Player>().playerInventory.inventory.RemoveStaffFromList(EquippedStaff);
+                StoreStaff(EquippedStaff);
 				EquipStaff(FallbackStaff, true);
-			}
+//Add the fallback staff to the inventory
+                this.gameObject.GetComponent<Player>().playerInventory.inventory.AddToInventory(EquippedStaff);
+            }
 
 			if (Time.time > _manaRegenStartTime && Mana < MaxMana && (EquippedStaff == null || EquippedStaff.CanRegenMana))
 			{
@@ -395,16 +409,17 @@ namespace Quinn.PlayerSystem.SpellSystem
 			equippedStaff.SetCaster(this);
 			equippedStaff.SetEnergy(PlayerManager.Instance.EquippedStaffEnergy);
 
-			// Stored staff.
-			foreach (string guid in PlayerManager.Instance.StoredStaffGUIDs)
-			{
-				GameObject storedStaffInstance = StaffGUIDToPrefab(guid).gameObject.Clone();
-				var storedStaff = storedStaffInstance.GetComponent<Staff>();
+			//Changed hud, removed need for this
+			//// Stored staff.
+			//foreach (string guid in PlayerManager.Instance.StoredStaffGUIDs)
+			//{
+			//	GameObject storedStaffInstance = StaffGUIDToPrefab(guid).gameObject.Clone();
+			//	var storedStaff = storedStaffInstance.GetComponent<Staff>();
 
-				StoreStaff(storedStaff);
-				// Call this to disable light and such.
-				storedStaff.SetStoredState();
-			}
+			//	StoreStaff(storedStaff);
+			//	// Call this to disable light and such.
+			//	storedStaff.SetStoredState();
+			//}
 		}
 
 		// Save equipped staff and stored staff data to PlayerManager for travel between scene loads.
@@ -418,20 +433,20 @@ namespace Quinn.PlayerSystem.SpellSystem
 				manager.EquippedStaffGUID = EquippedStaff.GUID;
 				manager.EquippedStaffEnergy = EquippedStaff.Energy;
 			}
+            //Changed hud, removed need for this
+            //foreach (var staff in _storedStaffs)
+            //{
+            //	if (staff.GUID != FallbackStaff.GUID)
+            //	{
+            //manager.StoredStaffGUID = _storedStaffs
+            //			.Select(x => x.GUID)
+            //			.Where(x => x != FallbackStaff.GUID)
+            //			.Reverse()
+            //			.ToArray();
+            //	}
+            //}
 
-			foreach (var staff in _storedStaffs)
-			{
-				if (staff.GUID != FallbackStaff.GUID)
-				{
-					manager.StoredStaffGUIDs = _storedStaffs
-						.Select(x => x.GUID)
-						.Where(x => x != FallbackStaff.GUID)
-						.Reverse()
-						.ToArray();
-				}
-			}
-
-			UpdateScoreData();
+            UpdateScoreData();
 		}
 
 		private void UpdateScoreData()

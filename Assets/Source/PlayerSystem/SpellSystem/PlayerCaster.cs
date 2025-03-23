@@ -147,11 +147,15 @@ namespace Quinn.PlayerSystem.SpellSystem
 			if (EquippedStaff != null && EquippedStaff.Energy <= 0f)
 			{
 //If a wand runs out of energy, remove it from the list
+
                 this.gameObject.GetComponent<Player>().playerInventory.inventory.RemoveStaffFromList(EquippedStaff);
                 StoreStaff(EquippedStaff);
 				EquipStaff(FallbackStaff, true);
-//Add the fallback staff to the inventory
-                this.gameObject.GetComponent<Player>().playerInventory.inventory.AddToInventory(EquippedStaff);
+				//Add the fallback staff to the inventory if it hasnt already been added
+				if (!this.gameObject.GetComponent<Player>().playerInventory.inventory.SearchForItem(FallbackStaff))
+				{
+					this.gameObject.GetComponent<Player>().playerInventory.inventory.AddToInventory(EquippedStaff);
+				}
             }
 
 			if (Time.time > _manaRegenStartTime && Mana < MaxMana && (EquippedStaff == null || EquippedStaff.CanRegenMana))
